@@ -14,4 +14,13 @@ setwd("~/Documents/GitHub/R_Training/logs")
 
 library(haven)
 
-wage <- read_dta("../data/WAGE1.DTA")
+wages <- read_dta("../data/WAGE1.DTA")
+
+attach(wages)
+
+summary(wages)
+
+plot(educ,wage)
+
+ols1 <- lm(wage ~ educ)
+summary(ols1)
