@@ -2,6 +2,8 @@
 ## MPortela -- U Minho
 ## September 2020
 
+# https://nbviewer.jupyter.org/github/jhconning/Dev-II/blob/master/notebooks/Stata_in_jupyter.ipynb
+
 rm(list = ls())
 
 setwd("~/Documents/GitHub/R_Training/logs")
