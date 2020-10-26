@@ -1,0 +1,65 @@
+---
+title: A simple example using Markstat
+author: P Guimaraes and M Portela
+date: 23 January 2020
+bibliography: references.bib
+csl: econometrica.csl
+---
+
+# Reading the data
+
+This example draws a lot from @Rodriguez2017.
+We use the *auto* data file that ships with Stata. To read the data we do
+
+```s
+  sysuse auto, clear
+```
+
+We can describe the dataset
+
+```s
+  describe
+```
+
+and obtain descriptive statistics
+```s
+  sum
+```
+Next we will estimate an equation of the type
+
+$$
+y=\beta_1+ \beta_2 x+ \epsilon
+$$
+
+where $y$ equals "mpg - Miles per Gallon" and "x" is ""weight.
+
+Before doing this let us create and save a graph plotting these two variables
+
+```s/
+twoway scatter mpg weight, ytitle(Miles per gallon)
+qui graph export graph1.png, width(500) replace
+```
+And here is the plot of the two variables:
+
+![Plot of Miles vs Weight](graph1.png)
+
+We can now run a regression
+
+```s
+regress mpg weight
+```
+the $R^2$ for this regression is `s %4.2f e(r2)` and the estimated coefficient on *weight* is `s %6.4f _b[weight]`
+
+We can now use the *eststo* command to produce a table of results
+
+```s
+eststo clear
+quietly eststo: regress mpg foreign
+quietly eststo: regress mpg foreign weight
+esttab
+```
+
+You should also see @Rodriguez2017 Stata Journal article and check [his page](https://data.princeton.edu/stata/markdown).
+To learn more about Markdown see @gruber04 and to learn about pandoc you can use @macfarlane06.
+
+## References

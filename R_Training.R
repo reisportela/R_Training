@@ -1,6 +1,6 @@
 ## R Training
 ## MPortela -- U Minho
-## September 2020
+## October 2020
 
 # https://nbviewer.jupyter.org/github/jhconning/Dev-II/blob/master/notebooks/Stata_in_jupyter.ipynb
 

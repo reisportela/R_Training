@@ -1,0 +1,13 @@
+
+1. copy the file
+
+example2.stmd
+references.bib
+
+from the folder above this to this folder
+
+2. Inspect the two files
+
+2. Run the Stata file
+
+run_example2a
