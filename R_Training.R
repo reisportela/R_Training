@@ -6,7 +6,7 @@
 
 rm(list = ls())
 
-setwd("~/Documents/GitHub/R_Training/logs")
+setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/logs")
 
 ##setwd("~/capsule/results")
 

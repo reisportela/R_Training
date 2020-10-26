@@ -3,7 +3,6 @@ title: "Applied Data Analysis School"
 author: "Miguel Portela"
 date: "October 25, 2020"
 output: pdf_document
-logo: logo.png
 papersize: a4
 ---
 
