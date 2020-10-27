@@ -1,7 +1,8 @@
 ---
 title: "Applied Data Analysis School"
-author: "Paulo Guimaraes and Miguel Portela"
+author: "Miguel Portela"
 date: "October 27 and 29, 2020"
+institute: "Universidade do Minho"
 output:
   beamer_presentation: default
   slidy_presentation: default
@@ -327,3 +328,7 @@ bibliography: references.bib
 csl: thisstyle.csl
 ---
 ```
+
+# Further information
+
+- [LITERATE PROGRAMMING IN R MARKDOWN: GitHub repository](https://github.com/reisportela/R_Training)

@@ -2,30 +2,10 @@
 title: Fill in title
 author: Fill in name
 date: 23 January 2019
-output: 
-  pdf_document: 
-    toc: true
 ---
-
-jkadhkjdhs
 
 # First exercise
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet est placerat in egestas erat imperdiet. Potenti nullam ac tortor vitae purus faucibus. Semper quis lectus nulla at volutpat. Magnis dis parturient montes nascetur ridiculus. Amet tellus cras adipiscing enim. Luctus accumsan tortor posuere ac ut consequat semper viverra. Pellentesque nec nam aliquam sem. Consectetur adipiscing elit duis tristique. Mattis rhoncus urna neque viverra justo nec ultrices.
 
 Fermentum leo vel orci porta non pulvinar neque. Senectus et netus et malesuada fames ac turpis egestas. Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque. Diam volutpat commodo sed egestas egestas. Enim ut tellus elementum sagittis. Et odio pellentesque diam volutpat commodo. Facilisi nullam vehicula ipsum a arcu cursus. Eget lorem dolor sed viverra ipsum. Consectetur adipiscing elit duis tristique sollicitudin. Mauris pharetra et ultrices neque ornare aenean euismod elementum. Sit amet volutpat consequat mauris. Quis risus sed vulputate odio ut enim blandit volutpat maecenas. Cursus metus aliquam eleifend mi in nulla posuere. Amet nulla facilisi morbi tempus. Sodales ut eu sem integer vitae justo eget magna fermentum. Amet mattis vulputate enim nulla aliquet porttitor. Faucibus purus in massa tempor nec feugiat nisl pretium fusce. Risus nullam eget felis eget nunc lobortis mattis aliquam. Sem et tortor consequat id porta.
-
-Pretium quam vulputate dignissim suspendisse in est ante in. Quis viverra nibh cras pulvinar mattis nunc sed. Purus viverra accumsan in nisl nisi scelerisque. Placerat in egestas erat imperdiet sed. Arcu cursus vitae congue mauris rhoncus aenean vel elit. Massa sed elementum tempus egestas sed sed risus. Sed viverra tellus in hac. Vivamus at augue eget arcu dictum varius duis. Ultrices vitae auctor eu augue ut. Viverra adipiscing at in tellus integer feugiat scelerisque. Eros donec ac odio tempor orci dapibus ultrices in. Risus at ultrices mi tempus imperdiet nulla malesuada pellentesque elit.
-
-Quis auctor elit sed vulputate mi. Tortor condimentum lacinia quis vel eros donec ac. Pretium aenean pharetra magna ac placerat. Dui faucibus in ornare quam viverra orci sagittis eu. Sed faucibus turpis in eu mi bibendum neque. Egestas pretium aenean pharetra magna ac. Porttitor rhoncus dolor purus non enim. Facilisis gravida neque convallis a. In nibh mauris cursus mattis molestie a iaculis. Gravida neque convallis a cras semper. Eros donec ac odio tempor orci dapibus ultrices in. Convallis a cras semper auctor neque vitae. Faucibus et molestie ac feugiat sed lectus vestibulum mattis. In est ante in nibh mauris cursus mattis. Elementum nisi quis eleifend quam adipiscing vitae proin sagittis nisl. Pellentesque habitant morbi tristique senectus et netus et.
-
-Blandit aliquam etiam erat velit. Sodales neque sodales ut etiam sit amet nisl purus in. At tellus at urna condimentum mattis. Enim ut tellus elementum sagittis vitae. Erat velit scelerisque in dictum non consectetur a erat. Sed sed risus pretium quam vulputate. Sed libero enim sed faucibus turpis in eu mi. Dictum at tempor commodo ullamcorper a. At erat pellentesque adipiscing commodo. Turpis in eu mi bibendum neque egestas congue quisque egestas. Sed pulvinar proin gravida hendrerit lectus a. Quam nulla porttitor massa id neque aliquam. Duis convallis convallis tellus id interdum velit laoreet id. Pellentesque habitant morbi tristique senectus et. Arcu risus quis varius quam. Nec feugiat nisl pretium fusce id velit.
-
-
-## random
-
-asds
-
-# Chapter 2
-
-akjdlkjas
