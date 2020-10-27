@@ -3,4 +3,4 @@ numpy
 pandas
 statsmodels
 plotly
-pypandoc
+pandoc
