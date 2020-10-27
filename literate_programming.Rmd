@@ -16,8 +16,8 @@ header-includes:
 
 ```{r echo=FALSE,results='hide',message=FALSE}
 rm(list = ls())
-setwd("/Users/miguelportela/Documents/GitHub/R_Training")
-# setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training")
+# setwd("/Users/miguelportela/Documents/GitHub/R_Training")
+setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training")
 # install.packages("rmarkdown")
 library(tidyverse)
 library(ggplot2)
@@ -32,16 +32,9 @@ attach(nlswork)
 summary(ln_wage)
 ```
 
-# Install pandoc
+# Setup
 
- 0. Show the end of the game
- 1. Install Pandoc
- 2. Write the first Markdown file
- 3. Open the Terminal and execute the pandoc command
- 3. Create automatically the first markdown file -- EXPLORE THIS ITEM
-
-
-[Pandoc](https://pandoc.org/)
+1. [Installing Pandoc](https://pandoc.org/installing.html)
 
 [R Markdown - Get Started](https://rmarkdown.rstudio.com/lesson-1.html)
 
