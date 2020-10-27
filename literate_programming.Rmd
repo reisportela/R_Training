@@ -72,9 +72,13 @@ a paper
 
 - Hartgerink, C. H. J., Wicherts, J. M., & van Assen, M. A. L. M. (2017). [Too Good to be False: Nonsignificant Results Revisited](https://www.collabra.org/articles/10.1525/collabra.71/galley/82/download/). _Collabra: Psychology_, 3(1), 9.
 
-or edit a book
+edit a book
 
 - Xie, Y., Allaire, J.J. and Grolemund, G., 2018. [_R Markdown: The Definitive Guide_](https://bookdown.org/yihui/rmarkdown/). CRC Press.
+
+or build your website
+
+- [Rob J Hyndman’s website](https://robjhyndman.com/)
 
 # Introduction
 
@@ -88,6 +92,29 @@ or edit a book
 - Data analysis requires reproducibility of results
 
 - Useful for teaching
+
+# Preliminaries: Pandoc
+
+- [**Pandoc**](https://pandoc.org/) is a command line tool to convert across different document formats. Try it online [**here**](https://pandoc.org/try/)
+
+- It supports many formats such as Markdown, HTML, docx, pdf, $LaTeX$, etc
+
+- It is simple to use: to convert the file *example1.md* to
+
+  - HTML
+  ```
+  pandoc -s example1.md -o example1.html
+  ```
+  - PDF
+  ```
+  pandoc -s example1.md -o example1.pdf
+  ```
+  - docx
+  ```
+  pandoc -s example1.md -o example1.pdf
+  ```
+
+- Note: `-s` stands for source and `-o` for output
 
 # Preliminaries: Markdown
 
@@ -107,17 +134,17 @@ or edit a book
 
 # Markdown components
 
-1. Metadata: written between a pair of three dashes `---`
+1. **Metadata**: written between a pair of three dashes **`---`**
 
-2. Text: regular text and math elements, plus tables, images and figures
+2. **Text**: regular text and math elements, plus tables, images and figures
 
-3. Code:
+3. **Code**:
   
-  - inline R code: starts with `` `r `` and ends with a backtick `` ` ``
+  - _inline R code_: starts with `` `r `` and ends with a backtick `` ` ``
   
-  - code chunk: starts with three backticks like ```` ```{r} ```` where `r` indicates the language name and ends with three backticks ```` ``` ````
+  - _code chunk_: starts with three backticks like ```` ```{r} ```` where `r` indicates the language name and ends with three backticks ```` ``` ````
 
-# Markdown Syntax: Quick Introduction
+# Markdown syntax: quick introduction
 
 - Creating Headers
 
@@ -144,7 +171,7 @@ Another header
 ... and a little more text.
 ```
 
-# Markdown Syntax (continued)
+# Markdown syntax (continued)
 
 - Emphasizing text
 
@@ -166,7 +193,7 @@ It is also possible to ~~Strikeout~~ text
 + Point 2
 ```
 
-# Markdown Syntax (continued)
+# Markdown syntax (continued)
 
 - You can create structured lists
 
@@ -190,15 +217,7 @@ It is also possible to ~~Strikeout~~ text
 
 - and even references
 
-# Markdown
-
-- You can find a quick guide for syntax [**here**](https://www.markdownguide.org/cheat-sheet/) or more detailed information [**here**](https://daringfireball.net/projects/markdown/syntax)
-
-- To get an idea how Markdown works you can use an online editor such as [**Dillinger**](https://dillinger.io/) or [**Markdown here**](https://markdown-here.com/livedemo.html)
-
-- and if you need to create tables you can use [**this**](http://www.tablesgenerator.com/markdown_tables) great online tool  
-
-# Markdown Syntax (continued)
+# Markdown syntax (continued)
 
 - Markdown documents are highly flexible because they can incorporate other languages
 
@@ -215,28 +234,18 @@ you will see $a^2+b^2=c^2$
 
 - This is typically done in a "code fence": lines with three or more backticks or tildes inserted before and after
 
-# Preliminaries: Pandoc
+# Markdown syntax (continued)
 
-- [**Pandoc**](https://pandoc.org/) is a command line tool to convert across different document formats. Try it online [**here**](https://pandoc.org/try/)
+- You can find a quick guide for syntax [**here**](https://www.markdownguide.org/cheat-sheet/) or more detailed information [**here**](https://daringfireball.net/projects/markdown/syntax)
 
-- It supports many formats such as Markdown, HTML, docx, pdf, $LaTeX$, etc
+- To get an idea how Markdown works you can use an online editor such as [**Dillinger**](https://dillinger.io/) or [**Markdown here**](https://markdown-here.com/livedemo.html)
 
-- It is simple to use: to convert the file *example1.md* to
+- and if you need to create tables you can use [**this**](http://www.tablesgenerator.com/markdown_tables) great online tool
 
-  - HTML
-  ```
-  pandoc -s example1.md -o example1.html
-  ```
-  - PDF
-  ```
-  pandoc -s example1.md -o example1.pdf
-  ```
-  - docx
-  ```
-  pandoc -s example1.md -o example1.pdf
-  ```
+- You can use the [Cheat sheets](https://www.rstudio.com/resources/cheatsheets/) - also available via the Help menu in RStudio
 
-- Note: `-s` stands for source and `-o` for output
+- For the exercises explore the random text generator [Lorem ipsum](https://loremipsum.io/generator/)
+
 
 # Metadata
 
@@ -255,6 +264,31 @@ you will see $a^2+b^2=c^2$
 title: Fill in title
 author: Fill in name
 date: 23 January 2019
+---
+```
+
+# Definig the output formats
+
+- `pdf_document`
+
+- `html_document`
+
+- `word_document`
+
+- `beamer_presentation`
+
+- `ioslides_presentation`
+
+- `powerpoint_presentation`
+
+```
+---
+title: Fill in title
+author: Fill in name
+date: 23 January 2019
+output:
+  pdf_document:
+    toc: true
 ---
 ```
 
@@ -293,9 +327,3 @@ bibliography: references.bib
 csl: thisstyle.csl
 ---
 ```
-
-# Further information
-
-## Random text generator
-
-- [Lorem ipsum](https://loremipsum.io/generator/)
