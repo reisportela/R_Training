@@ -1,5 +1,49 @@
+---
+title: "Simple markdown exercise"
+author: "Miguel Portela"
+date: "October 2020"
+output:
+  bookdown::pdf_document2:
+    toc: no
+csl: harvard-imperial-college-london.csl
+header-includes:
+- \usepackage{hyperref}
+- \hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue, }
+- \usepackage{float}
+bibliography: references.bib
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+```{r echo=FALSE,results='hide',message=FALSE}
+rm(list = ls())
+setwd("/Users/miguelportela/Documents/GitHub/R_Training/md_examples")
+
+# setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/md_examples")
+
+# install.packages("rmarkdown")
+library(tidyverse)
+library(ggplot2)
+library(haven)
+library(stargazer)
+```
 
 Good afternoon!
+
+```{r echo=FALSE,results='hide',message=FALSE}
+# data()
+attach(mtcars)
+nlswork <- read_dta("../data/nlswork.dta")
+nls<-data.frame(nlswork)
+summary(nlswork)
+attach(nlswork)
+summary(ln_wage)
+```
 
 You can type in **bold** or _italic_
 
@@ -38,7 +82,9 @@ height="0.7in"}
 
 You can also use an image from a link:
 
+<!---
 ![RStudio's logo](https://rstudio.com/wp-content/uploads/2018/10/RStudio-Logo-Flat.png){width=25%}
+-->
 
 When writing your document you can quote using carat (>). This is called a block quote. The following text was generated using [Lorem Ipsum](https://jaspervdj.be/lorem-markdownum/).
 
@@ -155,9 +201,78 @@ You can write inline equations as $y_i = \alpha_0 + \tau x_i + \psi_i$ or number
 y_{it} = \beta_0 + \beta_1 x_{it} + \eta_i + \varepsilon{it}
 \end{equation}
 
-# Final remarks
+# Pandoc's manual
 
 For additional insights see @MacFarlane.
+
+# Build your report
+
+```{r echo=FALSE,results='hide'}
+summary(ln_wage)
+ii <- 4+9
+```
+
+The average log wage in our data is `r round(mean(ln_wage,na.rm=TRUE),1)`, while the sum is `r ii`.
+
+```{r table1, echo=FALSE, results="asis"}
+stargazer(nls,
+          title = "Summary table with stargazer",
+          label = "table1",
+          table.placement = "ht",
+          header=FALSE)
+```
+
+Table \@ref(table1) shows full data's summary statistics.^[You can also produce statistics for a sub set of variables; see Table \@ref(table:short).] `stargazer()` is and excellent solution to export outputs.
+
+```{r table2,echo=FALSE,results='asis'}
+nls %>%
+  select(tenure,ln_wage) %>%
+  stargazer(title = "Short statistics",
+          label = "table:short",
+          table.placement = "ht",
+          header=FALSE)
+```
+
+See Figure \@ref(fig:wages-tenure).
+
+```{r wages-tenure, echo=FALSE,fig.cap="Log wages vs. tenure"}
+plot(x=tenure,y=ln_wage)
+```
+
+An alternative could be to export the figure and include it as an image.
+
+```{r figure-2, fig.cap="Alternative solution",echo =FALSE,results='hide'}
+nls2 <- as.data.frame(nlswork)
+
+nls2 %>%
+  select(tenure,ln_wage) %>%
+  na.omit() %>%
+  ggplot(aes(tenure,ln_wage)) + geom_point()
+
+ggsave("images/wages.png")
+```
+
+See Figure \@ref(fig:figure-2).
+
+We could also include the figure in the following way
+
+![Wages vs. tenure](./images/wages.png){width=65%}
+
+We couls as well include regression analysis.
+
+```{r regression,echo=FALSE,results='asis'}
+r1 <- lm(data = nls2,ln_wage ~ tenure)
+r2 <- lm(data=nls2,ln_wage ~ tenure + union)
+stargazer(r1,r2,title = "First set of regressions",column.labels = c("M1", "M2"),label = "regressions",table.placement = "ht",notes.append = FALSE,notes.align="l",notes="Standard errors in parentheses.",header = FALSE)
+betas<-coef(r2)
+r2 <- summary(r2)$r.squared
+```
+
+The estimated return to tenure is `r round(betas[3]*100,1)`\%. The $R^2$ is `r round(r2,2)`.
+
+We can write the estimated equation
+
+$$\hat{y_i}=`r round(betas[1],1)` + `r round(betas[2],2)`\times tenure_i + `r round(betas[3],2)`\times union_i$$
 
 <!---
 
@@ -166,19 +281,16 @@ For additional insights see @MacFarlane.
 pandoc 1.basic_markdown_example.md -o 1.basic_markdown_example.pdf
 
 # YAML
-
 ---
-title: "Simple markdown exercise"
-author: "Miguel Portela"
-date: "October 2020"
-output: pdf_document
+title: Simple markdown exercise
+author: Miguel Portela
+date: October 2020
+bibliography: references.bib
+csl: harvard-imperial-college-london.csl
 header-includes:
 - \usepackage{hyperref}
 - \hypersetup{ colorlinks=true, linkcolor=blue, urlcolor=blue, }
-bibliography: references.bib
-csl: harvard-imperial-college-london.csl
 ---
-
 
 # COMPILATION WITH CITATIONS
 
@@ -187,17 +299,7 @@ pandoc --citeproc 1.basic_markdown_example.md -o 1.basic_markdown_example.pdf
 
 ## <<>> Mac
 
-### PDF
-
 pandoc --filter pandoc-citeproc 1.basic_markdown_example.md -o 1.basic_markdown_example.pdf
-
-### WORD
-
-pandoc --filter pandoc-citeproc 1.basic_markdown_example.md -o 1.basic_markdown_example.docx
-
-### HTML
-
-pandoc --filter pandoc-citeproc 1.basic_markdown_example.md -o 1.basic_markdown_example.html
 
 -->
 

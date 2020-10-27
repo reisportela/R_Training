@@ -1,12 +1,12 @@
 ---
 title: "Applied Data Analysis School"
 author: "Paulo Guimaraes and Miguel Portela"
-institute: 
 date: "October 27 and 29, 2020"
 output:
   beamer_presentation: default
   slidy_presentation: default
   ioslides_presentation: default
+  pdf_document: default
 subtitle: LITERATE PROGRAMMING IN R MARKDOWN
 theme: Copenhagen
 header-includes:
@@ -16,12 +16,14 @@ header-includes:
 
 ```{r echo=FALSE,results='hide',message=FALSE}
 rm(list = ls())
-# setwd("/Users/miguelportela/Documents/GitHub/R_Training")
-setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training")
+setwd("/Users/miguelportela/Documents/GitHub/R_Training")
+# setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training")
 # install.packages("rmarkdown")
 library(tidyverse)
 library(ggplot2)
 library(haven)
+library(rmarkdown)
+
 # data()
 attach(mtcars)
 nlswork <- read_dta("data/nlswork.dta")
@@ -30,7 +32,30 @@ attach(nlswork)
 summary(ln_wage)
 ```
 
-# install pandoc
+# Install pandoc
+
+ 0. Show the end of the game
+ 1. Install Pandoc
+ 2. Write the first Markdown file
+ 3. Open the Terminal and execute the pandoc command
+ 3. Create automatically the first markdown file -- EXPLORE THIS ITEM
+
+
+[Pandoc](https://pandoc.org/)
+
+[R Markdown - Get Started](https://rmarkdown.rstudio.com/lesson-1.html)
+
+[R Markdown - Reference Guide](https://rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)
+
+Windows and mac
+latex: miktex or mactex
+sumatra or kim
+
+R Markdown cheetsheet: check the Meny Help
+
+```{r eval=FALSE}
+plot(x,y)
+```
 
 # yaml
 
