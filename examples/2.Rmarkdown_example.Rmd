@@ -19,7 +19,6 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-
 ```{r echo=FALSE,results='hide',message=FALSE}
 rm(list = ls())
 # setwd("/Users/miguelportela/Documents/GitHub/R_Training/examples")
@@ -304,6 +303,12 @@ pandoc --citeproc 1.basic_markdown_example.md -o 1.basic_markdown_example.pdf
 ## <<>> Mac
 
 pandoc --filter pandoc-citeproc 1.basic_markdown_example.md -o 1.basic_markdown_example.pdf
+
+// RStudio Cloud
+
+pip3 install pandoc
+
+export PATH=$PATH:/usr/lib/rstudio-server/bin/pandoc
 
 -->
 

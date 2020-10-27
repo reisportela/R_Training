@@ -332,3 +332,5 @@ csl: thisstyle.csl
 # Further information
 
 - [LITERATE PROGRAMMING IN R MARKDOWN: GitHub repository](https://github.com/reisportela/R_Training)
+
+- [Project available in RStudio Cloud](https://rstudio.cloud/spaces/100541/join?access_code=znpd9DEjghnfbdj%2FvHVjuOTQA0gjkVIDI1xbQXIC)
