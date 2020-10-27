@@ -1,0 +1,8 @@
+install.packages("tidyverse")
+install.packages("ggplot2")
+install.packages("haven")
+install.packages("rmarkdown")
+install.packages("knitr")
+install.packages("stargazer")
+install.packages('tinytex')
+tinytex::install_tinytex()

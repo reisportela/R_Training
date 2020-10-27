@@ -1,0 +1,6 @@
+matplotlib
+numpy
+pandas
+statsmodels
+plotly
+pypandoc
