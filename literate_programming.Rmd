@@ -14,6 +14,11 @@ header-includes:
 - \hypersetup{ colorlinks=true, linkcolor=blue, urlcolor=blue, }
 ---
 
+```{r setup, include=FALSE}
+library(knitr)
+knitr::opts_chunk$set(echo = TRUE)
+```
+
 ```{r echo=FALSE,results='hide',message=FALSE}
 rm(list = ls())
 # setwd("/Users/miguelportela/Documents/GitHub/R_Training")
@@ -36,7 +41,16 @@ summary(ln_wage)
 
 1. [Pandoc](https://pandoc.org/installing.html)
 
-2. [MikTex](https://miktex.org/download) or [MacTex](https://tug.org/mactex/)
+2. Latex
+
+  - You can install a lightweight Latex flavor: [TinyTex](https://yihui.name/tinytex/)
+
+```{r eval=FALSE}
+  install.packages('tinytex')
+  tinytex::install_tinytex()  
+```
+
+  - or a complete distribution: [MikTex](https://miktex.org/download) or [MacTex](https://tug.org/mactex/)
 
 3. [Sumatra PDF](https://www.sumatrapdfreader.org/download-free-pdf-viewer.html) or [Skim](https://skim-app.sourceforge.io/)
 
@@ -48,6 +62,19 @@ summary(ln_wage)
 
   - [R Rarkdown: The definitive guide](https://bookdown.org/yihui/rmarkdown/)
 
+# By the end of the day
+
+you can write a report
+
+- Claxton, G., Rae, M., Long, M., Damico, A., Foster, G. and Whitmore, H., 2017. [2017 Employer Health Benefits Survey](http://files.kff.org/attachment/Report-Employer-Health-Benefits-Annual-Survey-2017). _Kaiser Family Foundation and Health Research & Educational Trust_.
+
+a paper
+
+- Hartgerink, C. H. J., Wicherts, J. M., & van Assen, M. A. L. M. (2017). [Too Good to be False: Nonsignificant Results Revisited](https://www.collabra.org/articles/10.1525/collabra.71/galley/82/download/). _Collabra: Psychology_, 3(1), 9.
+
+or edit a book
+
+- Xie, Y., Allaire, J.J. and Grolemund, G., 2018. [_R Markdown: The Definitive Guide_](https://bookdown.org/yihui/rmarkdown/). CRC Press.
 
 # Introduction
 
@@ -70,13 +97,25 @@ summary(ln_wage)
 
 - Markdown files can be created in any text editor
 
-- Markdown files can be easily converted to other formats
+- and can be easily converted to other formats
 
 - They are text files usually with the extension ".md"
 
 - There are many editors specific for Markdown (eg: [**Typora**](https://typora.io/), [**Mou**](http://25.io/mou/), [**Draft**](https://draftin.com/), etc) but you can use general editors (eg: [**Atom**](https://atom.io/), [**Sublime Text**](https://www.sublimetext.com/) or [**RStudio**](https://rstudio.com/))
 
 - Used in popular sites such as [**GitHub**](https://github.com/), [**Reddit**](https://www.reddit.com/),[**Stack Exchange**](https://stackexchange.com/), etc
+
+# Markdown components
+
+1. Metadata: written between a pair of three dashes `---`
+
+2. Text: regular text and math elements, plus tables, images and figures
+
+3. Code:
+  
+  - inline R code: starts with `` `r `` and ends with a backtick `` ` ``
+  
+  - code chunk: starts with three backticks like ```` ```{r} ```` where `r` indicates the language name and ends with three backticks ```` ``` ````
 
 # Markdown Syntax: Quick Introduction
 
@@ -237,7 +276,7 @@ bibliography: references.bib
 
 - use the syntax [@key] to identify the reference
 
-# Advanced use:customizing outputs
+# Advanced use: customizing outputs
 
 - The default style for citations is the Chicago Manual of Style author-date format.
 
@@ -245,7 +284,7 @@ bibliography: references.bib
 
 - To change style download the "csl" file and add a reference to it in the YAML block. for example
 
-```
+```{r eval=FALSE}
 ---
 title: Title of my presentation
 author: My name
@@ -254,3 +293,9 @@ bibliography: references.bib
 csl: thisstyle.csl
 ---
 ```
+
+# Further information
+
+## Random text generator
+
+- [Lorem ipsum](https://loremipsum.io/generator/)

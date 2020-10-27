@@ -22,9 +22,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r echo=FALSE,results='hide',message=FALSE}
 rm(list = ls())
-setwd("/Users/miguelportela/Documents/GitHub/R_Training/md_examples")
+# setwd("/Users/miguelportela/Documents/GitHub/R_Training/examples")
 
-# setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/md_examples")
+setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/examples")
 
 # install.packages("rmarkdown")
 library(tidyverse)
@@ -261,11 +261,15 @@ We could also include the figure in the following way
 We couls as well include regression analysis.
 
 ```{r regression,echo=FALSE,results='asis'}
-r1 <- lm(data = nls2,ln_wage ~ tenure)
-r2 <- lm(data=nls2,ln_wage ~ tenure + union)
-stargazer(r1,r2,title = "First set of regressions",column.labels = c("M1", "M2"),label = "regressions",table.placement = "ht",notes.append = FALSE,notes.align="l",notes="Standard errors in parentheses.",header = FALSE)
-betas<-coef(r2)
-r2 <- summary(r2)$r.squared
+M1 <- lm(data = nls2,ln_wage ~ tenure)
+
+# plot(nls2)
+# abline(M1)
+
+M2 <- lm(data=nls2,ln_wage ~ tenure + union)
+stargazer(M1,M2,title = "First set of regressions",column.labels = c("M1", "M2"),label = "regressions",table.placement = "ht",notes.append = FALSE,notes.align="l",notes="Standard errors in parentheses.",header = FALSE)
+betas<-coef(M2)
+r2 <- summary(M2)$r.squared
 ```
 
 The estimated return to tenure is `r round(betas[3]*100,1)`\%. The $R^2$ is `r round(r2,2)`.
