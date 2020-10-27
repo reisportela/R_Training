@@ -32,29 +32,22 @@ attach(nlswork)
 summary(ln_wage)
 ```
 
-# Setup
+# Setup and references
 
-1. [Installing Pandoc](https://pandoc.org/installing.html)
+1. [Pandoc](https://pandoc.org/installing.html)
 
-[R Markdown - Get Started](https://rmarkdown.rstudio.com/lesson-1.html)
+2. [MikTex](https://miktex.org/download) or [MacTex](https://tug.org/mactex/)
 
-[R Markdown - Reference Guide](https://rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)
+3. [Sumatra PDF](https://www.sumatrapdfreader.org/download-free-pdf-viewer.html) or [Skim](https://skim-app.sourceforge.io/)
 
-Windows and mac
-latex: miktex or mactex
-sumatra or kim
+4. Markdown references
 
-R Markdown cheetsheet: check the Meny Help
+  - [Markdown Guide](https://www.markdownguide.org/)
 
-```{r eval=FALSE}
-plot(x,y)
-```
+  - [R Markdown - Get Started](https://rmarkdown.rstudio.com/lesson-1.html)
 
-# yaml
+  - [R Rarkdown: The definitive guide](https://bookdown.org/yihui/rmarkdown/)
 
-# references
-
-# pandoc examples
 
 # Introduction
 
@@ -81,7 +74,7 @@ plot(x,y)
 
 - They are text files usually with the extension ".md"
 
-- There are many editors specific for Markdown (eg: [**Typora**](https://typora.io/), [**Mou**](http://25.io/mou/), [**Draft**](https://draftin.com/), etc) but you can use general editors (eg: [**Atom**](https://atom.io/), [**Sublime Text**](https://www.sublimetext.com/))
+- There are many editors specific for Markdown (eg: [**Typora**](https://typora.io/), [**Mou**](http://25.io/mou/), [**Draft**](https://draftin.com/), etc) but you can use general editors (eg: [**Atom**](https://atom.io/), [**Sublime Text**](https://www.sublimetext.com/) or [**RStudio**](https://rstudio.com/))
 
 - Used in popular sites such as [**GitHub**](https://github.com/), [**Reddit**](https://www.reddit.com/),[**Stack Exchange**](https://stackexchange.com/), etc
 
@@ -206,78 +199,6 @@ you will see $a^2+b^2=c^2$
 
 - Note: `-s` stands for source and `-o` for output
 
-# Markstat
-
-- a user written *Stata* command by German Rodriguez
-
-- lets you embed *Stata code* in Markdown documents
-
-- It produces dynamic presentations in
-  - HTML
-  - DOCX
-  - PDF
-  - Beamer
-
-- *Markstat* requires *Pandoc*
-
-- To produce PDF and Beamer files it requires an installation of $LaTeX$
-
-- You will also need to copy the file "stata.sty" to the working directory. This file is part of the "sjlatex" package.
-
-# Installing Markstat
-
-- Install in *Stata* by typing
-
-`ssc install markstat`
-
-- *Markstat* also requires the *whereis* ado. To install it do:
-
-`ssc install whereis`
-
-- use *whereis* to let *Stata* know where *pandoc* is in your system. For example:
-
-`whereis pandoc "c:\pandoc\pandoc.exe"`
-
-- if you plan on generating PDF files via $LaTeX$ you also need to provide the path for *pdflatex*. For example:
-
-`whereis pdflatex "C:\MiKTeX 2.9\miktex\bin\pdflatex"`
-
-# Marsktat syntax
-
-```
- markstat using filename [, options]
-```
-
-- filename is the name of a Stata-Markdown file. This file should have an extension ".stmd"
-
-- The options **pdf**, **docx**, **slides** and **beamer** identify the type of document to be produced
-
-- **mathjax** renders $LaTeX$ equations in HTML documents
-
-- **bundle** generates self-contained HTML documents
-
-- **bibliography** is used to create citations
-
-- **strict** - specifies that you are using the strict syntax
-
-- additional information about *markstat* can be found at the author's website [**here**](https://data.princeton.edu/stata/markdown)
-
-# Adding Stata code to a Markdown document
-
-- Markstat interprets anything after a tab or 4 spaces as Stata code
-
-- It is safer to use "code fences". This is the **strict** mode
-
-- For Markstat to understand Stata code the opening fence has to be followed by {s} or s
-
-- To turn off echoing Stata the opening fence must be followed by {s/} or s/
-
-- You can add inline code using \`s [fmt] expression\`
-
-- you can also add Mata code \`m [fmt] expression\`
-
-- You can even add R code!
-
 # Metadata
 
 - You can add a title, author and date as metadata. Simply start the document as
@@ -316,29 +237,6 @@ bibliography: references.bib
 
 - use the syntax [@key] to identify the reference
 
-- when running markstat add the **bib** option
-
-- For more information check [**here**](https://data.princeton.edu/stata/markdown/citations)
-
-# Advanced use:customizing outputs
-
-- Customizing HTML outputs
-
-    - HTML outputs may be customized using a ["css"](https://en.wikipedia.org/wiki/Cascading_Style_Sheets) file
-
-    - Copy the "markstat.css" file from the installation folder to your current working folder
-
-    - Edit the "markstat.css" file in the working folder
-
-- Customizing DOCX outputs
-
-    - DOCX files may be customized. Instructions are [**here**](https://data.princeton.edu/stata/markdown/docx)
-
-    - Copy the "markstat.docx" file from the installation folder to your current working folder
-
-    - Use *Word* to Edit the "markstat.docx" file in the working folder
-
-
 # Advanced use:customizing outputs
 
 - The default style for citations is the Chicago Manual of Style author-date format.
@@ -356,14 +254,3 @@ bibliography: references.bib
 csl: thisstyle.csl
 ---
 ```
-# Other Stata Tools for Reporting
-
--  *dyndoc* (Official Stata) - convert dynamic Markdown document to an HTML file or Word document
-
-- *docx2pdf* (Official Stata) - convert a Word document to a pdf file
-
-- *markdown* (Official Stata) - convert Markdown document to an HTML file
-
-- *dyntext* (Official Stata) - process Stata dynamic tags in text file
-
-- *dynpandoc* - convert file with dynamic tags in one markup format to another using pandoc
