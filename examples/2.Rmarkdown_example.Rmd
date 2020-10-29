@@ -4,10 +4,11 @@ author: "Miguel Portela"
 # date: "October 2020"
 date: '`r gsub("^0", "", format(Sys.time(), "%d %B, %Y"))`'
 output:
+  # html_book
   bookdown::pdf_document2:
     toc: no
     number_sections: yes
-csl: harvard-imperial-college-london.csl
+# csl: harvard-imperial-college-london.csl
 header-includes:
 - \usepackage{hyperref}
 - \hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue, }
@@ -16,6 +17,7 @@ header-includes:
 - \usepackage{color}
 - \usepackage{pdfpages}
 bibliography: references.bib
+biblio-style: kluwer
 mainfont: Times New Roman
 sansfont: Times New Roman
 fontsize: 12pt
