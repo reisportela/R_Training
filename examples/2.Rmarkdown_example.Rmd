@@ -1,16 +1,29 @@
 ---
 title: "Simple markdown exercise"
 author: "Miguel Portela"
-date: "October 2020"
+# date: "October 2020"
+date: '`r gsub("^0", "", format(Sys.time(), "%d %B, %Y"))`'
 output:
   bookdown::pdf_document2:
     toc: no
+    number_sections: yes
 csl: harvard-imperial-college-london.csl
 header-includes:
 - \usepackage{hyperref}
 - \hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue, }
 - \usepackage{float}
+- \usepackage{dcolumn}
+- \usepackage{color}
+- \usepackage{pdfpages}
 bibliography: references.bib
+mainfont: Times New Roman
+sansfont: Times New Roman
+fontsize: 12pt
+link-citations: true
+documentclass: article
+geometry: "paperwidth=210mm,paperheight=297mm,left=27mm,right=27mm,top=27mm,bottom=27mm"
+base_format: rticles::elsevier_article
+abstract: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\\par \\textbf{Keywords:} Development Economics, Panel Data"
 ---
 
 ```{r setup, include=FALSE}
@@ -19,22 +32,24 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-```{r echo=FALSE,results='hide',message=FALSE}
+```{r packages, echo=FALSE,results='hide',message=FALSE}
 rm(list = ls())
-# setwd("/Users/miguelportela/Documents/GitHub/R_Training/examples")
 
+# setwd("/Users/miguelportela/Documents/GitHub/R_Training/examples")
 setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/examples")
 
-# install.packages("rmarkdown")
 library(tidyverse)
 library(ggplot2)
 library(haven)
 library(stargazer)
+library(rticles)
 ```
 
-Good afternoon!
+# Introduction
 
-```{r echo=FALSE,results='hide',message=FALSE}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Auctor eu augue ut lectus arcu bibendum. Aenean vel elit scelerisque mauris pellentesque pulvinar. Massa vitae tortor condimentum lacinia quis vel eros donec ac. Ut placerat orci nulla pellentesque dignissim. Blandit volutpat maecenas volutpat blandit aliquam. Gravida cum sociis natoque penatibus. Quisque id diam vel quam elementum pulvinar etiam. Nulla posuere sollicitudin aliquam ultrices sagittis orci a scelerisque. Netus et malesuada fames ac turpis egestas integer eget. Massa eget egestas purus viverra accumsan. Vulputate dignissim suspendisse in est ante. Vitae sapien pellentesque habitant morbi tristique senectus et. Ac turpis egestas sed tempus urna et. Ipsum a arcu cursus vitae congue mauris rhoncus aenean vel.
+
+```{r data_sets, echo=FALSE,results='hide',message=FALSE}
 # data()
 attach(mtcars)
 nlswork <- read_dta("../data/nlswork.dta")
@@ -44,21 +59,28 @@ attach(nlswork)
 summary(ln_wage)
 ```
 
-You can type in **bold** or _italic_
+> You can type in **bold** or _italic_
+>
+> You can put an __entire sentence in bold__ _or italic_
 
-You can put an __entire sentence in bold__ _or italic_
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Odio eu feugiat pretium nibh. **Quis varius quam quisque id diam vel. Arcu odio ut sem nulla pharetra.** Sem et tortor consequat id porta nibh venenatis cras sed. Eu non diam phasellus vestibulum lorem sed risus. Non quam lacus suspendisse faucibus interdum posuere. Aliquet enim tortor at auctor urna. Amet facilisis magna etiam tempor orci eu lobortis. _Maecenas ultricies mi eget mauris pharetra et. Pharetra et ultrices neque ornare aenean euismod elementum nisi. Aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque._ Fermentum dui faucibus in ornare quam. Auctor elit sed vulputate mi sit.
 
-If you want to type a Header
+\pagebreak
 
-# First header
+If you want to type a `Header` see Section \@ref(literature).
 
-or
+# Literature review{#literature}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Augue mauris augue neque gravida in fermentum et sollicitudin ac. Placerat orci nulla pellentesque dignissim enim sit amet venenatis. Mollis nunc sed id semper risus in hendrerit. Tortor at risus viverra adipiscing. Blandit cursus risus at ultrices mi tempus. Egestas dui id ornare arcu odio ut sem. Sed sed risus pretium quam vulputate dignissim. Sagittis purus sit amet volutpat. Libero nunc consequat interdum varius sit amet mattis.
+
+> Penatibus et magnis dis parturient montes nascetur ridiculus mus. Cursus eget nunc scelerisque viverra mauris in aliquam. Viverra tellus in hac habitasse. Mattis vulputate enim nulla aliquet. Non pulvinar neque laoreet suspendisse interdum consectetur libero id faucibus. Pharetra massa massa ultricies mi quis hendrerit dolor magna eget. In pellentesque massa placerat duis ultricies lacus. Malesuada fames ac turpis egestas integer eget aliquet nibh. Vitae suscipit tellus mauris a diam.
 
 ## Insert a sub-section
 
 ### Sub sub-section
 
 # Insert
+
 ## Your first _link_
 
 [This is the text you will see](https://www.markdowntutorial.com/)
@@ -124,9 +146,9 @@ where you may need additional depth. Use tabulations
 * Develop a report
   * Publish the report
 
-A more complex example
+A more complex example is discussed in Section \@ref(sec:literate:programming).
 
-# LITERATE PROGRAMMING IN R MARKDOWN
+# LITERATE PROGRAMMING IN R MARKDOWN{#sec:literate:programming}
 
  - Date: 27 & 29 October | 17h00-20h00
  
@@ -190,14 +212,14 @@ To see their purpose add them to the beginning of the text.
 Lorem markdownum medulla: Est hanc instrumenta sibi; premit opem Dianae, *ubi
 India* vocesque prodamne, quamvis? Et esse. Quod molire auxiliumque caelumque
 tertia hospes, fecerat sermonibus prensamque mortale summa, iubeatis coercet
-iugulum, **et**. For futher discussion [see @solow1952structure, pp. 31-32].
+iugulum, **et**. For a discussion see @MacFarlane ... [further insight is provided in @solow1952structure, pp. 31-32].
 
 # Equations
 
 You can write inline equations as $y_i = \alpha_0 + \tau x_i + \psi_i$ or numbered equations,
 
 \begin{equation}
-y_{it} = \beta_0 + \beta_1 x_{it} + \eta_i + \varepsilon{it}
+y_{it} = \beta_0 + \beta_1 x_{it} + \eta_i + \varepsilon_{it}
 \end{equation}
 
 # Pandoc's manual
@@ -206,14 +228,14 @@ For additional insights see @MacFarlane.
 
 # Build your report
 
-```{r echo=FALSE,results='hide'}
+```{r simple_number, echo=FALSE,results='hide'}
 summary(ln_wage)
 ii <- 4+9
 ```
 
 The average log wage in our data is `r round(mean(ln_wage,na.rm=TRUE),1)`, while the sum is `r ii`.
 
-```{r table1, echo=FALSE, results="asis"}
+```{r descriptive_stats, echo=FALSE, results="asis"}
 stargazer(nls,
           title = "Summary table with stargazer",
           label = "table1",
@@ -223,7 +245,7 @@ stargazer(nls,
 
 Table \@ref(table1) shows full data's summary statistics.^[You can also produce statistics for a sub set of variables; see Table \@ref(table:short).] `stargazer()` is and excellent solution to export outputs.
 
-```{r table2,echo=FALSE,results='asis'}
+```{r stats_short,echo=FALSE,results='asis'}
 nls %>%
   select(tenure,ln_wage) %>%
   stargazer(title = "Short statistics",
@@ -251,13 +273,11 @@ nls2 %>%
 ggsave("images/wages.png")
 ```
 
-See Figure \@ref(fig:figure-2).
-
-We could also include the figure in the following way
+See Figure \@ref(fig:figure-2). We could also include the figure in the following way
 
 ![Wages vs. tenure](./images/wages.png){width=65%}
 
-We couls as well include regression analysis.
+We couls as well include regression analysis. See Table \@ref(regressions) for an example.
 
 ```{r regression,echo=FALSE,results='asis'}
 M1 <- lm(data = nls2,ln_wage ~ tenure)
@@ -266,16 +286,30 @@ M1 <- lm(data = nls2,ln_wage ~ tenure)
 # abline(M1)
 
 M2 <- lm(data=nls2,ln_wage ~ tenure + union)
-stargazer(M1,M2,title = "First set of regressions",column.labels = c("M1", "M2"),label = "regressions",table.placement = "ht",notes.append = FALSE,notes.align="l",notes="Standard errors in parentheses.",header = FALSE)
+
+M3 <- lm(data=filter(nls2,year==88),ln_wage ~ tenure + union)
+
+
+# stargazer(M1,M2,M3,title = "First set of regressions",column.labels = c("M1", "M2","M3"),label = "regressions",table.placement = "ht",notes.append = FALSE,notes.align="l",notes="Standard errors in parentheses.",header = FALSE,no.space = TRUE,covariate.labels = c("TENURE","UNION"),omit = c("Constant"),omit.stat = c("ser"),digits = 2,digits.extra = 4,omit.yes.no = c("Constant",""),type = "text",style = "qje")
+
+# Stargazer manual
+# https://cran.r-project.org/web/packages/stargazer/stargazer.pdf
+
+stargazer(M1,M2,M3,title = "Regression analysis", model.numbers = FALSE,column.labels = c("Model 1", "Model 2","Model 3"),label = "regressions",table.placement = "!ht",notes.append = FALSE,notes.align="l",notes="Standard errors in parentheses.",header = FALSE,no.space = TRUE,covariate.labels = c("TENURE","UNION"),omit = c("Constant"),omit.stat = c("adj.rsq","f","ser"),digits = 2,digits.extra = 4,omit.yes.no = c("Constant",""),dep.var.caption="",dep.var.labels.include = FALSE,style = "qje")
+
 betas<-coef(M2)
 r2 <- summary(M2)$r.squared
 ```
 
-The estimated return to tenure is `r round(betas[3]*100,1)`\%. The $R^2$ is `r round(r2,2)`.
+The estimated return to tenure is `r round(betas[3]*100,1)`\%. The $R^2$ is `r round(r2,2)`. However, when using only the sample of 1988 the return is `r round(coef(M3)[3],1)`, while the quality of the adjustment `r round(summary(M3)$r.squared,1)`.
 
 We can write the estimated equation
 
 $$\hat{y_i}=`r round(betas[1],1)` + `r round(betas[2],2)`\times tenure_i + `r round(betas[3],2)`\times union_i$$
+
+# Final remarks
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elit sed vulputate mi sit. Cursus turpis massa tincidunt dui ut ornare lectus sit. Non curabitur gravida arcu ac tortor dignissim convallis aenean. Volutpat consequat mauris nunc congue nisi vitae suscipit. Placerat orci nulla pellentesque dignissim enim sit amet venenatis urna. Accumsan sit amet nulla facilisi morbi tempus iaculis urna. Sagittis aliquam malesuada bibendum arcu vitae elementum curabitur vitae nunc. Blandit cursus risus at ultrices mi tempus imperdiet. Pretium aenean pharetra magna ac placerat vestibulum lectus mauris.
 
 <!---
 
@@ -316,7 +350,30 @@ export PATH=$PATH:/usr/lib/rstudio-server/bin/pandoc
 [link1]:http://www1.eeg.uminho.pt/economia/mangelo/
 [link_uminho]:https://www.uminho.pt/EN/
 
-# References
+
+# References {-}
+
+
+<div id="refs"></div>
+
+
+# Appendix: Chunk options {-}
+
+The following info is taken from [here](https://r4ds.had.co.nz/r-markdown.html#code-chunks). See the full list at [here](http://yihui.name/knitr/options/).
+
+- `eval` = FALSE prevents code from being evaluated;
+
+- `include` = FALSE runs the code, but doesn’t show the code or results in the final document;
+
+- `echo` = FALSE prevents code, but not the results from appearing in the finished file;
+
+- `message` = FALSE or warning = FALSE prevents messages or warnings from appearing in the finished file;
+
+- `results` = 'hide' hides printed output; fig.show = 'hide' hides plots;
+
+- `error` = TRUE causes the render to continue even if code returns an error.
+
+<!--- -->
 
 [^1]: Ad remorum vestem pater victor Megareus lacrimas adsiduae regina sequenti
 Invidiae, ille tum aliquid. Locus uno quid curruque dixit, me regis, deum
