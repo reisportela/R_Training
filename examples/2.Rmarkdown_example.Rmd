@@ -98,6 +98,7 @@ How to use images and define size
 
 ![](./images/uminho.png){width=31%}
 
+
 or a __fixed size__
 
 ![Universidade do Minho](./images/uminho.png){width="1.7in"
@@ -180,11 +181,11 @@ A more complex example is discussed in Section \@ref(sec:literate:programming).
 Phaethon Delphos mea gravis excipiunt stabat: quem aqua taceam Phoebo, vir
 aratri, Ulixes haec perque.  
 Nactus dempserat sui regnat enim, acta stet Areos
-praesagaque in iacent? Fuerant crescentem vinci clamat.
+praesagaque in iacent? Fuerant crescentem vinci clamat.[^1]
 
 ## Add footnotes
 
-This is a footnote.[^1]
+This is a footnote.
 
 ## This is a table
 
@@ -232,10 +233,10 @@ For additional insights see @MacFarlane.
 
 ```{r simple_number, echo=FALSE,results='hide'}
 summary(ln_wage)
-ii <- 4+9
+ii <- 4*9
 ```
 
-The average log wage in our data is `r round(mean(ln_wage,na.rm=TRUE),1)`, while the sum is `r ii`.
+The average log wage in our data is `r round(mean(ln_wage,na.rm=TRUE),3)`, while the sum is `r ii`.
 
 ```{r descriptive_stats, echo=FALSE, results="asis"}
 stargazer(nls,
@@ -289,7 +290,7 @@ M1 <- lm(data = nls2,ln_wage ~ tenure)
 
 M2 <- lm(data=nls2,ln_wage ~ tenure + union)
 
-M3 <- lm(data=filter(nls2,year==88),ln_wage ~ tenure + union)
+M3 <- lm(data=filter(nls2,year==80),ln_wage ~ tenure + union)
 
 
 # stargazer(M1,M2,M3,title = "First set of regressions",column.labels = c("M1", "M2","M3"),label = "regressions",table.placement = "ht",notes.append = FALSE,notes.align="l",notes="Standard errors in parentheses.",header = FALSE,no.space = TRUE,covariate.labels = c("TENURE","UNION"),omit = c("Constant"),omit.stat = c("ser"),digits = 2,digits.extra = 4,omit.yes.no = c("Constant",""),type = "text",style = "qje")
