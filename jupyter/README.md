@@ -7,7 +7,7 @@
 
 - Linux (e.g., Ubuntu 20.04), OSX Catalina, Windows 10
 
-# 2. Statistical packages
+# 2. Packages
 
 > **Windows**: consider installing [Chocolatey](https://chocolatey.org/), a package manager for Windows (similar to `yum` in CentOS or `brew` in OSX)
 
@@ -17,11 +17,11 @@
 >
 > or download and install
 
-- R: [https://www.r-project.org](https://www.r-project.org/)
-- Julia: [https://julialang.org](https://julialang.org/)
-- Stata: [https://www.stata.com](https://www.stata.com/)
+- **R**: [https://www.r-project.org](https://www.r-project.org/)
+- **Julia**: [https://julialang.org](https://julialang.org/)
+- **Stata**: [https://www.stata.com](https://www.stata.com/)
 
-- Recomendation: install [RStudio](https://rstudio.com/products/rstudio/download/)
+> Recomendation: install [RStudio](https://rstudio.com/products/rstudio/download/)
 
 # 3. [Jupyter](https://jupyter.org/)
 
@@ -35,23 +35,23 @@ _*Run the following lines*_
 - **jupyter notebook**: *pip install notebook* or *conda install -c conda-forge notebook*
 - **jupyter lab**: *pip install jupyterlab* or *conda install -c conda-forge jupyterlab*
 
-## 3.2 Available [kernels](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels)
+## 3.2 Install your [kernels](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels)
 
-- Python: this should be the first one installed [ipykernel](https://pypi.org/project/ipykernel/)
+- **Python**: this should be the first one installed [ipykernel](https://pypi.org/project/ipykernel/)
 
-- R: [irkernel](https://irkernel.github.io/installation/)
+- **R**: [irkernel](https://irkernel.github.io/installation/)
 
     Open an R console, e.g. within RStudio, and execute sequentially, *install.packages('IRkernel')*, *IRkernel::installspec()*
 
-- Julia: [IJulia](https://github.com/JuliaLang/IJulia.jl)
+- **Julia**: [IJulia](https://github.com/JuliaLang/IJulia.jl)
 
     Run Julia and execute sequentially, *using Pkg*, *Pkg.add("IJulia")*
 
-- Stata: [stata_kernel](https://github.com/kylebarron/stata_kernel)
+- **Stata**: [stata_kernel](https://github.com/kylebarron/stata_kernel)
 
-    Detailed installation by [Kyle Barron](https://kylebarron.dev/stata_kernel/getting_started/)
-
-    [Magics](https://kylebarron.dev/stata_kernel/using_stata_kernel/magics/) -- "Magics are programs provided by stata_kernel that enhance the experience of working with Stata in Jupyter."
+ >   Detailed installation by [Kyle Barron](https://kylebarron.dev/stata_kernel/getting_started/)
+>
+>    [Magics](https://kylebarron.dev/stata_kernel/using_stata_kernel/magics/) -- "Magics are programs provided by stata_kernel that enhance the experience of working with Stata in Jupyter."
 
 
 ## 3.3 Start 'notebook' or 'lab'
@@ -145,10 +145,17 @@ By default I will not activate a machine running Python, R and Julia as it takes
 
 # 10. [GESIS Notebooks](https://notebooks.gesis.org/)
 
-- Create a login in GESIS Notebooks and add your machine
+- Create a login in GESIS Notebooks and add your machine (running RStudio)
 
-![Example](figures/GESISNotebooks.png)
+![](figures/GESISNotebooks.png)
 
+or a **Jupyter Lab**
+
+![](figures/jupyter_lab.png)
+
+**mybinder** allows you to create a linked icon to your interactive notebook
+
+> [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/reisportela/R_Training/HEAD?urlpath=lab)
 
 # 11. Further notes
 
