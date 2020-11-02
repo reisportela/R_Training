@@ -1,0 +1,23 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{10}{c}}
+\hline
+            &\multicolumn{2}{c}{Profit}&\multicolumn{2}{c}{Employment}&\multicolumn{2}{c}{Exit (Logit)}&\multicolumn{2}{c}{Exit (LPM - A)}&\multicolumn{2}{c}{Exit (LPM - B)}\\\hline
+    &     (1) &     (2)    &     (3)&     (4)&      (5)&      (6)&      (7)&      (8)&      (9)&      (10)\\\hline
+& \multicolumn{10}{c}{Panel A: Baseline} \\ \hline
+PRCI        &     -9.8842\sym{***}&     -9.9816\sym{***}&     -3.9870\sym{***}&     -5.5859\sym{***}&      4.4586\sym{***}&      4.3970\sym{***}&      0.0979         &      0.1014         &      0.0388\sym{***}&      0.0388\sym{***}\\
+            &     (3.197)         &     (3.179)         &     (1.458)         &     (2.000)         &     (0.280)         &     (0.255)         &     (0.074)         &     (0.075)         &     (0.013)         &     (0.012)         \\
+\hline\hline
+& \multicolumn{10}{c}{Panel B: Full specification}\\\hline
+PRCI        &     -9.4955\sym{***}&     -9.5863\sym{***}&     -3.7775\sym{***}&     -5.3323\sym{***}&      4.4094\sym{***}&      4.3452\sym{***}&      0.5644\sym{***}&      0.5610\sym{***}&      0.0370\sym{***}&      0.0370\sym{***}\\
+            &     (3.144)         &     (3.128)         &     (1.428)         &     (1.969)         &     (0.220)         &     (0.248)         &     (0.051)         &     (0.050)         &     (0.012)         &     (0.012)         \\
+[1em]
+Lag FDF       &     -3.7604\sym{***}&     -3.7798\sym{***}&     -1.3050\sym{**} &     -0.9133         &      0.5279\sym{***}&      0.5425\sym{***}&      0.1467\sym{***}&      0.1490\sym{***}&      0.0149\sym{***}&      0.0151\sym{***}\\
+            &     (0.895)         &     (0.899)         &     (0.641)         &     (0.670)         &     (0.091)         &     (0.073)         &     (0.023)         &     (0.023)         &     (0.004)         &     (0.004)         \\
+[1em]
+PRCI $ \times $ Lag FDF&    -11.0203\sym{***}&    -11.1090\sym{***}&     -6.0761\sym{***}&     -7.4045\sym{***}&      0.3881         &      0.4083         &      0.1516\sym{**} &      0.1533\sym{**} &      0.0503\sym{***}&      0.0507\sym{***}\\
+            &     (2.871)         &     (2.905)         &     (1.592)         &     (1.886)         &     (0.341)         &     (0.317)         &     (0.061)         &     (0.061)         &     (0.012)         &     (0.012)         \\\hline
+\multicolumn{11}{p{25.0cm}}{\footnotesize Notes: Standard errors are clustered at the firm level for models (1)-(4) and (7)-(10); for models (5) and (6) standard errors are computed by bootstrap. Significance levels: *, 10\%; **, 5\%; ***, 1\%. The dependent variables are identified in each set of columns. Panel A reports estimates for a baseline model without the financial distress indicator and its interaction with PRCI; in Panel B those variables are included.
+LPM stands for Linear Probability Model. The estimations reported in columns (1), (3), (5) and (7) include additionally the following control variables: part-time workers, fixed-term workers, overtime labor, relative labor costs, exports weight, leverage ratio,valued-added per hour, short-term debt, long-term debt and the number of workers and its square. Results under Exit (Logit) are estimated by conditional logit while the remaining models account for firm unobserved heterogeneity using the fixed effects estimator. The number of observations is 27998 for columns (5), (6), (7) and (8). The number of observations is 368085 for the remaining estimations. The model Exit (LPM - A) is estimated with the same sample as the model Exit (Logit) model. The model Exit (LPM-B) is estimated with the same sample as the Profit and Employment models.}\\
+\end{tabular}
+}
