@@ -42,6 +42,10 @@ _*Run the following lines*_
 - **R**: [irkernel](https://irkernel.github.io/installation/)
 
     Open an R console, e.g. within RStudio, and execute sequentially, *install.packages('IRkernel')*, *IRkernel::installspec()*
+    
+    Add `Node.js` and `npm`
+    
+    Visit [Nodejs.org](https://nodejs.org/en/download/)
 
 - **Julia**: [IJulia](https://github.com/JuliaLang/IJulia.jl)
 
@@ -59,6 +63,13 @@ _*Run the following lines*_
 - **jupyter notebook**: *jupyter notebook*
 
 - **jupyter lab**: *jupyter lab*
+
+
+## 3.4 Remove a Kernel
+
+> `jupyter kernelspec list`
+>
+> `jupyter kernelspec uninstall unwanted-kernel`
 
 # 4. [Binder](https://jupyter.org/binder)
 
