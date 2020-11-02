@@ -1,12 +1,5 @@
----
-title: "WEB-BASED TOOLS FOR DATA ANALYSIS: JUPYTERLAB ENVIRONMENT AND WORKFLOW OPTIMIZATION"
-author: "Miguel Portela"
-date: "November 3, 2020"
-output: pdf_document
----
-
-# BPLIM Academy: Jupyter Session
- *M Portela, May 6, 2020*
+# WEB-BASED TOOLS FOR DATA ANALYSIS: JUPYTERLAB ENVIRONMENT AND WORKFLOW OPTIMIZATION
+ *M Portela, November 3, 2020*
 
 # 1. Operating System
 
