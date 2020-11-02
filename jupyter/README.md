@@ -1,5 +1,7 @@
 # WEB-BASED TOOLS FOR DATA ANALYSIS: JUPYTERLAB ENVIRONMENT AND WORKFLOW OPTIMIZATION
  *M Portela, November 3, 2020*
+ 
+ 
 
 # 1. Operating System
 
@@ -7,7 +9,14 @@
 
 # 2. Statistical packages
 
+> **Windows**: consider installing [Chocolatey](https://chocolatey.org/), a package manager for Windows (similar to `yum` in CentOS or `brew` in OSX)
+
 - Python: install Anaconda -- [https://www.anaconda.com](https://www.anaconda.com/)
+
+> **Example, using Chocolatey**: `choco install anaconda3`
+>
+> or download and install
+
 - R: [https://www.r-project.org](https://www.r-project.org/)
 - Julia: [https://julialang.org](https://julialang.org/)
 - Stata: [https://www.stata.com](https://www.stata.com/)
@@ -17,6 +26,11 @@
 # 3. [Jupyter](https://jupyter.org/)
 
 ## 3.1 Install [jupyter](https://jupyter.org/install)
+
+- Open a Terminal in either Linux or OSX
+- Open Windows Powershell as Administrator
+
+_*Run the following lines*_
 
 - **jupyter notebook**: *pip install notebook* or *conda install -c conda-forge notebook*
 - **jupyter lab**: *pip install jupyterlab* or *conda install -c conda-forge jupyterlab*
