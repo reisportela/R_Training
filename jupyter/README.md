@@ -49,7 +49,7 @@ _*Run the following lines*_
     
     Add `Node.js` and `npm`
     
-    Visit [Nodejs.org](https://nodejs.org/en/download/)
+    Visit [Nodejs.org](https://nodejs.org/en/download/) to **install** `Node.js` and `npm`
 
 - **Julia**: [IJulia](https://github.com/JuliaLang/IJulia.jl)
 
@@ -57,16 +57,20 @@ _*Run the following lines*_
 
 - **Stata**: [stata_kernel](https://github.com/kylebarron/stata_kernel)
 
- >   Detailed installation by [Kyle Barron](https://kylebarron.dev/stata_kernel/getting_started/)
+>   for Stata see the instructions by [Kyle Barron](https://kylebarron.dev/stata_kernel/getting_started/)
 >
 >    [Magics](https://kylebarron.dev/stata_kernel/using_stata_kernel/magics/) -- "Magics are programs provided by stata_kernel that enhance the experience of working with Stata in Jupyter."
 
 
 ## 3.3 Start 'notebook' or 'lab'
 
+Open a `Terminal`/`Power shell`, move to your working folder and type:
+
 - **jupyter notebook**: *jupyter notebook*
 
 - **jupyter lab**: *jupyter lab*
+
+It should open your browse with the notebook and the installed kernels.
 
 
 ## 3.4 Remove a Kernel
@@ -77,25 +81,32 @@ _*Run the following lines*_
 
 # 4. [Binder](https://jupyter.org/binder)
 
-[Running R Projects in MyBinder – Dockerfile Creation With Holepunch](https://www.r-bloggers.com/running-r-projects-in-mybinder-dockerfile-creation-with-holepunch/)
+[Running R Projects in MyBinder: Dockerfile Creation With Holepunch](https://www.r-bloggers.com/running-r-projects-in-mybinder-dockerfile-creation-with-holepunch/)
 
 - myBinder
 - Gesis Notebooks
-- Check the following link on "Configuration Files"
 
-[apt.txt - Install packages with apt-get](https://mybinder.readthedocs.io/en/latest/config_files.html#config-files)
+Check the following link
 
-## Examples using the GitHub 'reisportela/prjs'
+[Configuration Files](https://mybinder.readthedocs.io/en/latest/using/config_files.html)
 
-- Check this example with RStudio & R 3.6 [exercise](https://github.com/reisportela/prjs)
+**mybinder** allows you to create a linked icon to your interactive notebook
+
+> [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/reisportela/R_Training/HEAD?urlpath=lab)
+
+> Check the example in GitHub with RStudio & R 3.6 + Python + Julia + Stata 
+
+[`reisportela/prjs`](https://github.com/reisportela/prjs)
 
 - or a setup where we can build a notebook with Python 3.0 or R (you can also run RStudio from this link)
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/reisportela/prjs/master)
 
-Even better, use GESIS notebooks to launch your image
+Even better, use [GESIS notebooks](https://notebooks.gesis.org/hub/home) to launch your image
 
-[The concept](https://notebooks.gesis.org/user/reisportela@gmail.com)
+[The concept using GESIS](https://notebooks.gesis.org/user/reisportela@gmail.com)
+
+MyBinder: [EXAMPLES](https://github.com/binder-examples)
 
 
 # 5. A gallery of interesting Jupyter Notebooks
@@ -115,8 +126,6 @@ Even better, use GESIS notebooks to launch your image
 - [How to Hide all the code cells in Jupyter Notebook Python with single Click](https://www.youtube.com/watch?v=rJsWJMBksK0)
 
 # 7. Checks
-
-- [Binder examples](https://github.com/binder-examples)
 
 - [Binder Multi-language demo](https://github.com/binder-examples/multi-language-demo)
 
@@ -167,10 +176,6 @@ By default I will not activate a machine running Python, R and Julia as it takes
 or a **Jupyter Lab**
 
 ![](figures/jupyter_lab.png)
-
-**mybinder** allows you to create a linked icon to your interactive notebook
-
-> [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/reisportela/R_Training/HEAD?urlpath=lab)
 
 # 11. Further notes
 
