@@ -1,9 +1,11 @@
 # WEB-BASED TOOLS FOR DATA ANALYSIS: JUPYTERLAB ENVIRONMENT AND WORKFLOW OPTIMIZATION
  *M Portela, November 3, 2020*
  
- 
+**The material is available in GitHub**
 
-# 1. Operating System
+[https://github.com/reisportela/R_Training](https://github.com/reisportela/R_Training)
+
+# 1. Operating system
 
 - Linux (e.g., Ubuntu 20.04), OSX Catalina, Windows 10
 
@@ -24,6 +26,8 @@
 > Recomendation: install [RStudio](https://rstudio.com/products/rstudio/download/)
 
 # 3. [Jupyter](https://jupyter.org/)
+
+> "The Jupyter Notebook is an open-source web application that allows you to **create and share** documents that contain _live code_, equations, visualizations and **narrative text**. Uses include: data cleaning and transformation, numerical simulation, statistical modeling, data visualization, machine learning, and much more."
 
 ## 3.1 Install [jupyter](https://jupyter.org/install)
 
