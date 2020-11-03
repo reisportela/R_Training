@@ -1,8 +1,0 @@
-		(1)	(2)	(3)	(4)	(5)	(6)
-VARIABLES	LABELS	N	mean	p99	sd	min	max
-							
-rgdpwok	Real GDP per worker	857.000	19,901.781	74,706.383	21,470.140	396.761	271,192.125
-education	Education (in years)	857.000	4.769	11.430	2.882	0.040	12.250
-capital	Capital	234.000	549,819.563	10208154.484	1582297.727	1,194.622	11205434.083
-openk	Degree of openness	857.000	62.857	290.202	52.178	2.320	395.977
-							
