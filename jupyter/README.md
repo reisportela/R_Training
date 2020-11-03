@@ -1,5 +1,5 @@
 # WEB-BASED TOOLS FOR DATA ANALYSIS: JUPYTERLAB ENVIRONMENT AND WORKFLOW OPTIMIZATION
- *M Portela, November 3, 2020*
+ *M Portela, December 3, 2020*
  
 **The material is available in GitHub**
 
