@@ -1,0 +1,407 @@
+`7987a84490da5e22a73cf6a8ba129220'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`cc64df03024327541235dabb93f09e00'
+_StataKernelLog off
+`25222c9f47f7fdc660ba522f7a53d380'
+di `c(linesize)'
+`83b14c3154752dfbf1b0322b89ffcf55'
+pwd
+`9003d1df22eb4d3820015070385194c8'
+_StataKernelCompletions
+`bcc4869c9c119320f7af8a3981776720'
+mata : invtokens(st_dir("local", "macro", "*")')
+`08a286cef0dc100f5df674f2b5353f29'
+macro list `:all globals'
+`acf5410dffcb668adf37da696e87d400'
+_StataKernelLog on
+`d450cfde56d6cad2042c8f0870cc76f5'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`d1d0b5544eadcba44c5f1aa5695588da'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`e7e163e2a876281286ea7f9dd85b0b7d'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`cc64df03024327541235dabb93f09e00'
+_StataKernelLog off
+`25222c9f47f7fdc660ba522f7a53d380'
+di `c(linesize)'
+`83b14c3154752dfbf1b0322b89ffcf55'
+pwd
+`9003d1df22eb4d3820015070385194c8'
+_StataKernelCompletions
+`bcc4869c9c119320f7af8a3981776720'
+mata : invtokens(st_dir("local", "macro", "*")')
+`08a286cef0dc100f5df674f2b5353f29'
+macro list `:all globals'
+`acf5410dffcb668adf37da696e87d400'
+_StataKernelLog on
+`d450cfde56d6cad2042c8f0870cc76f5'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`d1d0b5544eadcba44c5f1aa5695588da'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`f14115ba3b39948066ba06a852815866'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`cc64df03024327541235dabb93f09e00'
+_StataKernelLog off
+`25222c9f47f7fdc660ba522f7a53d380'
+di `c(linesize)'
+`83b14c3154752dfbf1b0322b89ffcf55'
+pwd
+`9003d1df22eb4d3820015070385194c8'
+_StataKernelCompletions
+`bcc4869c9c119320f7af8a3981776720'
+mata : invtokens(st_dir("local", "macro", "*")')
+`08a286cef0dc100f5df674f2b5353f29'
+macro list `:all globals'
+`acf5410dffcb668adf37da696e87d400'
+_StataKernelLog on
+`d450cfde56d6cad2042c8f0870cc76f5'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`d1d0b5544eadcba44c5f1aa5695588da'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`ae28f5075f42886c912d5a37a7c109df'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`cc64df03024327541235dabb93f09e00'
+_StataKernelLog off
+`25222c9f47f7fdc660ba522f7a53d380'
+di `c(linesize)'
+`83b14c3154752dfbf1b0322b89ffcf55'
+pwd
+`9003d1df22eb4d3820015070385194c8'
+_StataKernelCompletions
+`bcc4869c9c119320f7af8a3981776720'
+mata : invtokens(st_dir("local", "macro", "*")')
+`08a286cef0dc100f5df674f2b5353f29'
+macro list `:all globals'
+`acf5410dffcb668adf37da696e87d400'
+_StataKernelLog on
+`d450cfde56d6cad2042c8f0870cc76f5'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`d1d0b5544eadcba44c5f1aa5695588da'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`ea3619d50cfcf98eb6c6ee8b36c1599e'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`cc64df03024327541235dabb93f09e00'
+_StataKernelLog off
+`25222c9f47f7fdc660ba522f7a53d380'
+di `c(linesize)'
+`83b14c3154752dfbf1b0322b89ffcf55'
+pwd
+`9003d1df22eb4d3820015070385194c8'
+_StataKernelCompletions
+`bcc4869c9c119320f7af8a3981776720'
+mata : invtokens(st_dir("local", "macro", "*")')
+`08a286cef0dc100f5df674f2b5353f29'
+macro list `:all globals'
+`acf5410dffcb668adf37da696e87d400'
+_StataKernelLog on
+`d450cfde56d6cad2042c8f0870cc76f5'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`d1d0b5544eadcba44c5f1aa5695588da'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`ebbd5176d85bdd54401854387516b35f'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`cc64df03024327541235dabb93f09e00'
+_StataKernelLog off
+`25222c9f47f7fdc660ba522f7a53d380'
+di `c(linesize)'
+`83b14c3154752dfbf1b0322b89ffcf55'
+pwd
+`9003d1df22eb4d3820015070385194c8'
+_StataKernelCompletions
+`bcc4869c9c119320f7af8a3981776720'
+mata : invtokens(st_dir("local", "macro", "*")')
+`08a286cef0dc100f5df674f2b5353f29'
+macro list `:all globals'
+`acf5410dffcb668adf37da696e87d400'
+_StataKernelLog on
+`d450cfde56d6cad2042c8f0870cc76f5'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`d1d0b5544eadcba44c5f1aa5695588da'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`939989290adc3e0cd50a80e3bb347b8a'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`cc64df03024327541235dabb93f09e00'
+_StataKernelLog off
+`25222c9f47f7fdc660ba522f7a53d380'
+di `c(linesize)'
+`83b14c3154752dfbf1b0322b89ffcf55'
+pwd
+`9003d1df22eb4d3820015070385194c8'
+_StataKernelCompletions
+`bcc4869c9c119320f7af8a3981776720'
+mata : invtokens(st_dir("local", "macro", "*")')
+`08a286cef0dc100f5df674f2b5353f29'
+macro list `:all globals'
+`acf5410dffcb668adf37da696e87d400'
+_StataKernelLog on
+`d450cfde56d6cad2042c8f0870cc76f5'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`d1d0b5544eadcba44c5f1aa5695588da'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`ac149de5deece1f73ad400430ad9f80d'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`cc64df03024327541235dabb93f09e00'
+_StataKernelLog off
+`25222c9f47f7fdc660ba522f7a53d380'
+di `c(linesize)'
+`83b14c3154752dfbf1b0322b89ffcf55'
+pwd
+`9003d1df22eb4d3820015070385194c8'
+_StataKernelCompletions
+`bcc4869c9c119320f7af8a3981776720'
+mata : invtokens(st_dir("local", "macro", "*")')
+`08a286cef0dc100f5df674f2b5353f29'
+macro list `:all globals'
+`acf5410dffcb668adf37da696e87d400'
+_StataKernelLog on
+`d450cfde56d6cad2042c8f0870cc76f5'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`d1d0b5544eadcba44c5f1aa5695588da'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`70056ee55bc3cea83f3d7ba6d61a8e0f'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`cc64df03024327541235dabb93f09e00'
+_StataKernelLog off
+`25222c9f47f7fdc660ba522f7a53d380'
+di `c(linesize)'
+`83b14c3154752dfbf1b0322b89ffcf55'
+pwd
+`9003d1df22eb4d3820015070385194c8'
+_StataKernelCompletions
+`bcc4869c9c119320f7af8a3981776720'
+mata : invtokens(st_dir("local", "macro", "*")')
+`08a286cef0dc100f5df674f2b5353f29'
+macro list `:all globals'
+`acf5410dffcb668adf37da696e87d400'
+_StataKernelLog on
+`d450cfde56d6cad2042c8f0870cc76f5'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`d1d0b5544eadcba44c5f1aa5695588da'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`629b06f8acd99cfe68d0102e1a361928'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`cc64df03024327541235dabb93f09e00'
+_StataKernelLog off
+`25222c9f47f7fdc660ba522f7a53d380'
+di `c(linesize)'
+`83b14c3154752dfbf1b0322b89ffcf55'
+pwd
+`9003d1df22eb4d3820015070385194c8'
+_StataKernelCompletions
+`bcc4869c9c119320f7af8a3981776720'
+mata : invtokens(st_dir("local", "macro", "*")')
+`08a286cef0dc100f5df674f2b5353f29'
+macro list `:all globals'
+`acf5410dffcb668adf37da696e87d400'
+_StataKernelLog on
+`d450cfde56d6cad2042c8f0870cc76f5'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`d1d0b5544eadcba44c5f1aa5695588da'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`aa96d94cc99aeec00f90be05b2a3f1c1'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`cc64df03024327541235dabb93f09e00'
+_StataKernelLog off
+`25222c9f47f7fdc660ba522f7a53d380'
+di `c(linesize)'
+`83b14c3154752dfbf1b0322b89ffcf55'
+pwd
+`9003d1df22eb4d3820015070385194c8'
+_StataKernelCompletions
+`bcc4869c9c119320f7af8a3981776720'
+mata : invtokens(st_dir("local", "macro", "*")')
+`08a286cef0dc100f5df674f2b5353f29'
+macro list `:all globals'
+`acf5410dffcb668adf37da696e87d400'
+_StataKernelLog on
+`d450cfde56d6cad2042c8f0870cc76f5'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`d1d0b5544eadcba44c5f1aa5695588da'
+cap noi twoway (kdensity lngdp if year == 1970) || (kdensity lngdp if year == 1990, lpattern(dash_dot_dot)), legend(label(1 "Year: 1960") label(2 "Year: 2000") region(lwidth(none))) title(Income: 1960 vs. 2000) xtitle("Log (Income)") ytitle("Density") scheme(sj) graphregion(color(white)) bgcolor(white)
+if _rc == 0 {
+    noi gr export /Users/miguelportela/.stata_kernel_cache/graph$stata_kernel_graph_counter.svg, width(600) replace
+    noi gr export /Users/miguelportela/.stata_kernel_cache/graph$stata_kernel_graph_counter.pdf, replace
+    global stata_kernel_graph_counter = $stata_kernel_graph_counter + 1
+}            
+`eaca4c54c007910f2e99bf29fbbb60d0'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`cc64df03024327541235dabb93f09e00'
+_StataKernelLog off
+`25222c9f47f7fdc660ba522f7a53d380'
+di `c(linesize)'
+`83b14c3154752dfbf1b0322b89ffcf55'
+pwd
+`9003d1df22eb4d3820015070385194c8'
+_StataKernelCompletions
+`bcc4869c9c119320f7af8a3981776720'
+mata : invtokens(st_dir("local", "macro", "*")')
+`08a286cef0dc100f5df674f2b5353f29'
+macro list `:all globals'
+`acf5410dffcb668adf37da696e87d400'
+_StataKernelLog on
+`d450cfde56d6cad2042c8f0870cc76f5'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`d1d0b5544eadcba44c5f1aa5695588da'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`fddad3440dac2fce74853059374143f5'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`cc64df03024327541235dabb93f09e00'
+_StataKernelLog off
+`25222c9f47f7fdc660ba522f7a53d380'
+di `c(linesize)'
+`83b14c3154752dfbf1b0322b89ffcf55'
+pwd
+`9003d1df22eb4d3820015070385194c8'
+_StataKernelCompletions
+`bcc4869c9c119320f7af8a3981776720'
+mata : invtokens(st_dir("local", "macro", "*")')
+`08a286cef0dc100f5df674f2b5353f29'
+macro list `:all globals'
+`acf5410dffcb668adf37da696e87d400'
+_StataKernelLog on
+`d450cfde56d6cad2042c8f0870cc76f5'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`d1d0b5544eadcba44c5f1aa5695588da'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`4d14ce6822fef64c7b3820ddd48865a9'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`cc64df03024327541235dabb93f09e00'
+_StataKernelLog off
+`25222c9f47f7fdc660ba522f7a53d380'
+di `c(linesize)'
+`83b14c3154752dfbf1b0322b89ffcf55'
+pwd
+`9003d1df22eb4d3820015070385194c8'
+_StataKernelCompletions
+`bcc4869c9c119320f7af8a3981776720'
+mata : invtokens(st_dir("local", "macro", "*")')
+`08a286cef0dc100f5df674f2b5353f29'
+macro list `:all globals'
+`acf5410dffcb668adf37da696e87d400'
+_StataKernelLog on
+`d450cfde56d6cad2042c8f0870cc76f5'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`d1d0b5544eadcba44c5f1aa5695588da'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`052930a186d2797ef2460e592c0cda49'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`cc64df03024327541235dabb93f09e00'
+_StataKernelLog off
+`25222c9f47f7fdc660ba522f7a53d380'
+di `c(linesize)'
+`83b14c3154752dfbf1b0322b89ffcf55'
+pwd
+`9003d1df22eb4d3820015070385194c8'
+_StataKernelCompletions
+`bcc4869c9c119320f7af8a3981776720'
+mata : invtokens(st_dir("local", "macro", "*")')
+`08a286cef0dc100f5df674f2b5353f29'
+macro list `:all globals'
+`acf5410dffcb668adf37da696e87d400'
+_StataKernelLog on
+`d450cfde56d6cad2042c8f0870cc76f5'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`d1d0b5544eadcba44c5f1aa5695588da'
+esttab r1 r2 r3 fe re using ../text/growth_analysis_esttab.doc, replace keep(education lnk openk) mtitle("Model # 1" "Model (2)" "Model (3)") nonumbers coeflabel (education "Average education" lnk "Log capital" openk "Openness") b(%5.3f) se(%5.3f) sfmt(%5.2f) star(* 0.1 ** 0.05 *** 0.01) scalars("N Observations" "r2 R$^2$" "rmse RMSE") nonotes addnotes("Notes: standard errors in parenthesis. Significance levels: *, 10\%;" "**, 5\%; ***, 1\%. The dependent variable is ln real GDP per workers." "Source: own computations.")
+`6f5678534e8f9709128fd976bbc0649d'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`cc64df03024327541235dabb93f09e00'
+_StataKernelLog off
+`25222c9f47f7fdc660ba522f7a53d380'
+di `c(linesize)'
+`83b14c3154752dfbf1b0322b89ffcf55'
+pwd
+`9003d1df22eb4d3820015070385194c8'
+_StataKernelCompletions
+`bcc4869c9c119320f7af8a3981776720'
+mata : invtokens(st_dir("local", "macro", "*")')
+`08a286cef0dc100f5df674f2b5353f29'
+macro list `:all globals'
+`acf5410dffcb668adf37da696e87d400'
+_StataKernelLog on
+`d450cfde56d6cad2042c8f0870cc76f5'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`d1d0b5544eadcba44c5f1aa5695588da'
+esttab r1 r2 r3 fe be re using ../text/growth_analysis_esttab.tex, replace keep(education lnk openk) mtitle("OLS (1)" "OLS (2)" "OLS (3)" "FE" "BE" "RE") nonumbers coeflabel (education "Average education" lnk "Log capital" openk "Openness") b(%5.3f) se(%5.3f) sfmt(%7.2f) star(* 0.1 ** 0.05 *** 0.01) scalars("N Observations" "r2 R$^2$" "rmse RMSE") nonotes addnotes("Notes: standard errors in parenthesis. Significance levels: *, 10\%; **, 5\%; ***, 1\%." "The dependent variable is ln real GDP per worker. All models include a constant." "Models OLS (3) till RE include time dummies." "Source: own computations.")
+`df525a88613580d53cfb2570dba7da76'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`cc64df03024327541235dabb93f09e00'
+_StataKernelLog off
+`25222c9f47f7fdc660ba522f7a53d380'
+di `c(linesize)'
+`83b14c3154752dfbf1b0322b89ffcf55'
+pwd
+`9003d1df22eb4d3820015070385194c8'
+_StataKernelCompletions
+`bcc4869c9c119320f7af8a3981776720'
+mata : invtokens(st_dir("local", "macro", "*")')
+`08a286cef0dc100f5df674f2b5353f29'
+macro list `:all globals'
+`acf5410dffcb668adf37da696e87d400'
+_StataKernelLog on
+`d450cfde56d6cad2042c8f0870cc76f5'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`d1d0b5544eadcba44c5f1aa5695588da'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`85623112d0a5ed825be29414605a4dea'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`cc64df03024327541235dabb93f09e00'
+_StataKernelLog off
+`25222c9f47f7fdc660ba522f7a53d380'
+di `c(linesize)'
+`83b14c3154752dfbf1b0322b89ffcf55'
+pwd
+`9003d1df22eb4d3820015070385194c8'
+_StataKernelCompletions
+`bcc4869c9c119320f7af8a3981776720'
+mata : invtokens(st_dir("local", "macro", "*")')
+`08a286cef0dc100f5df674f2b5353f29'
+macro list `:all globals'
+`acf5410dffcb668adf37da696e87d400'
+_StataKernelLog on
+`d450cfde56d6cad2042c8f0870cc76f5'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`d1d0b5544eadcba44c5f1aa5695588da'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`f0511e79c92a50424475e8b1241aa9b4'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`cc64df03024327541235dabb93f09e00'
+_StataKernelLog off
+`25222c9f47f7fdc660ba522f7a53d380'
+di `c(linesize)'
+`83b14c3154752dfbf1b0322b89ffcf55'
+pwd
+`9003d1df22eb4d3820015070385194c8'
+_StataKernelCompletions
+`bcc4869c9c119320f7af8a3981776720'
+mata : invtokens(st_dir("local", "macro", "*")')
+`08a286cef0dc100f5df674f2b5353f29'
+macro list `:all globals'
+`acf5410dffcb668adf37da696e87d400'
+_StataKernelLog on
+`d450cfde56d6cad2042c8f0870cc76f5'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`d1d0b5544eadcba44c5f1aa5695588da'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`9164e8916ff6c3fd022ef638e18dee85'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`cc64df03024327541235dabb93f09e00'
+_StataKernelLog off
+`25222c9f47f7fdc660ba522f7a53d380'
+di `c(linesize)'
+`83b14c3154752dfbf1b0322b89ffcf55'
+pwd
+`9003d1df22eb4d3820015070385194c8'
+_StataKernelCompletions
+`bcc4869c9c119320f7af8a3981776720'
+mata : invtokens(st_dir("local", "macro", "*")')
+`08a286cef0dc100f5df674f2b5353f29'
+macro list `:all globals'
+`acf5410dffcb668adf37da696e87d400'
+_StataKernelLog on
+`d450cfde56d6cad2042c8f0870cc76f5'
+include /Users/miguelportela/.stata_kernel_cache/include.do
+`d1d0b5544eadcba44c5f1aa5695588da'
+python
+`23eeeb4347bdd26bfc6b7ee9a3b755dd'
+`23eeeb4347bdd26bfc6b7ee9a3b755dd'

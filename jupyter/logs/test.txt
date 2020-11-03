@@ -1,0 +1,11 @@
+
+Summary for variables: price
+     by categories of: foreign (Car_type)
+
+ foreign |      mean
+---------+----------
+Domestic |  6072.423
+ Foreign |  6384.682
+---------+----------
+   Total |  6165.257
+--------------------

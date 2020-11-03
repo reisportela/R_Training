@@ -1,0 +1,15 @@
+{\rtf1\fs24
+\trowd\trgaph75\trleft-75\intbl\trqc\clbrdrt\brdrs\cellx3024\clbrdrt\brdrs\cellx4176\clbrdrt\brdrs\cellx5904\clbrdrt\brdrs\cellx7776\clbrdrt\brdrs\cellx9504\clbrdrt\brdrs\cellx10944\clbrdrt\brdrs\cellx12816
+\ql \cell\qc (1)\cell\qc (2)\cell\qc (3)\cell\qc (4)\cell\qc (5)\cell\qc (6)\cell\row
+\trowd\trgaph75\trleft-75\trqc\cellx3024\cellx4176\cellx5904\cellx7776\cellx9504\cellx10944\cellx12816
+\trowd\trgaph75\trleft-75\trqc\clbrdrb\brdrs\cellx3024\clbrdrb\brdrs\cellx4176\clbrdrb\brdrs\cellx5904\clbrdrb\brdrs\cellx7776\clbrdrb\brdrs\cellx9504\clbrdrb\brdrs\cellx10944\clbrdrb\brdrs\cellx12816
+\ql VARIABLES\cell\qc N\cell\qc mean\cell\qc p99\cell\qc sd\cell\qc min\cell\qc max\cell\row
+\trowd\trgaph75\trleft-75\trqc\cellx3024\cellx4176\cellx5904\cellx7776\cellx9504\cellx10944\cellx12816
+\ql \cell\qc \cell\qc \cell\qc \cell\qc \cell\qc \cell\qc \cell\row
+\ql Real GDP per worker\cell\qc 857.000\cell\qc 19,901.781\cell\qc 74,706.383\cell\qc 21,470.140\cell\qc 396.761\cell\qc 271,192.125\cell\row
+\ql Education (in years)\cell\qc 857.000\cell\qc 4.769\cell\qc 11.430\cell\qc 2.882\cell\qc 0.040\cell\qc 12.250\cell\row
+\ql Capital\cell\qc 234.000\cell\qc 549,819.563\cell\qc 10208154.484\cell\qc 1582297.727\cell\qc 1,194.622\cell\qc 11205434.083\cell\row
+\ql Degree of openness\cell\qc 857.000\cell\qc 62.857\cell\qc 290.202\cell\qc 52.178\cell\qc 2.320\cell\qc 395.977\cell\row
+\trowd\trgaph75\trleft-75\trqc\trbrdrb\brdrs\clbrdrb\brdrs\cellx3024\clbrdrb\brdrs\cellx4176\clbrdrb\brdrs\cellx5904\clbrdrb\brdrs\cellx7776\clbrdrb\brdrs\cellx9504\clbrdrb\brdrs\cellx10944\clbrdrb\brdrs\cellx12816
+\ql \cell\qc \cell\qc \cell\qc \cell\qc \cell\qc \cell\qc \cell\row
+}
