@@ -192,3 +192,17 @@ or a **Jupyter Lab**
 ## R and Dropbox
 
 [rdrop2](https://github.com/karthik/rdrop2)
+
+# 12. Usefull links
+
+> [Binder](https://mybinder.org/)
+> 
+> [CODE OCEAN](https://codeocean.com/)
+> 
+> [GESIS Notebooks](https://notebooks.gesis.org/hub/home)
+> 
+> [Hypernet Labs](https://codeocean.com/)
+> 
+> [IBM Skills Network Lab](https://labs.cognitiveclass.ai/)
+> 
+> [RStudio Cloud](https://rstudio.cloud/)
