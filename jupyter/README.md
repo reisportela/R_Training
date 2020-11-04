@@ -1,5 +1,5 @@
 # WEB-BASED TOOLS FOR DATA ANALYSIS: JUPYTERLAB ENVIRONMENT AND WORKFLOW OPTIMIZATION
- *M Portela, December 3, 2020*
+ *M Portela, November 3, 2020*
  
 **The material is available in GitHub**
 
@@ -70,7 +70,7 @@ Open a `Terminal`/`Power shell`, move to your working folder and type:
 
 - **jupyter lab**: *jupyter lab*
 
-It should open your browse with the notebook and the installed kernels.
+It should open your browser with the notebook and the installed kernels.
 
 
 ## 3.4 Remove a Kernel
