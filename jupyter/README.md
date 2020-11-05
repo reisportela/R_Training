@@ -10,6 +10,8 @@ output:
 
 [https://github.com/reisportela/R_Training](https://github.com/reisportela/R_Training)
 
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/reisportela/R_Training/HEAD?urlpath=lab)
+
 # 1. Operating system
 
 - Linux (e.g., Ubuntu 20.04), OSX Catalina, Windows 10
