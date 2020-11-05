@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 # WEB-BASED TOOLS FOR DATA ANALYSIS: JUPYTERLAB ENVIRONMENT AND WORKFLOW OPTIMIZATION
  *M Portela, November 3, 2020*
  
@@ -36,8 +41,8 @@
 
 _*Run the following lines*_
 
-- **jupyter notebook**: *pip install notebook* or *conda install -c conda-forge notebook*
-- **jupyter lab**: *pip install jupyterlab* or *conda install -c conda-forge jupyterlab*
+- **jupyter notebook**: *pip install notebook* **or** *conda install -c conda-forge notebook*
+- **jupyter lab**: *pip install jupyterlab* **or** *conda install -c conda-forge jupyterlab*
 
 ## 3.2 Install your [kernels](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels)
 
