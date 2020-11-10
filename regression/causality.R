@@ -120,7 +120,7 @@ world_data %>%
 
     reg1 <- lm(logGDPpc2000 ~ educ_sec)
       summary(reg1)
-        
+
         # View(reg1)  # see what happens with this command
 
   ## FITTED MODEL
