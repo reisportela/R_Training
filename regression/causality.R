@@ -1,5 +1,5 @@
 # Applied Data Analysis School: October/november 2020
-# 6. REGRESSION ANALYSIS AND CAUSALITY WITH R | By: João Cerejeira | 10 & 12 November
+# 6. REGRESSION ANALYSIS AND CAUSALITY WITH R | By: JoÃ£o Cerejeira | 10 & 12 November
 # https://www.gades-solutions.com/project/data-analysis-school/
 
 setwd("C:\\Users\\mangelo.EEG\\Documents\\GitHub\\R_Training\\regression")
@@ -29,7 +29,6 @@ library(lmtest)
 library(sandwich)
 library(car)
 library(broom)
-library(het.test)
 
 # DATA
 
@@ -303,6 +302,7 @@ world_data %>%
         bp$r.squared:bp$df
         
         bptest(mm4)
+        bptest(mm4,~ hours + I(hours^2),data=nlswork,na.action=na.exclude))
       
       rmm4 <- rlm(ln_wage ~ hours,data=nlswork,na.action = na.exclude)
         summary(rmm4)
