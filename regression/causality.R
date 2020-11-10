@@ -8,6 +8,8 @@ rm(list = ls())
 
 # LOG FILE
 
+sink("Regression.txt")
+
 # LIBRARIES
 
 library(tidyverse)
@@ -271,3 +273,5 @@ ggsave("figures/graph2.png")
                 digits = 7,
                 digits.extra = 10,
                 type="text")
+      
+sink()
