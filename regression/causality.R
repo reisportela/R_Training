@@ -8,7 +8,7 @@ rm(list = ls())
 
 # LOG FILE
 
-sink("Regression.txt")
+# sink("Regression.txt")
 
 # LIBRARIES
 
@@ -37,10 +37,14 @@ world_data <- as.data.frame(read_dta("world_data.dta"))
 
 names(world_data)
 head(world_data)
+View(world_data)
 str(world_data)
 
 dplyr::glimpse(world_data)
 dplyr::glimpse(world_data$logGDPpc2000)
+
+ExpData(world_data,type=1)
+ExpData(world_data,type=2)
 
 # STATISTICS
 
@@ -48,21 +52,23 @@ dplyr::glimpse(world_data$logGDPpc2000)
 
 # eda_report(world_data,output_dir = "EDA/",output_file = "eda_world_data.pdf")
 
-ExpData(world_data,type=1)
-ExpData(world_data,type=2)
 summary(world_data[,"educ_sec"])
+
 ExpNumStat(world_data,by="A",Outlier = TRUE,round=2,Qnt=c(0.1,0.20,0.50))
 
 # ExpCTable(world_data)
 
 # ExpCatViz(world_data)
 
-ExpNumViz(world_data)
+ExpNumViz(world_data,Page=c(6,2))
+
+## TRY IN A 'JUPYTER NOTEBOOK': ExpNumViz(world_data)
 
 # ExpOutliers(world_data,varlist=c("logGDPpc2000"))
 
 vis_dat(world_data)
-vis_miss(world_data)
+
+# vis_miss(world_data) # ALTERNATIVE
 
 gg_miss_upset(world_data)
 
@@ -74,7 +80,17 @@ stargazer(world_data,
           title = "Summary statistics",
           label = "tb:statistcis",
           table.placement = "ht",
+          header=FALSE)
+
+## or
+
+stargazer(world_data,
+          title = "Summary statistics",
+          label = "tb:statistcis",
+          table.placement = "ht",
           header=FALSE,type="text")
+
+## or a subset of variables
 
 world_data %>%
   dplyr::select(growthGDPpc,educ_sec) %>% 
@@ -87,29 +103,45 @@ world_data %>%
 attach(world_data)
 plot(educ_sec,logGDPpc2000)
 
+## FIRST CHECK OF THE RELATIONSHIP BETWEEN EDUCATION AND GDP
+
 world_data %>%
   ggplot(aes(educ_sec,logGDPpc2000)) +
   labs(title = "GDP per capita vs. Education") +
   ylab("Log GDP pc (2000)") +
   xlab("% Population 25+ with lower sec. school") +
   geom_point()
+  
+  ## SAVE YOUR GRAPH
 
-ggsave("figures/graph1.png")
+    ggsave("figures/graph1.png")
 
-reg1 <- lm(logGDPpc2000 ~ educ_sec)
-summary(reg1)
+  ## FIRST REGRESSION
 
-plot(educ_sec,logGDPpc2000)
-abline(reg1)
+    reg1 <- lm(logGDPpc2000 ~ educ_sec)
+      summary(reg1)
+        
+        # View(reg1)  # see what happens with this command
 
-ggplot(world_data,aes(educ_sec,logGDPpc2000))+
-  labs(title = "GDP per capita vs. Education") +
-  ylab("Log GDP pc (2000)") +
-  xlab("% Population 25+ with lower sec. school") +
-  geom_point() +
-  geom_smooth(method = "lm",se = FALSE)
+  ## FITTED MODEL
+    
+      ## SIMPLE SOLUTION
+      
+      plot(educ_sec,logGDPpc2000)
+        abline(reg1)
+      
+      ## 'FANCY' SOLUTION
+        
+      ggplot(world_data,aes(educ_sec,logGDPpc2000))+
+        labs(title = "GDP per capita vs. Education") +
+        ylab("Log GDP pc (2000)") +
+        xlab("% Population 25+ with lower sec. school") +
+        geom_point() +
+        geom_smooth(method = "lm",se = FALSE)
 
-ggsave("figures/graph2.png")
+      ## EXPORT YOUR GRAPH
+      
+        ggsave("figures/graph2.png")
 
 # <<>> --- REGRESSION ANALYSIS --- <<>> #
 
@@ -135,6 +167,8 @@ ggsave("figures/graph2.png")
 
     world_data$predicted <- predict(M1)
     world_data$residuals <- residuals(M1)
+    
+      world_data$residuals_sq <- residuals(M1)^2  # SQUARED RESIDUALS
 
     ggplot(world_data,aes(educ_sec,growthGDPpc))+
       labs(title = "Fitted vs. actual values") +
@@ -262,6 +296,12 @@ ggsave("figures/graph2.png")
       nlswork$residuals <- residuals(mm4)
         plot(nlswork$hours,nlswork$residuals)
       
+        nlswork$residuals_sq <- residuals(mm4)^2
+        
+        bp <- summary(lm(residuals_sq ~ hours,data=nlswork,na.action = na.exclude))
+        
+        bp$r.squared:bp$df
+        
         bptest(mm4)
       
       rmm4 <- rlm(ln_wage ~ hours,data=nlswork,na.action = na.exclude)

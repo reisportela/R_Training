@@ -201,3 +201,39 @@ List of 1
   ordinary text without R code
 
 
+ [1] "countrycode"   "logGDPpc2000"  "logGDPpc2015"  "growthGDPpc"   "imalaria2000" 
+ [6] "imalaria2015"  "change_malar"  "educ_sec"      "life2000"      "trade2000"    
+[11] "gov2000"       "invest_growth" "ln_educ"      
+ [1] "countrycode"   "logGDPpc2000"  "logGDPpc2015"  "growthGDPpc"   "imalaria2000" 
+ [6] "imalaria2015"  "change_malar"  "educ_sec"      "life2000"      "trade2000"    
+[11] "gov2000"       "invest_growth" "ln_educ"      
+ [1] "countrycode"   "logGDPpc2000"  "logGDPpc2015" 
+ [4] "growthGDPpc"   "imalaria2000"  "imalaria2015" 
+ [7] "change_malar"  "educ_sec"      "life2000"     
+[10] "trade2000"     "gov2000"       "invest_growth"
+[13] "ln_educ"      
+ [1] "countrycode"   "logGDPpc2000"  "logGDPpc2015" 
+ [4] "growthGDPpc"   "imalaria2000"  "imalaria2015" 
+ [7] "change_malar"  "educ_sec"      "life2000"     
+[10] "trade2000"     "gov2000"       "invest_growth"
+  countrycode logGDPpc2000 logGDPpc2015 growthGDPpc imalaria2000
+1         ABW    10.254756    10.104492  -1.0017586           NA
+2         AFG           NA     6.352950          NA        92.64
+3         AGO     7.694224     8.229063   3.5655911       222.39
+4         ALB     7.716297     8.417237   4.6729374           NA
+5         AND    10.616475    10.639874   0.1559957           NA
+6         ARE    11.054874    10.602809  -3.0137699           NA
+  imalaria2015 change_malar educ_sec life2000 trade2000    gov2000
+1           NA           NA 55.99243   73.787 145.07318         NA
+2        14.22       -78.42       NA   55.841        NA -2.2316511
+3       154.48       -67.91       NA   46.522 152.54710 -1.4623100
+4           NA           NA 75.73405   73.955  63.45407 -0.7551177
+5           NA           NA 45.88941       NA        NA  1.4462841
+6           NA           NA 62.70005   74.327        NA  0.7914957
+  invest_growth
+1            NA
+2            NA
+3      11.79648
+4            NA
+5            NA
+6            NA
