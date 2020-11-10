@@ -1,20 +1,28 @@
- [1] "countrycode"   "logGDPpc2000"  "logGDPpc2015"  "growthGDPpc"  
- [5] "imalaria2000"  "imalaria2015"  "change_malar"  "educ_sec"     
- [9] "life2000"      "trade2000"     "gov2000"       "invest_growth"
-  countrycode logGDPpc2000 logGDPpc2015 growthGDPpc imalaria2000 imalaria2015
-1         ABW    10.254756    10.104492  -1.0017586           NA           NA
-2         AFG           NA     6.352950          NA        92.64        14.22
-3         AGO     7.694224     8.229063   3.5655911       222.39       154.48
-4         ALB     7.716297     8.417237   4.6729374           NA           NA
-5         AND    10.616475    10.639874   0.1559957           NA           NA
-6         ARE    11.054874    10.602809  -3.0137699           NA           NA
-  change_malar educ_sec life2000 trade2000    gov2000 invest_growth
-1           NA 55.99243   73.787 145.07318         NA            NA
-2       -78.42       NA   55.841        NA -2.2316511            NA
-3       -67.91       NA   46.522 152.54710 -1.4623100      11.79648
-4           NA 75.73405   73.955  63.45407 -0.7551177            NA
-5           NA 45.88941       NA        NA  1.4462841            NA
-6           NA 62.70005   74.327        NA  0.7914957            NA
+ [1] "countrycode"   "logGDPpc2000"  "logGDPpc2015" 
+ [4] "growthGDPpc"   "imalaria2000"  "imalaria2015" 
+ [7] "change_malar"  "educ_sec"      "life2000"     
+[10] "trade2000"     "gov2000"       "invest_growth"
+  countrycode logGDPpc2000 logGDPpc2015 growthGDPpc imalaria2000
+1         ABW    10.254756    10.104492  -1.0017586           NA
+2         AFG           NA     6.352950          NA        92.64
+3         AGO     7.694224     8.229063   3.5655911       222.39
+4         ALB     7.716297     8.417237   4.6729374           NA
+5         AND    10.616475    10.639874   0.1559957           NA
+6         ARE    11.054874    10.602809  -3.0137699           NA
+  imalaria2015 change_malar educ_sec life2000 trade2000    gov2000
+1           NA           NA 55.99243   73.787 145.07318         NA
+2        14.22       -78.42       NA   55.841        NA -2.2316511
+3       154.48       -67.91       NA   46.522 152.54710 -1.4623100
+4           NA           NA 75.73405   73.955  63.45407 -0.7551177
+5           NA           NA 45.88941       NA        NA  1.4462841
+6           NA           NA 62.70005   74.327        NA  0.7914957
+  invest_growth
+1            NA
+2            NA
+3      11.79648
+4            NA
+5            NA
+6            NA
 'data.frame':	218 obs. of  12 variables:
  $ countrycode  : chr  "ABW" "AFG" "AGO" "ALB" ...
   ..- attr(*, "label")= chr "Country Code"
@@ -54,470 +62,142 @@
   ..- attr(*, "format.stata")= chr "%9.0g"
 Rows: 218
 Columns: 12
-$ countrycode   [3m[90m<chr>[39m[23m "ABW", "AFG", "AGO", "ALB", "AND", "ARE", "ARG", "ARM"...
-$ logGDPpc2000  [3m[90m<dbl>[39m[23m 10.254756, NA, 7.694224, 7.716297, 10.616475, 11.05487...
-$ logGDPpc2015  [3m[90m<dbl>[39m[23m 10.104492, 6.352950, 8.229063, 8.417237, 10.639874, 10...
-$ growthGDPpc   [3m[90m<dbl>[39m[23m -1.0017586, NA, 3.5655911, 4.6729374, 0.1559957, -3.01...
-$ imalaria2000  [3m[90m<dbl>[39m[23m NA, 92.64, 222.39, NA, NA, NA, 2.37, NA, NA, NA, NA, N...
-$ imalaria2015  [3m[90m<dbl>[39m[23m NA, 14.22, 154.48, NA, NA, NA, 0.00, NA, NA, NA, NA, N...
-$ change_malar  [3m[90m<dbl>[39m[23m NA, -78.42, -67.91, NA, NA, NA, -2.37, NA, NA, NA, NA,...
-$ educ_sec      [3m[90m<dbl>[39m[23m 55.99243, NA, NA, 75.73405, 45.88941, 62.70005, 51.133...
-$ life2000      [3m[90m<dbl>[39m[23m 73.78700, 55.84100, 46.52200, 73.95500, NA, 74.32700, ...
-$ trade2000     [3m[90m<dbl>[39m[23m 145.07318, NA, 152.54710, 63.45407, NA, NA, 22.62244, ...
-$ gov2000       [3m[90m<dbl>[39m[23m NA, -2.2316511, -1.4623100, -0.7551177, 1.4462841, 0.7...
-$ invest_growth [3m[90m<dbl>[39m[23m NA, NA, 11.7964783, NA, NA, NA, 3.5251336, 5.7595572, ...
+$ countrycode   [3m[90m<chr>[39m[23m "ABW", "AFG", "AGO", "ALB", "AND", "ARE"...
+$ logGDPpc2000  [3m[90m<dbl>[39m[23m 10.254756, NA, 7.694224, 7.716297, 10.61...
+$ logGDPpc2015  [3m[90m<dbl>[39m[23m 10.104492, 6.352950, 8.229063, 8.417237,...
+$ growthGDPpc   [3m[90m<dbl>[39m[23m -1.0017586, NA, 3.5655911, 4.6729374, 0....
+$ imalaria2000  [3m[90m<dbl>[39m[23m NA, 92.64, 222.39, NA, NA, NA, 2.37, NA,...
+$ imalaria2015  [3m[90m<dbl>[39m[23m NA, 14.22, 154.48, NA, NA, NA, 0.00, NA,...
+$ change_malar  [3m[90m<dbl>[39m[23m NA, -78.42, -67.91, NA, NA, NA, -2.37, N...
+$ educ_sec      [3m[90m<dbl>[39m[23m 55.99243, NA, NA, 75.73405, 45.88941, 62...
+$ life2000      [3m[90m<dbl>[39m[23m 73.78700, 55.84100, 46.52200, 73.95500, ...
+$ trade2000     [3m[90m<dbl>[39m[23m 145.07318, NA, 152.54710, 63.45407, NA, ...
+$ gov2000       [3m[90m<dbl>[39m[23m NA, -2.2316511, -1.4623100, -0.7551177, ...
+$ invest_growth [3m[90m<dbl>[39m[23m NA, NA, 11.7964783, NA, NA, NA, 3.525133...
  num [1:218] 10.25 NA 7.69 7.72 10.62 ...
  - attr(*, "label")= chr "Log GDPpc 2000"
  - attr(*, "format.stata")= chr "%9.0g"
-                                          Descriptions      Value
-1                                   Sample size (nrow)        218
-2                              No. of variables (ncol)         12
-3                    No. of numeric/interger variables         11
-4                              No. of factor variables          0
-5                                No. of text variables          1
-6                             No. of logical variables          0
-7                          No. of identifier variables          1
-8                                No. of date variables          0
-9             No. of zero variance variables (uniform)          0
-10               %. of variables having complete cases  8.33% (1)
-11   %. of variables having >0% and <50% missing cases 58.33% (7)
-12 %. of variables having >=50% and <90% missing cases 33.33% (4)
-13          %. of variables having >=90% missing cases     0% (0)
-   Index Variable_Name Variable_Type Per_of_Missing No_of_distinct_values
-1      1   countrycode     character        0.00000                   218
-2      2  logGDPpc2000       numeric        0.11009                   195
-3      3  logGDPpc2015       numeric        0.08257                   201
-4      4   growthGDPpc       numeric        0.11927                   193
-5      5  imalaria2000       numeric        0.54587                   100
-6      6  imalaria2015       numeric        0.54587                    86
-7      7  change_malar       numeric        0.54587                    98
-8      8      educ_sec       numeric        0.54587                   100
-9      9      life2000       numeric        0.07798                   201
-10    10     trade2000       numeric        0.18349                   179
-11    11       gov2000       numeric        0.11468                   190
-12    12 invest_growth       numeric        0.41743                   128
-   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
-  5.986  44.351  61.702  61.396  86.109  99.866     119 
-           Vname Group  TN nNeg nZero nPos NegInf PosInf NA_Value Per_of_Missing
-6   change_malar   All 218   94     0    5      0      0      119          54.59
-7       educ_sec   All 218    0     0   99      0      0      119          54.59
-10       gov2000   All 218  110     0   83      0      0       25          11.47
-3    growthGDPpc   All 218   23     0  169      0      0       26          11.93
-4   imalaria2000   All 218    0     0   99      0      0      119          54.59
-5   imalaria2015   All 218    0    14   85      0      0      119          54.59
-11 invest_growth   All 218   12     0  115      0      0       91          41.74
-8       life2000   All 218    0     0  201      0      0       17           7.80
-1   logGDPpc2000   All 218    0     0  194      0      0       24          11.01
-2   logGDPpc2015   All 218    0     0  200      0      0       18           8.26
-9      trade2000   All 218    0     0  178      0      0       40          18.35
-        sum     min    max   mean median     SD     CV    IQR Skewness Kurtosis
-6  -7120.90 -796.38 195.13 -71.93 -16.77 132.40  -1.84 102.13    -2.91    11.16
-7   6078.19    5.99  99.87  61.40  61.70  25.80   0.42  41.76    -0.25    -0.98
-10    -1.96   -2.23   2.20  -0.01  -0.19   1.00 -98.73   1.36     0.43    -0.44
-3    436.90   -3.01   9.08   2.28   1.99   2.11   0.93   2.73     0.47     0.41
-4  15831.98    0.01 796.38 159.92  57.31 191.80   1.20 297.89     1.06     0.13
-5   8711.08    0.00 429.04  87.99   9.97 128.83   1.46 153.01     1.29     0.22
-11   655.30   -5.36  25.51   5.16   4.68   4.42   0.86   5.45     1.00     2.82
-8  13469.41   39.44  81.08  67.01  70.18  10.09   0.15  14.34    -0.77    -0.50
-1   1627.64    5.29  11.84   8.39   8.22   1.56   0.19   2.42     0.14    -0.92
-2   1743.78    5.43  12.15   8.72   8.74   1.47   0.17   2.19    -0.03    -0.86
-9  14979.10    1.17 364.36  84.15  74.77  49.04   0.58  52.25     2.00     6.93
-       10%     20%    50%  LB.25% UB.75% nOutliers
-6  -189.74 -133.96 -16.77 -258.63 149.87         7
-7    26.23   39.27  61.70  -18.28 148.75         0
-10   -1.16   -0.82  -0.19   -2.78   2.67         0
-3    -0.13    0.59   1.99   -3.24   7.67         3
-4     2.59    5.41  57.31 -438.72 752.82         1
-5     0.00    0.14   9.97 -229.31 382.73         3
-11    0.27    1.88   4.68   -6.04  15.76         2
-8    50.49   57.13  70.18   38.55  95.91         0
-1     6.28    6.93   8.22    3.56  13.25         0
-2     6.62    7.27   8.74    4.33  13.07         0
-9    33.98   48.71  74.77  -25.73 183.29         6
-[[1]]
+  |                                                                 |                                                         |   0%  |                                                                 |...................                                      |  33%
+  ordinary text without R code
 
-[[2]]
+  |                                                                 |......................................                   |  67%
+label: child-section-application (with options) 
+List of 1
+ $ child: chr "02_RunEDA.Rnw"
 
-[[3]]
+  |                                                                 |                                                         |   0%  |                                                                 |..                                                       |   4%
+  ordinary text without R code
 
-[[4]]
+  |                                                                 |.....                                                    |   8%
+label: enrironment (with options) 
+List of 3
+ $ echo   : logi FALSE
+ $ warning: logi FALSE
+ $ message: logi FALSE
 
-[[5]]
+  |                                                                 |.......                                                  |  12%
+  ordinary text without R code
 
-[[6]]
+  |                                                                 |.........                                                |  16%
+label: check_variables (with options) 
+List of 1
+ $ echo: logi FALSE
 
-[[7]]
+  |                                                                 |...........                                              |  20%
+   inline R code fragments
 
-[[8]]
+  |                                                                 |..............                                           |  24%
+label: info_variables (with options) 
+List of 2
+ $ echo   : logi FALSE
+ $ results: chr "asis"
 
-[[9]]
+  |                                                                 |................                                         |  28%
+   inline R code fragments
 
-[[10]]
+  |                                                                 |..................                                       |  32%
+label: describe_univariate (with options) 
+List of 3
+ $ echo   : logi FALSE
+ $ comment: chr ""
+ $ results: chr "asis"
 
-[[11]]
+  |                                                                 |.....................                                    |  36%
+  ordinary text without R code
 
- countrycode         logGDPpc2000     logGDPpc2015     growthGDPpc     
- Length:218         Min.   : 5.285   Min.   : 5.431   Min.   :-3.0138  
- Class :character   1st Qu.: 7.195   1st Qu.: 7.609   1st Qu.: 0.8492  
- Mode  :character   Median : 8.222   Median : 8.745   Median : 1.9916  
-                    Mean   : 8.390   Mean   : 8.719   Mean   : 2.2755  
-                    3rd Qu.: 9.618   3rd Qu.: 9.794   3rd Qu.: 3.5759  
-                    Max.   :11.840   Max.   :12.151   Max.   : 9.0774  
-                    NA's   :24       NA's   :18       NA's   :26       
-  imalaria2000      imalaria2015      change_malar         educ_sec     
- Min.   :  0.010   Min.   :  0.000   Min.   :-796.380   Min.   : 5.986  
- 1st Qu.:  8.105   1st Qu.:  0.205   1st Qu.:-105.440   1st Qu.:44.351  
- Median : 57.310   Median :  9.970   Median : -16.770   Median :61.702  
- Mean   :159.919   Mean   : 87.991   Mean   : -71.928   Mean   :61.396  
- 3rd Qu.:305.990   3rd Qu.:153.215   3rd Qu.:  -3.315   3rd Qu.:86.109  
- Max.   :796.380   Max.   :429.040   Max.   : 195.130   Max.   :99.866  
- NA's   :119       NA's   :119       NA's   :119        NA's   :119     
-    life2000       trade2000          gov2000         invest_growth   
- Min.   :39.44   Min.   :  1.166   Min.   :-2.23165   Min.   :-5.364  
- 1st Qu.:60.06   1st Qu.: 52.652   1st Qu.:-0.73737   1st Qu.: 2.133  
- Median :70.18   Median : 74.773   Median :-0.18607   Median : 4.679  
- Mean   :67.01   Mean   : 84.152   Mean   :-0.01016   Mean   : 5.160  
- 3rd Qu.:74.40   3rd Qu.:104.906   3rd Qu.: 0.62527   3rd Qu.: 7.583  
- Max.   :81.08   Max.   :364.365   Max.   : 2.19907   Max.   :25.513  
- NA's   :17      NA's   :40        NA's   :25         NA's   :91      
+  |                                                                 |.......................                                  |  40%
+label: normality (with options) 
+List of 2
+ $ echo   : logi FALSE
+ $ results: chr "asis"
 
-Summary statistics
-=====================================================================
-Statistic      N   Mean   St. Dev.   Min    Pctl(25) Pctl(75)   Max  
----------------------------------------------------------------------
-logGDPpc2000  194  8.390   1.564    5.285    7.195    9.618   11.840 
-logGDPpc2015  200  8.719   1.467    5.431    7.609    9.794   12.151 
-growthGDPpc   192  2.276   2.108    -3.014   0.849    3.576    9.077 
-imalaria2000  99  159.919 191.803   0.010    8.105   305.990  796.380
-imalaria2015  99  87.991  128.829   0.000    0.205   153.215  429.040
-change_malar  99  -71.928 132.399  -796.380 -105.440  -3.315  195.130
-educ_sec      99  61.396   25.797   5.986    44.351   86.109  99.866 
-life2000      201 67.012   10.093   39.441   60.063   74.403  81.076 
-trade2000     178 84.152   49.038   1.166    52.652  104.906  364.365
-gov2000       193 -0.010   1.003    -2.232   -0.737   0.625    2.199 
-invest_growth 127  5.160   4.423    -5.364   2.133    7.583   25.513 
----------------------------------------------------------------------
+  |                                                                 |.........................                                |  44%
+  ordinary text without R code
 
-Shorter statistics
-===============================================================
-Statistic    N   Mean  St. Dev.  Min   Pctl(25) Pctl(75)  Max  
----------------------------------------------------------------
-growthGDPpc 192 2.276   2.108   -3.014  0.849    3.576   9.077 
-educ_sec    99  61.396  25.797  5.986   44.351   86.109  99.866
----------------------------------------------------------------
+  |                                                                 |...........................                              |  48%
+label: correlations (with options) 
+List of 2
+ $ echo   : logi FALSE
+ $ results: chr "asis"
 
-Call:
-lm(formula = logGDPpc2000 ~ educ_sec)
+  |                                                                 |..............................                           |  52%
+  ordinary text without R code
 
-Residuals:
-    Min      1Q  Median      3Q     Max 
--3.5613 -1.0600  0.0556  1.1628  2.4293 
+  |                                                                 |................................                         |  56%
+label: plot_correlations (with options) 
+List of 2
+ $ echo   : logi FALSE
+ $ results: chr "asis"
 
-Coefficients:
-            Estimate Std. Error t value Pr(>|t|)    
-(Intercept) 7.394826   0.349821  21.139  < 2e-16 ***
-educ_sec    0.023760   0.005264   4.514 1.82e-05 ***
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+  |                                                                 |..................................                       |  60%
+  ordinary text without R code
 
-Residual standard error: 1.317 on 95 degrees of freedom
-  (121 observations deleted due to missingness)
-Multiple R-squared:  0.1766,	Adjusted R-squared:  0.1679 
-F-statistic: 20.38 on 1 and 95 DF,  p-value: 1.823e-05
+  |                                                                 |....................................                     |  64%
+label: numeric_variables (with options) 
+List of 2
+ $ echo   : logi FALSE
+ $ results: chr "asis"
+
+  |                                                                 |.......................................                  |  68%
+  ordinary text without R code
+
+  |                                                                 |.........................................                |  72%
+label: category_variables (with options) 
+List of 2
+ $ echo   : logi FALSE
+ $ results: chr "asis"
+
+  |                                                                 |...........................................              |  76%
+  ordinary text without R code
+
+  |                                                                 |..............................................           |  80%
+label: group_correlations (with options) 
+List of 2
+ $ echo   : logi FALSE
+ $ results: chr "asis"
+
+  |                                                                 |................................................         |  84%
+  ordinary text without R code
+
+  |                                                                 |..................................................       |  88%
+label: plot_group_correlations (with options) 
+List of 2
+ $ echo   : logi FALSE
+ $ results: chr "asis"
+
+  |                                                                 |....................................................     |  92%
+  ordinary text without R code
+
+  |                                                                 |.......................................................  |  96%
+label: option_undo (with options) 
+List of 1
+ $ echo: logi FALSE
+
+  |                                                                 |.........................................................| 100%
+  ordinary text without R code
 
 
-Call:
-lm(formula = growthGDPpc ~ logGDPpc2000 + educ_sec + invest_growth + 
-    trade2000 + gov2000, data = world_data, na.action = na.exclude)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--3.2333 -0.4785 -0.0029  0.6294  3.5823 
-
-Coefficients:
-               Estimate Std. Error t value Pr(>|t|)    
-(Intercept)    5.557012   1.843849   3.014  0.00368 ** 
-logGDPpc2000  -0.726476   0.216851  -3.350  0.00135 ** 
-educ_sec       0.032574   0.006704   4.859 7.79e-06 ***
-invest_growth  0.232956   0.043563   5.348 1.23e-06 ***
-trade2000      0.005198   0.002567   2.025  0.04696 *  
-gov2000       -0.096830   0.313265  -0.309  0.75823    
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-Residual standard error: 1.224 on 65 degrees of freedom
-  (147 observations deleted due to missingness)
-Multiple R-squared:  0.5909,	Adjusted R-squared:  0.5594 
-F-statistic: 18.78 on 5 and 65 DF,  p-value: 1.674e-11
-
-              Df Sum Sq Mean Sq F value   Pr(>F)    
-logGDPpc2000   1  61.16   61.16  40.825 2.05e-08 ***
-educ_sec       1  28.02   28.02  18.704 5.36e-05 ***
-invest_growth  1  45.29   45.29  30.229 6.91e-07 ***
-trade2000      1   6.04    6.04   4.033   0.0488 *  
-gov2000        1   0.14    0.14   0.096   0.7582    
-Residuals     65  97.38    1.50                     
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-147 observations deleted due to missingness
-                (Intercept)  logGDPpc2000      educ_sec invest_growth
-(Intercept)    3.3997778995 -3.838101e-01  2.808327e-04 -2.381767e-02
-logGDPpc2000  -0.3838100668  4.702440e-02 -3.548833e-04  1.597596e-03
-educ_sec       0.0002808327 -3.548833e-04  4.494372e-05  2.344525e-05
-invest_growth -0.0238176748  1.597596e-03  2.344525e-05  1.897755e-03
-trade2000     -0.0004613550 -5.556980e-06  7.067824e-07 -7.114476e-06
-gov2000        0.4269619849 -5.055677e-02 -1.074546e-04  1.516299e-03
-                  trade2000       gov2000
-(Intercept)   -4.613550e-04  0.4269619849
-logGDPpc2000  -5.556980e-06 -0.0505567717
-educ_sec       7.067824e-07 -0.0001074546
-invest_growth -7.114476e-06  0.0015162991
-trade2000      6.587727e-06 -0.0001871097
-gov2000       -1.871097e-04  0.0981352360
-
-Regression analysis
-==============================================
-                           Model 1            
-Log GDPpc 2000            -0.73***            
-                           (0.22)             
-Educ Sec                   0.03***            
-                           (0.01)             
-invest_growth              0.23***            
-                           (0.04)             
-trade2000                  0.01**             
-                           (0.003)            
-gov2000                     -0.10             
-                           (0.31)             
-N                            71               
-R2                          0.59              
-==============================================
-Notes:         Standard errors in parentheses.
-
-Regression analysis
-=========================================================
-                       Model 1 Model 2  Model 3  Model 4 
-Log GDPpc 2000                 -0.73*** -0.79*** -0.79***
-                                (0.22)   (0.22)   (0.22) 
-Educ Sec               0.04*** 0.03***   0.02**   0.02** 
-                       (0.003)  (0.01)   (0.01)   (0.01) 
-invest_growth                  0.23***    0.09     0.09  
-                                (0.04)   (0.10)   (0.10) 
-trade2000                       0.01**   0.004*   0.004* 
-                               (0.003)  (0.003)  (0.003) 
-gov2000                         -0.10     0.06     0.06  
-                                (0.31)   (0.33)   (0.33) 
-educ_sec:invest_growth                   0.003    0.003  
-                                        (0.002)  (0.002) 
-N                        96       71       71       71   
-R2                      0.54     0.59     0.61     0.61  
-=========================================================
-Notes:                 Standard errors in parentheses.   
-
-    1     2     3 
-20180  8051   303 
-[1] TRUE
- dbl+lbl [1:28534] 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, ...
- @ label       : chr "race"
- @ format.stata: chr "%8.0g"
- @ labels      : Named num [1:3] 1 2 3
-  ..- attr(*, "names")= chr [1:3] "white" "black" "other"
-
-Call:
-lm(formula = ln_wage ~ relevel(factor(race), ref = 3), data = nlswork, 
-    na.action = na.exclude)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--1.7143 -0.3046 -0.0348  0.2831  3.5496 
-
-Coefficients:
-                                Estimate Std. Error t value Pr(>|t|)    
-(Intercept)                      1.79501    0.02721  65.971  < 2e-16 ***
-relevel(factor(race), ref = 3)1 -0.08067    0.02741  -2.943  0.00325 ** 
-relevel(factor(race), ref = 3)2 -0.22346    0.02772  -8.062 7.78e-16 ***
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-Residual standard error: 0.4736 on 28531 degrees of freedom
-Multiple R-squared:  0.01867,	Adjusted R-squared:  0.0186 
-F-statistic: 271.4 on 2 and 28531 DF,  p-value: < 2.2e-16
+  |                                                                 |.........................................................| 100%
+  ordinary text without R code
 
 
-Call:
-lm(formula = ln_wage ~ hours, data = nlswork, na.action = na.exclude)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--2.1854 -0.3074 -0.0361  0.2860  3.6244 
-
-Coefficients:
-             Estimate Std. Error t value Pr(>|t|)    
-(Intercept) 1.5225145  0.0108276  140.62   <2e-16 ***
-hours       0.0041790  0.0002859   14.62   <2e-16 ***
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-Residual standard error: 0.4761 on 28465 degrees of freedom
-  (67 observations deleted due to missingness)
-Multiple R-squared:  0.007449,	Adjusted R-squared:  0.007414 
-F-statistic: 213.6 on 1 and 28465 DF,  p-value: < 2.2e-16
-
-(Intercept)       hours 
-1.522514490 0.004179043 
-      hours 
-0.004179043 
-              (Intercept)         hours
-(Intercept)  1.172359e-04 -2.988892e-06
-hours       -2.988892e-06  8.175404e-08
-[1] 8.175404e-08
-
-Call:
-lm(formula = ln_wage ~ hours, data = nlswork, na.action = na.exclude)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--2.1854 -0.3074 -0.0361  0.2860  3.6244 
-
-Coefficients:
-             Estimate Std. Error t value Pr(>|t|)    
-(Intercept) 1.5225145  0.0108276  140.62   <2e-16 ***
-hours       0.0041790  0.0002859   14.62   <2e-16 ***
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-Residual standard error: 0.4761 on 28465 degrees of freedom
-  (67 observations deleted due to missingness)
-Multiple R-squared:  0.007449,	Adjusted R-squared:  0.007414 
-F-statistic: 213.6 on 1 and 28465 DF,  p-value: < 2.2e-16
-
-[1] 0.0002859266
-
-Call:
-lm(formula = ln_wage ~ factor(race), data = nlswork, na.action = na.exclude)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--1.7143 -0.3046 -0.0348  0.2831  3.5496 
-
-Coefficients:
-               Estimate Std. Error t value Pr(>|t|)    
-(Intercept)    1.714338   0.003334 514.187  < 2e-16 ***
-factor(race)2 -0.142786   0.006243 -22.870  < 2e-16 ***
-factor(race)3  0.080671   0.027413   2.943  0.00325 ** 
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-Residual standard error: 0.4736 on 28531 degrees of freedom
-Multiple R-squared:  0.01867,	Adjusted R-squared:  0.0186 
-F-statistic: 271.4 on 2 and 28531 DF,  p-value: < 2.2e-16
-
- [1] "idcode"   "year"     "birth_yr" "age"      "race"     "msp"      "nev_mar" 
- [8] "grade"    "collgrad" "not_smsa" "c_city"   "south"    "ind_code" "occ_code"
-[15] "union"    "wks_ue"   "ttl_exp"  "tenure"   "hours"    "wks_work" "ln_wage" 
-[22] "race.f"  
-
-Call:
-lm(formula = ln_wage ~ hours * factor(race), data = nlswork, 
-    na.action = na.exclude)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--2.2250 -0.2977 -0.0372  0.2773  3.5830 
-
-Coefficients:
-                      Estimate Std. Error t value Pr(>|t|)    
-(Intercept)          1.5642487  0.0119505 130.894  < 2e-16 ***
-hours                0.0041663  0.0003176  13.118  < 2e-16 ***
-factor(race)2       -0.2297101  0.0276857  -8.297  < 2e-16 ***
-factor(race)3       -0.0555371  0.0990365  -0.561  0.57496    
-hours:factor(race)2  0.0021478  0.0007231   2.970  0.00298 ** 
-hours:factor(race)3  0.0034971  0.0025710   1.360  0.17377    
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-Residual standard error: 0.4712 on 28461 degrees of freedom
-  (67 observations deleted due to missingness)
-Multiple R-squared:  0.02811,	Adjusted R-squared:  0.02794 
-F-statistic: 164.7 on 5 and 28461 DF,  p-value: < 2.2e-16
-
-
-Regression analysis
-=====================================================
-                      Model 1    Model 2    Model 3  
-hours                0.004***               0.004*** 
-                     (0.0003)               (0.0003) 
-factor(race)2                    -0.14***   -0.23*** 
-                                  (0.01)     (0.03)  
-factor(race)3                    0.08***     -0.06   
-                                  (0.03)     (0.10)  
-hours:factor(race)2                         0.002*** 
-                                            (0.001)  
-hours:factor(race)3                          0.003   
-                                            (0.003)  
-Constant              1.52***    1.71***    1.56***  
-                      (0.01)     (0.003)     (0.01)  
-N                     28,467      28,534     28,467  
-R2                     0.01        0.02       0.03   
-=====================================================
-Notes:              Standard errors in parentheses.  
-[1] 38540.22
-[1] 38564.99
-Linear hypothesis test
-
-Hypothesis:
-hours = 0
-
-Model 1: restricted model
-Model 2: ln_wage ~ hours
-
-  Res.Df    RSS Df Sum of Sq      F    Pr(>F)    
-1  28466 6501.2                                  
-2  28465 6452.8  1    48.426 213.62 < 2.2e-16 ***
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-                         GVIF Df GVIF^(1/(2*Df))
-hours                1.259969  1        1.122483
-factor(race)       259.310717  2        4.012870
-hours:factor(race) 266.481272  2        4.040328
-
-	studentized Breusch-Pagan test
-
-data:  mm4
-BP = 129.14, df = 1, p-value < 2.2e-16
-
-
-Call: rlm(formula = ln_wage ~ hours, data = nlswork, na.action = na.exclude)
-Residuals:
-     Min       1Q   Median       3Q      Max 
--2.41532 -0.29163 -0.02678  0.29479  3.65215 
-
-Coefficients:
-            Value    Std. Error t value 
-(Intercept)   1.4432   0.0100   143.7042
-hours         0.0060   0.0003    22.6984
-
-Residual standard error: 0.4334 on 28465 degrees of freedom
-  (67 observations deleted due to missingness)
-
-============================================================================
-                                      Dependent variable:                   
-                    --------------------------------------------------------
-                               ln_wage                                      
-                                 OLS                      coefficient       
-                                                             test           
-                                 (1)                   (2)          (3)     
-----------------------------------------------------------------------------
-hours                        0.0041790***          0.0041790*** 0.0041790***
-                             (0.0002859)           (0.0003847)  (0.0003847) 
-                                                                            
-Constant                     1.5225140***          1.5225140*** 1.5225140***
-                             (0.0108276)           (0.0146145)  (0.0146139) 
-                                                                            
-----------------------------------------------------------------------------
-Observations                    28,467                                      
-R2                            0.0074488                                     
-Adjusted R2                   0.0074139                                     
-Residual Std. Error     0.4761222 (df = 28465)                              
-F Statistic         213.6212000*** (df = 1; 28465)                          
-============================================================================
-Note:                                            *p<0.1; **p<0.05; ***p<0.01
