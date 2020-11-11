@@ -314,4 +314,4 @@ world_data %>%
                 digits.extra = 10,
                 type="text")
       
-sink()
+#sink()
