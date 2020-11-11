@@ -1,0 +1,239 @@
+ [1] "countrycode"   "logGDPpc2000"  "logGDPpc2015" 
+ [4] "growthGDPpc"   "imalaria2000"  "imalaria2015" 
+ [7] "change_malar"  "educ_sec"      "life2000"     
+[10] "trade2000"     "gov2000"       "invest_growth"
+  countrycode logGDPpc2000 logGDPpc2015 growthGDPpc imalaria2000
+1         ABW    10.254756    10.104492  -1.0017586           NA
+2         AFG           NA     6.352950          NA        92.64
+3         AGO     7.694224     8.229063   3.5655911       222.39
+4         ALB     7.716297     8.417237   4.6729374           NA
+5         AND    10.616475    10.639874   0.1559957           NA
+6         ARE    11.054874    10.602809  -3.0137699           NA
+  imalaria2015 change_malar educ_sec life2000 trade2000    gov2000
+1           NA           NA 55.99243   73.787 145.07318         NA
+2        14.22       -78.42       NA   55.841        NA -2.2316511
+3       154.48       -67.91       NA   46.522 152.54710 -1.4623100
+4           NA           NA 75.73405   73.955  63.45407 -0.7551177
+5           NA           NA 45.88941       NA        NA  1.4462841
+6           NA           NA 62.70005   74.327        NA  0.7914957
+  invest_growth
+1            NA
+2            NA
+3      11.79648
+4            NA
+5            NA
+6            NA
+'data.frame':	218 obs. of  12 variables:
+ $ countrycode  : chr  "ABW" "AFG" "AGO" "ALB" ...
+  ..- attr(*, "label")= chr "Country Code"
+  ..- attr(*, "format.stata")= chr "%9s"
+ $ logGDPpc2000 : num  10.25 NA 7.69 7.72 10.62 ...
+  ..- attr(*, "label")= chr "Log GDPpc 2000"
+  ..- attr(*, "format.stata")= chr "%9.0g"
+ $ logGDPpc2015 : num  10.1 6.35 8.23 8.42 10.64 ...
+  ..- attr(*, "label")= chr "Log GDPpc 2015"
+  ..- attr(*, "format.stata")= chr "%9.0g"
+ $ growthGDPpc  : num  -1.002 NA 3.566 4.673 0.156 ...
+  ..- attr(*, "label")= chr "Av. GDPpc growth 2015-2000"
+  ..- attr(*, "format.stata")= chr "%9.0g"
+ $ imalaria2000 : num  NA 92.6 222.4 NA NA ...
+  ..- attr(*, "label")= chr "Malaria incidence rate in 2000"
+  ..- attr(*, "format.stata")= chr "%9.0g"
+ $ imalaria2015 : num  NA 14.2 154.5 NA NA ...
+  ..- attr(*, "label")= chr "Malaria incidence rate in 2015"
+  ..- attr(*, "format.stata")= chr "%9.0g"
+ $ change_malar : num  NA -78.4 -67.9 NA NA ...
+  ..- attr(*, "label")= chr "Change in incidence rate 2015-2000"
+  ..- attr(*, "format.stata")= chr "%9.0g"
+ $ educ_sec     : num  56 NA NA 75.7 45.9 ...
+  ..- attr(*, "label")= chr "% Population 25+ with lower sec. school"
+  ..- attr(*, "format.stata")= chr "%9.0g"
+ $ life2000     : num  73.8 55.8 46.5 74 NA ...
+  ..- attr(*, "label")= chr "Life expectancy 2000"
+  ..- attr(*, "format.stata")= chr "%9.0g"
+ $ trade2000    : num  145.1 NA 152.5 63.5 NA ...
+  ..- attr(*, "label")= chr "Trade openess in % GDP 2000"
+  ..- attr(*, "format.stata")= chr "%9.0g"
+ $ gov2000      : num  NA -2.232 -1.462 -0.755 1.446 ...
+  ..- attr(*, "label")= chr "Government Effectiveness Índex 2000"
+  ..- attr(*, "format.stata")= chr "%9.0g"
+ $ invest_growth: num  NA NA 11.8 NA NA ...
+  ..- attr(*, "label")= chr "Mean growth gross capital formation"
+  ..- attr(*, "format.stata")= chr "%9.0g"
+Rows: 218
+Columns: 12
+$ countrycode   [3m[90m<chr>[39m[23m "ABW", "AFG", "AGO", "ALB", "AND", "ARE"...
+$ logGDPpc2000  [3m[90m<dbl>[39m[23m 10.254756, NA, 7.694224, 7.716297, 10.61...
+$ logGDPpc2015  [3m[90m<dbl>[39m[23m 10.104492, 6.352950, 8.229063, 8.417237,...
+$ growthGDPpc   [3m[90m<dbl>[39m[23m -1.0017586, NA, 3.5655911, 4.6729374, 0....
+$ imalaria2000  [3m[90m<dbl>[39m[23m NA, 92.64, 222.39, NA, NA, NA, 2.37, NA,...
+$ imalaria2015  [3m[90m<dbl>[39m[23m NA, 14.22, 154.48, NA, NA, NA, 0.00, NA,...
+$ change_malar  [3m[90m<dbl>[39m[23m NA, -78.42, -67.91, NA, NA, NA, -2.37, N...
+$ educ_sec      [3m[90m<dbl>[39m[23m 55.99243, NA, NA, 75.73405, 45.88941, 62...
+$ life2000      [3m[90m<dbl>[39m[23m 73.78700, 55.84100, 46.52200, 73.95500, ...
+$ trade2000     [3m[90m<dbl>[39m[23m 145.07318, NA, 152.54710, 63.45407, NA, ...
+$ gov2000       [3m[90m<dbl>[39m[23m NA, -2.2316511, -1.4623100, -0.7551177, ...
+$ invest_growth [3m[90m<dbl>[39m[23m NA, NA, 11.7964783, NA, NA, NA, 3.525133...
+ num [1:218] 10.25 NA 7.69 7.72 10.62 ...
+ - attr(*, "label")= chr "Log GDPpc 2000"
+ - attr(*, "format.stata")= chr "%9.0g"
+  |                                                                 |                                                         |   0%  |                                                                 |...................                                      |  33%
+  ordinary text without R code
+
+  |                                                                 |......................................                   |  67%
+label: child-section-application (with options) 
+List of 1
+ $ child: chr "02_RunEDA.Rnw"
+
+  |                                                                 |                                                         |   0%  |                                                                 |..                                                       |   4%
+  ordinary text without R code
+
+  |                                                                 |.....                                                    |   8%
+label: enrironment (with options) 
+List of 3
+ $ echo   : logi FALSE
+ $ warning: logi FALSE
+ $ message: logi FALSE
+
+  |                                                                 |.......                                                  |  12%
+  ordinary text without R code
+
+  |                                                                 |.........                                                |  16%
+label: check_variables (with options) 
+List of 1
+ $ echo: logi FALSE
+
+  |                                                                 |...........                                              |  20%
+   inline R code fragments
+
+  |                                                                 |..............                                           |  24%
+label: info_variables (with options) 
+List of 2
+ $ echo   : logi FALSE
+ $ results: chr "asis"
+
+  |                                                                 |................                                         |  28%
+   inline R code fragments
+
+  |                                                                 |..................                                       |  32%
+label: describe_univariate (with options) 
+List of 3
+ $ echo   : logi FALSE
+ $ comment: chr ""
+ $ results: chr "asis"
+
+  |                                                                 |.....................                                    |  36%
+  ordinary text without R code
+
+  |                                                                 |.......................                                  |  40%
+label: normality (with options) 
+List of 2
+ $ echo   : logi FALSE
+ $ results: chr "asis"
+
+  |                                                                 |.........................                                |  44%
+  ordinary text without R code
+
+  |                                                                 |...........................                              |  48%
+label: correlations (with options) 
+List of 2
+ $ echo   : logi FALSE
+ $ results: chr "asis"
+
+  |                                                                 |..............................                           |  52%
+  ordinary text without R code
+
+  |                                                                 |................................                         |  56%
+label: plot_correlations (with options) 
+List of 2
+ $ echo   : logi FALSE
+ $ results: chr "asis"
+
+  |                                                                 |..................................                       |  60%
+  ordinary text without R code
+
+  |                                                                 |....................................                     |  64%
+label: numeric_variables (with options) 
+List of 2
+ $ echo   : logi FALSE
+ $ results: chr "asis"
+
+  |                                                                 |.......................................                  |  68%
+  ordinary text without R code
+
+  |                                                                 |.........................................                |  72%
+label: category_variables (with options) 
+List of 2
+ $ echo   : logi FALSE
+ $ results: chr "asis"
+
+  |                                                                 |...........................................              |  76%
+  ordinary text without R code
+
+  |                                                                 |..............................................           |  80%
+label: group_correlations (with options) 
+List of 2
+ $ echo   : logi FALSE
+ $ results: chr "asis"
+
+  |                                                                 |................................................         |  84%
+  ordinary text without R code
+
+  |                                                                 |..................................................       |  88%
+label: plot_group_correlations (with options) 
+List of 2
+ $ echo   : logi FALSE
+ $ results: chr "asis"
+
+  |                                                                 |....................................................     |  92%
+  ordinary text without R code
+
+  |                                                                 |.......................................................  |  96%
+label: option_undo (with options) 
+List of 1
+ $ echo: logi FALSE
+
+  |                                                                 |.........................................................| 100%
+  ordinary text without R code
+
+
+  |                                                                 |.........................................................| 100%
+  ordinary text without R code
+
+
+ [1] "countrycode"   "logGDPpc2000"  "logGDPpc2015"  "growthGDPpc"   "imalaria2000" 
+ [6] "imalaria2015"  "change_malar"  "educ_sec"      "life2000"      "trade2000"    
+[11] "gov2000"       "invest_growth" "ln_educ"      
+ [1] "countrycode"   "logGDPpc2000"  "logGDPpc2015"  "growthGDPpc"   "imalaria2000" 
+ [6] "imalaria2015"  "change_malar"  "educ_sec"      "life2000"      "trade2000"    
+[11] "gov2000"       "invest_growth" "ln_educ"      
+ [1] "countrycode"   "logGDPpc2000"  "logGDPpc2015" 
+ [4] "growthGDPpc"   "imalaria2000"  "imalaria2015" 
+ [7] "change_malar"  "educ_sec"      "life2000"     
+[10] "trade2000"     "gov2000"       "invest_growth"
+[13] "ln_educ"      
+ [1] "countrycode"   "logGDPpc2000"  "logGDPpc2015" 
+ [4] "growthGDPpc"   "imalaria2000"  "imalaria2015" 
+ [7] "change_malar"  "educ_sec"      "life2000"     
+[10] "trade2000"     "gov2000"       "invest_growth"
+  countrycode logGDPpc2000 logGDPpc2015 growthGDPpc imalaria2000
+1         ABW    10.254756    10.104492  -1.0017586           NA
+2         AFG           NA     6.352950          NA        92.64
+3         AGO     7.694224     8.229063   3.5655911       222.39
+4         ALB     7.716297     8.417237   4.6729374           NA
+5         AND    10.616475    10.639874   0.1559957           NA
+6         ARE    11.054874    10.602809  -3.0137699           NA
+  imalaria2015 change_malar educ_sec life2000 trade2000    gov2000
+1           NA           NA 55.99243   73.787 145.07318         NA
+2        14.22       -78.42       NA   55.841        NA -2.2316511
+3       154.48       -67.91       NA   46.522 152.54710 -1.4623100
+4           NA           NA 75.73405   73.955  63.45407 -0.7551177
+5           NA           NA 45.88941       NA        NA  1.4462841
+6           NA           NA 62.70005   74.327        NA  0.7914957
+  invest_growth
+1            NA
+2            NA
+3      11.79648
+4            NA
+5            NA
+6            NA
