@@ -2,7 +2,7 @@
 # 6. REGRESSION ANALYSIS AND CAUSALITY WITH R | By: João Cerejeira | 10 & 12 November
 # https://www.gades-solutions.com/project/data-analysis-school/
 
-setwd("C:\\Users\\mangelo.EEG\\Documents\\GitHub\\R_Training\\regression")
+# setwd("C:\\Users\\mangelo.EEG\\Documents\\GitHub\\R_Training\\regression")
 
 rm(list = ls())
 
@@ -39,7 +39,7 @@ head(world_data)
 View(world_data)
 str(world_data)
 
-dplyr::glimpse(world_data)
+# dplyr::glimpse(world_data)
 dplyr::glimpse(world_data$logGDPpc2000)
 
 ExpData(world_data,type=1)
@@ -178,7 +178,6 @@ world_data %>%
 
     ggsave("figures/graph3.png")
     
-    
     ggplot(world_data,aes(educ_sec,growthGDPpc))+
       labs(title = "Residuals vs. actual values") +
       ylab("Log GDP pc (2000)") +
@@ -226,7 +225,7 @@ world_data %>%
   ## CATEGORICAL VARIABLES AND INTERACTIONS
   
   nlswork <- as.data.frame(read_dta("nlswork.dta"))
-  table(nlswork$race)
+    table(nlswork$race)
   
   ## ADD A VARIALE
   nlswork$race.f <- factor(nlswork$race)
@@ -247,7 +246,6 @@ world_data %>%
     print(vcov(mm1)[2,2])
     summary(mm1)
     print(vcov(mm1)[2,2]^.5)
-  
   
   mm2 <- lm(ln_wage ~ factor(race),data=nlswork,na.action = na.exclude)
   summary(mm2)
@@ -299,19 +297,99 @@ world_data %>%
         
         bp <- summary(lm(residuals_sq ~ hours,data=nlswork,na.action = na.exclude))
         
-        bp$r.squared:bp$df
+          bp$r.squared*nrow(as.data.frame(bp$residuals))
         
-        bptest(mm4)
-        bptest(mm4,~ hours + I(hours^2),data=nlswork,na.action=na.exclude))
+        ## Breusch-Pagan test
+          bptest(mm4)
+        
+        ## White test
+          bptest(mm4,~ hours + I(hours^2),data=nlswork)
       
-      rmm4 <- rlm(ln_wage ~ hours,data=nlswork,na.action = na.exclude)
-        summary(rmm4)
-      
-      r1mm4 <- coeftest(mm4,vcov =vcovHC(mm1,type = "HC1"))   # HC1 gives us the White standard errors
-      r2mm4 <- coeftest(mm4,vcov =sandwich)
-      stargazer(mm4,r1mm4,r2mm4,
-                digits = 7,
-                digits.extra = 10,
-                type="text")
-      
-#sink()
+      ## Robust estimation
+        r1mm4 <- coeftest(mm4,vcov =vcovHC(mm1,type = "HC1"))   # HC1 gives us the White standard errors
+        r2mm4 <- coeftest(mm4,vcov =sandwich)
+        stargazer(mm4,r1mm4,r2mm4,
+                  digits = 7,
+                  digits.extra = 10,
+                  type="text")
+
+# Instrumental variables
+  library(ivreg)
+        card <- read_dta("card.dta")
+        
+        ols <- lm(data=card,lwage ~ educ + exper)
+        iv <- ivreg(data=card,lwage ~ educ + exper | nearc4)
+
+        stargazer(ols,iv,title = "Regression analysis", 
+                  model.numbers = FALSE,
+                  column.labels = c("Model 1","Model 2"),
+                  label = "regressions",
+                  table.placement = "!ht",
+                  notes.append = FALSE,
+                  notes.align="l",
+                  notes="Standard errors in parentheses.",
+                  header = FALSE,
+                  no.space = TRUE,
+                  covariate.labels = c("Education","Experience"),
+                  omit = c("Constant"),
+                  omit.stat = c("adj.rsq","f","ser"),
+                  digits = 2,
+                  digits.extra = 4,
+                  omit.yes.no = c("Constant",""),
+                  dep.var.caption="",
+                  dep.var.labels.include = FALSE,
+                  style = "qje",
+                  type="text")
+        
+## Tests and diagnosis
+        
+        summary(iv,vcov=sandwich,diagnostics = TRUE)
+        
+        
+# Diff-in-Diff
+        
+  hh_9198 <- read_dta("hh_9198_v2.dta")
+  
+  hh_9198$lnland <- log(1+hhland/100)
+  
+  attach(hh_9198)
+  
+  # dfmfd=treated: HH has female microcredit participant: 1=Y, 0=N
+  # year=after: Year of observation: 0=1991, 1=1998
+  # exptot: HH per capita total expenditure: Tk/year
+  # lexptot = ln(exptot)
+  
+  str(hh_9198)
+  ExpData(hh_9198,type=1)
+  ExpData(hh_9198,type=2)
+  
+  ftable(hh_9198$treated,hh_9198$after)
+  
+  DiD1 <- lm(data=hh_9198,lexptot ~ factor(treated)*factor(after))
+  
+  DiD2 <- lm(data=hh_9198,lexptot ~ factor(treated)*factor(after) + 
+               sexhead + agehead + educhead + lnland + vaccess + 
+               pcirr + rice + wheat + milk + oil + egg)
+  
+  stargazer(DiD1,DiD2,title = "Regression analysis", 
+            model.numbers = FALSE,
+            column.labels = c("Model 1","Model 2"),
+            label = "regressions",
+            table.placement = "!ht",
+            notes.append = FALSE,
+            notes.align="l",
+            notes="Standard errors in parentheses.",
+            header = FALSE,
+            no.space = TRUE,
+            covariate.labels = c("Treated0","After"),
+            omit = c("Constant"),
+            omit.stat = c("adj.rsq","f","ser"),
+            digits = 2,
+            digits.extra = 4,
+            omit.yes.no = c("Constant",""),
+            dep.var.caption="",
+            dep.var.labels.include = FALSE,
+            style = "qje",
+            type="text")
+  
+# sink()
