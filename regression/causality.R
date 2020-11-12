@@ -36,7 +36,7 @@ world_data <- as.data.frame(read_dta("world_data.dta"))
 
 names(world_data)
 head(world_data)
-View(world_data)
+# View(world_data)
 str(world_data)
 
 # dplyr::glimpse(world_data)

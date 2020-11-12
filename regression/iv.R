@@ -2,7 +2,7 @@
 # 6. REGRESSION ANALYSIS AND CAUSALITY WITH R | By: João Cerejeira | 10 & 12 November
 # https://www.gades-solutions.com/project/data-analysis-school/
 
-# SET WROKING DIRECTORY
+# SET WORKING DIRECTORY
 
   setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/regression")
 
@@ -28,7 +28,7 @@ library(stargazer)
 
 # First Stage
 
-educ.ols <- lm(educ~exper+I(exper^2)+mothereduc, data=mroz1)
+educ.ols <- lm(educ ~ exper+I(exper^2)+mothereduc, data=mroz1)
 
   summary(educ.ols)
 
@@ -41,7 +41,7 @@ educ.ols <- lm(educ~exper+I(exper^2)+mothereduc, data=mroz1)
 
     educHat <- fitted(educ.ols)
 
-    wage.2sls <- lm(log(wage)~educHat+exper+I(exper^2), data=mroz1)
+    wage.2sls <- lm(log(wage) ~ educHat +exper+I(exper^2), data=mroz1)
 kable(tidy(wage.2sls), digits=4, align='c',caption=
         "Second stage in the 2SLS model for the 'wage' equation")
 
@@ -98,7 +98,10 @@ educ.ols <- lm(educ~exper+I(exper^2)+mothereduc+fathereduc,
 # Test for the validity of instruments, test for overidentifying restrictions, 
 # or Sargan test H0:Cov(z,e)=0
 
-  summary(mroz1.iv, diagnostics=TRUE)
+  mroz1.iv2 <- ivreg(log(wage)~educ+exper+I(exper^2)|
+                      exper+I(exper^2)+mothereduc+fathereduc, data=mroz1)
+  
+  summary(mroz1.iv2, diagnostics=TRUE)
 
 # Results:
 # Weak instruments test: rejects the null, meaning that at least one instrument is strong

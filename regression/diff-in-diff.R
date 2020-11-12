@@ -7,8 +7,8 @@ setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/regression")
 # setwd("C:\\Users\\JoaoCerejeira\\Dropbox\\statafep2020\\day2\\r")
 
 
-# library(devtools)
 # install.packages("devtools")  # if not already installed
+# library(devtools)
 # install_git("https://github.com/ccolonescu/PoEdata")
 
 
@@ -16,6 +16,7 @@ rm(list = ls())
 
 library(stargazer)
 library(PoEdata)   # loads the package in memory
+
 ?njmin3              # shows dataset information
 data(njmin3)         # loads the dataset in memory
 summary(njmin3)      # calculates summary statistics
