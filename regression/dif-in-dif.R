@@ -50,9 +50,12 @@ D <- E+(B-A)
 
 # This creates an empty plot:
 
-plot(1, type="n", xlab="period", ylab="fte", xaxt="n",xlim=c(-0.01, 1.01), ylim=c(18, 24)) +
-  segments(x0=0, y0=A, x1=1, y1=E, lty=1, col=2) + #control
-  segments(x0=0, y0=B, x1=1, y1=C, lty=3, col=3) + #treated
-  segments(x0=0, y0=B, x1=1, y1=D,lty=4, col=4)  +    #counterfactual
-  legend("topright", legend=c("control", "treated","counterfactual"), lty=c(1,3,4), col=c(2,3,4)) +
-  axis(side=1, at=c(0,1), labels=NULL)
+plot(1, type="n", xlab="period", ylab="fte", xaxt="n",
+     xlim=c(-0.01, 1.01), ylim=c(18, 24))
+segments(x0=0, y0=A, x1=1, y1=E, lty=1, col=2)#control
+segments(x0=0, y0=B, x1=1, y1=C, lty=3, col=3)#treated
+segments(x0=0, y0=B, x1=1, y1=D,      #counterfactual
+         lty=4, col=4)
+legend("topright", legend=c("control", "treated", 
+                            "counterfactual"), lty=c(1,3,4), col=c(2,3,4))
+axis(side=1, at=c(0,1), labels=NULL)
