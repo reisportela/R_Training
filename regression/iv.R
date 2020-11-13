@@ -11,6 +11,7 @@ rm(list=ls()) #Removes all items in Environment!
 # LIBRARIES
 
 library(tidyverse)
+library(haven)
 library(AER)      # for `ivreg()`
 library(lmtest)   # for `coeftest()` and `bptest()`.
 library(broom)    # for `glance(`) and `tidy()`
@@ -19,6 +20,8 @@ library(car)      # for `hccm()` robust standard errors
 library(sandwich)
 library(knitr)    # for making neat tables with `kable()`
 library(stargazer) 
+library(modelsummary)
+library(kableExtra)
 
 # DATA
 
@@ -78,10 +81,12 @@ stargazer(mroz1.ols, wage.2sls, mroz1.iv,
 educ.ols <- lm(educ~exper+I(exper^2)+mothereduc+fathereduc, 
                data=mroz1)
 
-  tab <- tidy(educ.ols)
+tab <- tidy(educ.ols)
 
-  kable(tab, digits=4,
-        caption="The 'educ' first-stage equation")
+kable(tab, digits=4,
+      booktabs = T,
+      format = "html",
+      caption="The 'educ' first-stage equation")
 
 # The test rejects the null hypothesis that both  mothereduc  and  fathereduc  
 # coefficients are zero, indicating that at least one instrument is strong. 
@@ -110,3 +115,77 @@ educ.ols <- lm(educ~exper+I(exper^2)+mothereduc+fathereduc,
 # Sargan overidentifying restrictions: does not reject the null, meaning that the extra instruments 
 # are valid (are uncorrelated with the error term).
 
+  ## or with Kable & modelsummary
+  
+  nls <- read_dta("nlswork.dta")
+  
+  kableExtra(
+    nls %>%
+      group_by(union) %>%
+      # calculate mean by species
+      summarize(across(
+        where(is.numeric),
+        ~ mean(., na.rm = T)
+      )) %>%
+      # drop the year variable for the print out
+      select(-year),
+    # enable booktabs option (only in PDFs)
+    booktabs = T,
+    format = "html",
+    # round to two digits
+    digits = 2,
+    # caption of the table
+    caption = "Differences in Statistics across Union status",
+    # rename the columns
+    # col.names = c(
+    #   "Species",
+    #   "Bill Length\n(mm)",
+    #   "Bill Depth\n(mm)"
+    # )
+  ) %>%
+    # here we include any extra kableExtra options for the styling
+    kableExtra::kable_styling(
+      latex_options = c(
+        "hold",
+        "striped",
+        # option to fit a wide table
+        "scale_down"
+      )
+    )
+  
+  models <- list(
+    "M1" = lm(ln_wage ~ collgrad, 
+              data = nls),
+    "M2" = lm(ln_wage ~ collgrad + union, 
+              data = nls),
+    "M3" = lm(ln_wage ~ collgrad*union, 
+              data = nls),
+    "M4" = lm(ln_wage ~ collgrad*union + tenure, 
+              data = nls)
+  )
+  
+  gm = gof_map %>%
+    mutate(omit = case_when(
+      raw == "r.squared" | raw == "nobs" ~ FALSE,
+      TRUE ~ TRUE)
+    ) %>% 
+    arrange(desc(raw))
+  
+  
+  reg_table = modelsummary(models,
+                           stars = TRUE, 
+                           # report only basic goodness-of-fit stats
+                           gof_map = gm,
+                           output = 'kableExtra')
+  
+  reg_table %>% 
+    # column spanner
+    add_header_above(c(" " = 1, 
+                       "Resting Pulse" = 2, 
+                       "Active Pulse" = 2)) %>%
+    # footnote
+    add_footnote("Dataset: 'Pulse Rates and Exercise' from the Stat2Data package.",
+                 notation = "none"
+    ) %>%
+    row_spec(c(5,11), 
+             bold = TRUE)
