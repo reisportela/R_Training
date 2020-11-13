@@ -6,7 +6,6 @@ date: '`r gsub("^0", "", format(Sys.time(), "%d %B, %Y"))`'
 output:
   # html_book
   bookdown::pdf_document2
-    toc: no
 bibliography: references.bib
 biblio-style: kluwer
 ---
