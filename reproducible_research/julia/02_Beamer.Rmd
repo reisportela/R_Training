@@ -24,6 +24,7 @@ urlcolor: teal
 pacman::p_load(
   knitr,
   tidyverse,
+  ggplot2,
   # example dataset: palmerpenguins
   palmerpenguins,
   # showtext for fonts
