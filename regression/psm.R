@@ -10,6 +10,8 @@ setwd("C:\\Users\\mangelo.EEG\\Documents\\GitHub\\R_Training\\regression")
 
 ## LIBRARIES
 
+asd
+
   library(tidyverse)
   library(ggplot2)
   library(haven)
