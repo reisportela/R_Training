@@ -36,7 +36,7 @@ world_data <- as.data.frame(read_dta("world_data.dta"))
 
 names(world_data)
 head(world_data)
-# View(world_data)
+View(world_data)
 str(world_data)
 
 # dplyr::glimpse(world_data)
@@ -318,7 +318,7 @@ world_data %>%
         card <- read_dta("card.dta")
         
         ols <- lm(data=card,lwage ~ educ + exper)
-        iv <- ivreg(data=card,lwage ~ educ + exper | expe + nearc4)
+        iv <- ivreg(data=card,lwage ~ educ + exper | nearc4)
 
         stargazer(ols,iv,title = "Regression analysis", 
                   model.numbers = FALSE,
@@ -350,7 +350,7 @@ world_data %>%
         
   hh_9198 <- read_dta("hh_9198_v2.dta")
   
-  hh_9198$lnland <- log(1+hh_9198$hhland/100)
+  hh_9198$lnland <- log(1+hhland/100)
   
   attach(hh_9198)
   

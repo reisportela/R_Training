@@ -1,3 +1,5 @@
+
+```{r }
 # Applied Data Analysis School: October/november 2020
 # 6. REGRESSION ANALYSIS AND CAUSALITY WITH R | By: João Cerejeira | 10 & 12 November
 # https://www.gades-solutions.com/project/data-analysis-school/
@@ -393,3 +395,13 @@ world_data %>%
             type="text")
   
 # sink()
+```
+
+
+
+---
+title: causality.R
+author: mangelo
+date: '2020-11-13'
+
+---
