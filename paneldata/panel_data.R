@@ -5,8 +5,8 @@
 # https://bookdown.org/ccolonescu/RPoE4/
 # https://cran.r-project.org/web/packages/plm/vignettes/plmPackage.html
 
-# setwd("C:\\Users\\mangelo.EEG\\Documents\\GitHub\\R_Training\\paneldata")
-setwd("~/Documents/GitHub/R_Training/paneldata/")
+setwd("C:\\Users\\mangelo.EEG\\Documents\\GitHub\\R_Training\\paneldata")
+# setwd("~/Documents/GitHub/R_Training/paneldata/")
 
 rm(list = ls())
 
@@ -18,37 +18,32 @@ rm(list = ls())
 
 # LIBRARIES
 
+library(pacman)
+
 library(tidyverse) # Modern data science library 
-library(ggplot2)
 library(haven)
 
-library(stargazer)
-library(kableExtra)
-
-library(ExPanDaR)
-library(SmartEDA)
-library(visdat)
-library(naniar)
-
-library(janitor)
-library(summarytools)
-
-library(plm)       # Panel data analysis library
-library(lfe)
-library(fixest)
-library(clubSandwich)
-
-library(car)       # Companion to applied regression 
-library(gplots)    # Various programing tools for plotting data
-library(tseries)   # For timeseries analysis
-library(lmtest)    # For hetoroskedasticity analysis
-
-library(dplyr)
-library(dlookr)
-library(MASS)
-library(robustbase)
-library(sandwich)
-library(broom)
+pacman::p_load(stargazer,
+               kableExtra,
+               ExPanDaR,
+               SmartEDA,
+               visdat,
+               naniar,
+               janitor,
+               summarytools,
+               plm,
+               lfe,
+               fixest,
+               clubSandwich,
+               car,
+               gplots,
+               tseries,
+               lmtest,
+               dlookr,
+               MASS,
+               robustbase,
+               sandwich,
+               broom)
 
 # DATA
 
