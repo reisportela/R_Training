@@ -1,3 +1,38 @@
+# Applied Data Analysis School: October/november 2020
+# 6. REGRESSION ANALYSIS AND CAUSALITY WITH R | By: João Cerejeira | 10 & 12 November
+# https://www.gades-solutions.com/project/data-analysis-school/
+
+# setwd("C:\\Users\\mangelo.EEG\\Documents\\GitHub\\R_Training\\regression")
+
+rm(list = ls())
+
+# LOG FILE
+
+# sink("Regression.txt")
+
+# LIBRARIES
+
+library(tidyverse)
+library(ggplot2)
+library(haven)
+library(stargazer)
+library(kableExtra)
+library(dplyr)
+library(dlookr)
+library(visdat)
+library(naniar)
+library(ExPanDaR)
+library(SmartEDA)
+library(MASS)
+library(robustbase)
+library(lmtest)
+library(sandwich)
+library(car)
+library(broom)
+
+# DATA
+
+world_data <- as.data.frame(read_dta("world_data.dta"))
 
 names(world_data)
 head(world_data)
