@@ -8,6 +8,9 @@
 setwd("C:\\Users\\mangelo.EEG\\Documents\\GitHub\\R_Training\\paneldata")
 # setwd("~/Documents/GitHub/R_Training/paneldata/")
 
+# WHEN USING MYBINDER DEFINE
+# setwd("/home/jovyan/paneldata")
+
 rm(list = ls())
 
 # LOG FILE
@@ -63,7 +66,7 @@ ExpData(nlswork,type=2)
 
 # STATISTICS
 
-## EDA
+## EDA: Exploratory Data Analysis
 
 # eda_report(world_data,output_dir = "EDA/",output_file = "eda_nlswork.pdf")
 
@@ -73,7 +76,7 @@ ExpNumStat(nlswork,by="A",Outlier = TRUE,round=2,Qnt=c(0.1,0.20,0.50))
 
 # ExpCTable(nlswork)
 
-# ExpCatViz(nlswork)
+ExpCatViz(nlswork)
 
 ExpNumViz(nlswork,Page=c(6,2))
 
@@ -81,7 +84,7 @@ ExpNumViz(nlswork,Page=c(6,2))
 
 # ExpNumViz(nlswork)
 
-# ExpOutliers(nlswork,varlist=c("logGDPpc2000"))
+# ExpOutliers(nlswork,varlist=c("grade"))
 
 vis_dat(nlswork)
 
@@ -264,11 +267,11 @@ stargazer(pols,pols_robust,re,re_robust,title = "Regression analysis",
           notes="Standard errors in parentheses.",
           header = FALSE,
           no.space = TRUE,
-          covariate.labels = c("Union","Collage Graduate","Age","Age sqrd.","Tenure","Tenure sqrd.","Not SMSA","South","City"),
+          covariate.labels = c("Union","College Graduate","Age","Age sqrd.","Tenure","Tenure sqrd.","Not SMSA","South","City"),
           omit = c("Constant"),
           omit.stat = c("adj.rsq","f","ser"),
-          digits = 6,
-          digits.extra = 7,
+          digits = 3,
+          digits.extra = 5,
           omit.yes.no = c("Constant",""),
           dep.var.caption="",
           dep.var.labels.include = FALSE,
