@@ -194,8 +194,8 @@ stargazer(ols,pols,title = "Regression analysis",
           covariate.labels = c("Union","Collage Graduate","Age","Age sqrd.","Tenure","Tenure sqrd.","Not SMSA","South","City"),
           omit = c("Constant"),
           omit.stat = c("adj.rsq","f","ser"),
-          digits = 6,
-          digits.extra = 7,
+          digits = 3,
+          digits.extra = 5,
           omit.yes.no = c("Constant",""),
           dep.var.caption="",
           dep.var.labels.include = FALSE,
@@ -377,10 +377,10 @@ summary(LSDV)
 #   *Hausman test*
 
 fe_0 <- plm(data = nlswork_clean, ln_wage ~ union +
-              collgrad +age +agesq +tenure +tensq +
+              age +agesq +tenure +tensq +
               not_smsa +south +c_city, model="within", index=c("idcode", "year"))
 re_0 <- plm(data = nlswork_clean, ln_wage ~ union +
-              collgrad +age +agesq +tenure +tensq +
+              age +agesq +tenure +tensq +
               not_smsa +south +c_city, model="random", index=c("idcode", "year"))
 
 phtest(fe_0, re_0)    
