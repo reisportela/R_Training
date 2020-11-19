@@ -12,7 +12,7 @@ clear all
 set more off
 set rmsg on
 
-cd /Users/miguelportela/Documents/GitHub/R_Training/paneldata/logs
+cd C:\Users\mangelo.EEG\Documents\GitHub\R_Training\paneldata\logs
 
 capture log close
 log using paneldata.txt, text replace
