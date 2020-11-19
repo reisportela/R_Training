@@ -460,16 +460,27 @@ stargazer(pols,re,fe,be,title = "Regression analysis",
           style = "qje",
           type="text")
 
+
+
 # *FURTHER SPECIFICATION TESTS FOR PANEL DATA*
 #   
 #   // # Test for heteroskedasticity within panel data
 #   
 
+# H0) The null hypothesis for the Breusch-Pagan test is homoskedasticity
+
 # takes too long to compute
 
-# bptest(data = nlswork_clean, ln_wage ~ 0 + union +
+# bptest(data = nlswork_clean, ln_wage ~ union +
 #          collgrad +age +agesq +tenure +tensq +
 #          not_smsa +south +c_city + factor(idcode), studentize=F)
+
+
+bptest(data = nlswork_balanced, ln_wage ~ union +
+         collgrad +age +agesq +tenure +tensq +
+         not_smsa +south +c_city + factor(idcode), studentize=F)
+
+
 
 # // # Test of serial correlation within panel data
 
@@ -494,7 +505,7 @@ pwartest(data = nlswork_balanced, ln_wage ~ union +
            collgrad +age +agesq +tenure +tensq +
            not_smsa +south +c_city)
 
-# Wooldridgeâs first-difference-based test
+# Wooldridge first-difference-based test
 
 pwfdtest(data = nlswork_balanced, ln_wage ~ union +
            collgrad +age +agesq +tenure +tensq +
@@ -510,7 +521,7 @@ pcdtest(data = nlswork_balanced, ln_wage ~ union +
           collgrad +age +agesq +tenure +tensq +
           not_smsa +south +c_city)
 
-# HIGH FIMENSIONAL FIXED-EFFECTS
+# HIGH DIMENSIONAL FIXED-EFFECTS
 
 ## CHECK: 'lfe' and 'fixest'
 ### https://github.com/sgaure/lfe
