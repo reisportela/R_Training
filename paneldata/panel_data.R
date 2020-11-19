@@ -5,8 +5,8 @@
 # https://bookdown.org/ccolonescu/RPoE4/
 # https://cran.r-project.org/web/packages/plm/vignettes/plmPackage.html
 
-# setwd("C:\\Users\\mangelo.EEG\\Documents\\GitHub\\R_Training\\paneldata")
-setwd("~/Documents/GitHub/R_Training/paneldata/")
+setwd("C:\\Users\\mangelo.EEG\\Documents\\GitHub\\R_Training\\paneldata")
+# setwd("~/Documents/GitHub/R_Training/paneldata/")
 
 # WHEN USING MYBINDER DEFINE
 # setwd("/home/jovyan/paneldata")
@@ -374,6 +374,33 @@ LSDV <- lm(data = nlswork_balanced, ln_wage ~ union +
              age +agesq +tenure +tensq +
              not_smsa +south +c_city + factor(idcode))
 summary(LSDV)
+
+fe_LSDV <- plm(data = nlswork_balanced, ln_wage ~ union +
+            age +agesq +tenure +tensq +
+            not_smsa +south +c_city, model="within", index=c("idcode", "year"))
+summary(fe_LSDV)
+
+stargazer(LSDV,fe_LSDV,title = "Regression analysis", 
+          model.numbers = FALSE,
+          column.labels = c("LSDV","FE"),
+          label = "regressions",
+          table.placement = "!ht",
+          notes.append = FALSE,
+          notes.align="l",
+          notes="Standard errors in parentheses.",
+          header = FALSE,
+          no.space = TRUE,
+          covariate.labels = c("Union","Age","Age sqrd.","Tenure","Tenure sqrd.","Not SMSA","South","City"),
+          omit = c("Constant"),
+          omit.stat = c("adj.rsq","f","ser"),
+          digits = 6,
+          digits.extra = 7,
+          omit.yes.no = c("Constant",""),
+          dep.var.caption="",
+          dep.var.labels.include = FALSE,
+          style = "qje",
+          type="text")
+
 
 # //Final slide 35
 # 
