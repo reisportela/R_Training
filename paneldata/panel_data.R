@@ -5,8 +5,8 @@
 # https://bookdown.org/ccolonescu/RPoE4/
 # https://cran.r-project.org/web/packages/plm/vignettes/plmPackage.html
 
-setwd("C:\\Users\\mangelo.EEG\\Documents\\GitHub\\R_Training\\paneldata")
-# setwd("~/Documents/GitHub/R_Training/paneldata/")
+# setwd("C:\\Users\\mangelo.EEG\\Documents\\GitHub\\R_Training\\paneldata")
+setwd("~/Documents/GitHub/R_Training/paneldata/")
 
 # WHEN USING MYBINDER DEFINE
 # setwd("/home/jovyan/paneldata")
@@ -46,7 +46,8 @@ pacman::p_load(stargazer,
                MASS,
                robustbase,
                sandwich,
-               broom)
+               broom,
+               pdynmc)
 
 # DATA
 
@@ -511,6 +512,62 @@ HDFE2b <- felm(data = nlswork_clean, ln_wage ~ union +
                  age +agesq +tenure +tensq +
                  not_smsa +south +c_city  | idcode + year, clustervar=c("idcode"))
 summary(HDFE2b)
+
+##############################################
+
+# SIMULATED DATA
+
+# Using package 'plm' -->> SIMULATED DATA (see the Stata file 'stata_do_example.do' that produces the data in folder tmp_files)
+
+simulated <- read_dta("data/data_simulation.dta")
+
+ftable(simulated$year)
+
+# // # 7.1. estimate OLS & FE benchmark models
+  
+  pols <- plm(data = simulated, lnwage ~ lag_lnwage + educ + exper + 
+              exper2 + yy3 + yy4 + yy5 + yy6 + yy7 + yy8 + yy9 + yy10, 
+              model="pooling", index=c("workerid", "year"))
+  re <- plm(data = simulated, lnwage ~ lag_lnwage + educ + exper + 
+              exper2 + yy3 + yy4 + yy5 + yy6 + yy7 + yy8 + yy9 + yy10, 
+            model="random", index=c("workerid", "year"))
+  
+  plmtest(pols, type=c("bp"))
+  
+  fe <- plm(data = simulated, lnwage ~ lag_lnwage + educ + exper + 
+              exper2 + yy3 + yy4 + yy5 + yy6 + yy7 + yy8 + yy9 + yy10, 
+            model="within", index=c("workerid", "year"))
+  
+  pFtest(fe, pols)
+  phtest(fe, re)
+  
+  pols_robust <- coeftest(pols, function(x) vcovHC(x, type = 'sss')) 
+  re_robust <- coeftest(re, function(x) vcovHC(x, type = 'sss')) 
+  fe_robust <- coeftest(fe, function(x) vcovHC(x, type = 'sss')) 
+  
+  stargazer(pols_robust,re_robust, fe_robust,title = "Regression analysis", 
+            model.numbers = FALSE,
+            column.labels = c("Pooled (cluster)","RE (cluster)","FE (cluster"),
+            label = "regressions",
+            table.placement = "!ht",
+            notes.append = FALSE,
+            notes.align="l",
+            notes="Standard errors in parentheses.",
+            header = FALSE,
+            no.space = TRUE,
+            omit = c("Constant"),
+            omit.stat = c("adj.rsq","f","ser"),
+            digits = 3,
+            digits.extra = 5,
+            omit.yes.no = c("Constant",""),
+            dep.var.caption="",
+            dep.var.labels.include = FALSE,
+            style = "qje",
+            type="text")
+  
+  ## OBSERVE THE MISTAKE FOLLOWING THE INTRODUCTION OF TIME DUMMIES AND EXPERIENCE IN
+  ## THE FIXED-EFFECTS MODEL
+  
 
 ##################################      
 

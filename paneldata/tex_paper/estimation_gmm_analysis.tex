@@ -1,0 +1,32 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{4}{c}}
+\hline\hline
+            &\multicolumn{1}{c}{OLS}&\multicolumn{1}{c}{FE}&\multicolumn{1}{c}{GMM-FD}&\multicolumn{1}{c}{GMM-Sys}\\
+\hline
+Education   &      0.0371\sym{***}&      0.0604\sym{***}&      0.0374         &      0.1249\sym{***}\\
+            &    (0.0009)         &    (0.0011)         &    (0.0279)         &    (0.0028)         \\
+[1em]
+Experience  &      0.0089\sym{***}&      0.0280\sym{***}&      0.0207\sym{***}&      0.0070\sym{***}\\
+            &    (0.0014)         &    (0.0072)         &    (0.0072)         &    (0.0023)         \\
+[1em]
+Experience sq.&     -0.0002\sym{***}&     -0.0000         &     -0.0000\sym{*}  &     -0.0001         \\
+            &    (0.0000)         &    (0.0000)         &    (0.0000)         &    (0.0001)         \\
+\hline
+\(N\)       &        4504         &        4504         &        4009         &        4504         \\
+Workers     &                     &    495.0000         &    495.0000         &    495.0000         \\
+$R^{2}$     &      0.9990         &      0.9999         &                     &                     \\
+Root MSE    &      0.1325         &      0.0454         &                     &                     \\
+AR(1)       &                     &                     &    -22.4538         &    -15.1006         \\
+p-value     &                     &                     &      0.0000         &      0.0000         \\
+AR(2)       &                     &                     &      1.6889         &      1.9020         \\
+p-value     &                     &                     &      0.0912         &      0.0572         \\
+Hansen      &                     &                     &                     &    139.5578         \\
+df          &                     &                     &                     &     16.0000         \\
+H p-value   &                     &                     &                     &      0.0000         \\
+\hline\hline
+\multicolumn{5}{l}{\footnotesize Notes: standard errors in parenthesis. Significance levels: *, 10\%;}\\
+\multicolumn{5}{l}{\footnotesize **, 5\%; ***, 1\%. The dependent variable is ln real GDP per workers.}\\
+\multicolumn{5}{l}{\footnotesize Source: own computations.}\\
+\end{tabular}
+}

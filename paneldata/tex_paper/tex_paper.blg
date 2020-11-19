@@ -1,0 +1,59 @@
+This is BibTeX, Version 0.99d (TeX Live 2019)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: tex_paper.aux
+The style file: apalike.bst
+Database file #1: references.bib
+I was expecting a `,' or a `}'---line 401 of file references.bib
+ :   
+ :   publisher={European Commission},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Too many commas in name 1 of "Blum, B., Claro, S. and Horstmann, I." for entry BlumClaroHorstmann2013
+while executing---line 1023 of file apalike.bst
+Too many commas in name 1 of "Blum, B., Claro, S. and Horstmann, I." for entry BlumClaroHorstmann2013
+while executing---line 1023 of file apalike.bst
+Warning--empty publisher in altomonte2013firm
+Too many commas in name 1 of "Blum, B., Claro, S. and Horstmann, I." for entry BlumClaroHorstmann2013
+while executing---line 1098 of file apalike.bst
+You've used 16 entries,
+            1935 wiz_defined-function locations,
+            580 strings with 6105 characters,
+and the built_in function-call counts, 6520 in all, are:
+= -- 663
+> -- 207
+< -- 13
++ -- 70
+- -- 66
+* -- 566
+:= -- 1101
+add.period$ -- 49
+call.type$ -- 16
+change.case$ -- 112
+chr.to.int$ -- 16
+cite$ -- 17
+duplicate$ -- 247
+empty$ -- 496
+format.name$ -- 90
+if$ -- 1286
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 17
+newline$ -- 83
+num.names$ -- 48
+pop$ -- 87
+preamble$ -- 1
+purify$ -- 113
+quote$ -- 0
+skip$ -- 186
+stack$ -- 0
+substring$ -- 566
+swap$ -- 31
+text.length$ -- 3
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 94
+warning$ -- 1
+while$ -- 64
+width$ -- 0
+write$ -- 210
+(There were 4 error messages)
