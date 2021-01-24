@@ -1,0 +1,196 @@
+---
+title: "Example with rSymPy"
+author: "M Portela"
+date: "1/9/2021"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+```{r rrsympy}
+# https://rdrr.io/cran/rSymPy/
+
+library(rSymPy)
+
+# create a SymPy variable called x
+sympy("var('x')")
+sympy("y = x*x")
+sympy("y")
+
+sympy("limit(1/x, x, oo)")
+
+# the next line fails under jython even without R
+# and seems to corrupt the rest of the session
+# sympy("(1/cos(x)).series(x, 0, 10)")
+
+sympy("diff(sin(2*x), x, 1)")
+sympy("diff(sin(2*x), x, 2)")
+
+sympy("integrate(exp(-x), (x, 0, oo))")
+
+sympy("xr = Symbol('xr', real=True)")
+sympy("exp(I*xr).expand(complex=True)")
+
+# Matrices are stored row by row (unlike R matrices)
+cat(sympy("A = Matrix([[1,x], [y,1]])"), "\n")
+cat(sympy("A**2"), "\n")
+
+
+
+## End(Not run)
+
+```
+
+```{r thetas}
+theta <- Var("theta")
+
+sin.series <- function(n) sympy(paste0(  "sin(theta).series(theta, 0, ", n, ")"))
+cos.series <- function(n) sympy(paste0(  "cos(theta).series(theta, 0, ", n, ")"))
+exp.series <- function(n) sympy(paste0("exp(I*theta).series(theta, 0, ", n, ")"))
+
+sympy("var('x')")
+sympy("y = sin(2*x)")
+sympy("y")
+bb <- sympy("y")
+aa <- sympy("diff(y, x, 1)")
+
+```
+The first order derivative of $`r bb`$ is
+
+\begin{equation}
+`r aa`
+\end{equation}
+
+or fsfsfs $`r sympy("diff(y, x, 1)")`$
+
+```{r}
+# https://kevinkotze.github.io/mm-tut1-symbolic/
+
+hh <- Var("c_t")
+hh <- Var("n_t")
+hh <- Var("sigma_p")
+hh <- Var("gamma_p")
+hh <- Var("lambda_t")
+hh <- Var("p_t")
+hh <- Var("w_t")
+hh <- Var("r_t")
+hh <- Var("k_t")
+hh <- Var("k_1t")
+hh <- Var("delta_p")
+hh <- Var("pi_t")
+
+sympy("Eq((c_t**(1 - sigma_p))/(1 - sigma_p) - (n_t**(1 + gamma_p))/(1 + gamma_p) - lambda_t*(p_t*c_t + p_t*k_1t - p_t*(1 - delta_p)*k_t - w_t*n_t - r_t*k_t - pi_t))")
+
+```
+
+$`r sympy("Eq((c_t**(1 - sigma_p))/(1 - sigma_p) - (n_t**(1 + gamma_p))/(1 + gamma_p) - lambda_t*(p_t*c_t + p_t*k_1t - p_t*(1 - delta_p)*k_t - w_t*n_t - r_t*k_t - pi_t))")`$
+
+
+```{r}
+library(Deriv)
+library(mosaic)
+library(mosaicCalc)
+library(rSymPy)
+
+myf1=function(x){1-exp(-lambda*x)}
+print(Deriv(myf1))
+
+```
+
+
+
+kajkdjaksjd
+
+
+```{r}
+library(tidyverse)
+library(Ryacas)
+
+# Make a few minor adjustments to theme_classic()
+# I'm using Encode Sans Condensed: https://fonts.google.com/specimen/Encode+Sans+Condensed
+theme_econ <- function() {
+  theme_classic(base_family = "Encode Sans Condensed") + 
+    theme(axis.title.x = element_text(margin = margin(t = 10)),
+          axis.title.y = element_text(margin = margin(r = 10)),
+          axis.title = element_text(family = "Encode Sans Condensed Medium"))
+}
+
+# Make all labels automatically use Encode Sans
+update_geom_defaults("label", list(family = "Encode Sans Condensed Bold"))
+
+# Yacas variables
+x <- Sym("x")
+y <- Sym("y")
+U <- Sym("U")
+```
+
+
+
+
+```{r}
+
+total_budget <- 45
+price_x <- 3
+price_y <- 1.5
+
+n_pizza <- total_budget / price_x
+n_pizza
+## [1] 15
+
+n_yogurt <- total_budget / price_y
+n_yogurt
+## [1] 30
+
+slope <- -n_yogurt / n_pizza
+slope
+## [1] -2
+
+
+budget <- function(x) (slope * x) + n_yogurt
+
+ggplot() + 
+  # Draw the line
+  stat_function(data = tibble(x = 0:15), aes(x = x),
+                fun = budget, color = "#638ccc", size = 1.5) +
+  # Add a label
+  annotate(geom = "label", x = 2.5, y = budget(2.5), 
+           label = "Budget", color = "#638ccc") +
+  labs(x = "Slices of pizza", y = "Bowls of frozen yogurt") +
+  # Make the axes go all the way to zero
+  scale_x_continuous(expand = c(0, 0), breaks = seq(0, 15, 5)) +
+  scale_y_continuous(expand = c(0, 0), breaks = seq(0, 30, 10)) +
+  coord_cartesian(xlim = c(0, 16), ylim = c(0, 32)) +
+  theme_econ()
+```
+
+
+See: https://www.andrewheiss.com/blog/2019/02/16/algebra-calculus-r-yacas/
+
+
+https://doc.sagemath.org/pdf/en/reference/calculus/calculus.pdf
+
+
