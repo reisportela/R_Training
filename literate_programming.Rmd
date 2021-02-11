@@ -9,7 +9,7 @@ output:
   ioslides_presentation: default
   pdf_document: default
 subtitle: LITERATE PROGRAMMING IN R MARKDOWN
-theme: Copenhagen
+theme: Singapore
 header-includes:
 - \usepackage{hyperref}
 - \hypersetup{ colorlinks=true, linkcolor=blue, urlcolor=blue, }
@@ -20,10 +20,10 @@ library(knitr)
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r echo=FALSE,results='hide',message=FALSE}
+```{r echo=FALSE, message=FALSE, results='hide'}
 rm(list = ls())
-# setwd("/Users/miguelportela/Documents/GitHub/R_Training")
-setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training")
+ setwd("/Users/miguelportela/Documents/GitHub/R_Training")
+#setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training")
 # install.packages("rmarkdown")
 library(tidyverse)
 library(ggplot2)
