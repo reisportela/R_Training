@@ -1,0 +1,181 @@
+---
+title: "Week 1 - Donny Lofland"
+output:
+  word_document: default
+  html_notebook: default
+  pdf_document: default
+  html_document:
+    df_print: paged
+---
+```{r}
+# SOURCE: https://rpubs.com/djlofland/math_workshop_1
+library(Deriv)
+library(mosaic)
+library(mosaicCalc)
+library(rSymPy)
+```
+
+Find the derivatives with the respect to x of the following.
+
+1. F(x|x≥0)=$1−e^{(−\lambda x)}$
+```{r}
+myf1=function(x){1-exp(-lambda*x)}
+print(Deriv(myf1))
+```
+***
+2. $F(x|b>a)=\frac{(x−a)}{(b−a)}$
+```{r}
+myf2 = function(x){(x-a)/(b-a)}
+print(Deriv(myf2))
+```
+***
+3. $F(x|a<x≤c≤b)=\frac{(x−a)^2}{(b−a)(c−a)}$
+```{r}
+myf3 = function(x){(x-a)^2/((b-a)(c-a))}
+print(Deriv(myf3))
+```
+***
+4. $F(x|a≤c<x<b)=1−\frac{(b−x)^2}{(b−a)(c−a)}$
+```{r}
+myf4 = function(x)1-(b-x)^2/((b-a)(c-a))
+print(Deriv(myf4))
+```
+
+***
+Solve the following definite and indefinite integrals
+
+5. $\int_0^{10} 3x^3dx$
+```{r}
+myf5=function(x)3*x^3
+integrate(Vectorize(myf5),0,10)
+```
+***
+6. $\int_0^x x\lambda e^{−\lambda x}dx$
+
+Solution:
+
+Substitution
+$u=-\lambda x$; 
+$du=-\lambda dx$; 
+$dx=\frac{du}{-\lambda}$; 
+
+$\int -u e^u \frac{du}{-\lambda}$;
+
+$\frac{1}{\lambda}\int u e^u du$
+
+solve $\int u e^u du$ by Parts:
+$s=u; ds=du$; 
+$dv=e^udu; v=e^u+C$; 
+
+formula: $sv-\int vds$
+
+$=u e^u - \int e^u du$
+
+$=u e^u - e^u$
+
+$= (u-1)e^u$
+
+plugging back in: $\frac{1}{\lambda}(u-1)e^u$ 
+
+replacing $u=-\lambda x$ back in: $\frac{1}{\lambda}\int u e^u du$
+
+$=\frac{1}{\lambda}(-\lambda x - 1)e^{-\lambda x}$
+
+$= -\frac{(\lambda x + 1) e^{-\lambda x}}{\lambda}$
+
+lastly we need to integrate over $0\to x$:
+
+$-\frac{(\lambda x + 1) e^{-\lambda x}}{\lambda} ]_0^x$
+$=-\frac{(\lambda x + 1) e^{-\lambda x}}{\lambda} - \frac{1}{\lambda}$
+$=-\frac{(\lambda x + 1) e^{-\lambda x}+1}{\lambda}$
+
+
+```{r}
+library(rSymPy)
+sympy("x = Symbol('x')")
+sympy("l = Symbol('lambda')")
+
+sympy("integrate(x*l*exp(-l*x),(x,0,x))")
+```
+Answer from sympy: $\frac{-\lambda e^{-\lambda x}}{\lambda^2}-\frac{x e^{-\lambda x}}{\lambda}+\frac{1}{\lambda}$
+
+I'm not sure how to get r to calculate this or it was intended that we to this by hand.  I made my best stab at doing by hand and code in latex for the notebook.
+
+***
+7. $\int_0^{0.5} \frac{1}{b−a}dx$
+
+Solution:
+$\frac{1}{b-a} x ]_0^x = \frac{x}{b-a} - 0 = \frac{x}{b-a}$
+
+```{r}
+library(rSymPy)
+sympy("x = Symbol('x')")
+sympy("a = Symbol('alpha')")
+sympy("B = Symbol('beta')")
+
+sympy("integrate(1/(B-a),(x,0,x))")
+```
+$\frac{x}{b-a}$
+
+I'm not sure how to get r to calculate this or it was intended that we to this by hand.  I'm a python guy so brought over sympy to help.  I made my best stab at doing by hand and code in latex for the notebook.
+
+***
+8. $\int_0^x x \frac{1}{\Gamma(\alpha)\beta^\alpha} x^{\alpha -1} e^{-\beta x} dx$
+
+Solution:
+```{r}
+library(rSymPy)
+sympy("x = Symbol('x')")
+sympy("a = Symbol('alpha')")
+sympy("B = Symbol('beta')")
+sympy("G = Symbol('Gamma')")
+
+sympy("integrate(x * (G*a*B**a)**(-1) * x**(a) * exp(-B*x), (x,0,x))")
+```
+sympy solution: $\frac{x \beta^{-\alpha}x^{\alpha-1}e^{-\beta x}}{\Gamma \alpha}]_0^x$
+
+I really have no idea how to tackle this or was was hinted by the gamma function.  I'm hoping we can cover this at some point so I can understand exactly how to approach the problem.  Did you want us to hand solve this, use r or some combination?  I had assumed this was a r task since we were using R to solve the early problems.  Anyways, for problem 7 & 8, I could certainly use some insights.  Thanks! Donny
+
+
+Hint: the last part of the equation is beginning with the gamma function is a Gamma probability distribution function. Try rearranging the terms to integrate another Gamma distribution out of the integral, as pdfs must integrate to 1.
+
+***
+
+With the following matrix,
+$X = \begin{bmatrix}1 & 2 & 3 \\ 3 & 3 & 1 \\ 4 & 6 & 8\end{bmatrix}$
+```{r}
+myMatrix <- matrix(c(1,3,4,2,3,6,3,1,8),3,3)
+myMatrix
+```
+***
+9. Invert it using Gaussian row reduction.
+```{r}
+library(matlib)
+gaussianElimination(myMatrix, numeric(3))
+gaussianElimination(myMatrix, diag(3))
+inv(myMatrix)
+```
+***
+10. Find the determinant.
+```{r}
+det(myMatrix)
+```
+***
+11. Conduct LU decomposition
+```{r}
+lum <- lu(myMatrix)
+elu <- expand(lum)
+
+(L <- elu$L)
+(U <- elu$U)
+(P <- elu$P)
+
+L %*% U
+```
+***
+12. Multiply the matrix by it’s inverse.
+```{r}
+inv <- round(solve(myMatrix),2)
+myMatrix%*%inv
+```
+
