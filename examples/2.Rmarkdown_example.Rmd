@@ -38,7 +38,7 @@ knitr::opts_chunk$set(echo = TRUE)
 rm(list = ls())
 
 # setwd("/Users/miguelportela/Documents/GitHub/R_Training/examples")
-setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/examples")
+setwd("C:\\Users\\exu0o9\\Documents\\GitHub\\R_Training\\examples")
 
 library(tidyverse)
 library(ggplot2)

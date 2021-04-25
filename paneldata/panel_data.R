@@ -5,7 +5,9 @@
 # https://bookdown.org/ccolonescu/RPoE4/
 # https://cran.r-project.org/web/packages/plm/vignettes/plmPackage.html
 
-setwd("C:\\Users\\mangelo.EEG\\Documents\\GitHub\\R_Training\\paneldata")
+# setwd("C:\\Users\\mangelo.EEG\\Documents\\GitHub\\R_Training\\paneldata")
+setwd("C:\\Users\\exu0o9\\Documents\\GitHub\\R_Training\\paneldata")
+
 # setwd("~/Documents/GitHub/R_Training/paneldata/")
 
 # WHEN USING MYBINDER DEFINE
@@ -63,6 +65,7 @@ nlswork <- read_dta("nlswork.dta")
 dplyr::glimpse(nlswork$ln_wage)
 
 ExpData(nlswork,type=1)
+
 ExpData(nlswork,type=2)
 
 # STATISTICS
