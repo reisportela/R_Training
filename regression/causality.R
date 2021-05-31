@@ -392,4 +392,4 @@ world_data %>%
             style = "qje",
             type="text")
   
-# sink()
+ sink()
