@@ -5,8 +5,8 @@
 # https://bookdown.org/ccolonescu/RPoE4/
 # https://cran.r-project.org/web/packages/plm/vignettes/plmPackage.html
 
-# setwd("C:\\Users\\mangelo.EEG\\Documents\\GitHub\\R_Training\\paneldata")
-setwd("C:\\Users\\exu0o9\\Documents\\GitHub\\R_Training\\paneldata")
+setwd("C:\\Users\\mangelo.EEG\\Documents\\GitHub\\R_Training\\paneldata")
+#setwd("C:\\Users\\exu0o9\\Documents\\GitHub\\R_Training\\paneldata")
 
 # setwd("~/Documents/GitHub/R_Training/paneldata/")
 
