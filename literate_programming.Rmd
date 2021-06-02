@@ -22,8 +22,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r echo=FALSE,results='hide',message=FALSE}
 rm(list = ls())
-# setwd("/Users/miguelportela/Documents/GitHub/R_Training")
-setwd("C:\\Users\\exu0o9\\Documents\\GitHub\\R_Training")
+setwd("/Users/miguelportela/Documents/GitHub/R_Training")
+# setwd("C:\\Users\\exu0o9\\Documents\\GitHub\\R_Training")
 # install.packages("rmarkdown")
 library(tidyverse)
 library(ggplot2)
@@ -47,8 +47,8 @@ summary(ln_wage)
   - You can install a lightweight Latex flavor: [TinyTex](https://yihui.name/tinytex/)
 
 ```{r eval=FALSE}
-  install.packages('tinytex')
-  tinytex::install_tinytex()  
+#  install.packages('tinytex')
+#  tinytex::install_tinytex()  
 ```
 
   - or a complete distribution: [MikTex](https://miktex.org/download) or [MacTex](https://tug.org/mactex/)

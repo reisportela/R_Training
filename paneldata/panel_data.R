@@ -5,10 +5,10 @@
 # https://bookdown.org/ccolonescu/RPoE4/
 # https://cran.r-project.org/web/packages/plm/vignettes/plmPackage.html
 
-setwd("C:\\Users\\mangelo.EEG\\Documents\\GitHub\\R_Training\\paneldata")
+#setwd("C:\\Users\\mangelo.EEG\\Documents\\GitHub\\R_Training\\paneldata")
 #setwd("C:\\Users\\exu0o9\\Documents\\GitHub\\R_Training\\paneldata")
 
-# setwd("~/Documents/GitHub/R_Training/paneldata/")
+setwd("~/Documents/GitHub/R_Training/paneldata/")
 
 # WHEN USING MYBINDER DEFINE
 # setwd("/home/jovyan/paneldata")
@@ -19,41 +19,68 @@ rm(list = ls())
 
 # sink("Regression.txt")
 
+start_time <- Sys.time()
+
 ##################################      
+
+# library(pacman)
+# 
+# pacman::p_load(stargazer,
+#                kableExtra,
+#                ExPanDaR,
+#                SmartEDA,
+#                visdat,
+#                naniar,
+#                janitor,
+#                summarytools,
+#                plm,
+#                lfe,
+#                fixest,
+#                clubSandwich,
+#                car,
+#                gplots,
+#                tseries,
+#                lmtest,
+#                dlookr,
+#                MASS,
+#                robustbase,
+#                sandwich,
+#                broom,
+#                pdynmc)
+
+#install.packages("librarian")
 
 # LIBRARIES
 
-library(pacman)
+librarian::shelf(stargazer,
+                 kableExtra,
+                 ExPanDaR,
+                 SmartEDA,
+                 visdat,
+                 naniar,
+                 janitor,
+                 summarytools,
+                 plm,
+                 lfe,
+                 fixest,
+                 clubSandwich,
+                 car,
+                 gplots,
+                 tseries,
+                 lmtest,
+                 dlookr,
+                 MASS,
+                 robustbase,
+                 sandwich,
+                 broom,
+                 pdynmc)
 
 library(tidyverse) # Modern data science library 
 library(haven)
 
-pacman::p_load(stargazer,
-               kableExtra,
-               ExPanDaR,
-               SmartEDA,
-               visdat,
-               naniar,
-               janitor,
-               summarytools,
-               plm,
-               lfe,
-               fixest,
-               clubSandwich,
-               car,
-               gplots,
-               tseries,
-               lmtest,
-               dlookr,
-               MASS,
-               robustbase,
-               sandwich,
-               broom,
-               pdynmc)
-
 # DATA
 
-nlswork <- read_dta("nlswork.dta")
+nlswork <- read_dta("data/nlswork.dta")
 
 # View(world_data)
 
@@ -245,7 +272,7 @@ stargazer(pols,pols_robust,title = "Regression analysis",
 
 # for a balanced panel we have
 
-nlswork_balanced <- read_dta("nlswork_balanced.dta")
+nlswork_balanced <- read_dta("data/nlswork_balanced.dta")
 
 re_balanced <- plm(data = nlswork_balanced, ln_wage ~ union +
                      collgrad +age +agesq +tenure +tensq +
@@ -371,7 +398,7 @@ Wald_test(fe, vcov = "CR1", cluster = idcode, constraints = constrain_zero(c("ag
 # *LSDV Estimator=FE estimator* <<==>> takes too long
 # *using a smaller sample*
 
-nlswork_balanced <- read_dta("nlswork_balanced_small.dta")
+nlswork_balanced <- read_dta("data/nlswork_balanced_small.dta")
 
 LSDV <- lm(data = nlswork_balanced, ln_wage ~ union +
              age +agesq +tenure +tensq +
@@ -600,7 +627,7 @@ stargazer(simulated,
 
 ## DASHBOARD
 
-  ExPanD()
+  ####### ExPanD()
 
 ## REGRESSIONS
 
@@ -649,5 +676,9 @@ stargazer(pols_robust,re_robust, fe_robust,title = "Regression analysis",
 ## THE FIXED-EFFECTS MODEL
 
 ##################################      
+
+end_time <- Sys.time()
+
+  end_time - start_time
 
 # sink()
