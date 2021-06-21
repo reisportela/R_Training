@@ -5,8 +5,8 @@ date: "October 27 and 29, 2020"
 institute: "Universidade do Minho"
 output:
   beamer_presentation: default
-  slidy_presentation: default
   ioslides_presentation: default
+  slidy_presentation: default
   pdf_document: default
 subtitle: LITERATE PROGRAMMING IN R MARKDOWN
 theme: Copenhagen
@@ -40,284 +40,288 @@ summary(ln_wage)
 
 # Setup and references
 
-1. [Pandoc](https://pandoc.org/installing.html)
 
-2. Latex
 
-  - You can install a lightweight Latex flavor: [TinyTex](https://yihui.name/tinytex/)
+1.  [Pandoc](https://pandoc.org/installing.html)
+
+2.  Latex
+
+-   You can install a lightweight Latex flavor: [TinyTex](https://yihui.name/tinytex/)
 
 ```{r eval=FALSE}
 #  install.packages('tinytex')
 #  tinytex::install_tinytex()  
 ```
 
-  - or a complete distribution: [MikTex](https://miktex.org/download) or [MacTex](https://tug.org/mactex/)
+-   or a complete distribution: [MikTex](https://miktex.org/download) or [MacTex](https://tug.org/mactex/)
 
-3. [Sumatra PDF](https://www.sumatrapdfreader.org/download-free-pdf-viewer.html) or [Skim](https://skim-app.sourceforge.io/)
+3.  [Sumatra PDF](https://www.sumatrapdfreader.org/download-free-pdf-viewer.html) or [Skim](https://skim-app.sourceforge.io/)
 
-4. Markdown references
+4.  Markdown references
 
-  - [Markdown Guide](https://www.markdownguide.org/)
+-   [Markdown Guide](https://www.markdownguide.org/)
 
-  - [R Markdown - Get Started](https://rmarkdown.rstudio.com/lesson-1.html)
+-   [R Markdown - Get Started](https://rmarkdown.rstudio.com/lesson-1.html)
 
-  - [R Rarkdown: The definitive guide](https://bookdown.org/yihui/rmarkdown/)
+-   [R Rarkdown: The definitive guide](https://bookdown.org/yihui/rmarkdown/)
 
 # By the end of the day
 
 you can write a report
 
-- Claxton, G., Rae, M., Long, M., Damico, A., Foster, G. and Whitmore, H., 2017. [2017 Employer Health Benefits Survey](http://files.kff.org/attachment/Report-Employer-Health-Benefits-Annual-Survey-2017). _Kaiser Family Foundation and Health Research & Educational Trust_.
+-   Claxton, G., Rae, M., Long, M., Damico, A., Foster, G. and Whitmore, H., 2017. [2017 Employer Health Benefits Survey](http://files.kff.org/attachment/Report-Employer-Health-Benefits-Annual-Survey-2017). *Kaiser Family Foundation and Health Research & Educational Trust*.
 
 a paper
 
-- Hartgerink, C. H. J., Wicherts, J. M., & van Assen, M. A. L. M. (2017). [Too Good to be False: Nonsignificant Results Revisited](https://www.collabra.org/articles/10.1525/collabra.71/galley/82/download/). _Collabra: Psychology_, 3(1), 9.
+-   Hartgerink, C. H. J., Wicherts, J. M., & van Assen, M. A. L. M. (2017). [Too Good to be False: Nonsignificant Results Revisited](https://www.collabra.org/articles/10.1525/collabra.71/galley/82/download/). *Collabra: Psychology*, 3(1), 9.
 
 edit a book
 
-- Xie, Y., Allaire, J.J. and Grolemund, G., 2018. [_R Markdown: The Definitive Guide_](https://bookdown.org/yihui/rmarkdown/). CRC Press.
+-   Xie, Y., Allaire, J.J. and Grolemund, G., 2018. [*R Markdown: The Definitive Guide*](https://bookdown.org/yihui/rmarkdown/). CRC Press.
 
 or build your website
 
-- [Rob J Hyndman’s website](https://robjhyndman.com/)
+-   [Rob J Hyndman's website](https://robjhyndman.com/)
 
 # Introduction
 
-- What is [**Literate programming**?](https://en.wikipedia.org/wiki/Literate_programming)
+-   What is [**Literate programming**?](https://en.wikipedia.org/wiki/Literate_programming)
 
-> Literate programming refers to melding a descriptive narrative and computer code into a single document, from which both
-> human-friendly documentation and computer readable files can be created
+> Literate programming refers to melding a descriptive narrative and computer code into a single document, from which both human-friendly documentation and computer readable files can be created
 
-- Your work should be transparent, easy to update, easy to maintain, and easy to replicate
+-   Your work should be transparent, easy to update, easy to maintain, and easy to replicate
 
-- Data analysis requires reproducibility of results
+-   Data analysis requires reproducibility of results
 
-- Useful for teaching
+-   Useful for teaching
 
 # Preliminaries: Pandoc
 
-- [**Pandoc**](https://pandoc.org/) is a command line tool to convert across different document formats. Try it online [**here**](https://pandoc.org/try/)
+-   [**Pandoc**](https://pandoc.org/) is a command line tool to convert across different document formats. Try it online [**here**](https://pandoc.org/try/)
 
-- It supports many formats such as Markdown, HTML, docx, pdf, $LaTeX$, etc
+-   It supports many formats such as Markdown, HTML, docx, pdf, $LaTeX$, etc
 
-- It is simple to use: to convert the file *example1.md* to
+-   It is simple to use: to convert the file *example1.md* to
 
-  - HTML
-  ```
-  pandoc -s example1.md -o example1.html
-  ```
-  - PDF
-  ```
-  pandoc -s example1.md -o example1.pdf
-  ```
-  - docx
-  ```
-  pandoc -s example1.md -o example1.pdf
-  ```
+    -   HTML
 
-- Note: `-s` stands for source and `-o` for output
+    <!-- -->
+
+        pandoc -s example1.md -o example1.html
+
+    -   PDF
+
+    <!-- -->
+
+        pandoc -s example1.md -o example1.pdf
+
+    -   docx
+
+    <!-- -->
+
+        pandoc -s example1.md -o example1.pdf
+
+-   Note: `-s` stands for source and `-o` for output
 
 # Preliminaries: Markdown
 
-- [**Markdown**](https://en.wikipedia.org/wiki/Markdown) is a lightweight markup language with plain text formatting syntax that was invented by John Gruber
+-   [**Markdown**](https://en.wikipedia.org/wiki/Markdown) is a lightweight markup language with plain text formatting syntax that was invented by John Gruber
 
-- There are several "flavors" of Markdown
+-   There are several "flavors" of Markdown
 
-- Markdown files can be created in any text editor
+-   Markdown files can be created in any text editor
 
-- and can be easily converted to other formats
+-   and can be easily converted to other formats
 
-- They are text files usually with the extension ".md"
+-   They are text files usually with the extension ".md"
 
-- There are many editors specific for Markdown (eg: [**Typora**](https://typora.io/), [**Mou**](http://25.io/mou/), [**Draft**](https://draftin.com/), etc) but you can use general editors (eg: [**Atom**](https://atom.io/), [**Sublime Text**](https://www.sublimetext.com/) or [**RStudio**](https://rstudio.com/))
+-   There are many editors specific for Markdown (eg: [**Typora**](https://typora.io/), [**Mou**](http://25.io/mou/), [**Draft**](https://draftin.com/), etc) but you can use general editors (eg: [**Atom**](https://atom.io/), [**Sublime Text**](https://www.sublimetext.com/) or [**RStudio**](https://rstudio.com/))
 
-- Used in popular sites such as [**GitHub**](https://github.com/), [**Reddit**](https://www.reddit.com/),[**Stack Exchange**](https://stackexchange.com/), etc
+-   Used in popular sites such as [**GitHub**](https://github.com/), [**Reddit**](https://www.reddit.com/),[**Stack Exchange**](https://stackexchange.com/), etc
 
 # Markdown components
 
-1. **Metadata**: written between a pair of three dashes **`---`**
+1.  **Metadata**: written between a pair of three dashes **`---`**
 
-2. **Text**: regular text and math elements, plus tables, images and figures
+2.  **Text**: regular text and math elements, plus tables, images and figures
 
-3. **Code**:
-  
-  - _inline R code_: starts with `` `r `` and ends with a backtick `` ` ``
-  
-  - _code chunk_: starts with three backticks like ```` ```{r} ```` where `r` indicates the language name and ends with three backticks ```` ``` ````
+3.  **Code**:
+
+-   *inline R code*: starts with `` `r `` and ends with a backtick `` ` ``
+
+-   *code chunk*: starts with three backticks like ```` ```{r} ```` where `r` indicates the language name and ends with three backticks ```` ``` ````
 
 # Markdown syntax: quick introduction
 
-- Creating Headers
+-   Creating Headers
 
-```
-This is header 1
-================
-```
+<!-- -->
+
+    This is header 1
+    ================
 
 or
 
-```
-Another header
---------------
-```
+    Another header
+    --------------
 
-- or headers with different levels
+-   or headers with different levels
 
-```
-# This is Header 1
-...some text...
-## And now Header 2
-...more text...
-### Finally Header 3
-... and a little more text.
-```
+<!-- -->
+
+    # This is Header 1
+    ...some text...
+    ## And now Header 2
+    ...more text...
+    ### Finally Header 3
+    ... and a little more text.
 
 # Markdown syntax (continued)
 
-- Emphasizing text
+-   Emphasizing text
 
-```
-this is *Italic* but _this_ also works
-```
+<!-- -->
 
-```
-this will write in **bold** but you can also __do this__
-```
+    this is *Italic* but _this_ also works
 
-```
-It is also possible to ~~Strikeout~~ text
-```
+    this will write in **bold** but you can also __do this__
 
-- Creating unordered lists (use "*" "+" or "-"")
-```
-* Point 1
-+ Point 2
-```
+    It is also possible to ~~Strikeout~~ text
+
+-   Creating unordered lists (use "\*" "+" or "-"")
+
+<!-- -->
+
+    * Point 1
+    + Point 2
 
 # Markdown syntax (continued)
 
-- You can create structured lists
+-   You can create structured lists
 
-```
-- Point 1
-  - Point 12
-- Point 2
-  - Point 21
-```
+<!-- -->
 
-- insert links to text. Simply write
-```
-[text](url)
-```
-- insert images
-```
-![text](file "Description")
-```
+    - Point 1
+      - Point 12
+    - Point 2
+      - Point 21
 
-- You can add tables
+-   insert links to text. Simply write
 
-- and even references
+<!-- -->
+
+    [text](url)
+
+-   insert images
+
+<!-- -->
+
+    ![text](file "Description")
+
+-   You can add tables
+
+-   and even references
 
 # Markdown syntax (continued)
 
-- Markdown documents are highly flexible because they can incorporate other languages
+-   Markdown documents are highly flexible because they can incorporate other languages
 
-- An example is [$LaTeX$](https://en.wikipedia.org/wiki/LaTeX). To add $LaTeX$ code you need to enclose it in "$"
-If you write
-```
-$a^2+b^2=c^2$
-```
+-   An example is [$LaTeX$](https://en.wikipedia.org/wiki/LaTeX). To add $LaTeX$ code you need to enclose it in "\$" If you write
+
+<!-- -->
+
+    $a^2+b^2=c^2$
+
 you will see $a^2+b^2=c^2$
 
-- Markdown also accepts raw HTML code
+-   Markdown also accepts raw HTML code
 
-- You can incorporate code from other languages (eg: Python, Java, R, Stata, etc)
+-   You can incorporate code from other languages (eg: Python, Java, R, Stata, etc)
 
-- This is typically done in a "code fence": lines with three or more backticks or tildes inserted before and after
+-   This is typically done in a "code fence": lines with three or more backticks or tildes inserted before and after
 
 # Markdown syntax (continued)
 
-- You can find a quick guide for syntax [**here**](https://www.markdownguide.org/cheat-sheet/) or more detailed information [**here**](https://daringfireball.net/projects/markdown/syntax)
+-   You can find a quick guide for syntax [**here**](https://www.markdownguide.org/cheat-sheet/) or more detailed information [**here**](https://daringfireball.net/projects/markdown/syntax)
 
-- To get an idea how Markdown works you can use an online editor such as [**Dillinger**](https://dillinger.io/) or [**Markdown here**](https://markdown-here.com/livedemo.html)
+-   To get an idea how Markdown works you can use an online editor such as [**Dillinger**](https://dillinger.io/) or [**Markdown here**](https://markdown-here.com/livedemo.html)
 
-- and if you need to create tables you can use [**this**](http://www.tablesgenerator.com/markdown_tables) great online tool
+-   and if you need to create tables you can use [**this**](http://www.tablesgenerator.com/markdown_tables) great online tool
 
-- You can use the [Cheat sheets](https://www.rstudio.com/resources/cheatsheets/) - also available via the Help menu in RStudio
+-   You can use the [Cheat sheets](https://www.rstudio.com/resources/cheatsheets/) - also available via the Help menu in RStudio
 
-- For the exercises explore the random text generator [Lorem ipsum](https://loremipsum.io/generator/)
-
+-   For the exercises explore the random text generator [Lorem ipsum](https://loremipsum.io/generator/)
 
 # Metadata
 
-- You can add a title, author and date as metadata. Simply start the document as
+-   You can add a title, author and date as metadata. Simply start the document as
 
-```
-% Fill in title
-% Fill in Name
-% 23 January 2019
-```
+<!-- -->
 
-- Or you can use the [**YAML**](https://en.wikipedia.org/wiki/YAML) format. See [**Pandoc User's Guide**](https://pandoc.org/MANUAL.pdf) for more info. To add title, author and date place at the top of the document
+    % Fill in title
+    % Fill in Name
+    % 23 January 2019
 
-```
----
-title: Fill in title
-author: Fill in name
-date: 23 January 2019
----
-```
+-   Or you can use the [**YAML**](https://en.wikipedia.org/wiki/YAML) format. See [**Pandoc User's Guide**](https://pandoc.org/MANUAL.pdf) for more info. To add title, author and date place at the top of the document
+
+<!-- -->
+
+    ---
+    title: Fill in title
+    author: Fill in name
+    date: 23 January 2019
+    ---
 
 # Definig the output formats
 
-- `pdf_document`
+-   `pdf_document`
 
-- `html_document`
+-   `html_document`
 
-- `word_document`
+-   `word_document`
 
-- `beamer_presentation`
+-   `beamer_presentation`
 
-- `ioslides_presentation`
+-   `ioslides_presentation`
 
-- `powerpoint_presentation`
+-   `powerpoint_presentation`
 
-```
----
-title: Fill in title
-author: Fill in name
-date: 23 January 2019
-output:
-  pdf_document:
-    toc: true
----
-```
+<!-- -->
+
+    ---
+    title: Fill in title
+    author: Fill in name
+    date: 23 January 2019
+    output:
+      pdf_document:
+        toc: true
+    ---
 
 # Adding citations to the document
 
-- it is possible to add citations from a [**bibtex**](http://www.bibtex.org/) file
+-   it is possible to add citations from a [**bibtex**](http://www.bibtex.org/) file
 
-- place the "bib" file (say "references.bib") in the working folder
+-   place the "bib" file (say "references.bib") in the working folder
 
-- modify the YAML by adding a line pointing to the bib file
+-   modify the YAML by adding a line pointing to the bib file
 
-```
-bibliography: references.bib
-```
+<!-- -->
 
-- At the bottom of the document add a line
+    bibliography: references.bib
+
+-   At the bottom of the document add a line
 
 `## References`
 
-- use the syntax [@key] to identify the reference
+-   use the syntax [@key] to identify the reference
 
 # Advanced use: customizing outputs
 
-- The default style for citations is the Chicago Manual of Style author-date format.
+-   The default style for citations is the Chicago Manual of Style author-date format.
 
-- But you can use any style available in Citation Style Language (CSL) in the [Zotero Style Repository](https://www.zotero.org/styles).
+-   But you can use any style available in Citation Style Language (CSL) in the [Zotero Style Repository](https://www.zotero.org/styles).
 
-- To change style download the "csl" file and add a reference to it in the YAML block. for example
+-   To change style download the "csl" file and add a reference to it in the YAML block. for example
 
 ```{r eval=FALSE}
 ---
@@ -331,6 +335,6 @@ csl: thisstyle.csl
 
 # Further information
 
-- [LITERATE PROGRAMMING IN R MARKDOWN: GitHub repository](https://github.com/reisportela/R_Training)
+-   [LITERATE PROGRAMMING IN R MARKDOWN: GitHub repository](https://github.com/reisportela/R_Training)
 
-- [Project available in RStudio Cloud](https://rstudio.cloud/spaces/100541/join?access_code=znpd9DEjghnfbdj%2FvHVjuOTQA0gjkVIDI1xbQXIC)
+-   [Project available in RStudio Cloud](https://rstudio.cloud/spaces/100541/join?access_code=znpd9DEjghnfbdj%2FvHVjuOTQA0gjkVIDI1xbQXIC)

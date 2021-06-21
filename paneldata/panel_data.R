@@ -1,6 +1,5 @@
-# Applied Data Analysis School: October/november 2020
-# 7. PANEL DATA MODELS WITH R | By: Miguel Portela and Anabela Carneiro | 17 & 19 November
-# https://www.gades-solutions.com/project/data-analysis-school/
+# Panel Data Models with R - June 2021
+# By: Miguel Portela and Anabela Carneiro
 # NOTES: check
 # https://bookdown.org/ccolonescu/RPoE4/
 # https://cran.r-project.org/web/packages/plm/vignettes/plmPackage.html
@@ -17,7 +16,7 @@ rm(list = ls())
 
 # LOG FILE
 
-# sink("Regression.txt")
+# sink("results/Regression.txt")
 
 start_time <- Sys.time()
 
@@ -117,6 +116,7 @@ ExpNumViz(nlswork,Page=c(6,2))
 
 # ExpOutliers(nlswork,varlist=c("grade"))
 
+## MISSING VALUES
 vis_dat(nlswork)
 
 # vis_miss(nlswork) # ALTERNATIVE
@@ -184,8 +184,6 @@ nlswork_clean$tensq <- nlswork_clean$tenure^2
 
 ExpData(nlswork_clean,type=1)
 ExpData(nlswork_clean,type=2)
-
-nlswork_clean <- nlswork_clean[order(idcode,year),]
 
 attach(nlswork_clean)
 
