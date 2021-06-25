@@ -7,6 +7,8 @@ setwd("C:\\Users\\mangelo.EEG\\Documents\\GitHub\\R_Training\\regression")
 
 # <<>> ----- <<>> #
 
+# install.packages('kableExtra')
+
 ## LIBRARIES
 
   library(tidyverse)
@@ -59,7 +61,10 @@ summary(psm_nn)
 ## DATA
 data(lalonde)
 
-lalonde.formu <- treat~age + educ + black + hispan + married + nodegree + re74 + re75
+lalonde$race.f <- factor(lalonde$race)
+is.factor(lalonde$race.f)
+
+lalonde.formu <- treat~age + educ + race.f + married + nodegree + re74 + re75
 glm1 <- glm(lalonde.formu, family=binomial, data=lalonde)
 
 stargazer::stargazer(glm1,type="text",single.row = TRUE)
@@ -75,7 +80,7 @@ stargazer::stargazer(glm1,type="text",single.row = TRUE)
   mahal.match<-match.data(m.mahal)
 
 ## PSM nearest neighbor
-  
+
   m.nn<-matchit(lalonde.formu, data = lalonde, caliper=0.1, method ="nearest")
 
 ## m.nn<-matchit(lalonde.formu, data = lalonde, ratio=1, method ="nearest")
