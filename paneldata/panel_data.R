@@ -1,14 +1,13 @@
-# Applied Data Analysis School: October/november 2020
-# 7. PANEL DATA MODELS WITH R | By: Miguel Portela and Anabela Carneiro | 17 & 19 November
-# https://www.gades-solutions.com/project/data-analysis-school/
+# Data Analysis: 2021
+# PANEL DATA MODELS WITH R | By: Miguel Portela and Anabela Carneiro | 17 & 19 November
 # NOTES: check
 # https://bookdown.org/ccolonescu/RPoE4/
 # https://cran.r-project.org/web/packages/plm/vignettes/plmPackage.html
 
-#setwd("C:\\Users\\mangelo.EEG\\Documents\\GitHub\\R_Training\\paneldata")
+setwd("C:\\Users\\mangelo.EEG\\Documents\\GitHub\\R_Training\\paneldata")
 #setwd("C:\\Users\\exu0o9\\Documents\\GitHub\\R_Training\\paneldata")
 
-setwd("~/Documents/GitHub/R_Training/paneldata/")
+#setwd("~/Documents/GitHub/R_Training/paneldata/")
 
 # WHEN USING MYBINDER DEFINE
 # setwd("/home/jovyan/paneldata")

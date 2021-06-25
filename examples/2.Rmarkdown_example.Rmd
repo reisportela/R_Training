@@ -1,7 +1,7 @@
 ---
 title: "Simple markdown exercise"
 author: "Miguel Portela"
-# date: "October 2020"
+# date: "2021"
 date: '`r gsub("^0", "", format(Sys.time(), "%d %B, %Y"))`'
 output:
   # html_book

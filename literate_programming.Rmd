@@ -1,12 +1,12 @@
 ---
 title: "Applied Data Analysis School"
 author: "Miguel Portela"
-date: "October 27 and 29, 2020"
+date: "2021"
 institute: "Universidade do Minho"
 output:
-  beamer_presentation: default
-  slidy_presentation: default
   ioslides_presentation: default
+  slidy_presentation: default
+  beamer_presentation: default
   pdf_document: default
 subtitle: LITERATE PROGRAMMING IN R MARKDOWN
 theme: Copenhagen
@@ -22,8 +22,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r echo=FALSE,results='hide',message=FALSE}
 rm(list = ls())
-setwd("/Users/miguelportela/Documents/GitHub/R_Training")
-# setwd("C:\\Users\\exu0o9\\Documents\\GitHub\\R_Training")
+#setwd("/Users/miguelportela/Documents/GitHub/R_Training")
+#setwd("C:\\Users\\exu0o9\\Documents\\GitHub\\R_Training")
+setwd("C:\\Users\\mangelo.EEG\\Documents\\GitHub\\R_Training")
 # install.packages("rmarkdown")
 library(tidyverse)
 library(ggplot2)

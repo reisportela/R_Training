@@ -1,6 +1,5 @@
-//# Applied Data Analysis School: October/november 2020
-//# 7. PANEL DATA MODELS WITH R | By: Miguel Portela and Anabela Carneiro | 17 & 19 November
-//# https://www.gades-solutions.com/project/data-analysis-school/
+//# Data Analysis: 2021
+//# PANEL DATA MODELS WITH R | By: Miguel Portela and Anabela Carneiro
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
