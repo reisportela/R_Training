@@ -1,6 +1,172 @@
  num [1:28534] 1.45 1.03 1.59 1.78 1.78 ...
  - attr(*, "label")= chr "ln(wage/GNP deflator)"
  - attr(*, "format.stata")= chr "%9.0g"
+                                          Descriptions       Value
+1                                   Sample size (nrow)       28534
+2                              No. of variables (ncol)          21
+3                    No. of numeric/interger variables          21
+4                              No. of factor variables           0
+5                                No. of text variables           0
+6                             No. of logical variables           0
+7                          No. of identifier variables           0
+8                                No. of date variables           0
+9             No. of zero variance variables (uniform)           0
+10               %. of variables having complete cases  33.33% (7)
+11   %. of variables having >0% and <50% missing cases 66.67% (14)
+12 %. of variables having >=50% and <90% missing cases      0% (0)
+13          %. of variables having >=90% missing cases      0% (0)
+   Index Variable_Name Variable_Type Sample_n Missing_Count Per_of_Missing
+1      1        idcode       numeric    28534             0          0.000
+2      2          year       numeric    28534             0          0.000
+3      3      birth_yr       numeric    28534             0          0.000
+4      4           age       numeric    28510            24          0.001
+5      5          race       numeric    28534             0          0.000
+6      6           msp       numeric    28518            16          0.001
+7      7       nev_mar       numeric    28518            16          0.001
+8      8         grade       numeric    28532             2          0.000
+9      9      collgrad       numeric    28534             0          0.000
+10    10      not_smsa       numeric    28526             8          0.000
+11    11        c_city       numeric    28526             8          0.000
+12    12         south       numeric    28526             8          0.000
+13    13      ind_code       numeric    28193           341          0.012
+14    14      occ_code       numeric    28413           121          0.004
+15    15         union       numeric    19238          9296          0.326
+16    16        wks_ue       numeric    22830          5704          0.200
+17    17       ttl_exp       numeric    28534             0          0.000
+18    18        tenure       numeric    28101           433          0.015
+19    19         hours       numeric    28467            67          0.002
+20    20      wks_work       numeric    27831           703          0.025
+21    21       ln_wage       numeric    28534             0          0.000
+   No_of_distinct_values
+1                   4711
+2                     15
+3                     14
+4                     33
+5                      3
+6                      2
+7                      2
+8                     19
+9                      2
+10                     2
+11                     2
+12                     2
+13                    12
+14                    13
+15                     2
+16                    61
+17                  4744
+18                   270
+19                    85
+20                   105
+21                  8173
+     grade      
+ Min.   : 0.00  
+ 1st Qu.:12.00  
+ Median :12.00  
+ Mean   :12.53  
+ 3rd Qu.:14.00  
+ Max.   :18.00  
+ NA's   :2      
+      Vname Group    TN nNeg nZero  nPos NegInf PosInf NA_Value Per_of_Missing         sum
+4       age   All 28534    0     0 28510      0      0       24           0.08   828076.00
+3  birth_yr   All 28534    0     0 28534      0      0        0           0.00  1372060.00
+5     grade   All 28534    0    21 28511      0      0        2           0.01   357580.00
+11    hours   All 28534    0     0 28467      0      0       67           0.23  1040741.00
+1    idcode   All 28534    0     0 28534      0      0        0           0.00 74225046.00
+6  ind_code   All 28534    0     0 28193      0      0      341           1.20   216888.00
+13  ln_wage   All 28534    0     2 28532      0      0        0           0.00    47791.80
+7  occ_code   All 28534    0     0 28413      0      0      121           0.42   135748.00
+10   tenure   All 28534    0  1248 26853      0      0      433           1.52    87782.92
+9   ttl_exp   All 28534    0    21 28513      0      0        0           0.00   177347.83
+8    wks_ue   All 28534    0 17394  5436      0      0     5704          19.99    58173.00
+12 wks_work   All 28534    0   478 27353      0      0      703           2.46  1502577.00
+2      year   All 28534    0     0 28534      0      0        0           0.00  2224472.00
+   min     max    mean  median      SD   CV     IQR Skewness Kurtosis    10%     20%
+4   14   46.00   29.05   28.00    6.70 0.23   11.00     0.26    -0.91  21.00   23.00
+3   41   54.00   48.09   48.00    3.01 0.06    5.00    -0.12    -0.99  44.00   45.00
+5    0   18.00   12.53   12.00    2.32 0.19    2.00     0.10     1.37  10.00   12.00
+11   1  168.00   36.56   40.00    9.87 0.27    5.00    -0.90     4.26  20.00   32.00
+1    1 5159.00 2601.28 2606.00 1487.36 0.57 2554.00    -0.02    -1.19 518.00 1051.00
+6    1   12.00    7.69    7.00    2.99 0.39    6.00     0.00    -1.46   4.00    4.00
+13   0    5.26    1.67    1.64    0.48 0.29    0.60     0.33     1.67   1.17    1.30
+7    1   13.00    4.78    3.00    3.07 0.64    3.00     1.08     0.68   1.00    3.00
+10   0   25.92    3.12    1.67    3.75 1.20    3.67     1.94     3.90   0.17    0.42
+9    0   28.88    6.22    5.06    4.65 0.75    6.67     0.86     0.06   1.04    2.00
+8    0   76.00    2.55    0.00    7.29 2.86    0.00     4.02    18.25   0.00    0.00
+12   0  104.00   53.99   52.00   29.03 0.54   36.00     0.19    -0.68  14.00   28.00
+2   68   88.00   77.96   78.00    6.38 0.08   11.00     0.09    -1.30  70.00   71.00
+       50%   LB.25%  UB.75% nOutliers
+4    28.00     6.50   50.50         0
+3    48.00    38.50   58.50         0
+5    12.00     9.00   17.00      2125
+11   40.00    27.50   47.50      6100
+1  2606.00 -2504.00 7712.00         0
+6     7.00    -4.00   20.00         0
+13    1.64     0.46    2.87       660
+7     3.00    -1.50   10.50      1846
+10    1.67    -5.00    9.67      2138
+9     5.06    -7.54   19.13       191
+8     0.00     0.00    0.00      5436
+12   52.00   -18.00  126.00         0
+2    78.00    55.50   99.50         0
+[[1]]
+
+[[2]]
+
+[[3]]
+
+[[4]]
+
+[[5]]
+
+[[6]]
+
+[[7]]
+
+[[8]]
+
+$`0`
+
+     idcode          year          birth_yr          age             race      
+ Min.   :   1   Min.   :68.00   Min.   :41.00   Min.   :14.00   Min.   :1.000  
+ 1st Qu.:1327   1st Qu.:72.00   1st Qu.:46.00   1st Qu.:23.00   1st Qu.:1.000  
+ Median :2606   Median :78.00   Median :48.00   Median :28.00   Median :1.000  
+ Mean   :2601   Mean   :77.96   Mean   :48.09   Mean   :29.05   Mean   :1.303  
+ 3rd Qu.:3881   3rd Qu.:83.00   3rd Qu.:51.00   3rd Qu.:34.00   3rd Qu.:2.000  
+ Max.   :5159   Max.   :88.00   Max.   :54.00   Max.   :46.00   Max.   :3.000  
+                                                NA's   :24                     
+      msp            nev_mar           grade          collgrad        not_smsa     
+ Min.   :0.0000   Min.   :0.0000   Min.   : 0.00   Min.   :0.000   Min.   :0.0000  
+ 1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:12.00   1st Qu.:0.000   1st Qu.:0.0000  
+ Median :1.0000   Median :0.0000   Median :12.00   Median :0.000   Median :0.0000  
+ Mean   :0.6029   Mean   :0.2297   Mean   :12.53   Mean   :0.168   Mean   :0.2824  
+ 3rd Qu.:1.0000   3rd Qu.:0.0000   3rd Qu.:14.00   3rd Qu.:0.000   3rd Qu.:1.0000  
+ Max.   :1.0000   Max.   :1.0000   Max.   :18.00   Max.   :1.000   Max.   :1.0000  
+ NA's   :16       NA's   :16       NA's   :2                       NA's   :8       
+     c_city           south           ind_code         occ_code          union      
+ Min.   :0.0000   Min.   :0.0000   Min.   : 1.000   Min.   : 1.000   Min.   :0.000  
+ 1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.: 5.000   1st Qu.: 3.000   1st Qu.:0.000  
+ Median :0.0000   Median :0.0000   Median : 7.000   Median : 3.000   Median :0.000  
+ Mean   :0.3572   Mean   :0.4096   Mean   : 7.693   Mean   : 4.778   Mean   :0.234  
+ 3rd Qu.:1.0000   3rd Qu.:1.0000   3rd Qu.:11.000   3rd Qu.: 6.000   3rd Qu.:0.000  
+ Max.   :1.0000   Max.   :1.0000   Max.   :12.000   Max.   :13.000   Max.   :1.000  
+ NA's   :8        NA's   :8        NA's   :341      NA's   :121      NA's   :9296   
+     wks_ue          ttl_exp           tenure           hours           wks_work     
+ Min.   : 0.000   Min.   : 0.000   Min.   : 0.000   Min.   :  1.00   Min.   :  0.00  
+ 1st Qu.: 0.000   1st Qu.: 2.462   1st Qu.: 0.500   1st Qu.: 35.00   1st Qu.: 36.00  
+ Median : 0.000   Median : 5.058   Median : 1.667   Median : 40.00   Median : 52.00  
+ Mean   : 2.548   Mean   : 6.215   Mean   : 3.124   Mean   : 36.56   Mean   : 53.99  
+ 3rd Qu.: 0.000   3rd Qu.: 9.128   3rd Qu.: 4.167   3rd Qu.: 40.00   3rd Qu.: 72.00  
+ Max.   :76.000   Max.   :28.885   Max.   :25.917   Max.   :168.00   Max.   :104.00  
+ NA's   :5704                      NA's   :433      NA's   :67       NA's   :703     
+    ln_wage     
+ Min.   :0.000  
+ 1st Qu.:1.361  
+ Median :1.641  
+ Mean   :1.675  
+ 3rd Qu.:1.964  
+ Max.   :5.264  
+                
 
 \begin{table}[ht] \centering 
   \caption{Summary statistics} 
@@ -23,6 +189,147 @@ Shorter statistics
 ===================================================
 Statistic N Mean St. Dev. Min Pctl(25) Pctl(75) Max
 ===================================================
+ nlswork$race     n    percent
+            1 20180 0.70722647
+            2  8051 0.28215462
+            3   303 0.01061891
+Frequencies  
+nlswork$year  
+Label: interview year  
+Type: Numeric  
+
+               Freq   % Valid   % Valid Cum.   % Total   % Total Cum.
+----------- ------- --------- -------------- --------- --------------
+         88    2272      7.96           7.96      7.96           7.96
+         77    2171      7.61          15.57      7.61          15.57
+         87    2164      7.58          23.15      7.58          23.15
+         75    2141      7.50          30.66      7.50          30.66
+         82    2085      7.31          37.97      7.31          37.97
+         85    2085      7.31          45.27      7.31          45.27
+         83    1987      6.96          52.24      6.96          52.24
+         73    1981      6.94          59.18      6.94          59.18
+         78    1964      6.88          66.06      6.88          66.06
+         71    1851      6.49          72.55      6.49          72.55
+         80    1847      6.47          79.02      6.47          79.02
+         72    1693      5.93          84.95      5.93          84.95
+         70    1686      5.91          90.86      5.91          90.86
+         68    1375      4.82          95.68      4.82          95.68
+         69    1232      4.32         100.00      4.32         100.00
+       <NA>       0                               0.00         100.00
+      Total   28534    100.00         100.00    100.00         100.00
+Frequencies  
+nlswork$race  
+Label: 1=white, 2=black, 3=other  
+Type: Numeric  
+
+               Freq   % Valid   % Valid Cum.   % Total   % Total Cum.
+----------- ------- --------- -------------- --------- --------------
+          1   20180     70.72          70.72     70.72          70.72
+          2    8051     28.22          98.94     28.22          98.94
+          3     303      1.06         100.00      1.06         100.00
+       <NA>       0                               0.00         100.00
+      Total   28534    100.00         100.00    100.00         100.00
+                                          Descriptions     Value
+1                                   Sample size (nrow)     19007
+2                              No. of variables (ncol)        12
+3                    No. of numeric/interger variables        12
+4                              No. of factor variables         0
+5                                No. of text variables         0
+6                             No. of logical variables         0
+7                          No. of identifier variables         0
+8                                No. of date variables         0
+9             No. of zero variance variables (uniform)         0
+10               %. of variables having complete cases 100% (12)
+11   %. of variables having >0% and <50% missing cases    0% (0)
+12 %. of variables having >=50% and <90% missing cases    0% (0)
+13          %. of variables having >=90% missing cases    0% (0)
+   Index Variable_Name Variable_Type Sample_n Missing_Count Per_of_Missing
+1      1        idcode       numeric    19007             0              0
+2      2          year       numeric    19007             0              0
+3      3       ln_wage       numeric    19007             0              0
+4      4         union       numeric    19007             0              0
+5      5      collgrad       numeric    19007             0              0
+6      6           age       numeric    19007             0              0
+7      7        tenure       numeric    19007             0              0
+8      8      not_smsa       numeric    19007             0              0
+9      9         south       numeric    19007             0              0
+10    10        c_city       numeric    19007             0              0
+11    11         agesq       numeric    19007             0              0
+12    12         tensq       numeric    19007             0              0
+   No_of_distinct_values
+1                   4134
+2                     12
+3                   6658
+4                      2
+5                      2
+6                     31
+7                    270
+8                      2
+9                      2
+10                     2
+11                    31
+12                   270
+
+Call:
+lm(formula = ln_wage ~ union + collgrad + age + agesq + tenure + 
+    tensq + not_smsa + south + c_city, data = nlswork_clean)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-1.8191 -0.2308 -0.0091  0.2192  3.5048 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  1.229e+00  6.441e-02  19.074  < 2e-16 ***
+union        1.128e-01  6.774e-03  16.649  < 2e-16 ***
+collgrad     3.509e-01  7.149e-03  49.092  < 2e-16 ***
+age          2.248e-02  4.249e-03   5.292 1.23e-07 ***
+agesq       -3.057e-04  6.776e-05  -4.512 6.46e-06 ***
+tenure       5.479e-02  1.944e-03  28.187  < 2e-16 ***
+tensq       -1.540e-03  1.254e-04 -12.277  < 2e-16 ***
+not_smsa    -2.055e-01  7.120e-03 -28.855  < 2e-16 ***
+south       -1.406e-01  5.850e-03 -24.032  < 2e-16 ***
+c_city      -3.154e-02  6.683e-03  -4.720 2.38e-06 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.3854 on 18997 degrees of freedom
+Multiple R-squared:  0.3195,	Adjusted R-squared:  0.3191 
+F-statistic: 990.8 on 9 and 18997 DF,  p-value: < 2.2e-16
+
+Pooling Model
+
+Call:
+plm(formula = ln_wage ~ union + collgrad + age + agesq + tenure + 
+    tensq + not_smsa + south + c_city, data = nlswork_clean, 
+    model = "pooling", index = c("idcode", "year"))
+
+Unbalanced Panel: n = 4134, T = 1-12, N = 19007
+
+Residuals:
+      Min.    1st Qu.     Median    3rd Qu.       Max. 
+-1.8190931 -0.2307618 -0.0090702  0.2192457  3.5048070 
+
+Coefficients:
+               Estimate  Std. Error  t-value  Pr(>|t|)    
+(Intercept)  1.2286e+00  6.4412e-02  19.0743 < 2.2e-16 ***
+union        1.1277e-01  6.7736e-03  16.6490 < 2.2e-16 ***
+collgrad     3.5095e-01  7.1488e-03  49.0918 < 2.2e-16 ***
+age          2.2481e-02  4.2485e-03   5.2915 1.227e-07 ***
+agesq       -3.0573e-04  6.7757e-05  -4.5121 6.458e-06 ***
+tenure       5.4787e-02  1.9437e-03  28.1869 < 2.2e-16 ***
+tensq       -1.5398e-03  1.2542e-04 -12.2768 < 2.2e-16 ***
+not_smsa    -2.0546e-01  7.1204e-03 -28.8549 < 2.2e-16 ***
+south       -1.4059e-01  5.8500e-03 -24.0323 < 2.2e-16 ***
+c_city      -3.1543e-02  6.6834e-03  -4.7196 2.380e-06 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Total Sum of Squares:    4146.4
+Residual Sum of Squares: 2821.8
+R-Squared:      0.31946
+Adj. R-Squared: 0.31914
+F-statistic: 990.839 on 9 and 18997 DF, p-value: < 2.22e-16
 
 Regression analysis
 =================================================
@@ -81,6 +388,88 @@ N                    19,007
 R2                  0.319459                     
 =================================================
 Notes:           Standard errors in parentheses. 
+Oneway (individual) effect Random Effect Model 
+   (Swamy-Arora's transformation)
+
+Call:
+plm(formula = ln_wage ~ union + collgrad + age + agesq + tenure + 
+    tensq + not_smsa + south + c_city, data = nlswork_balanced, 
+    model = "random", index = c("idcode", "year"))
+
+Balanced Panel: n = 53, T = 12, N = 636
+
+Effects:
+                  var std.dev share
+idiosyncratic 0.03698 0.19230 0.319
+individual    0.07902 0.28110 0.681
+theta: 0.8063
+
+Residuals:
+     Min.   1st Qu.    Median   3rd Qu.      Max. 
+-0.904519 -0.104813  0.015673  0.114854  0.658580 
+
+Coefficients:
+               Estimate  Std. Error z-value  Pr(>|z|)    
+(Intercept)  1.05650211  0.20514289  5.1501 2.604e-07 ***
+union        0.06087668  0.02949229  2.0642 0.0390030 *  
+collgrad     0.20128253  0.17651938  1.1403 0.2541673    
+age          0.04592525  0.01334703  3.4409 0.0005799 ***
+agesq       -0.00051693  0.00020986 -2.4632 0.0137701 *  
+tenure       0.00332254  0.00616575  0.5389 0.5899766    
+tensq        0.00011290  0.00028483  0.3964 0.6918193    
+not_smsa    -0.29590935  0.07567198 -3.9104 9.214e-05 ***
+south       -0.06346941  0.06258349 -1.0142 0.3105084    
+c_city       0.00068168  0.03609511  0.0189 0.9849322    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Total Sum of Squares:    32.65
+Residual Sum of Squares: 23.689
+R-Squared:      0.27447
+Adj. R-Squared: 0.26404
+Chisq: 236.819 on 9 DF, p-value: < 2.22e-16
+Oneway (individual) effect Random Effect Model 
+   (Swamy-Arora's transformation)
+
+Call:
+plm(formula = ln_wage ~ union + collgrad + age + agesq + tenure + 
+    tensq + not_smsa + south + c_city, data = nlswork_clean, 
+    model = "random", index = c("idcode", "year"))
+
+Unbalanced Panel: n = 4134, T = 1-12, N = 19007
+
+Effects:
+                  var std.dev share
+idiosyncratic 0.06476 0.25448 0.444
+individual    0.08108 0.28475 0.556
+theta:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 0.3336  0.5920  0.6572  0.6406  0.6987  0.7502 
+
+Residuals:
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+-1.77886 -0.13081  0.00854  0.00428  0.14314  3.03289 
+
+Coefficients:
+               Estimate  Std. Error  z-value  Pr(>|z|)    
+(Intercept)  1.1369e+00  5.0729e-02  22.4103 < 2.2e-16 ***
+union        1.0368e-01  6.4468e-03  16.0819 < 2.2e-16 ***
+collgrad     3.6931e-01  1.2344e-02  29.9171 < 2.2e-16 ***
+age          2.3031e-02  3.3174e-03   6.9424 3.856e-12 ***
+agesq       -2.4910e-04  5.3181e-05  -4.6839 2.814e-06 ***
+tenure       4.0771e-02  1.5826e-03  25.7618 < 2.2e-16 ***
+tensq       -1.2466e-03  1.0022e-04 -12.4393 < 2.2e-16 ***
+not_smsa    -1.5114e-01  9.3804e-03 -16.1119 < 2.2e-16 ***
+south       -1.1157e-01  8.4671e-03 -13.1766 < 2.2e-16 ***
+c_city       3.9713e-04  7.4923e-03   0.0530    0.9577    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Total Sum of Squares:    1942.3
+Residual Sum of Squares: 1268
+R-Squared:      0.34903
+Adj. R-Squared: 0.34872
+Chisq: 4820.91 on 9 DF, p-value: < 2.22e-16
 
 Regression analysis
 ===================================================================
@@ -111,6 +500,51 @@ R2                 0.319                       0.349
 ===================================================================
 Notes:           Standard errors in parentheses.                   
 
+	Lagrange Multiplier Test - (Breusch-Pagan) for unbalanced panels
+
+data:  ln_wage ~ union + collgrad + age + agesq + tenure + tensq + not_smsa +  ...
+chisq = 14041, df = 1, p-value < 2.2e-16
+alternative hypothesis: significant effects
+
+
+
+Table: LM test for the presence of unobserved effects
+
+ statistic   p.value   parameter  method                                                              alternative         
+----------  --------  ----------  ------------------------------------------------------------------  --------------------
+  14041.19         0           1  Lagrange Multiplier Test -  (Breusch-Pagan) for unbalanced panels   significant effects 
+Oneway (individual) effect Within Model
+
+Call:
+plm(formula = ln_wage ~ union + collgrad + age + agesq + tenure + 
+    tensq + not_smsa + south + c_city, data = nlswork_clean, 
+    model = "within", index = c("idcode", "year"))
+
+Unbalanced Panel: n = 4134, T = 1-12, N = 19007
+
+Residuals:
+    Min.  1st Qu.   Median  3rd Qu.     Max. 
+-1.88027 -0.10216  0.00000  0.10774  2.80710 
+
+Coefficients:
+            Estimate  Std. Error  t-value  Pr(>|t|)    
+union     9.3877e-02  6.9662e-03  13.4761 < 2.2e-16 ***
+age       2.4259e-02  3.4467e-03   7.0383 2.031e-12 ***
+agesq    -2.2618e-04  5.5316e-05  -4.0890 4.356e-05 ***
+tenure    3.2966e-02  1.6465e-03  20.0218 < 2.2e-16 ***
+tensq    -1.1002e-03  1.0291e-04 -10.6916 < 2.2e-16 ***
+not_smsa -9.3105e-02  1.2970e-02  -7.1787 7.372e-13 ***
+south    -6.3222e-02  1.3279e-02  -4.7611 1.944e-06 ***
+c_city    1.1409e-02  8.8964e-03   1.2824    0.1997    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Total Sum of Squares:    1119.5
+Residual Sum of Squares: 962.69
+R-Squared:      0.14005
+Adj. R-Squared: -0.099505
+F-statistic: 302.62 on 8 and 14865 DF, p-value: < 2.22e-16
+
 Regression analysis
 ============================================
                            FE               
@@ -134,6 +568,40 @@ N                        19,007
 R2                      0.140054            
 ============================================
 Notes:       Standard errors in parentheses.
+
+Call:
+lm(formula = ln_wage ~ union + age + agesq + tenure + tensq + 
+    not_smsa + south + c_city, data = nlswork_clean)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-1.7497 -0.2508 -0.0182  0.2379  3.4100 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  1.008e+00  6.821e-02  14.776  < 2e-16 ***
+union        1.294e-01  7.181e-03  18.026  < 2e-16 ***
+age          3.929e-02  4.495e-03   8.740  < 2e-16 ***
+agesq       -5.387e-04  7.175e-05  -7.509 6.24e-14 ***
+tenure       5.806e-02  2.062e-03  28.158  < 2e-16 ***
+tensq       -1.699e-03  1.331e-04 -12.765  < 2e-16 ***
+not_smsa    -2.311e-01  7.538e-03 -30.657  < 2e-16 ***
+south       -1.475e-01  6.208e-03 -23.762  < 2e-16 ***
+c_city      -3.451e-02  7.094e-03  -4.864 1.16e-06 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.4091 on 18998 degrees of freedom
+Multiple R-squared:  0.2331,	Adjusted R-squared:  0.2328 
+F-statistic: 721.9 on 8 and 18998 DF,  p-value: < 2.2e-16
+
+
+	F test for individual effects
+
+data:  ln_wage ~ union + collgrad + age + agesq + tenure + tensq + not_smsa +  ...
+F = 8.2833, df1 = 4133, df2 = 14865, p-value < 2.2e-16
+alternative hypothesis: significant effects
+
 
 Regression analysis
 ===================================================
@@ -161,6 +629,100 @@ N               19,007       19,007
 R2             0.233124     0.140054               
 ===================================================
 Notes:       Standard errors in parentheses.       
+Linear hypothesis test
+
+Hypothesis:
+age = 0
+agesq = 0
+
+Model 1: restricted model
+Model 2: ln_wage ~ union + collgrad + age + agesq + tenure + tensq + not_smsa + 
+    south + c_city
+
+  Res.Df    RSS Df Sum of Sq      F    Pr(>F)    
+1  18999 2832.2                                  
+2  18997 2821.8  2    10.418 35.066 6.294e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Linear hypothesis test
+
+Hypothesis:
+age = 0
+agesq = 0
+
+Model 1: restricted model
+Model 2: ln_wage ~ union + collgrad + age + agesq + tenure + tensq + not_smsa + 
+    south + c_city
+
+Note: Coefficient covariance matrix supplied.
+
+  Res.Df Df      F    Pr(>F)    
+1  18999                        
+2  18997  2 40.554 < 2.2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+    test Fstat df_num df_denom  p_val sig
+ Naive-F  80.4      2     4133 <0.001 ***
+
+Call:
+lm(formula = ln_wage ~ union + age + agesq + tenure + tensq + 
+    not_smsa + south + c_city + factor(idcode), data = nlswork_balanced)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.254362 -0.069457  0.004535  0.078344  0.239917 
+
+Coefficients: (2 not defined because of singularities)
+                    Estimate Std. Error t value Pr(>|t|)  
+(Intercept)        0.5332323  0.4915522   1.085   0.2833  
+union              0.0895838  0.0548743   1.633   0.1090  
+age                0.0758967  0.0334355   2.270   0.0276 *
+agesq             -0.0011959  0.0005405  -2.212   0.0316 *
+tenure             0.0125105  0.0162130   0.772   0.4440  
+tensq              0.0006329  0.0007176   0.882   0.3821  
+not_smsa                  NA         NA      NA       NA  
+south                     NA         NA      NA       NA  
+c_city             0.1164782  0.0875330   1.331   0.1895  
+factor(idcode)20   0.3287869  0.1289784   2.549   0.0140 *
+factor(idcode)126 -0.0167263  0.0546551  -0.306   0.7609  
+factor(idcode)128  0.0375653  0.0882907   0.425   0.6724  
+factor(idcode)379 -0.1504303  0.1188913  -1.265   0.2118  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.1149 on 49 degrees of freedom
+Multiple R-squared:  0.8021,	Adjusted R-squared:  0.7617 
+F-statistic: 19.86 on 10 and 49 DF,  p-value: 5.49e-14
+
+Oneway (individual) effect Within Model
+
+Call:
+plm(formula = ln_wage ~ union + age + agesq + tenure + tensq + 
+    not_smsa + south + c_city, data = nlswork_balanced, model = "within", 
+    index = c("idcode", "year"))
+
+Balanced Panel: n = 5, T = 12, N = 60
+
+Residuals:
+      Min.    1st Qu.     Median    3rd Qu.       Max. 
+-0.2543619 -0.0694565  0.0045351  0.0783435  0.2399171 
+
+Coefficients:
+          Estimate  Std. Error t-value Pr(>|t|)  
+union   0.08958377  0.05487432  1.6325  0.10898  
+age     0.07589667  0.03343547  2.2699  0.02765 *
+agesq  -0.00119586  0.00054052 -2.2124  0.03163 *
+tenure  0.01251051  0.01621304  0.7716  0.44404  
+tensq   0.00063295  0.00071759  0.8821  0.38206  
+c_city  0.11647818  0.08753305  1.3307  0.18945  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Total Sum of Squares:    2.3839
+Residual Sum of Squares: 0.64685
+R-Squared:      0.72866
+Adj. R-Squared: 0.67329
+F-statistic: 21.9312 on 6 and 49 DF, p-value: 2.4403e-12
 
 Regression analysis
 ==================================================
@@ -197,6 +759,79 @@ R2                    0.802119        0.728663
 ==================================================
 Notes:            Standard errors in parentheses. 
 
+	Hausman Test
+
+data:  ln_wage ~ union + age + agesq + tenure + tensq + not_smsa + south +  ...
+chisq = 607.1, df = 8, p-value < 2.2e-16
+alternative hypothesis: one model is inconsistent
+
+Oneway (individual) effect Between Model
+
+Call:
+plm(formula = ln_wage ~ union + collgrad + age + agesq + tenure + 
+    tensq + not_smsa + south + c_city, data = nlswork_clean, 
+    model = "between", index = c("idcode", "year"))
+
+Unbalanced Panel: n = 4134, T = 1-12, N = 19007
+Observations used in estimation: 4134
+
+Residuals:
+      Min.    1st Qu.     Median    3rd Qu.       Max. 
+-1.5946586 -0.2004452 -0.0067495  0.1909616  1.8487578 
+
+Coefficients:
+               Estimate  Std. Error  t-value  Pr(>|t|)    
+(Intercept)  1.19446539  0.15356828   7.7781 9.240e-15 ***
+union        0.11135322  0.01636297   6.8052 1.154e-11 ***
+collgrad     0.34850931  0.01308193  26.6405 < 2.2e-16 ***
+age          0.02113165  0.01022918   2.0658   0.03891 *  
+agesq       -0.00034316  0.00016368  -2.0965   0.03610 *  
+tenure       0.09570307  0.00539210  17.7488 < 2.2e-16 ***
+tensq       -0.00343998  0.00036430  -9.4426 < 2.2e-16 ***
+not_smsa    -0.20536231  0.01440760 -14.2537 < 2.2e-16 ***
+south       -0.13058886  0.01145804 -11.3971 < 2.2e-16 ***
+c_city      -0.02215011  0.01385878  -1.5983   0.11006    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Total Sum of Squares:    773.5
+Residual Sum of Squares: 464.95
+R-Squared:      0.3989
+Adj. R-Squared: 0.39759
+F-statistic: 304.083 on 9 and 4124 DF, p-value: < 2.22e-16
+Oneway (individual) effect First-Difference Model
+
+Call:
+plm(formula = ln_wage ~ 0 + union + collgrad + age + agesq + 
+    tenure + tensq + not_smsa + south + c_city, data = nlswork_clean, 
+    model = "fd", index = c("idcode", "year"))
+
+Unbalanced Panel: n = 4134, T = 1-12, N = 19007
+Observations used in estimation: 14873
+
+Residuals:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+-2.9266 -0.0925  0.0073  0.0156  0.1279  3.3217 
+
+Coefficients:
+            Estimate  Std. Error t-value  Pr(>|t|)    
+union     6.9160e-02  6.6336e-03 10.4257 < 2.2e-16 ***
+age       2.2744e-02  5.5436e-03  4.1027 4.104e-05 ***
+agesq    -2.5853e-04  9.0084e-05 -2.8698  0.004113 ** 
+tenure    3.2078e-02  2.1241e-03 15.1024 < 2.2e-16 ***
+tensq    -1.2023e-03  1.7526e-04 -6.8600 7.160e-12 ***
+not_smsa -7.7277e-02  1.4369e-02 -5.3780 7.645e-08 ***
+south    -4.6889e-02  1.5675e-02 -2.9913  0.002782 ** 
+c_city    2.2987e-02  9.9149e-03  2.3185  0.020437 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Total Sum of Squares:    1441.5
+Residual Sum of Squares: 1404.4
+R-Squared:      0.02879
+Adj. R-Squared: 0.028332
+F-statistic: 85.5285 on 8 and 14865 DF, p-value: < 2.22e-16
+
 Regression analysis
 ============================================================
              OLS           RE           FE           BE     
@@ -222,6 +857,387 @@ N           19,007       19,007       19,007       4,134
 R2         0.319459     0.349029     0.140054     0.398899  
 ============================================================
 Notes:   Standard errors in parentheses.                    
+
+	Breusch-Pagan test
+
+data:  ln_wage ~ union + collgrad + age + agesq + tenure + tensq + not_smsa +     south + c_city + factor(idcode)
+BP = 5.2368, df = 10, p-value = 0.8748
+
+
+	Wooldridge's test for unobserved individual effects
+
+data:  formula
+z = 17.695, p-value < 2.2e-16
+alternative hypothesis: unobserved effect
+
+
+	Baltagi and Li AR-RE joint test - balanced panel
+
+data:  formula
+chisq = 50.736, df = 2, p-value = 9.612e-12
+alternative hypothesis: AR(1) errors or random effects
+
+
+	Breusch-Godfrey/Wooldridge test for serial correlation in panel models
+
+data:  ln_wage ~ union + collgrad + age + agesq + tenure + tensq + not_smsa +     south + c_city
+chisq = 181.23, df = 2, p-value < 2.2e-16
+alternative hypothesis: serial correlation in idiosyncratic errors
+
+
+	Wooldridge's test for serial correlation in FE panels
+
+data:  plm.model
+F = 12.205, df1 = 1, df2 = 53, p-value = 0.0009707
+alternative hypothesis: serial correlation
+
+
+	Wooldridge's first-difference test for serial correlation in panels
+
+data:  plm.model
+F = 8.5778, df1 = 1, df2 = 48, p-value = 0.005192
+alternative hypothesis: serial correlation in differenced errors
+
+
+	Wooldridge's first-difference test for serial correlation in panels
+
+data:  plm.model
+F = 2.9964, df1 = 1, df2 = 48, p-value = 0.08988
+alternative hypothesis: serial correlation in original errors
+
+
+	Pesaran CD test for cross-sectional dependence in panels
+
+data:  ln_wage ~ union + collgrad + age + agesq + tenure + tensq + not_smsa +     south + c_city
+z = 1.8975, p-value = 0.05776
+alternative hypothesis: cross-sectional dependence
+
+OLS estimation, Dep. Var.: ln_wage
+Observations: 19,007 
+Fixed-effects: idcode: 4,134
+Standard-errors: Clustered (idcode) 
+          Estimate Std. Error   t value  Pr(>|t|)    
+union     0.093877   0.009566  9.814100 < 2.2e-16 ***
+age       0.024259   0.005008  4.843600  1.32e-06 ***
+agesq    -0.000226   0.000081 -2.778400  0.005488 ** 
+tenure    0.032966   0.002085 15.807000 < 2.2e-16 ***
+tensq    -0.001100   0.000126 -8.719200 < 2.2e-16 ***
+not_smsa -0.093105   0.019791 -4.704500  2.63e-06 ***
+south    -0.063222   0.021654 -2.919600  0.003524 ** 
+c_city    0.011409   0.012606  0.905058  0.365487    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+RMSE: 0.225053     Adj. R2: 0.703151
+                 Within R2: 0.140054
+
+Call:
+   felm(formula = ln_wage ~ union + age + agesq + tenure + tensq +      not_smsa + south + c_city | idcode, data = nlswork_clean,      clustervar = c("idcode")) 
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-1.8803 -0.1022  0.0000  0.1077  2.8071 
+
+Coefficients:
+           Estimate Cluster s.e. t value Pr(>|t|)    
+union     9.388e-02    9.565e-03   9.814  < 2e-16 ***
+age       2.426e-02    5.008e-03   4.844 1.32e-06 ***
+agesq    -2.262e-04    8.141e-05  -2.778  0.00549 ** 
+tenure    3.297e-02    2.086e-03  15.807  < 2e-16 ***
+tensq    -1.100e-03    1.262e-04  -8.719  < 2e-16 ***
+not_smsa -9.310e-02    1.979e-02  -4.705 2.63e-06 ***
+south    -6.322e-02    2.165e-02  -2.920  0.00352 ** 
+c_city    1.141e-02    1.261e-02   0.905  0.36549    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.2545 on 14865 degrees of freedom
+Multiple R-squared(full model): 0.7678   Adjusted R-squared: 0.7032 
+Multiple R-squared(proj model): 0.1401   Adjusted R-squared: -0.0995 
+F-statistic(full model, *iid*):11.87 on 4141 and 14865 DF, p-value: < 2.2e-16 
+F-statistic(proj model):   168 on 8 and 4133 DF, p-value: < 2.2e-16 
+
+
+OLS estimation, Dep. Var.: ln_wage
+Observations: 19,007 
+Fixed-effects: idcode: 4,134,  year: 12
+Standard-errors: Clustered (idcode) 
+          Estimate Std. Error   t value  Pr(>|t|)    
+union     0.095700   0.009523 10.049000 < 2.2e-16 ***
+age       0.073440   0.013588  5.404700  6.86e-08 ***
+agesq    -0.000720   0.000116 -6.218800  5.51e-10 ***
+tenure    0.032423   0.002104 15.408000 < 2.2e-16 ***
+tensq    -0.001090   0.000129 -8.443500 < 2.2e-16 ***
+not_smsa -0.090537   0.019619 -4.614600  4.06e-06 ***
+south    -0.064281   0.021622 -2.972900  0.002967 ** 
+c_city    0.010432   0.012668  0.823497  0.410273    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+RMSE: 0.223942     Adj. R2: 0.705857
+                 Within R2: 0.066421
+
+Call:
+   felm(formula = ln_wage ~ union + age + agesq + tenure + tensq +      not_smsa + south + c_city | idcode + year, data = nlswork_clean,      clustervar = c("idcode")) 
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.90155 -0.09933  0.00000  0.10738  2.78536 
+
+Coefficients:
+           Estimate Cluster s.e. t value Pr(>|t|)    
+union     0.0956999    0.0095207  10.052  < 2e-16 ***
+age       0.0734400    0.0135842   5.406 6.80e-08 ***
+agesq    -0.0007205    0.0001158  -6.221 5.44e-10 ***
+tenure    0.0324225    0.0021036  15.413  < 2e-16 ***
+tensq    -0.0010902    0.0001291  -8.446  < 2e-16 ***
+not_smsa -0.0905368    0.0196138  -4.616 4.03e-06 ***
+south    -0.0642811    0.0216158  -2.974  0.00296 ** 
+c_city    0.0104319    0.0126641   0.824  0.41014    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.2533 on 14854 degrees of freedom
+Multiple R-squared(full model): 0.7701   Adjusted R-squared: 0.7059 
+Multiple R-squared(proj model): 0.06642   Adjusted R-squared: -0.1945 
+F-statistic(full model, *iid*):11.98 on 4152 and 14854 DF, p-value: < 2.2e-16 
+F-statistic(proj model): 62.59 on 8 and 4133 DF, p-value: < 2.2e-16 
+
+
+                                          Descriptions       Value
+1                                   Sample size (nrow)        4950
+2                              No. of variables (ncol)          22
+3                    No. of numeric/interger variables          22
+4                              No. of factor variables           0
+5                                No. of text variables           0
+6                             No. of logical variables           0
+7                          No. of identifier variables           2
+8                                No. of date variables           0
+9             No. of zero variance variables (uniform)           0
+10               %. of variables having complete cases 95.45% (21)
+11   %. of variables having >0% and <50% missing cases   4.55% (1)
+12 %. of variables having >=50% and <90% missing cases      0% (0)
+13          %. of variables having >=90% missing cases      0% (0)
+   Index Variable_Name Variable_Type Sample_n Missing_Count Per_of_Missing
+1      1      workerid       numeric     4950             0            0.0
+2      2          year       numeric     4950             0            0.0
+3      3            ui       numeric     4950             0            0.0
+4      4       quarter       numeric     4950             0            0.0
+5      5            q1       numeric     4950             0            0.0
+6      6          wage       numeric     4950             0            0.0
+7      7          educ       numeric     4950             0            0.0
+8      8         exper       numeric     4950             0            0.0
+9      9         union       numeric     4950             0            0.0
+10    10        exper2       numeric     4950             0            0.0
+11    11        lnwage       numeric     4950             0            0.0
+12    12           yy1       numeric     4950             0            0.0
+13    13           yy2       numeric     4950             0            0.0
+14    14           yy3       numeric     4950             0            0.0
+15    15           yy4       numeric     4950             0            0.0
+16    16           yy5       numeric     4950             0            0.0
+17    17           yy6       numeric     4950             0            0.0
+18    18           yy7       numeric     4950             0            0.0
+19    19           yy8       numeric     4950             0            0.0
+20    20           yy9       numeric     4950             0            0.0
+21    21          yy10       numeric     4950             0            0.0
+22    22    lag_lnwage       numeric     4455           495            0.1
+   No_of_distinct_values
+1                    495
+2                     10
+3                    495
+4                      4
+5                      2
+6                   4950
+7                   2469
+8                     29
+9                      2
+10                    29
+11                  4950
+12                     2
+13                     2
+14                     2
+15                     2
+16                     2
+17                     2
+18                     2
+19                     2
+20                     2
+21                     2
+22                  4454
+    workerid        year            ui               quarter            q1        
+ Min.   :  1   Min.   : 1.0   Min.   :0.0004503   Min.   :1.000   Min.   :0.0000  
+ 1st Qu.:124   1st Qu.: 3.0   1st Qu.:0.2438383   1st Qu.:2.000   1st Qu.:0.0000  
+ Median :248   Median : 5.5   Median :0.4766747   Median :2.000   Median :0.0000  
+ Mean   :248   Mean   : 5.5   Mean   :0.4879205   Mean   :2.517   Mean   :0.2404  
+ 3rd Qu.:372   3rd Qu.: 8.0   3rd Qu.:0.7447072   3rd Qu.:4.000   3rd Qu.:0.0000  
+ Max.   :495   Max.   :10.0   Max.   :0.9957856   Max.   :4.000   Max.   :1.0000  
+                                                                                  
+      wage             educ            exper           union            exper2     
+ Min.   : 662.1   Min.   : 0.000   Min.   : 0.00   Min.   :0.0000   Min.   :  0.0  
+ 1st Qu.:1226.8   1st Qu.: 2.322   1st Qu.: 9.00   1st Qu.:0.0000   1st Qu.: 81.0  
+ Median :1718.1   Median : 4.646   Median :15.00   Median :0.0000   Median :225.0  
+ Mean   :1998.8   Mean   : 5.226   Mean   :14.34   Mean   :0.4863   Mean   :247.3  
+ 3rd Qu.:2482.9   3rd Qu.: 7.635   3rd Qu.:19.00   3rd Qu.:1.0000   3rd Qu.:361.0  
+ Max.   :7170.2   Max.   :19.446   Max.   :28.00   Max.   :1.0000   Max.   :784.0  
+                                                                                   
+     lnwage           yy1           yy2           yy3           yy4           yy5     
+ Min.   :6.495   Min.   :0.0   Min.   :0.0   Min.   :0.0   Min.   :0.0   Min.   :0.0  
+ 1st Qu.:7.112   1st Qu.:0.0   1st Qu.:0.0   1st Qu.:0.0   1st Qu.:0.0   1st Qu.:0.0  
+ Median :7.449   Median :0.0   Median :0.0   Median :0.0   Median :0.0   Median :0.0  
+ Mean   :7.483   Mean   :0.1   Mean   :0.1   Mean   :0.1   Mean   :0.1   Mean   :0.1  
+ 3rd Qu.:7.817   3rd Qu.:0.0   3rd Qu.:0.0   3rd Qu.:0.0   3rd Qu.:0.0   3rd Qu.:0.0  
+ Max.   :8.878   Max.   :1.0   Max.   :1.0   Max.   :1.0   Max.   :1.0   Max.   :1.0  
+                                                                                      
+      yy6           yy7           yy8           yy9           yy10       lag_lnwage   
+ Min.   :0.0   Min.   :0.0   Min.   :0.0   Min.   :0.0   Min.   :0.0   Min.   :6.495  
+ 1st Qu.:0.0   1st Qu.:0.0   1st Qu.:0.0   1st Qu.:0.0   1st Qu.:0.0   1st Qu.:7.085  
+ Median :0.0   Median :0.0   Median :0.0   Median :0.0   Median :0.0   Median :7.425  
+ Mean   :0.1   Mean   :0.1   Mean   :0.1   Mean   :0.1   Mean   :0.1   Mean   :7.455  
+ 3rd Qu.:0.0   3rd Qu.:0.0   3rd Qu.:0.0   3rd Qu.:0.0   3rd Qu.:0.0   3rd Qu.:7.784  
+ Max.   :1.0   Max.   :1.0   Max.   :1.0   Max.   :1.0   Max.   :1.0   Max.   :8.724  
+                                                                       NA's   :495    
+   1   2   3   4   5   6   7   8   9  10
+                                        
+ 495 495 495 495 495 495 495 495 495 495
+   Variable Valid Frequency Percent CumPercent
+1      year     1       495   10.00      10.00
+2      year    10       495   10.00      20.00
+3      year     2       495   10.00      30.00
+4      year     3       495   10.00      40.00
+5      year     4       495   10.00      50.00
+6      year     5       495   10.00      60.00
+7      year     6       495   10.00      70.00
+8      year     7       495   10.00      80.00
+9      year     8       495   10.00      90.00
+10     year     9       495   10.00     100.00
+11     year TOTAL      4950      NA         NA
+12  quarter     1      1190   24.04      24.04
+13  quarter     2      1350   27.27      51.31
+14  quarter     3      1070   21.62      72.93
+15  quarter     4      1340   27.07     100.00
+16  quarter TOTAL      4950      NA         NA
+17       q1     0      3760   75.96      75.96
+18       q1     1      1190   24.04     100.00
+19       q1 TOTAL      4950      NA         NA
+20    union     0      2543   51.37      51.37
+21    union     1      2407   48.63     100.00
+22    union TOTAL      4950      NA         NA
+23      yy1     0      4455   90.00      90.00
+24      yy1     1       495   10.00     100.00
+25      yy1 TOTAL      4950      NA         NA
+26      yy2     0      4455   90.00      90.00
+27      yy2     1       495   10.00     100.00
+28      yy2 TOTAL      4950      NA         NA
+29      yy3     0      4455   90.00      90.00
+30      yy3     1       495   10.00     100.00
+31      yy3 TOTAL      4950      NA         NA
+32      yy4     0      4455   90.00      90.00
+33      yy4     1       495   10.00     100.00
+34      yy4 TOTAL      4950      NA         NA
+35      yy5     0      4455   90.00      90.00
+36      yy5     1       495   10.00     100.00
+37      yy5 TOTAL      4950      NA         NA
+38      yy6     0      4455   90.00      90.00
+39      yy6     1       495   10.00     100.00
+40      yy6 TOTAL      4950      NA         NA
+41      yy7     0      4455   90.00      90.00
+42      yy7     1       495   10.00     100.00
+43      yy7 TOTAL      4950      NA         NA
+44      yy8     0      4455   90.00      90.00
+45      yy8     1       495   10.00     100.00
+46      yy8 TOTAL      4950      NA         NA
+47      yy9     0      4455   90.00      90.00
+48      yy9     1       495   10.00     100.00
+49      yy9 TOTAL      4950      NA         NA
+50     yy10     0      4455   90.00      90.00
+51     yy10     1       495   10.00     100.00
+52     yy10 TOTAL      4950      NA         NA
+[[1]]
+
+[[2]]
+
+[[3]]
+
+[[4]]
+
+[[5]]
+
+[[6]]
+
+[[7]]
+
+[[8]]
+
+[[9]]
+
+[[10]]
+
+[[11]]
+
+[[12]]
+
+[[13]]
+
+[[14]]
+
+       Vname Group   TN nNeg nZero nPos NegInf PosInf NA_Value Per_of_Missing        sum
+5       educ   All 4950    0   333 4617      0      0        0              0   25870.22
+6      exper   All 4950    0    24 4926      0      0        0              0   70965.00
+7     exper2   All 4950    0    24 4926      0      0        0              0 1223895.00
+9 lag_lnwage   All 4950    0     0 4455      0      0      495             10   33211.94
+8     lnwage   All 4950    0     0 4950      0      0        0              0   37041.95
+3         ui   All 4950    0     0 4950      0      0        0              0    2415.21
+4       wage   All 4950    0     0 4950      0      0        0              0 9893953.84
+1   workerid   All 4950    0     0 4950      0      0        0              0 1227600.00
+2       year   All 4950    0     0 4950      0      0        0              0   27225.00
+     min     max    mean  median      SD   CV     IQR Skewness Kurtosis    10%     25%
+5   0.00   19.45    5.23    4.65    3.79 0.73    5.31     0.71     0.02   0.52    2.32
+6   0.00   28.00   14.34   15.00    6.46 0.45   10.00    -0.09    -0.83   5.00    9.00
+7   0.00  784.00  247.25  225.00  187.13 0.76  280.00     0.66    -0.41  25.00   81.00
+9   6.50    8.72    7.45    7.43    0.47 0.06    0.70     0.29    -0.59   6.86    7.08
+8   6.50    8.88    7.48    7.45    0.48 0.06    0.71     0.28    -0.58   6.88    7.11
+3   0.00    1.00    0.49    0.48    0.29 0.59    0.50     0.05    -1.19   0.08    0.24
+4 662.08 7170.24 1998.78 1718.12 1032.19 0.52 1256.13     1.36     1.99 969.90 1226.81
+1   1.00  495.00  248.00  248.00  142.91 0.58  248.00     0.00    -1.20  50.00  124.00
+2   1.00   10.00    5.50    5.50    2.87 0.52    5.00     0.00    -1.22   1.90    3.00
+      50%     99%  LB.25%  UB.75% nOutliers
+5    4.65   15.46   -5.65   15.61        46
+6   15.00   27.00   -6.00   34.00         0
+7  225.00  729.00 -339.00  781.00        19
+9    7.43    8.55    6.04    8.83         0
+8    7.45    8.61    6.05    8.87         1
+3    0.48    0.99   -0.51    1.50         0
+4 1718.12 5468.17 -657.39 4367.13       186
+1  248.00  490.51 -248.00  744.00         0
+2    5.50   10.00   -4.50   15.50         0
+$`0`
+
+$outlier_summary
+             Category           lnwage
+1    Lower cap : 0.05 6.75808242272123
+2    Upper cap : 0.95 8.32169651894011
+3         Lower bound             6.05
+4         Upper bound             8.87
+5     Num of outliers                1
+6  Lower outlier case                 
+7  Upper outlier case              210
+8         Mean before             7.48
+9          Mean after             7.48
+10      Median before 7.44898780138622
+11       Median after 7.44896911785069
+
+$outlier_data
+
+$outlier_index
+$outlier_index$upper_out_index
+$outlier_index$upper_out_index[[1]]
+[1] 210
+
+
+$outlier_index$lower_out_index
+$outlier_index$lower_out_index[[1]]
+numeric(0)
+
+
+
 
 Summary statistics
 ==========================================================================
@@ -250,6 +1266,27 @@ yy9        4,950   0.100     0.300      0        0         0         1
 yy10       4,950   0.100     0.300      0        0         0         1    
 lag_lnwage 4,455   7.455     0.470    6.495    7.085     7.784     8.724  
 --------------------------------------------------------------------------
+
+	Lagrange Multiplier Test - (Breusch-Pagan) for balanced panels
+
+data:  lnwage ~ educ + exper + exper2 + factor(year)
+chisq = 19885, df = 1, p-value < 2.2e-16
+alternative hypothesis: significant effects
+
+
+	F test for individual effects
+
+data:  lnwage ~ educ + exper + exper2 + factor(year)
+F = 270.97, df1 = 493, df2 = 4444, p-value < 2.2e-16
+alternative hypothesis: significant effects
+
+
+	Hausman Test
+
+data:  lnwage ~ educ + exper + exper2 + factor(year)
+chisq = 309.92, df = 11, p-value < 2.2e-16
+alternative hypothesis: one model is inconsistent
+
 
 Regression analysis
 ========================================================
@@ -280,3 +1317,4 @@ factor(year)10      -0.011        0.169***
                    (0.018)        (0.019)               
 ========================================================
 Notes:         Standard errors in parentheses.          
+Time difference of 2.410937 mins
