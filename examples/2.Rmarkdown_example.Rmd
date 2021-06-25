@@ -38,7 +38,7 @@ knitr::opts_chunk$set(echo = TRUE)
 rm(list = ls())
 
 # setwd("/Users/miguelportela/Documents/GitHub/R_Training/examples")
-setwd("C:\\Users\\exu0o9\\Documents\\GitHub\\R_Training\\examples")
+##setwd("C:\\Users\\exu0o9\\Documents\\GitHub\\R_Training\\examples")
 
 library(tidyverse)
 library(ggplot2)
@@ -298,7 +298,7 @@ M3 <- lm(data=filter(nls2,year==80),ln_wage ~ tenure + union)
 # Stargazer manual
 # https://cran.r-project.org/web/packages/stargazer/stargazer.pdf
 
-stargazer(M1,M2,M3,title = "Regression analysis", model.numbers = FALSE,column.labels = c("Model 1", "Model 2","Model 3"),label = "regressions",table.placement = "!ht",notes.append = FALSE,notes.align="l",notes="Standard errors in parentheses.",header = FALSE,no.space = TRUE,covariate.labels = c("TENURE","UNION"),omit = c("Constant"),omit.stat = c("adj.rsq","f","ser"),digits = 2,digits.extra = 4,omit.yes.no = c("Constant",""),dep.var.caption="",dep.var.labels.include = FALSE,style = "qje")
+stargazer(M1,M2,M3,title = "Regression analysis", model.numbers = FALSE,column.labels = c("Model 1", "Model 2","Model 3"),label = "regressions",table.placement = "!ht",notes.append = FALSE,notes.align="l",notes="Standard errors in parentheses.",header = FALSE,no.space = TRUE,covariate.labels = c("TENURE","UNION"),omit = c("Constant"),omit.stat = c("adj.rsq","f","ser"),digits = 5,digits.extra = 4,omit.yes.no = c("Constant",""),dep.var.caption="",dep.var.labels.include = FALSE,style = "qje")
 
 betas<-coef(M2)
 r2 <- summary(M2)$r.squared
