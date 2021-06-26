@@ -17,3 +17,6 @@
 2. MyBinder
 
     - Open [binder](https://mybinder.org/)
+    - Under **GitHub** write `https://github.com/reisportela/R_Training`
+    - In "Path to a notebook file" choose "URL" and type "rstudio" in the box
+    - Click in "launch"
