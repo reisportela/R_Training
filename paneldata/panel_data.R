@@ -56,30 +56,30 @@ pacman::p_load(stargazer,
 
 # LIBRARIES
 
-library(librarian)
-
-librarian::shelf(stargazer,
-                 kableExtra,
-                 ExPanDaR,
-                 SmartEDA,
-                 visdat,
-                 naniar,
-                 janitor,
-                 summarytools,
-                 plm,
-                 lfe,
-                 fixest,
-                 clubSandwich,
-                 car,
-                 gplots,
-                 tseries,
-                 lmtest,
-                 dlookr,
-                 MASS,
-                 robustbase,
-                 sandwich,
-                 broom,
-                 pdynmc)
+# library(librarian)
+# 
+# librarian::shelf(stargazer,
+#                  kableExtra,
+#                  ExPanDaR,
+#                  SmartEDA,
+#                  visdat,
+#                  naniar,
+#                  janitor,
+#                  summarytools,
+#                  plm,
+#                  lfe,
+#                  fixest,
+#                  clubSandwich,
+#                  car,
+#                  gplots,
+#                  tseries,
+#                  lmtest,
+#                  dlookr,
+#                  MASS,
+#                  robustbase,
+#                  sandwich,
+#                  broom,
+#                  pdynmc)
 
 library(tidyverse) # Modern data science library 
 library(haven)
@@ -130,7 +130,9 @@ vis_dat(nlswork)
 
 gg_miss_upset(nlswork)
 
-## ExPanD(): import the data 'nlswork.dta' and 'ExPanD()' in the Console
+## -- > EXERCISE
+  
+  ## ExPanD(): import the data 'nlswork.dta' and 'ExPanD()' in the Console
 
 summary(nlswork)
 
