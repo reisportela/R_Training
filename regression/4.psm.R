@@ -1,9 +1,10 @@
 # Data Analysis: 2021
-# REGRESSION ANALYSIS AND CAUSALITY WITH R | By: João Cerejeira
+# REGRESSION ANALYSIS AND CAUSALITY WITH R | By: Jo?o Cerejeira
 
 rm(list = ls())
 
-setwd("C:\\Users\\mangelo.EEG\\Documents\\GitHub\\R_Training\\regression")
+# setwd("C:\\Users\\mangelo.EEG\\Documents\\GitHub\\R_Training\\regression")
+setwd('/Users/miguelportela/Documents/GitHub/R_Training/regression')
 
 # <<>> ----- <<>> #
 

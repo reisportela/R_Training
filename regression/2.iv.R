@@ -1,13 +1,16 @@
 # Data Analysis: 2021
-# REGRESSION ANALYSIS AND CAUSALITY WITH R | By: João Cerejeira | 10 & 12 November
+# REGRESSION ANALYSIS AND CAUSALITY WITH R | By: Jo?o Cerejeira | 10 & 12 November
 
 # SET WORKING DIRECTORY
 
-setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/regression")
+# setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/regression")
+setwd('/Users/miguelportela/Documents/GitHub/R_Training/regression')
 
 rm(list=ls()) #Removes all items in Environment!
 
 # LIBRARIES
+
+# install_git("https://github.com/ccolonescu/PoEdata")
 
 library(tidyverse)
 library(haven)
@@ -116,7 +119,7 @@ kable(tab, digits=4,
 
   ## or with Kable & modelsummary
   
-  nls <- read_dta("nlswork.dta")
+  nls <- read_dta("data/nlswork.dta")
   
   kableExtra(
     nls %>%

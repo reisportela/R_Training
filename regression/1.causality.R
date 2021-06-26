@@ -1,13 +1,16 @@
 # Data Analysis: 2021
-# REGRESSION ANALYSIS AND CAUSALITY WITH R | By: Jo„o Cerejeira
+# REGRESSION ANALYSIS AND CAUSALITY WITH R | By: Jo√£o Cerejeira
 
-setwd("C:\\Users\\mangelo.EEG\\Documents\\GitHub\\R_Training\\regression")
+# setwd("C:\\Users\\mangelo.EEG\\Documents\\GitHub\\R_Training\\regression")
+setwd('/Users/miguelportela/Documents/GitHub/R_Training/regression')
 
 rm(list = ls())
 
 # LOG FILE
 
-# sink("Regression.txt")
+# sink("logs/Regression.txt")
+
+start_time <- Sys.time()
 
 # LIBRARIES
 
@@ -31,7 +34,7 @@ library(broom)
 
 # DATA
 
-world_data <- as.data.frame(read_dta("world_data.dta"))
+world_data <- as.data.frame(read_dta("data/world_data.dta"))
 
 names(world_data)
 head(world_data)
@@ -223,7 +226,7 @@ world_data %>%
 
   ## CATEGORICAL VARIABLES AND INTERACTIONS
   
-  nlswork <- as.data.frame(read_dta("nlswork.dta"))
+  nlswork <- as.data.frame(read_dta("data/nlswork.dta"))
     table(nlswork$race)
   
   ## ADD A VARIALE
@@ -314,7 +317,7 @@ world_data %>%
 
 # Instrumental variables
   library(ivreg)
-        card <- read_dta("card.dta")
+        card <- read_dta("data/card.dta")
         
         ols <- lm(data=card,lwage ~ educ + exper)
         iv <- ivreg(data=card,lwage ~ educ + exper | expe + nearc4)
@@ -347,7 +350,7 @@ world_data %>%
         
 # Diff-in-Diff
         
-  hh_9198 <- read_dta("hh_9198_v2.dta")
+  hh_9198 <- read_dta("data/hh_9198_v2.dta")
   
   hh_9198$lnland <- log(1+hh_9198$hhland/100)
   
@@ -390,5 +393,11 @@ world_data %>%
             dep.var.labels.include = FALSE,
             style = "qje",
             type="text")
+
+###############
   
-# sink()
+  end_time <- Sys.time()
+  
+  end_time - start_time
+  
+  # sink()

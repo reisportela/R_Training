@@ -1,9 +1,9 @@
 # Data Analysis: 2021
-# REGRESSION ANALYSIS AND CAUSALITY WITH R | By: João Cerejeira
-
-setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/regression")
+# REGRESSION ANALYSIS AND CAUSALITY WITH R | By: Jo?o Cerejeira
 
 # setwd("C:\\Users\\JoaoCerejeira\\Dropbox\\statafep2020\\day2\\r")
+# setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/regression")
+setwd('/Users/miguelportela/Documents/GitHub/R_Training/regression')
 
 
 # install.packages("devtools")  # if not already installed

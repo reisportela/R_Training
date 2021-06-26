@@ -29,9 +29,16 @@ start_time <- Sys.time()
 
 ##################################      
 
+library(tidyverse) # Modern data science library 
+library(haven)
+
 library(pacman)
 
-pacman::p_load(stargazer,
+pacman::p_load(tidyverse,
+              data.table,
+              plotly,
+              knitr,
+              stargazer,
               kableExtra,
               ExPanDaR,
               SmartEDA,
@@ -58,31 +65,32 @@ pacman::p_load(stargazer,
 
 # library(librarian)
 # 
-# librarian::shelf(stargazer,
-#                  kableExtra,
-#                  ExPanDaR,
-#                  SmartEDA,
-#                  visdat,
-#                  naniar,
-#                  janitor,
-#                  summarytools,
-#                  plm,
-#                  lfe,
-#                  fixest,
-#                  clubSandwich,
-#                  car,
-#                  gplots,
-#                  tseries,
-#                  lmtest,
-#                  dlookr,
-#                  MASS,
-#                  robustbase,
-#                  sandwich,
-#                  broom,
-#                  pdynmc)
-
-library(tidyverse) # Modern data science library 
-library(haven)
+# librarian::shelf(tidyverse,
+# data.table,
+# plotly,
+# knitr,
+# stargazer,
+# kableExtra,
+# ExPanDaR,
+# SmartEDA,
+# visdat,
+# naniar,
+# janitor,
+# summarytools,
+# plm,
+# lfe,
+# fixest,
+# clubSandwich,
+# car,
+# gplots,
+# tseries,
+# lmtest,
+# dlookr,
+# MASS,
+# robustbase,
+# sandwich,
+# broom,
+# pdynmc)
 
 # DATA
 
