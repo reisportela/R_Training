@@ -22,4 +22,4 @@
     - Click in "launch"
 
 
-3. Use RStudioCloud & clone the repository "R_Training"
+3. Use [RStudioCloud](https://rstudio.cloud/) & clone the repository "R_Training"
