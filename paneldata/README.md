@@ -28,7 +28,7 @@
 
 5. Explore
     
-    - GitHub's Codespaces
+    - GitHub's [Codespaces](https://github.com/features/codespaces)
     - [Google Colab](https://colab.research.google.com/)
     - [Google Console](https://console.cloud.google.com/): explore **CLOUD SHELL**
     - [IBM Cloud](https://cloud.ibm.com/)
