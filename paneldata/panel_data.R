@@ -14,6 +14,13 @@ setwd("~/Documents/GitHub/R_Training/paneldata/")
 
 rm(list = ls())
 
+# detach()
+# install.packages("devtools")
+# install.packages("pacman")
+# install.packages("librarian")
+# remotes::install_github("DesiQuintans/librarian")
+
+
 # LOG FILE
 
 # sink("results/Regression.txt")
@@ -22,34 +29,34 @@ start_time <- Sys.time()
 
 ##################################      
 
-# library(pacman)
-# 
-# pacman::p_load(stargazer,
-#                kableExtra,
-#                ExPanDaR,
-#                SmartEDA,
-#                visdat,
-#                naniar,
-#                janitor,
-#                summarytools,
-#                plm,
-#                lfe,
-#                fixest,
-#                clubSandwich,
-#                car,
-#                gplots,
-#                tseries,
-#                lmtest,
-#                dlookr,
-#                MASS,
-#                robustbase,
-#                sandwich,
-#                broom,
-#                pdynmc)
+library(pacman)
 
-#install.packages("librarian")
+pacman::p_load(stargazer,
+              kableExtra,
+              ExPanDaR,
+              SmartEDA,
+              visdat,
+              naniar,
+              janitor,
+              summarytools,
+              plm,
+              lfe,
+              fixest,
+              clubSandwich,
+              car,
+              gplots,
+              tseries,
+              lmtest,
+              dlookr,
+              MASS,
+              robustbase,
+              sandwich,
+              broom,
+              pdynmc)
 
 # LIBRARIES
+
+library(librarian)
 
 librarian::shelf(stargazer,
                  kableExtra,

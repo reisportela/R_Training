@@ -1,12 +1,13 @@
-# Applied Data Analysis School: October/november 2020
-# 6. REGRESSION ANALYSIS AND CAUSALITY WITH R | By: JoÃ£o Cerejeira | 10 & 12 November
-# https://www.gades-solutions.com/project/data-analysis-school/
+# Data Analysis: 2021
+# REGRESSION ANALYSIS AND CAUSALITY WITH R | By: Jo�o Cerejeira
 
 rm(list = ls())
 
 setwd("C:\\Users\\mangelo.EEG\\Documents\\GitHub\\R_Training\\regression")
 
 # <<>> ----- <<>> #
+
+# install.packages('kableExtra')
 
 ## LIBRARIES
 
@@ -60,23 +61,26 @@ summary(psm_nn)
 ## DATA
 data(lalonde)
 
-lalonde.formu <- treat~age + educ + black + hispan + married + nodegree + re74 + re75
+lalonde$race.f <- factor(lalonde$race)
+is.factor(lalonde$race.f)
+
+lalonde.formu <- treat~age + educ + race.f + married + nodegree + re74 + re75
 glm1 <- glm(lalonde.formu, family=binomial, data=lalonde)
 
 stargazer::stargazer(glm1,type="text",single.row = TRUE)
 
 ## Mahalanobis Metric Matching
 
-  m.mahal<-matchit(lalonde.formu,data=lalonde,
-    mahvars=c("age","educ","nodegree","re74","re75"),
-    replace=FALSE,distance="mahalanobis",caliper=0.25)
+ m.mahal<-matchit(lalonde.formu,data=lalonde,
+                  mahvars=c("age","educ","nodegree","re74","re75"),
+                  replace=FALSE,caliper=0.25)
 
 ## Get matched Data
   
   mahal.match<-match.data(m.mahal)
 
 ## PSM nearest neighbor
-  
+
   m.nn<-matchit(lalonde.formu, data = lalonde, caliper=0.1, method ="nearest")
 
 ## m.nn<-matchit(lalonde.formu, data = lalonde, ratio=1, method ="nearest")
@@ -90,9 +94,9 @@ stargazer::stargazer(glm1,type="text",single.row = TRUE)
 ## Nearest Neighbor
   xBalance(lalonde.formu, data = as.data.frame(nn.match), report=c("chisquare.test"))
 
-  reg.1 <- lm(re78~treat+age+educ+nodegree+re74+re75+married+black+hispan,data=lalonde)
-  reg.2 <- lm(re78~treat+age+educ+nodegree+re74+re75+married+black+hispan,data=nn.match)
-  reg.3 <- lm(re78~treat+age+educ+nodegree+re74+re75+married+black+hispan,data=mahal.match)
+  reg.1 <- lm(re78~treat+age+educ+nodegree+re74+re75+married+race.f,data=lalonde)
+  reg.2 <- lm(re78~treat+age+educ+nodegree+re74+re75+married+race.f,data=nn.match)
+  reg.3 <- lm(re78~treat+age+educ+nodegree+re74+re75+married+race.f,data=mahal.match)
   reg.2a <- lm(re78~treat,data=nn.match)
   reg.3a <- lm(re78~treat,data=mahal.match)
 
@@ -108,11 +112,11 @@ stargazer::stargazer(glm1,type="text",single.row = TRUE)
 
 # bind matched cases
 
-  matched.cases<-cbind(matches,yT,yC)
+  # --> matched.cases<-cbind(matches,yT,yC)
 
 # Paired T-test
 
-  t.test(matched.cases$yT,matched.cases$yC,paired=TRUE)
+  # --> t.test(matched.cases$yT,matched.cases$yC,paired=TRUE)
 
   plot(m.nn, type="jitter")
 

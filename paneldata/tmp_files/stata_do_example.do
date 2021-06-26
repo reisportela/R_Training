@@ -1,8 +1,7 @@
 //////////////////////////////////////
 // PANEL DATA exercise				//
-// Miguel Portela					//
+// Miguel Portela -- 2021			//
 // Universidade do Minho, Portugal	//
-// November 2020					//
 //////////////////////////////////////
 
 

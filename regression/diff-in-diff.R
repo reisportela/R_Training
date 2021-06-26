@@ -1,6 +1,5 @@
-# Applied Data Analysis School: October/november 2020
-# 6. REGRESSION ANALYSIS AND CAUSALITY WITH R | By: João Cerejeira | 10 & 12 November
-# https://www.gades-solutions.com/project/data-analysis-school/
+# Data Analysis: 2021
+# REGRESSION ANALYSIS AND CAUSALITY WITH R | By: João Cerejeira
 
 setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/regression")
 
