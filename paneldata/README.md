@@ -23,3 +23,5 @@
 
 
 3. Use [RStudioCloud](https://rstudio.cloud/) & clone the repository "R_Training"
+
+4. Use *[Gesis Notebooks](https://notebooks.gesis.org/)* to clone the repository
