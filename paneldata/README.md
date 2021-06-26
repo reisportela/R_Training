@@ -12,7 +12,7 @@
 
 1. Laptop running R & RStudio
 
-    - latter check Jupyter Lab & Visual Studio Code
+    - latter check [Jupyter Lab](https://jupyter.org/) & [Visual Studio Code](https://code.visualstudio.com/)
 
 2. MyBinder
 
@@ -25,3 +25,14 @@
 3. Use [RStudioCloud](https://rstudio.cloud/) & clone the repository "R_Training"
 
 4. Use *[Gesis Notebooks](https://notebooks.gesis.org/)* to clone the repository
+
+5. Explore
+    
+    - GitHub's Codespaces
+    - [Google Colab](https://colab.research.google.com/)
+    - [Google Console](https://console.cloud.google.com/): explore **CLOUD SHELL**
+    - [IBM Cloud](https://cloud.ibm.com/)
+    - [CODE OCEAN](https://codeocean.com/)
+    - [Galileo](https://app.galileoapp.io/)
+    - IBM's [Cognitive Labs](https://labs.cognitiveclass.ai/)
+    - [Singularity](https://sylabs.io/) containers
