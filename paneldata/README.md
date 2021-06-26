@@ -10,7 +10,7 @@
 
 ## Platform
 
-1. Laptop running R & RStudio
+1. Laptop running [R](https://cran.r-project.org/) & [RStudio](https://www.rstudio.com/)
 
     - latter check [Jupyter Lab](https://jupyter.org/) & [Visual Studio Code](https://code.visualstudio.com/)
 
