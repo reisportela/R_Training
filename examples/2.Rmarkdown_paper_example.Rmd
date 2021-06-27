@@ -1,6 +1,6 @@
 ---
-title: "Simple markdown exercise"
-author: "Miguel Portela"
+title: "Simple markdown exercise\\thanks{We would also like to thank seminar and conference participants at the NIPE Research Seminars, the II Conferência do Conselho para a Produtividade and the Annual Conference of the Global Forum on Productivity. This paper is financed by National Funds of the FCT - Portuguese Foundation for Science and Technology, projects UIDB/03182/2020 and PTDC/EGE-ECO/29822/2017 (“It’s All About Productivity: contributions to the understanding of the sluggish performance of the Portuguese economy”).}"
+author: "Miguel Portela\\thanks{NIPE/Universidade do Minho and IZA, Bonn. Contact: miguel.portela@eeg.uminho.pt.}"
 # date: "2021"
 date: '`r gsub("^0", "", format(Sys.time(), "%d %B, %Y"))`'
 output:
@@ -25,7 +25,7 @@ link-citations: true
 documentclass: article
 geometry: "paperwidth=210mm,paperheight=297mm,left=27mm,right=27mm,top=27mm,bottom=27mm"
 base_format: rticles::elsevier_article
-abstract: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\\par \\textbf{Keywords:} Development Economics, Panel Data"
+abstract: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\\par \\textbf{Keywords:} Development Economics, Panel Data\\par \\textbf{JEL Codes}: J64, H31"
 ---
 
 ```{r setup, include=FALSE}
@@ -37,7 +37,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r packages, echo=FALSE,results='hide',message=FALSE}
 rm(list = ls())
 
-# setwd("/Users/miguelportela/Documents/GitHub/R_Training/examples")
+setwd("/Users/miguelportela/Documents/GitHub/R_Training/examples")
 ##setwd("C:\\Users\\exu0o9\\Documents\\GitHub\\R_Training\\examples")
 
 library(tidyverse)
@@ -67,7 +67,7 @@ summary(ln_wage)
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Odio eu feugiat pretium nibh. **Quis varius quam quisque id diam vel. Arcu odio ut sem nulla pharetra.** Sem et tortor consequat id porta nibh venenatis cras sed. Eu non diam phasellus vestibulum lorem sed risus. Non quam lacus suspendisse faucibus interdum posuere. Aliquet enim tortor at auctor urna. Amet facilisis magna etiam tempor orci eu lobortis. _Maecenas ultricies mi eget mauris pharetra et. Pharetra et ultrices neque ornare aenean euismod elementum nisi. Aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque._ Fermentum dui faucibus in ornare quam. Auctor elit sed vulputate mi sit.
 
-\pagebreak
+<!-- \pagebreak -->
 
 If you want to type a `Header` see Section \@ref(literature).
 
