@@ -17,8 +17,9 @@ rm(list = ls())
 # detach()
 # install.packages("devtools")
 # install.packages("pacman")
+
 # install.packages("librarian")
-# remotes::install_github("DesiQuintans/librarian")
+   # remotes::install_github("DesiQuintans/librarian")
 
 
 # LOG FILE
@@ -29,12 +30,13 @@ start_time <- Sys.time()
 
 ##################################      
 
-library(tidyverse) # Modern data science library 
-library(haven)
+# library(tidyverse) # Modern data science library 
+# library(haven)
 
-library(pacman)
+library(pacman)  #Package Management Tool
 
 pacman::p_load(tidyverse,
+              haven,
               data.table,
               plotly,
               knitr,
@@ -95,13 +97,15 @@ pacman::p_load(tidyverse,
 # DATA
 
 nlswork <- read_dta("data/nlswork.dta")
+nls_nomiss <- na.omit(nlswork)
+write_dta(nls_nomiss,"data/nls_nomiss.dta")
 
-# View(world_data)
+# View(nlswork)
 
-# names(nlswork)
-# head(nlswork)
-# str(nlswork)
-# dplyr::glimpse(world_data)
+names(nlswork)
+head(nlswork)
+str(nlswork)
+dplyr::glimpse(nlswork)
 
 dplyr::glimpse(nlswork$ln_wage)
 
@@ -113,7 +117,7 @@ ExpData(nlswork,type=2)
 
 ## EDA: Exploratory Data Analysis
 
-# eda_report(world_data,output_dir = "EDA/",output_file = "eda_nlswork.pdf")
+eda_report(nlswork,output_dir = "EDA/",output_file = "eda_nlswork.pdf")
 
 summary(nlswork[,"grade"])
 
@@ -140,11 +144,11 @@ gg_miss_upset(nlswork)
 
 ## -- > EXERCISE
   
-  ## ExPanD(): import the data 'nlswork.dta' and 'ExPanD()' in the Console
+  ## ExPanD(): type 'ExPanD()' in the Console and import the data 'nls_nomiss.dta'
 
 summary(nlswork)
-
-stargazer(nlswork,
+nls <- data.frame(nlswork)
+stargazer(nls,
           title = "Summary statistics",
           label = "tb:statistcis",
           table.placement = "ht",
@@ -152,7 +156,7 @@ stargazer(nlswork,
 
 ## or
 
-stargazer(nlswork,
+stargazer(nls,
           title = "Summary statistics",
           label = "tb:statistcis",
           table.placement = "ht",
@@ -160,7 +164,7 @@ stargazer(nlswork,
 
 ## or a subset of variables
 
-nlswork %>%
+nls %>%
   dplyr::select(ln_wage,grade) %>% 
   stargazer(title="Shorter statistics",
             label="tb:statistics:short",
@@ -221,8 +225,8 @@ plotmeans(ln_wage ~ year ,data = nlswork_clean)
 # Pooled OLS model
 
 ols <- lm(data = nlswork_clean, ln_wage ~ union +
-            collgrad +age +agesq +tenure +tensq +
-            not_smsa +south +c_city)
+            collgrad + age + agesq + tenure + tensq +
+            not_smsa + south + c_city)
 summary(ols)
 
 pols <- plm(data = nlswork_clean, ln_wage ~ union +
@@ -279,7 +283,7 @@ stargazer(pols,pols_robust,title = "Regression analysis",
 # // Final slide 20
 # *Q2*
 #   
-#   *Random effects estimator (RE)*
+# *Random effects estimator (RE)*
 
 # SEE THE DISCUSSION HERE for the comparison between R and Stata
 # https://stats.stackexchange.com/questions/421374/different-results-from-random-effects-plm-r-and-xtreg-stata

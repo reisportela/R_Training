@@ -312,7 +312,7 @@ $$\hat{y_i}=`r round(betas[1],1)` + `r round(betas[2],2)`\times tenure_i + `r ro
 
 # Final remarks
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elit sed vulputate mi sit. Cursus turpis massa tincidunt dui ut ornare lectus sit. Non curabitur gravida arcu ac tortor dignissim convallis aenean. Volutpat consequat mauris nunc congue nisi vitae suscipit. Placerat orci nulla pellentesque dignissim enim sit amet venenatis urna. Accumsan sit amet nulla facilisi morbi tempus iaculis urna. Sagittis aliquam malesuada bibendum arcu vitae elementum curabitur vitae nunc. Blandit cursus risus at ultrices mi tempus imperdiet. Pretium aenean pharetra magna ac placerat vestibulum lectus mauris.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elit sed vulputate mi sit. Cursus turpis massa tincidunt dui ut ornare lectus sit. Non curabitur gravida arcu ac tortor dignissim convallis aenean -- see @bdpPEG2019. Volutpat consequat mauris nunc congue nisi vitae suscipit. Placerat orci nulla pellentesque dignissim enim sit amet venenatis urna. Accumsan sit amet nulla facilisi morbi tempus iaculis urna. Aliquam malesuada bibendum arcu vitae elementum curabitur vitae nunc. Blandit cursus risus at ultrices mi tempus imperdiet. Pretium aenean pharetra magna ac placerat vestibulum lectus mauris.
 
 <!---
 
