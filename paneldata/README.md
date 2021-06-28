@@ -36,3 +36,9 @@
     - [Galileo](https://app.galileoapp.io/)
     - IBM's [Cognitive Labs](https://labs.cognitiveclass.ai/)
     - [Singularity](https://sylabs.io/) containers
+
+6. Install Latex
+
+    `install.packages('tinytex')`
+    
+    `tinytex::install_tinytex()`

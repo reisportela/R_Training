@@ -7,8 +7,6 @@
 #setwd("C:\\Users\\exu0o9\\Documents\\GitHub\\R_Training\\paneldata")
 setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/paneldata")
 
-## today
-
 # setwd("~/Documents/GitHub/R_Training/paneldata/")
 
 # WHEN USING MYBINDER DEFINE
@@ -19,10 +17,14 @@ rm(list = ls())
 # detach()
 # install.packages("devtools")
 # install.packages("pacman")
+# install.packages('here')
 
 # install.packages("librarian")
    # remotes::install_github("DesiQuintans/librarian")
 
+# --> INSTALL LATEX
+# install.packages('tinytex')
+# tinytex::install_tinytex()
 
 # LOG FILE
 
@@ -37,7 +39,8 @@ start_time <- Sys.time()
 
 library(pacman)  #Package Management Tool
 
-pacman::p_load(tidyverse,
+pacman::p_load(here,
+              tidyverse,
               haven,
               data.table,
               plotly,
