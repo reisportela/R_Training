@@ -3,8 +3,8 @@
 
 # SET WORKING DIRECTORY
 
-# setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/regression")
-setwd('/Users/miguelportela/Documents/GitHub/R_Training/regression')
+setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/regression")
+# setwd('/Users/miguelportela/Documents/GitHub/R_Training/regression')
 
 rm(list=ls()) #Removes all items in Environment!
 
