@@ -4,7 +4,10 @@
 # https://bookdown.org/ccolonescu/RPoE4/
 # https://cran.r-project.org/web/packages/plm/vignettes/plmPackage.html
 
-#setwd("C:\\Users\\exu0o9\\Documents\\GitHub\\R_Training\\paneldata")
+
+# Working area and packages -------------------------------------------------------------------
+
+# setwd("C:\\Users\\exu0o9\\Documents\\GitHub\\R_Training\\paneldata")
 
 setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/paneldata")
 
@@ -69,38 +72,39 @@ pacman::p_load(here,
               broom,
               pdynmc)
 
-# LIBRARIES
+    # LIBRARIES
+    
+    # library(librarian)
+    # 
+    # librarian::shelf(tidyverse,
+    # data.table,
+    # plotly,
+    # knitr,
+    # stargazer,
+    # kableExtra,
+    # ExPanDaR,
+    # SmartEDA,
+    # visdat,
+    # naniar,
+    # janitor,
+    # summarytools,
+    # plm,
+    # lfe,
+    # fixest,
+    # clubSandwich,
+    # car,
+    # gplots,
+    # tseries,
+    # lmtest,
+    # dlookr,
+    # MASS,
+    # robustbase,
+    # sandwich,
+    # broom,
+    # pdynmc)
 
-# library(librarian)
-# 
-# librarian::shelf(tidyverse,
-# data.table,
-# plotly,
-# knitr,
-# stargazer,
-# kableExtra,
-# ExPanDaR,
-# SmartEDA,
-# visdat,
-# naniar,
-# janitor,
-# summarytools,
-# plm,
-# lfe,
-# fixest,
-# clubSandwich,
-# car,
-# gplots,
-# tseries,
-# lmtest,
-# dlookr,
-# MASS,
-# robustbase,
-# sandwich,
-# broom,
-# pdynmc)
 
-# DATA
+# Read & Write Data --------------------------------------------------------------------
 
 nlswork <- read_dta("data/nlswork.dta")
 
@@ -108,6 +112,9 @@ nlswork <- read_dta("data/nlswork.dta")
   write_dta(nls_nomiss,"data/nls_nomiss.dta")
 
 # View(nlswork)
+
+
+# Data description --------------------------------------------------------
 
   names(nlswork)
   head(nlswork)
@@ -120,7 +127,8 @@ nlswork <- read_dta("data/nlswork.dta")
   
   ExpData(nlswork,type=2)
 
-# STATISTICS
+
+# Statistics --------------------------------------------------------------
 
 ## EDA: Exploratory Data Analysis
 
@@ -221,7 +229,7 @@ nls <- data.frame(nlswork)
   ExpData(nlswork_clean,type=1)
   ExpData(nlswork_clean,type=2)
 
-attach(nlswork_clean)
+# attach(nlswork_clean)
 
 ## <<>> --- REGRESSION ANALYSIS --- <<>> ##
 
