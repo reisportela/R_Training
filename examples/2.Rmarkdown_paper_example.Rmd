@@ -30,11 +30,11 @@ abstract: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusm
 
 ```{r setup, include=FALSE}
 library(knitr)
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(include = FALSE)
 ```
 
 
-```{r packages, echo=FALSE,results='hide',message=FALSE}
+```{r packages, message=FALSE, include=FALSE, results='hide'}
 rm(list = ls())
 
 setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/examples")
