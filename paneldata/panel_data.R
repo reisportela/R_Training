@@ -626,7 +626,7 @@ pbgtest(fe, order = 2)
                     age +agesq +tenure +tensq +
                     not_smsa +south +c_city | idcode)
   
-      summary(HDFE1a)
+      summary(HDFE1a,se="cluster")
   
   
   HDFE1b <- felm(data = nlswork_clean, ln_wage ~ union +
@@ -642,7 +642,7 @@ pbgtest(fe, order = 2)
                     age +agesq +tenure +tensq +
                     not_smsa +south +c_city | idcode + year)
   
-      summary(HDFE2a)
+      summary(HDFE2a,se="cluster")
 
 
   HDFE2b <- felm(data = nlswork_clean, ln_wage ~ union +
