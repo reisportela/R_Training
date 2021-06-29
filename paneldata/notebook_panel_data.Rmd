@@ -11,7 +11,7 @@ Try executing this chunk by clicking the *Run* button within the chunk or by pla
 
 
 
-```{r include=FALSE}
+```{r Set Working Directory, include=FALSE}
 rm(list = ls())
 setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/paneldata")
 ```
@@ -588,7 +588,7 @@ nlswork_balanced <- read_dta("data/nlswork_balanced_small.dta")
 
 ## Test for heteroskedasticity within panel data
 
-```{r}
+```{r ert}
 # H0) The null hypothesis for the Breusch-Pagan test is homoskedasticity
 
 # takes too long to compute
@@ -607,7 +607,7 @@ nlswork_balanced <- read_dta("data/nlswork_balanced_small.dta")
 
 - Unobserved effects test <<>> Wooldridge's test for unobserved individual effects <<>>
 
-```{r}
+```{r pwtest, echo=FALSE}
   pwtest(data = nlswork_clean, ln_wage ~ union +
            collgrad +age +agesq +tenure +tensq +
            not_smsa +south +c_city)
