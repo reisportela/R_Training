@@ -216,3 +216,299 @@ soiadoaisodiuas
             type="text")
 ```
 
+```{r}
+# CLUSTERED Standard-errors
+
+  pols_robust <- coeftest(pols, function(x) vcovHC(x, type = 'sss')) 
+  
+  stargazer(pols,pols_robust,title = "Regression analysis", 
+            model.numbers = FALSE,
+            column.labels = c("Pooled","Pooled (cluster)"),
+            label = "regressions",
+            table.placement = "!ht",
+            notes.append = FALSE,
+            notes.align="l",
+            notes="Standard errors in parentheses.",
+            header = FALSE,
+            no.space = TRUE,
+            covariate.labels = c("Union","Collage graduate","Age","Age sqrd.",
+                                 "Tenure","Tenure sqrd.","Not SMSA","South","City"),
+            omit = c("Constant"),
+            omit.stat = c("adj.rsq","f","ser"),
+            digits = 6,
+            digits.extra = 7,
+            omit.yes.no = c("Constant",""),
+            dep.var.caption="",
+            dep.var.labels.include = FALSE,
+            style = "qje",
+            type="text")
+
+```
+
+```{r}
+# *Q2*
+#   
+# *Random effects estimator (RE)*
+
+# SEE THE DISCUSSION HERE for the comparison between R and Stata
+# https://stats.stackexchange.com/questions/421374/different-results-from-random-effects-plm-r-and-xtreg-stata
+# R and Stata treat differently unbalanced panels
+
+# for a balanced panel we have
+
+  nlswork_balanced <- read_dta("data/nlswork_balanced.dta")
+  
+  re_balanced <- plm(data = nlswork_balanced, ln_wage ~ union +
+                       collgrad +age +agesq +tenure +tensq +
+                       not_smsa +south +c_city, model="random",
+                     index=c("idcode", "year"))
+      summary(re_balanced)
+```
+
+lakjsdlkasjlkj
+
+```{r}
+  re <- plm(data = nlswork_clean, ln_wage ~ union +
+              collgrad +age +agesq +tenure +tensq +
+              not_smsa +south +c_city, model="random",
+            index=c("idcode", "year"))
+      summary(re)
+
+  re_robust <- coeftest(re, function(x) vcovHC(x, type = 'sss')) 
+```
+
+çoasieopiqwpo
+
+```{r}
+  stargazer(pols,pols_robust,re,re_robust,title = "Regression analysis", 
+            model.numbers = FALSE,
+            column.labels = c("Pooled","Pooled (cluster)","RE","RE (cluster"),
+            label = "regressions",
+            table.placement = "!ht",
+            notes.append = FALSE,
+            notes.align="l",
+            notes="Standard errors in parentheses.",
+            header = FALSE,
+            no.space = TRUE,
+            covariate.labels = c("Union","College Graduate","Age","Age sqrd.",
+                                 "Tenure","Tenure sqrd.","Not SMSA","South","City"),
+            omit = c("Constant"),
+            omit.stat = c("adj.rsq","f","ser"),
+            digits = 3,
+            digits.extra = 5,
+            omit.yes.no = c("Constant",""),
+            dep.var.caption="",
+            dep.var.labels.include = FALSE,
+            style = "qje",
+            type="text")
+```
+
+
+
+```{r}
+  stargazer(pols,pols_robust,re,re_robust,title = "Regression analysis", 
+            model.numbers = FALSE,
+            column.labels = c("Pooled","Pooled (cluster)","RE","RE (cluster"),
+            label = "regressions",
+            table.placement = "!ht",
+            notes.append = FALSE,
+            notes.align="l",
+            notes="Standard errors in parentheses.",
+            header = FALSE,
+            no.space = TRUE,
+            covariate.labels = c("Union","College Graduate","Age","Age sqrd.",
+                                 "Tenure","Tenure sqrd.","Not SMSA","South","City"),
+            omit = c("Constant"),
+            omit.stat = c("adj.rsq","f","ser"),
+            digits = 3,
+            digits.extra = 5,
+            omit.yes.no = c("Constant",""),
+            dep.var.caption="",
+            dep.var.labels.include = FALSE,
+            style = "qje",
+            type="text")
+```
+
+jahdkjasskdjhaj
+
+```{r}
+# *LM test for the presence of unobserved effects*
+
+  plmtest(pols, type=c("bp"))
+  
+  kable(tidy(plmtest(pols, type=c("bp"))), format = "simple",caption=
+          "LM test for the presence of unobserved effects")
+```
+
+jaqkdjlkasjdlk
+
+```{r}
+# //Final slide 32
+# 
+# *Q3*
+#   
+#   *Fixed effects estimator (FE)*
+
+  fe <- plm(data = nlswork_clean, ln_wage ~ union +
+              collgrad +age +agesq +tenure +tensq +
+              not_smsa +south +c_city, model="within", index=c("idcode", "year"))
+      
+      summary(fe)
+```
+
+
+```{r}
+  stargazer(pols,re,fe,title = "Regression analysis", 
+            model.numbers = FALSE,
+            column.labels = c("Pooled","RE","FE"),
+            label = "regressions",
+            table.placement = "!ht",
+            notes.append = FALSE,
+            notes.align="l",
+            notes="Standard errors in parentheses.",
+            header = FALSE,
+            no.space = TRUE,
+            covariate.labels = c("Union","College","Age","Age sqrd.","Tenure",
+                                 "Tenure sqrd.","Not SMSA","South","City"),
+            omit = c("Constant"),
+            omit.stat = c("adj.rsq","f","ser"),
+            digits = 6,
+            digits.extra = 7,
+            omit.yes.no = c("Constant",""),
+            dep.var.caption="",
+            dep.var.labels.include = FALSE,
+            style = "qje",
+            type="text")
+
+```
+
+
+```{r}
+# Testing for fixed effects, null: OLS better than fixed
+# 'F test for individual effects' <<==>> 'F test that all u_i=0'
+
+  ols_0 <- lm(data = nlswork_clean, ln_wage ~ union +
+                age +agesq +tenure +tensq +
+                not_smsa +south +c_city)
+      summary(ols_0)
+  
+  pFtest(fe, ols_0)
+```
+
+
+```{r}
+# generate fixed-effects
+
+# nlswork_clean$specific_effects <- fixef(fe)
+
+# *Q3.1*
+
+  fe_robust <- coeftest(fe, function(x) vcovHC(x, type = 'sss')) 
+
+  stargazer(ols_0,fe,fe_robust,title = "Regression analysis", 
+            model.numbers = FALSE,
+            column.labels = c("OLS","FE","FE (cluster)"),
+            label = "regressions",
+            table.placement = "!ht",
+            notes.append = FALSE,
+            notes.align="l",
+            notes="Standard errors in parentheses.",
+            header = FALSE,
+            no.space = TRUE,
+            covariate.labels = c("Union","Age","Age sqrd.","Tenure",
+                                 "Tenure sqrd.","Not SMSA","South","City"),
+            omit = c("Constant"),
+            omit.stat = c("adj.rsq","f","ser"),
+            digits = 6,
+            digits.extra = 7,
+            omit.yes.no = c("Constant",""),
+            dep.var.caption="",
+            dep.var.labels.include = FALSE,
+            style = "qje",
+            type="text")
+
+```
+
+```{r}
+# *Q3.2*
+
+  linearHypothesis(ols,c("age=0","agesq=0"))
+  linearHypothesis(ols,c("age=0","agesq=0"), white.adjust = "hc1")
+  
+  Wald_test(fe, vcov = "CR1", cluster = idcode, 
+            constraints = constrain_zero(c("age","agesq")), test = "Naive-F")
+
+```
+
+```{r}
+# *LSDV Estimator=FE estimator* <<==>> takes too long
+# *using a smaller sample*
+
+nlswork_balanced <- read_dta("data/nlswork_balanced_small.dta")
+
+  LSDV <- lm(data = nlswork_balanced, ln_wage ~ union +
+               age +agesq +tenure +tensq +
+               not_smsa +south +c_city + factor(idcode))
+  summary(LSDV)
+  
+  fe_LSDV <- plm(data = nlswork_balanced, ln_wage ~ union +
+              age +agesq +tenure +tensq +
+              not_smsa +south +c_city, model="within", index=c("idcode", "year"))
+  summary(fe_LSDV)
+  
+  stargazer(LSDV,fe_LSDV,title = "Regression analysis", 
+            model.numbers = FALSE,
+            column.labels = c("LSDV","FE"),
+            label = "regressions",
+            table.placement = "!ht",
+            notes.append = FALSE,
+            notes.align="l",
+            notes="Standard errors in parentheses.",
+            header = FALSE,
+            no.space = TRUE,
+            covariate.labels = c("Union","Age","Age sqrd.","Tenure",
+                                 "Tenure sqrd.","Not SMSA","South","City"),
+            omit = c("Constant"),
+            omit.stat = c("adj.rsq","f","ser"),
+            digits = 6,
+            digits.extra = 7,
+            omit.yes.no = c("Constant",""),
+            dep.var.caption="",
+            dep.var.labels.include = FALSE,
+            style = "qje",
+            type="text")
+
+```
+
+```{r}
+# //Final slide 35
+# 
+# *Q4*
+#   *Hausman test*
+
+  fe_0 <- plm(data = nlswork_clean, ln_wage ~ union +
+                age +agesq +tenure +tensq +
+                not_smsa +south +c_city, model="within", index=c("idcode", "year"))
+  re_0 <- plm(data = nlswork_clean, ln_wage ~ union +
+                age +agesq +tenure +tensq +
+                not_smsa +south +c_city, model="random", index=c("idcode", "year"))
+  
+  phtest(fe_0, re_0)    
+
+```
+
+```{r}
+#   //Final slide 46
+# 
+# *Q5*
+#   *BE estimator
+
+  be <- plm(data = nlswork_clean, ln_wage ~ union +
+              collgrad +age +agesq +tenure +tensq +
+              not_smsa +south +c_city, model="between",
+            index=c("idcode", "year"))
+  
+      summary(be)
+
+```
+
