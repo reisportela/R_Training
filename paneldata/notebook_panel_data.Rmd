@@ -1,5 +1,5 @@
 ---
-title: "R Notebook"
+title: "R Notebook: Panel Data Models with R - June 2021"
 output:
   html_document:
     df_print: paged
@@ -7,18 +7,20 @@ output:
 
 This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
 
-Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter* (in Windows press *CTRL+Enter*).
 
 ```{r include=FALSE}
 rm(list = ls())
 setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/paneldata")
 ```
 
-Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I* (or *CTRL+Alt+I* in Windows).
 
 When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
 
 The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
+# Package Management Tool
 
 ```{r include=FALSE}
 library(pacman)  #Package Management Tool
@@ -61,7 +63,7 @@ nlswork <- read_dta("data/nlswork.dta")
   write_dta(nls_nomiss,"data/nls_nomiss.dta")
 ```
 
-lsajdkjaslk
+# Statistics
 
 ```{r}
   names(nlswork)
@@ -77,7 +79,7 @@ lsajdkjaslk
   ExpData(nlswork,type=2)
 ```
 
-laksjdlkajslkdjask
+## Exploratory data analysis
 
 
 ```{r echo=FALSE}
@@ -94,8 +96,9 @@ laksjdlkajslkdjask
   ExpNumViz(nlswork,Page=c(6,2))
 ```
 
-```{r}
 ## MISSING VALUES
+
+```{r}
 
   vis_dat(nlswork)
 
@@ -106,7 +109,7 @@ laksjdlkajslkdjask
 
 
 
-jdsajhdikuwhaieuhw
+## Add a dataframe
 
 
 ```{r include=FALSE}
@@ -114,7 +117,7 @@ nls <- data.frame(nlswork)
   summary(nls)
 ```
 
-çwoekowqiepo
+## Export output
 
 
 ```{r}
@@ -127,14 +130,14 @@ nls <- data.frame(nlswork)
 
 
 
-sakudeiuwieuywqiye
+## Produce a graph
 
 ````{r}
 plot(nlswork$grade,nlswork$ln_wage)
 ```
 
 
-slakjlskjla
+## Save the graph
 
 ```{r echo=FALSE}
   nlswork %>%
@@ -145,7 +148,7 @@ slakjlskjla
     geom_point()
 ggsave("figures/graph1.png")
 ```
-
+## Tabulations and further statistics
 
 ```{r echo=FALSE}
   tabyl(nlswork$race, sort = TRUE)
@@ -154,6 +157,8 @@ ggsave("figures/graph1.png")
   
   summarytools::freq(nlswork$race, order = "freq")
 ```
+
+# A new dataset: exclude onservations with missing information in a subset of variables
 
 ```{r include=FALSE}
   nlswork_clean <- drop_na(subset(nlswork,select = c(idcode, year, 
@@ -435,8 +440,8 @@ jaqkdjlkasjdlk
   linearHypothesis(ols,c("age=0","agesq=0"))
   linearHypothesis(ols,c("age=0","agesq=0"), white.adjust = "hc1")
   
-  Wald_test(fe, vcov = "CR1", cluster = idcode, 
-            constraints = constrain_zero(c("age","agesq")), test = "Naive-F")
+  # Wald_test(fe, vcov = "CR1", cluster = idcode, 
+  #           constraints = constrain_zero(c("age","agesq")), test = "Naive-F")
 
 ```
 
@@ -511,4 +516,164 @@ nlswork_balanced <- read_dta("data/nlswork_balanced_small.dta")
       summary(be)
 
 ```
+
+```{r}
+# //Final slide 53
+# 
+# *Q6*
+#   *FD estimator*
+
+  fd <- plm(data = nlswork_clean, ln_wage ~ 0 + union +
+              collgrad +age +agesq +tenure +tensq +
+              not_smsa +south +c_city, model="fd",
+            index=c("idcode", "year"))
+    
+    summary(fd)
+
+```
+
+```{r}
+# *Output Table*
+
+  stargazer(pols,re,fe,be,title = "Regression analysis", 
+            model.numbers = FALSE,
+            column.labels = c("OLS","RE","FE","BE"),
+            label = "regressions",
+            table.placement = "!ht",
+            notes.append = FALSE,
+            notes.align="l",
+            notes="Standard errors in parentheses.",
+            header = FALSE,
+            no.space = TRUE,
+            omit = c("Constant"),
+            omit.stat = c("adj.rsq","f","ser"),
+            digits = 6,
+            digits.extra = 7,
+            omit.yes.no = c("Constant",""),
+            dep.var.caption="",
+            dep.var.labels.include = FALSE,
+            style = "qje",
+            type="text")
+
+
+
+```
+
+```{r}
+# *FURTHER SPECIFICATION TESTS FOR PANEL DATA*
+#   
+#   // # Test for heteroskedasticity within panel data
+#   
+
+# H0) The null hypothesis for the Breusch-Pagan test is homoskedasticity
+
+# takes too long to compute
+
+# bptest(data = nlswork_clean, ln_wage ~ union +
+#          collgrad +age +agesq +tenure +tensq +
+#          not_smsa +south +c_city + factor(idcode), studentize=F)
+
+
+  bptest(data = nlswork_balanced, ln_wage ~ union +
+           collgrad +age +agesq +tenure +tensq +
+           not_smsa +south +c_city + factor(idcode), studentize=F)
+
+
+
+```
+
+```{r}
+# // # Test of serial correlation within panel data
+
+# Unobserved effects test <<>> Wooldridge's test for unobserved individual effects <<>>
+
+  pwtest(data = nlswork_clean, ln_wage ~ union +
+           collgrad +age +agesq +tenure +tensq +
+           not_smsa +south +c_city)
+```
+
+```{r}
+# Locally robust tests for serial correlation or random effects <<>> Baltagi and Li AR-RE joint test - balanced panel <<>>
+
+  pbsytest(data = nlswork_balanced, ln_wage ~ union +
+             collgrad +age +agesq +tenure +tensq +
+             not_smsa +south +c_city, test="j")
+
+```
+
+```{r}
+# General serial correlation tests <<>> Breusch-Godfrey/Wooldridge test for serial correlation in panel models <<>>
+
+pbgtest(fe, order = 2)
+
+```
+
+```{r}
+# Wooldridge's test for serial correlation in FE panels
+
+  pwartest(data = nlswork_balanced, ln_wage ~ union +
+             collgrad +age +agesq +tenure +tensq +
+             not_smsa +south +c_city)
+```
+
+```{r}
+# Wooldridge first-difference-based test
+
+  pwfdtest(data = nlswork_balanced, ln_wage ~ union +
+             collgrad +age +agesq +tenure +tensq +
+             not_smsa +south +c_city)
+
+  pwfdtest(data = nlswork_balanced, ln_wage ~ union +
+             collgrad +age +agesq +tenure +tensq +
+             not_smsa +south +c_city, h0="fe")
+```
+
+```{r}
+# Tests for cross-sectional dependence
+
+  pcdtest(data = nlswork_balanced, ln_wage ~ union +
+            collgrad +age +agesq +tenure +tensq +
+            not_smsa +south +c_city)
+```
+
+```{r}
+# HIGH DIMENSIONAL FIXED-EFFECTS
+
+## CHECK: 'lfe' and 'fixest'
+### https://github.com/sgaure/lfe
+### https://github.com/lrberge/fixest
+
+# *including 1 fixed effect*
+
+  HDFE1a <- feols(data = nlswork_clean, ln_wage ~ union +
+                    age +agesq +tenure +tensq +
+                    not_smsa +south +c_city | idcode)
+  
+      summary(HDFE1a)
+  
+  
+  HDFE1b <- felm(data = nlswork_clean, ln_wage ~ union +
+                   age +agesq +tenure +tensq +
+                   not_smsa +south +c_city | idcode, clustervar=c("idcode"))
+  
+      summary(HDFE1b)
+
+
+# *including a 2nd fixed effect*
+
+  HDFE2a <- feols(data = nlswork_clean, ln_wage ~ union +
+                    age +agesq +tenure +tensq +
+                    not_smsa +south +c_city | idcode + year)
+  
+      summary(HDFE2a)
+
+
+  HDFE2b <- felm(data = nlswork_clean, ln_wage ~ union +
+                   age +agesq +tenure +tensq +
+                   not_smsa +south +c_city  | idcode + year, clustervar=c("idcode"))
+  
+      summary(HDFE2b)
+
+```
+
 
