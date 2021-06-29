@@ -381,9 +381,9 @@ nls <- data.frame(nlswork)
       
       summary(fe)
 
-  stargazer(fe,title = "Regression analysis", 
+  stargazer(pols,re,fe,title = "Regression analysis", 
             model.numbers = FALSE,
-            column.labels = c("FE"),
+            column.labels = c("Pooled","RE","FE"),
             label = "regressions",
             table.placement = "!ht",
             notes.append = FALSE,
@@ -391,7 +391,7 @@ nls <- data.frame(nlswork)
             notes="Standard errors in parentheses.",
             header = FALSE,
             no.space = TRUE,
-            covariate.labels = c("Union","Age","Age sqrd.","Tenure",
+            covariate.labels = c("Union","College","Age","Age sqrd.","Tenure",
                                  "Tenure sqrd.","Not SMSA","South","City"),
             omit = c("Constant"),
             omit.stat = c("adj.rsq","f","ser"),
