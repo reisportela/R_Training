@@ -1,0 +1,689 @@
+% !Rnw root = EDA_Report.Rnw
+
+<<enrironment, echo=FALSE, warning=FALSE, message=FALSE>>=
+options(warn = -1)
+
+library(dplyr)
+library(ggplot2)
+library(gridExtra)
+library(knitr)
+library(kableExtra)
+
+opts_chunk$set(fig.path = paste(tempdir(), 'figure/minimal-', sep = "/"), fig.align = 'center',
+               fig.show = 'hold', warning = FALSE, message = FALSE)
+options(replace.assign = TRUE, width = 90)
+
+dist_numeric <- function(df, target, predictor) {
+  descr <- df %>%
+    target_by(target) %>%
+    describe(predictor)
+
+  vars <- unlist(descr[, 2])
+
+  descr <- descr %>%
+    select(-c(1:2)) %>%
+    t
+
+  colnames(descr) <- vars
+
+  descr <- descr[, rev(seq(NCOL(descr)))]
+
+  rnames <- c("n", "NA", "mean", "sd", "se(mean)", "IQR",
+              "skewness", "kurtosis")
+  rnames <- c(rnames, paste0(c(0, 1, 5, 10, 20, 25, 30, 40, 50, 60, 70,
+                               75, 80, 90, 95, 99, 100), "%"))
+  row.names(descr) <- rnames
+
+  as.data.frame(descr)
+}
+
+change_under <- function(x) {
+  gsub("_", "\\\\_", x)
+}
+
+edaData <- as.data.frame(get("edaData", .dlookrEnv))
+targetVariable <- get("targetVariable", .dlookrEnv)
+
+if (length(targetVariable) == 0) targetVariable <- NULL
+
+options(knitr.table.format = "latex")
+@
+
+<<check_variables, echo=FALSE>>=
+idx.numeric <- find_class(edaData, type = "numerical")
+idx.factor <- find_class(edaData, type = "categorical")
+nm.numeric <- find_class(edaData, type = "numerical", index = FALSE)
+nm.factor <- find_class(edaData, type = "categorical", index = FALSE)
+
+if (!is.null(targetVariable)) {
+  # remove target variable from variable index
+  idx.numeric <- idx.numeric[nm.numeric != targetVariable]
+  idx.factor <- idx.factor[nm.factor != targetVariable]
+
+  factor_flag <- class(pull(edaData, targetVariable))[1] %in% c("factor", "ordered")
+  numeric_flag <- class(pull(edaData, targetVariable))[1] %in% c("integer", "numeric")
+
+  target <- if (!factor_flag & numeric_flag)
+    factor(pull(edaData, targetVariable)) else
+      pull(edaData, targetVariable)
+}
+
+# if all elements of a numerical variable are NA,
+# remove from correlation coefficient calculation
+idx.numeric <- idx.numeric[apply(as.data.frame(edaData[, idx.numeric]), 2,
+                                 function(x) !all(is.na(x)))]
+
+# if all elements of the numerical variable are the same value,
+# remove from the correlation coefficient calculation
+idx.numeric <- idx.numeric[apply(as.data.frame(edaData[, idx.numeric]), 2,
+                                 function(x) diff(range(x, na.rm = TRUE)) > 0)]
+
+N <- NROW(edaData)
+@
+
+\chapter{Introduction}
+The EDA Report provides exploratory data analysis information on objects that inherit data.frame and data.frame.
+
+\section{Information of Dataset}
+The dataset that generated the EDA Report is an `\Sexpr{class(edaData)[1]}' object. It consists of \Sexpr{format(N, big.mark = ",")} observations and \Sexpr{NCOL(edaData)} variables.
+
+\section{Information of Variables}
+<<info_variables, echo=FALSE, results='asis'>>=
+cap <- "Information of Variables"
+
+vars <- edaData %>%
+  diagnose() %>% 
+  mutate(missing_percent = round(missing_percent, 2),
+         unique_rate = round(unique_rate, 3))
+
+knitr::kable(vars, caption = cap, booktabs = TRUE, longtable = TRUE) %>%
+  kable_styling(latex_options = c("striped", "hold_position")) %>%
+  kable_styling(latex_options = c("repeat_header")) %>% 
+  cat()
+
+target_nm <- if (is.null(targetVariable)) "NULL" else targetVariable
+target_type <- if (is.null(targetVariable))
+  "NULL(You did not specify a target variable)" else
+  class(pull(edaData, targetVariable))[1]
+@
+
+The target variable of the data is '\Sexpr{change_under(target_nm)}', and the data type of the variable is \Sexpr{target_type}.
+
+\section{About EDA Report}
+EDA reports provide information and visualization results that support the EDA process. In particular, it provides a variety of information to understand the relationship between the target variable and the rest of the variables of interest.
+
+\chapter{Univariate Analysis}
+\section{Descriptive Statistics}
+
+<<describe_univariate, echo=FALSE, comment="", results='asis'>>=
+x <- Hmisc:::describe.data.frame(edaData)
+Hmisc::latex(x, file = "")
+@
+
+\clearpage
+
+\section{Normality Test of Numerical Variables}
+\subsection{Statistics and Visualization of (Sample) Data}
+<<normality, echo=FALSE, results='asis'>>=
+if (length(idx.numeric) == 0) {
+  cat("\n\nThere is no numeric variable.\n\n")
+} else {
+  for (i in idx.numeric) {
+    cap <- change_under(names(edaData)[i])
+
+    cat("\n")
+    cat("\\subsubsection{", cap, "}\n")
+
+    cat("\\noindent * normality test : Shapiro-Wilk normality test\n\n")
+
+    x <- pull(edaData, i) %>%
+      .[!is.na(.)]
+ 
+    if (length(x) == 0) {
+      cat("all 'x' values are NA\n\n")
+      cat("\\clearpage")
+      next
+    }
+ 
+    if (length(x) > 5000) {
+      x <- sample(x, size = 5000, replace = TRUE)
+    }
+ 
+    if(length(x) < 3L || length(x) > 5000L) {
+      cat("sample size must be between 3 and 5000\n\n")
+      cat("\\clearpage")
+      next
+    }
+ 
+    if(diff(range(x, na.rm = TRUE)) == 0) {
+      cat("all 'x' values are identical\n\n")
+      cat("\\clearpage")
+      next
+    }
+
+    y <- shapiro.test(x)
+
+    cat(sprintf("\\noindent - statistic : %s,  p-value : %G\\\\\n",
+                round(y$statistic, 5),  y$p.value))
+
+    if (is.factor(x)) x <- as.numeric(x)
+    
+    if (sum(x < 0, na.rm = TRUE) > 0) {
+      type <- c("original", "log+a transformation", "Box-Cox transformation")
+  
+      skew <- c(skewness(x, na.rm = TRUE),
+                skewness(get_transform(x, "log+a"), na.rm = TRUE),
+                skewness(get_transform(x, "Box-Cox"), na.rm = TRUE))
+  
+      kurt <- c(kurtosis(x, na.rm = TRUE),
+                kurtosis(get_transform(x, "log+a"), na.rm = TRUE),
+                kurtosis(get_transform(x, "Box-Cox"), na.rm = TRUE))          
+    } else {
+      if (any(x == 0, na.rm = TRUE)) {
+        type <- c("original", "log+1 transformation", "sqrt transformation")
+        
+        skew <- c(skewness(x, na.rm = TRUE),
+                  skewness(get_transform(x, "log+1"), na.rm = TRUE),
+                  skewness(sqrt(x), na.rm = TRUE))
+        
+        kurt <- c(kurtosis(x, na.rm = TRUE),
+                  kurtosis(get_transform(x, "log+1"), na.rm = TRUE),
+                  kurtosis(sqrt(x), na.rm = TRUE))         
+      } else {
+        type <- c("original", "log transformation", "sqrt transformation")
+        
+        skew <- c(skewness(x, na.rm = TRUE),
+                  skewness(log(x), na.rm = TRUE),
+                  skewness(sqrt(x), na.rm = TRUE))
+        
+        kurt <- c(kurtosis(x, na.rm = TRUE),
+                  kurtosis(log(x), na.rm = TRUE),
+                  kurtosis(sqrt(x), na.rm = TRUE)) 
+      }     
+    }
+    
+    stats <- data.frame(type = type, skewness = skew, kurtosis = kurt)
+
+    tab_cap <- paste("skewness and kurtosis :", cap)
+
+    cat("\\\\")
+
+    kable(stats, digits = 4, caption = tab_cap, 
+          label = paste0("numeric_variables", i),
+          booktabs = TRUE, escape = FALSE) %>%
+      kable_styling(latex_options = c("striped", "hold_position")) %>%
+      cat()
+
+    cat("\\\\")
+    cat("\n")
+
+    if (N >= 5000) {
+      png(filename = sprintf("./figure/norm%s.png", i), width = 600, height = 400)
+    } else {
+      cairo_pdf(filename = sprintf("./figure/norm%s.pdf", i), width = 6, height = 4)
+    }
+
+    x <- data.frame(x)
+    
+    if (sum(x < 0, na.rm = TRUE) > 0) {
+      plot_normality(x, x, left = "log+a", right = "Box-Cox")
+    } else {
+      if (any(x == 0, na.rm = TRUE)) 
+        plot_normality(x, x, left = "log+1", right = "sqrt")
+      else
+        plot_normality(x, x)
+    }
+    dev.off()
+
+    cap <- change_under(names(edaData)[i])
+
+    cat("\\begin{figure}[!ht]\n")
+    cat("\\centering\n")
+
+    if (N >= 5000) {
+      cat(sprintf("\\includegraphics[width=0.8\\textwidth]{figure/norm%s.png}\n", i))
+    } else {
+      cat(sprintf("\\includegraphics[width=0.8\\textwidth]{figure/norm%s.pdf}\n", i))
+    }  
+
+    cat(sprintf("\\caption{%s}\n", cap))
+    cat("\\end{figure}\n")
+
+    cat("\\clearpage")
+  }
+}
+@
+
+\chapter{Relationship Between Variables}
+\section{Correlation Coefficient}
+\subsection{Correlation Coefficient by Variable Combination}
+<<correlations, echo=FALSE, results='asis'>>=
+if (length(idx.numeric) > 2) {
+  eps <- 0.5
+
+  cors <- edaData %>%
+    correlate %>%
+    filter(abs(coef_corr) >= eps) %>%
+    filter(as.integer(var1) > as.integer(var2)) %>%
+    arrange(desc(abs(coef_corr)))
+
+  if (NROW(cors) > 0) {
+    names(cors) <- c("Variable1", "Variable2", "Correlation Coefficient")
+
+    cap <- "The correlation coefficients (0.5 or more)"
+
+    kable(cors, booktabs = TRUE, caption = cap,
+          digits = 3, longtable = TRUE) %>%
+      kable_styling(latex_options = c("striped", "scale_down")) %>%
+      kable_styling(latex_options = c("hold_position")) %>%
+      kable_styling(latex_options = c("repeat_header")) %>%
+      cat()
+  } else {
+    cat("\n\nNo correlation coefficient is greater than 0.5.\n\n")
+  }
+} else {
+  cat("\n\nNumber of numerical variables is less than 2.\n\n")
+}
+@
+
+\subsection{Correlation Plot of Numerical Variables}
+<<plot_correlations, echo=FALSE, results='asis'>>=
+if (length(idx.numeric) > 2) {
+  cairo_pdf(filename = sprintf("./figure/correlation.pdf", i), width = 6, height = 6)
+  edaData %>%
+    plot_correlate()
+  dev.off()
+
+  cap <- "The correlation coefficient of numerical variables"
+
+  cat("\\begin{figure}[!ht]\n")
+  cat("\\centering\n")
+  cat(sprintf("\\includegraphics[width=0.99\\textwidth]{figure/correlation.pdf}\n", i))
+  cat(sprintf("\\caption{%s}\n", cap))
+  cat("\\end{figure}\n")  
+} else {
+  cat("Number of numerical variables is less than 2.\n\n")
+} 
+@
+
+\chapter{Target based Analysis}
+\section{Grouped Descriptive Statistics}
+\subsection{Grouped Numerical Variables}
+
+<<create_target_by, echo=FALSE, results='asis'>>=
+if (!is.null(targetVariable)) {
+  target_by_obj <- target_by(edaData, all_of(targetVariable))
+}  
+@
+
+<<numeric_variables, echo=FALSE, results='asis', message=FALSE, warning=FALSE>>=
+if (!is.null(targetVariable)) {
+  if (factor_flag) {
+    if (length(idx.numeric) == 0) {
+      cat("There is no numeric variable.\n\n")
+    } else {
+      for (i in idx.numeric) {
+        cat("\n")
+        cat("\\subsubsection{", change_under(names(edaData)[i]), "}\n")
+
+        cat("\n\\begin{center}\n")
+
+        z <- dist_numeric(edaData, targetVariable, names(edaData)[i])
+
+        ncols <- NCOL(z) 
+        rcnt <- round(ncols / 3)
+
+        cap <- change_under(names(edaData)[i])
+
+        kable(z, digits = 2, caption = cap, booktabs = TRUE,
+              label = paste0("numeric_variables", i),
+              format.args = list(big.mark = ",")) %>%
+          kable_styling(latex_options = c("striped", "hold_position")) %>%
+          cat()
+
+        if (N >= 5000) {
+          png(filename = sprintf("./figure/%s.png", i), width = 700, height = 500)
+        } else {
+          cairo_pdf(filename = sprintf("./figure/%s.pdf", i), width = 8, height = 6)
+        }
+
+        plot_outlier(target_by_obj, names(edaData)[i])
+        dev.off()
+        
+        cap <- change_under(names(edaData)[i])
+
+        cat("\\begin{figure}[!ht]\n")
+        cat("\\centering\n")
+
+        if (N >= 5000) {
+          cat(sprintf("\\includegraphics[width=0.9\\textwidth]{figure/%s.png}\n", i))
+        } else {
+          cat(sprintf("\\includegraphics[width=0.9\\textwidth]{figure/%s.pdf}\n", i))
+        } 
+
+        cat(sprintf("\\caption{%s}\n", cap))
+        cat("\\end{figure}\n")
+
+        cat("\n\\end{center}\n")
+        cat("\\clearpage")
+      }
+    }
+  } else if (numeric_flag) {
+    if (length(idx.numeric) == 0) {
+        cat("There is no numeric variable.\n\n")
+    } else {
+      targetby <- target_by(edaData, targetVariable)
+      for (i in idx.numeric) {
+        cat("\n")
+        cat("\\subsubsection{", change_under(names(edaData)[i]), "}\n")
+
+        num_num <- relate(targetby, names(edaData)[i])
+
+        tab <- summary(num_num)$coefficients
+        colnames(tab)[4] <- c("Pr($\\textgreater \\mid t \\mid$)")
+
+        rsq <- summary(num_num)$r.squared
+        adj <- summary(num_num)$adj.r.squared
+        fstat <- summary(num_num)$fstatistic
+        df <- summary(num_num)$df
+        rse <- summary(num_num)$sigma
+
+        cat("\n\\textbf{1. Simple Linear Model Information}\n\\\\")
+        cat("\\\\")
+        cat(sprintf("\t Residual standard error: %s on %s degrees of freedom\n\\\\",
+                round(rse),  df[2]))
+        cat(sprintf("\t Multiple R-squared:  %s,	Adjusted R-squared:  %s\n\\\\",
+                round(rsq, 5), round(adj, 5)))
+        cat(sprintf("\t F-statistic: %s on %s and %s DF,  p-value: %s\n",
+                round(fstat["value"]),  fstat["numdf"], fstat["dendf"],
+                round(tab[2, 4], 7)))
+        cat("\n")
+
+        cap <- sprintf("Simple Linear Model coefficients : %s", names(edaData)[i])
+        cap <- paste(unlist(strsplit(cap, "_")), collapse = "\\_")
+
+        kable(tab, digits = 2, caption = cap, 
+              label = paste0("numeric_variables", i),
+              booktabs = TRUE, escape = FALSE) %>%
+          kable_styling(latex_options = c("striped", "hold_position")) %>%
+          cat()
+
+        png(filename = sprintf("./figure/linear%s.png", i), width = 800, height = 400)
+
+        suppressMessages(plot(num_num))
+        dev.off()
+
+        cap <- change_under(names(edaData)[i])
+
+        cat("\n\\noindent\\textbf{2. Visualization - Scatterplots}\n")
+
+        cat("\n\\begin{center}\n")
+        cat("\\begin{figure}[!ht]\n")
+        cat("\\centering\n")
+        cat(sprintf("\\includegraphics[width=1.0\\textwidth]{figure/linear%s.png}\n", i))
+        cat(sprintf("\\caption{%s}\n", cap))
+        cat("\\end{figure}\n")
+
+        cat("\n\\end{center}\n")
+        cat("\\clearpage")
+      }
+    }
+  }
+} else {
+  cat("There is no target variable.\n\n")
+}
+@
+
+\subsection{Grouped Categorical Variables}
+
+<<category_variables, echo=FALSE, results='asis'>>=
+if (!is.null(targetVariable)) {
+  if (factor_flag) {
+    if (length(idx.factor) == 0) {
+      cat("There is no categorical variable.\n\n")
+    } else {
+      for (i in idx.factor) {
+        if (sum(!is.na(edaData[, i])) == 0) next
+
+        cat("\n")
+        cat("\\subsubsection{", change_under(names(edaData)[i]), "}\n")
+
+        cat("\n\\begin{center}\n")
+
+        tab <- edaData %>%
+          target_by(targetVariable) %>%
+          relate(names(edaData)[i]) %>%
+          t()
+
+        freq <- addmargins(tab)
+        idx.na <- which(is.na(rownames(freq)))
+        rownames(freq)[idx.na] <- "NA"
+
+        ncols <- NCOL(freq) - 1
+        rcnt <- round(ncols / 3)
+
+        ratio <- sweep(freq, 2, c(apply(tab, 2, sum), sum(tab)), "/") * 100
+        idx.na <- which(is.na(rownames(ratio)))
+        rownames(ratio)[idx.na] <- "NA"
+
+        kable(freq, booktabs = TRUE,
+              label = paste0("category_variables", i),
+              format.args = list(big.mark = ",")) %>%
+          kable_styling(font_size = 8, latex_options = "striped") %>%
+          row_spec(NROW(ratio), bold = TRUE) %>%
+          cat()
+
+        if(ncols > 2) {
+          cat("\n")
+          cat("\n\\vspace{2em}")
+        }
+
+        kable(ratio, booktabs = TRUE, digits = 2,
+              label = paste0("category_variables_2", i),
+              format.args = list(big.mark = ",")) %>%
+          kable_styling(font_size = 8, latex_options = "striped") %>%
+          row_spec(NROW(ratio), bold = TRUE) %>%
+          cat()
+
+        mosaics <- relate(target_by_obj, names(edaData)[i])
+
+        cairo_pdf(filename = sprintf("./figure/%s.pdf", i), width = 8, height = 6)
+        print(plot(mosaics))
+        dev.off()
+
+        cat("\n\\vspace{1em}\n")
+        cap <- change_under(names(edaData)[i])
+
+        cat("\\begin{figure}[!ht]\n")
+        cat("\\centering\n")
+        cat(sprintf("\\includegraphics[width=0.9\\textwidth]{figure/%s.pdf}\n", i))
+        cat(sprintf("\\caption{%s}\n", cap))
+        cat("\\end{figure}\n")
+
+        cat("\n\\end{center}\n")
+        cat("\\clearpage")
+      }
+    }
+  } else if (numeric_flag) {
+    if (length(idx.factor) == 0) {
+        cat("There is no categorical variable.\n\n")
+    } else {
+      targetby <- target_by(edaData, targetVariable)
+      for (i in idx.factor) {
+        cat("\n")
+        cat("\\subsubsection{", change_under(names(edaData)[i]), "}\n")
+
+        num_cat <- relate(targetby, names(edaData)[i])
+
+        tab_aov <- data.frame(anova(num_cat))
+        colnames(tab_aov) <- c("Df", "Sum Sq", "Mean Sq", "F value",
+                               "Pr($\\textgreater \\mid F \\mid$)")
+
+        cat("\n\\textbf{1. Analysis of Variance}\n\n")
+
+        cap <- sprintf("Analysis of Variance Table : %s", names(edaData)[i])
+        cap <- paste(unlist(strsplit(cap, "_")), collapse = "\\_")
+
+        row.names(tab_aov) <- change_under(row.names(tab_aov))
+        
+        knitr::kable(tab_aov, digits = 2, caption = cap,
+                     label = paste0("category_variables_3", i),
+                     booktabs = TRUE, escape = FALSE) %>%
+          kable_styling(latex_options = c("striped", "hold_position")) %>%
+          cat()
+
+        cat("\n")
+
+        tab <- summary(num_cat)$coefficients
+        colnames(tab)[4] <- c("Pr($\\textgreater \\mid t \\mid$)")
+
+        rsq <- summary(num_cat)$r.squared
+        adj <- summary(num_cat)$adj.r.squared
+        fstat <- summary(num_cat)$fstatistic
+        df <- summary(num_cat)$df
+        rse <- summary(num_cat)$sigma
+
+        cat("\\noindent\\textbf{2. Simple Linear Model Information}\n\\\\")
+        cat("\\\\")
+        cat(sprintf("\t Residual standard error: %s on %s degrees of freedom\n\\\\",
+                round(rse),  df[2]))
+        cat(sprintf("\t Multiple R-squared:  %s,	Adjusted R-squared:  %s\n\\\\",
+                round(rsq, 5), round(adj, 5)))
+        cat(sprintf("\t F-statistic: %s on %s and %s DF,  p-value: %s\n",
+                round(fstat["value"]),  fstat["numdf"], fstat["dendf"],
+                round(tab[2, 4], 7)))
+        cat("\n")
+
+        cap <- sprintf("Simple Linear Model coefficients : %s", names(edaData)[i])
+        cap <- paste(unlist(strsplit(cap, "_")), collapse = "\\_")
+
+        row.names(tab) <- change_under(row.names(tab))
+        
+        knitr::kable(tab, digits = 2, caption = cap,
+                     label = paste0("category_variables_4", i),
+                     booktabs = TRUE, escape = FALSE) %>%
+          kable_styling(latex_options = c("striped", "hold_position")) %>%
+          cat()
+
+        
+        if (N >= 5000) {
+          png(filename = sprintf("./figure/%s.png", i), width = 600, height = 400)
+        } else {
+          cairo_pdf(filename = sprintf("./figure/%s.pdf", i), width = 6, height = 4)
+        }
+
+        print(plot(num_cat))
+        dev.off()
+
+        cat("\n\\vspace{1em}\n")
+        cap <- change_under(names(edaData)[i])
+
+        cat("\n\\begin{center}\n")
+        cat("\\begin{figure}[!ht]\n")
+        cat("\\centering\n")
+
+        if (N >= 5000) {
+          cat(sprintf("\\includegraphics[width=0.8\\textwidth]{figure/%s.png}\n", i))
+        } else {
+          cat(sprintf("\\includegraphics[width=0.8\\textwidth]{figure/%s.pdf}\n", i))
+        } 
+
+        cat(sprintf("\\caption{%s}\n", cap))
+        cat("\\end{figure}\n")
+
+        cat("\n\\end{center}\n")
+        cat("\\clearpage")
+      }
+    }
+  }
+} else {
+  cat("There is no target variable.\n\n")
+}
+@
+
+\section{Grouped Relationship Between Variables}
+\subsection{Grouped Correlation Coefficient}
+<<group_correlations, echo=FALSE, results='asis'>>=
+if (!is.null(targetVariable)) {
+  if (factor_flag) {
+    if (length(idx.numeric) > 2) {
+      eps <- 0.5
+
+      idx <- which(names(edaData) %in% targetVariable)
+      names(edaData)[idx] <- "targetVariable"
+
+      cors <- edaData %>%
+        group_by(targetVariable) %>%
+        correlate %>%
+        filter(abs(coef_corr) >= eps) %>%
+        filter(as.integer(var1) > as.integer(var2)) %>%
+        arrange(targetVariable, desc(abs(coef_corr)))
+
+      if (NROW(cors) > 0) {
+        names(cors) <- c(targetVariable, "Variable1", "Variable2",
+                         "Correlation Coefficient")
+
+        cap <- "The correlation coefficients (0.5 or more)"
+
+        kable(cors, booktabs = TRUE,
+              caption = cap, digits = 3, longtable = TRUE) %>%
+          kable_styling(latex_options = c("striped", "scale_down")) %>%
+          kable_styling(latex_options = c("hold_position")) %>%
+          kable_styling(latex_options = c("repeat_header")) %>%
+          cat()
+      } else {
+        cat("No correlation coefficient is greater than 0.5.\n\n")
+      }
+    } else {
+      cat("Number of numerical variables is less than 2.\n\n")
+    }
+  } else if (numeric_flag) {
+    cat("Numerical target variables are not supported.\n\n")
+  }
+} else {
+  cat("There is no target variable.\n\n")
+}
+@
+
+\subsection{Grouped Correlation Plot of Numerical Variables}
+<<plot_group_correlations, echo=FALSE, results='asis'>>=
+if (!is.null(targetVariable)) {
+  if (factor_flag) {
+    if (length(idx.numeric) > 2) {
+      level_name <- levels(edaData$targetVariable)
+
+      for (nm in level_name) {
+        cat(sprintf("\\noindent- Grouped Correlation Case of (%s == %s)\n\n", 
+          change_under(targetVariable), nm))
+
+        fname <- paste("./figure/myfile_", nm, ".pdf", sep = "")
+        cairo_pdf(filename = fname, width = 6, height = 6)
+        edaData %>%
+          filter(targetVariable %in% nm) %>%
+          plot_correlate()
+        dev.off()
+
+        cap <- sprintf("Correlation Matrix Plot (%s == %s)", change_under(targetVariable), nm)
+        
+        cat("\\begin{figure}[!ht]\n")
+        cat("\\begin{center}\n")
+        cat("\\includegraphics{", fname, "}\n", sep = "")
+        cat("\\caption{", cap, "}\n", sep = "")
+        cat("\\end{center}\n")
+        cat("\\end{figure}")
+      }
+    } else {
+      cat("Number of numerical variables is less than 2.\n\n")
+    }
+  } else if (numeric_flag) {
+    cat("Numerical target variables are not supported.\n\n")
+  }
+} else {
+  cat("There is no target variable.\n\n")
+}
+@
+
+<<option_undo, echo=FALSE>>=
+options(warn = 0)
+@
+

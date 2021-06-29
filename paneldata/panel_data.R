@@ -132,7 +132,7 @@ nlswork <- read_dta("data/nlswork.dta")
 
 ## EDA: Exploratory Data Analysis
 
-  eda_report(nlswork,output_dir = "EDA/",output_file = "eda_nlswork.pdf")
+  # eda_report(nlswork,output_dir = "EDA/",output_file = "eda_nlswork.pdf")
   
   summary(nlswork[,"grade"])
   
@@ -339,10 +339,12 @@ nls <- data.frame(nlswork)
       summary(re)
 
   re_robust <- coeftest(re, function(x) vcovHC(x, type = 'sss')) 
-
-  stargazer(pols,pols_robust,re,re_robust,title = "Regression analysis", 
+  re_robust_hc1 <- coeftest(re, function(x) vcovHC(x, type = 'HC1')) 
+  
+  
+  stargazer(pols,pols_robust,re_balanced,re,re_robust,re_robust_hc1,title = "Regression analysis", 
             model.numbers = FALSE,
-            column.labels = c("Pooled","Pooled (cluster)","RE","RE (cluster"),
+            column.labels = c("Pooled","Pooled (cluster)","Balanced","RE","RE (cluster","HC1"),
             label = "regressions",
             table.placement = "!ht",
             notes.append = FALSE,
@@ -448,7 +450,7 @@ nls <- data.frame(nlswork)
   linearHypothesis(ols,c("age=0","agesq=0"))
   linearHypothesis(ols,c("age=0","agesq=0"), white.adjust = "hc1")
   
-  Wald_test(fe, vcov = "CR1", cluster = idcode, 
+  Wald_test(fe, vcov = "CR1", cluster = nlswork_clean$idcode, 
             constraints = constrain_zero(c("age","agesq")), test = "Naive-F")
 
 
@@ -481,8 +483,8 @@ nlswork_balanced <- read_dta("data/nlswork_balanced_small.dta")
                                  "Tenure sqrd.","Not SMSA","South","City"),
             omit = c("Constant"),
             omit.stat = c("adj.rsq","f","ser"),
-            digits = 6,
-            digits.extra = 7,
+            digits = 3,
+            digits.extra = 5,
             omit.yes.no = c("Constant",""),
             dep.var.caption="",
             dep.var.labels.include = FALSE,
@@ -530,9 +532,9 @@ nlswork_balanced <- read_dta("data/nlswork_balanced_small.dta")
 
 # *Output Table*
 
-  stargazer(pols,re,fe,be,title = "Regression analysis", 
+  stargazer(pols,re,fd,fe,be,title = "Regression analysis", 
             model.numbers = FALSE,
-            column.labels = c("OLS","RE","FE","BE"),
+            column.labels = c("OLS","RE","FD","FE","BE"),
             label = "regressions",
             table.placement = "!ht",
             notes.append = FALSE,

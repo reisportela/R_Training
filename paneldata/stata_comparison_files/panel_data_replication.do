@@ -3,27 +3,48 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
+timer on 1
+
+// http://scorreia.com/software/reghdfe/install.html
+
+* Install ftools (remove program if it existed previously)
+cap ado uninstall ftools
+net install ftools, from("https://raw.githubusercontent.com/sergiocorreia/ftools/master/src/") replace
+
+* Install reghdfe 6.x
+cap ado uninstall reghdfe
+net install reghdfe, from("https://raw.githubusercontent.com/sergiocorreia/reghdfe/master/src/") replace
+
+* Install parallel, if using the parallel() option; don't install from SSC
+cap ado uninstall parallel
+net install parallel, from(https://raw.github.com/gvegayon/parallel/stable/) replace
+mata mata mlib index
+
+// To run iv/gmm regressions with ivreghdfe, also run these lines:
+
+cap ado uninstall ivreghdfe
+cap ssc install ivreg2 // Install ivreg2, the core package
+net install ivreghdfe, from(https://raw.githubusercontent.com/sergiocorreia/ivreghdfe/master/src/)
 
 
 
 *Empirical application: National Longitudinal Survey 1968-1988*
 
-
-
 clear all
 set more off
 
-capture log close
-log using "tmp_files/panel_data_results.txt", replace text
-
 capture cd "/Users/miguelportela/Documents/GitHub/R_Training/paneldata/"
+capture cd "C:\Users\mangelo.EEG\Documents\GitHub\R_Training\paneldata"
+
+capture log close
+log using "stata_comparison_files/panel_data_results.txt", replace text
 
 *saving output*
 
 
 *opening the dataset*
 
-use nlswork.dta, clear
+use data/nlswork.dta, clear
 
 //Final slide 11
 
@@ -114,7 +135,7 @@ preserve
 	compress
 	sort idcode year
 	xtset idcode year
-	save /Users/miguelportela/Documents/GitHub/R_Training/paneldata/nlswork_balanced, replace
+	//save data/nlswork_balanced, replace
 	xtreg ln_wage union collgrad age agesq tenure tensq not_smsa south c_city,re
 restore
 
@@ -173,7 +194,7 @@ keep if idcode < 400
 	compress
 	sort idcode year
 	xtset idcode year
-	save /Users/miguelportela/Documents/GitHub/R_Training/paneldata/nlswork_balanced_small, replace
+	//save data/nlswork_balanced_small, replace
 	reg ln_wage union age agesq tenure tensq /*
 */not_smsa south c_city b1.idcode
 restore
@@ -307,6 +328,7 @@ tabulate count_years
 
 
 *Using the panelstat command from Paulo Guimaraes"
+// net install panelstat, from("https://github.com/pguimaraes99/panelstat/raw/master/") replace
 
 panelstat idcode year
 
@@ -321,8 +343,12 @@ panelstat idcode year, rel(ln_wage,keep) nosum
 panelstat idcode year, rel(hours,keep) nosum
 
 
-//save "tmp_files/nlswork_v2.dta",replace
+//save "tmp_files/nlswork.dta",replace
 
+timer off 1
+timer list 1
+di _new(1) "MINUTES: " %5.1f r(t1)/60
+timer clear 1
 
 log close
 clear

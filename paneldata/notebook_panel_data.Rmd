@@ -9,6 +9,8 @@ This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute
 
 Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter* (in Windows press *CTRL+Enter*).
 
+
+
 ```{r include=FALSE}
 rm(list = ls())
 setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/paneldata")
@@ -21,6 +23,8 @@ When you save the notebook, an HTML file containing the code and output will be 
 The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
 
 # Package Management Tool
+
+Here i am uploading my packages
 
 ```{r include=FALSE}
 library(pacman)  #Package Management Tool
@@ -57,6 +61,8 @@ pacman::p_load(here,
 
 # Prepare data
 
+Here I am reading a Stata data file.
+
 ```{r include = FALSE}
 nlswork <- read_dta("data/nlswork.dta")
   nls_nomiss <- na.omit(nlswork)
@@ -81,6 +87,7 @@ nlswork <- read_dta("data/nlswork.dta")
 
 ## Exploratory data analysis
 
+Start discussing the statistics and graphs.
 
 ```{r echo=FALSE}
   # eda_report(nlswork,output_dir = "EDA/",output_file = "eda_nlswork.pdf")
@@ -232,7 +239,7 @@ plotmeans(ln_wage ~ year ,data = nlswork_clean)
             type="text")
 ```
 
-*SMSA*: Standard Metropolitan Statistical Area
+- *SMSA*: Standard Metropolitan Statistical Area
 
 ```{r}
 # ftable(c_city) # 1 if central city
@@ -352,25 +359,22 @@ plotmeans(ln_wage ~ year ,data = nlswork_clean)
             type="text")
 ```
 
-jahdkjasskdjhaj
+## LM test for the presence of unobserved effects
 
 ```{r}
-# *LM test for the presence of unobserved effects*
-
   plmtest(pols, type=c("bp"))
   
   kable(tidy(plmtest(pols, type=c("bp"))), format = "simple",caption=
           "LM test for the presence of unobserved effects")
 ```
 
-jaqkdjlkasjdlk
+## Fixed effects estimator (FE)
 
 ```{r}
 # //Final slide 32
 # 
 # *Q3*
-#   
-#   *Fixed effects estimator (FE)*
+#
 
   fe <- plm(data = nlswork_clean, ln_wage ~ union +
               collgrad +age +agesq +tenure +tensq +
@@ -458,10 +462,12 @@ jaqkdjlkasjdlk
   linearHypothesis(ols,c("age=0","agesq=0"))
   linearHypothesis(ols,c("age=0","agesq=0"), white.adjust = "hc1")
   
-  # Wald_test(fe, vcov = "CR1", cluster = idcode, 
-  #           constraints = constrain_zero(c("age","agesq")), test = "Naive-F")
+  Wald_test(fe, vcov = "CR1", cluster = nlswork_clean$idcode, 
+             constraints = constrain_zero(c("age","agesq")), test = "Naive-F")
 
 ```
+
+## LSDV estimator
 
 ```{r}
 # *LSDV Estimator=FE estimator* <<==>> takes too long
@@ -503,12 +509,12 @@ nlswork_balanced <- read_dta("data/nlswork_balanced_small.dta")
 
 ```
 
+## Hausman test
+
 ```{r}
 # //Final slide 35
 # 
 # *Q4*
-#   *Hausman test*
-
   fe_0 <- plm(data = nlswork_clean, ln_wage ~ union +
                 age +agesq +tenure +tensq +
                 not_smsa +south +c_city, model="within", index=c("idcode", "year"))
@@ -520,11 +526,12 @@ nlswork_balanced <- read_dta("data/nlswork_balanced_small.dta")
 
 ```
 
+## BE estimator
+
 ```{r}
 #   //Final slide 46
 # 
 # *Q5*
-#   *BE estimator
 
   be <- plm(data = nlswork_clean, ln_wage ~ union +
               collgrad +age +agesq +tenure +tensq +
@@ -535,12 +542,13 @@ nlswork_balanced <- read_dta("data/nlswork_balanced_small.dta")
 
 ```
 
+
+## FD estimator
+
 ```{r}
 # //Final slide 53
 # 
 # *Q6*
-#   *FD estimator*
-
   fd <- plm(data = nlswork_clean, ln_wage ~ 0 + union +
               collgrad +age +agesq +tenure +tensq +
               not_smsa +south +c_city, model="fd",
@@ -550,9 +558,10 @@ nlswork_balanced <- read_dta("data/nlswork_balanced_small.dta")
 
 ```
 
-```{r}
-# *Output Table*
 
+## Output Table
+
+```{r}
   stargazer(pols,re,fe,be,title = "Regression analysis", 
             model.numbers = FALSE,
             column.labels = c("OLS","RE","FE","BE"),
@@ -572,17 +581,14 @@ nlswork_balanced <- read_dta("data/nlswork_balanced_small.dta")
             dep.var.labels.include = FALSE,
             style = "qje",
             type="text")
-
-
-
 ```
 
-```{r}
-# *FURTHER SPECIFICATION TESTS FOR PANEL DATA*
-#   
-#   // # Test for heteroskedasticity within panel data
-#   
 
+# FURTHER SPECIFICATION TESTS FOR PANEL DATA
+
+## Test for heteroskedasticity within panel data
+
+```{r}
 # H0) The null hypothesis for the Breusch-Pagan test is homoskedasticity
 
 # takes too long to compute
@@ -595,48 +601,47 @@ nlswork_balanced <- read_dta("data/nlswork_balanced_small.dta")
   bptest(data = nlswork_balanced, ln_wage ~ union +
            collgrad +age +agesq +tenure +tensq +
            not_smsa +south +c_city + factor(idcode), studentize=F)
-
-
-
 ```
 
+## Test of serial correlation within panel data
+
+- Unobserved effects test <<>> Wooldridge's test for unobserved individual effects <<>>
+
 ```{r}
-# // # Test of serial correlation within panel data
-
-# Unobserved effects test <<>> Wooldridge's test for unobserved individual effects <<>>
-
   pwtest(data = nlswork_clean, ln_wage ~ union +
            collgrad +age +agesq +tenure +tensq +
            not_smsa +south +c_city)
 ```
 
-```{r}
-# Locally robust tests for serial correlation or random effects <<>> Baltagi and Li AR-RE joint test - balanced panel <<>>
+## Locally robust tests for serial correlation or random effects
 
+- Baltagi and Li AR-RE joint test - balanced panel
+
+```{r}
   pbsytest(data = nlswork_balanced, ln_wage ~ union +
              collgrad +age +agesq +tenure +tensq +
              not_smsa +south +c_city, test="j")
-
 ```
 
-```{r}
-# General serial correlation tests <<>> Breusch-Godfrey/Wooldridge test for serial correlation in panel models <<>>
+## General serial correlation tests
 
+- Breusch-Godfrey/Wooldridge test for serial correlation in panel models <<>>
+
+```{r}
 pbgtest(fe, order = 2)
-
 ```
 
-```{r}
-# Wooldridge's test for serial correlation in FE panels
+## Wooldridge's test for serial correlation in FE panels
 
+```{r}
   pwartest(data = nlswork_balanced, ln_wage ~ union +
              collgrad +age +agesq +tenure +tensq +
              not_smsa +south +c_city)
 ```
 
-```{r}
-# Wooldridge first-difference-based test
+## Wooldridge first-difference-based test
 
+```{r}
   pwfdtest(data = nlswork_balanced, ln_wage ~ union +
              collgrad +age +agesq +tenure +tensq +
              not_smsa +south +c_city)
@@ -646,17 +651,18 @@ pbgtest(fe, order = 2)
              not_smsa +south +c_city, h0="fe")
 ```
 
-```{r}
-# Tests for cross-sectional dependence
+## Tests for cross-sectional dependence
 
+```{r}
   pcdtest(data = nlswork_balanced, ln_wage ~ union +
             collgrad +age +agesq +tenure +tensq +
             not_smsa +south +c_city)
 ```
 
-```{r}
+
 # HIGH DIMENSIONAL FIXED-EFFECTS
 
+```{r}
 ## CHECK: 'lfe' and 'fixest'
 ### https://github.com/sgaure/lfe
 ### https://github.com/lrberge/fixest
@@ -693,5 +699,4 @@ pbgtest(fe, order = 2)
       summary(HDFE2b)
 
 ```
-
 
