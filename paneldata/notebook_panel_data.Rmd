@@ -1,0 +1,218 @@
+---
+title: "R Notebook"
+output:
+  html_document:
+    df_print: paged
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+
+```{r include=FALSE}
+rm(list = ls())
+setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/paneldata")
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
+```{r include=FALSE}
+library(pacman)  #Package Management Tool
+
+pacman::p_load(here,
+              tidyverse,
+              haven,
+              data.table,
+              plotly,
+              knitr,
+              stargazer,
+              kableExtra,
+              ExPanDaR,
+              SmartEDA,
+              visdat,
+              naniar,
+              janitor,
+              summarytools,
+              plm,
+              lfe,
+              fixest,
+              clubSandwich,
+              car,
+              gplots,
+              tseries,
+              lmtest,
+              dlookr,
+              MASS,
+              robustbase,
+              sandwich,
+              broom,
+              pdynmc)
+```
+
+# Prepare data
+
+```{r include = FALSE}
+nlswork <- read_dta("data/nlswork.dta")
+  nls_nomiss <- na.omit(nlswork)
+  write_dta(nls_nomiss,"data/nls_nomiss.dta")
+```
+
+lsajdkjaslk
+
+```{r}
+  names(nlswork)
+  head(nlswork)
+  
+  # str(nlswork)
+  # dplyr::glimpse(nlswork)
+  
+  dplyr::glimpse(nlswork$ln_wage)
+  
+  ExpData(nlswork,type=1)
+  
+  ExpData(nlswork,type=2)
+```
+
+laksjdlkajslkdjask
+
+
+```{r echo=FALSE}
+  # eda_report(nlswork,output_dir = "EDA/",output_file = "eda_nlswork.pdf")
+  
+  summary(nlswork[,"grade"])
+  
+  ExpNumStat(nlswork,by="A",Outlier = TRUE,round=2,Qnt=c(0.1,0.20,0.50))
+
+# ExpCTable(nlswork)
+
+  ExpCatViz(nlswork)
+  
+  ExpNumViz(nlswork,Page=c(6,2))
+```
+
+```{r}
+## MISSING VALUES
+
+  vis_dat(nlswork)
+
+# vis_miss(nlswork) # ALTERNATIVE
+
+  gg_miss_upset(nlswork)
+```
+
+
+
+jdsajhdikuwhaieuhw
+
+
+```{r include=FALSE}
+nls <- data.frame(nlswork)
+  summary(nls)
+```
+
+çwoekowqiepo
+
+
+```{r}
+  stargazer(nls,
+            title = "Summary statistics",
+            label = "tb:statistcis",
+            table.placement = "ht",
+            header=FALSE,type="text")
+```
+
+
+
+sakudeiuwieuywqiye
+
+````{r}
+plot(nlswork$grade,nlswork$ln_wage)
+```
+
+
+slakjlskjla
+
+```{r echo=FALSE}
+  nlswork %>%
+    ggplot(aes(grade,ln_wage)) +
+    labs(title = "Ln Wage vs. Grade") +
+    ylab("Ln Wage") +
+    xlab("Grade") +
+    geom_point()
+ggsave("figures/graph1.png")
+```
+
+
+```{r echo=FALSE}
+  tabyl(nlswork$race, sort = TRUE)
+
+  summarytools::freq(nlswork$year, order = "freq")
+  
+  summarytools::freq(nlswork$race, order = "freq")
+```
+
+```{r include=FALSE}
+  nlswork_clean <- drop_na(subset(nlswork,select = c(idcode, year, 
+                                                     ln_wage, union, 
+                                                     collgrad, age, 
+                                                     tenure, 
+                                                     not_smsa, south, c_city)))
+```
+
+dasçdasoidpoias
+
+```{r include=FALSE}
+  nlswork_clean$agesq <- nlswork_clean$age^2
+  nlswork_clean$tensq <- nlswork_clean$tenure^2
+```
+
+
+sçaoiepwoqiepowqieo
+
+```{r echo=FALSE}
+plotmeans(ln_wage ~ year ,data = nlswork_clean)
+```
+
+soiadoaisodiuas
+
+```{r include=FALSE}
+  ols <- lm(data = nlswork_clean, ln_wage ~ union +
+              collgrad + age + agesq + tenure + tensq +
+              not_smsa + south + c_city)
+          summary(ols)
+  
+  pols <- plm(data = nlswork_clean, ln_wage ~ union +
+                collgrad +age +agesq +tenure +tensq +
+                not_smsa +south +c_city, model="pooling", index=c("idcode", "year"))
+          
+          summary(pols)
+```
+
+```{r echo=FALSE}
+  stargazer(ols,pols,title = "Regression analysis", 
+            model.numbers = FALSE,
+            column.labels = c("OLS","Pooled"),
+            label = "regressions",
+            table.placement = "!ht",
+            notes.append = FALSE,
+            notes.align="l",
+            notes="Standard errors in parentheses.",
+            header = FALSE,
+            no.space = TRUE,
+            covariate.labels = c("Union","Collage Graduate","Age","Age sqrd.",
+                                 "Tenure","Tenure sqrd.","Not SMSA","South","City"),
+            omit = c("Constant"),
+            omit.stat = c("adj.rsq","f","ser"),
+            digits = 3,
+            digits.extra = 5,
+            omit.yes.no = c("Constant",""),
+            dep.var.caption="",
+            dep.var.labels.include = FALSE,
+            style = "qje",
+            type="text")
+```
+
