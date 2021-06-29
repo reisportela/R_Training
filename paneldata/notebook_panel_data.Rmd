@@ -168,7 +168,8 @@ ggsave("figures/graph1.png")
                                                      not_smsa, south, c_city)))
 ```
 
-dasçdasoidpoias
+
+## Add variable
 
 ```{r include=FALSE}
   nlswork_clean$agesq <- nlswork_clean$age^2
@@ -176,13 +177,21 @@ dasçdasoidpoias
 ```
 
 
-sçaoiepwoqiepowqieo
+## Plot variables means
 
 ```{r echo=FALSE}
 plotmeans(ln_wage ~ year ,data = nlswork_clean)
 ```
 
-soiadoaisodiuas
+# Regression analysis
+
+- *Estimating a Mincerian Wage Equation*
+
+- *POLS estimator with cluster-robust standard errors*
+
+## *Q1*
+
+### Pooled OLS model
 
 ```{r include=FALSE}
   ols <- lm(data = nlswork_clean, ln_wage ~ union +
@@ -196,6 +205,8 @@ soiadoaisodiuas
           
           summary(pols)
 ```
+
+## Export regression output
 
 ```{r echo=FALSE}
   stargazer(ols,pols,title = "Regression analysis", 
@@ -221,9 +232,15 @@ soiadoaisodiuas
             type="text")
 ```
 
+*SMSA*: Standard Metropolitan Statistical Area
+
 ```{r}
+# ftable(c_city) # 1 if central city
+```
+
 # CLUSTERED Standard-errors
 
+```{r}
   pols_robust <- coeftest(pols, function(x) vcovHC(x, type = 'sss')) 
   
   stargazer(pols,pols_robust,title = "Regression analysis", 
@@ -250,17 +267,19 @@ soiadoaisodiuas
 
 ```
 
-```{r}
-# *Q2*
-#   
-# *Random effects estimator (RE)*
+## *Q2*
 
-# SEE THE DISCUSSION HERE for the comparison between R and Stata
+### *Random effects estimator (RE)*
+
+- SEE THE DISCUSSION HERE for the comparison between R and Stata
+
 # https://stats.stackexchange.com/questions/421374/different-results-from-random-effects-plm-r-and-xtreg-stata
-# R and Stata treat differently unbalanced panels
 
-# for a balanced panel we have
+- R and Stata treat differently unbalanced panels
 
+ **for a balanced panel we have**
+
+```{r}
   nlswork_balanced <- read_dta("data/nlswork_balanced.dta")
   
   re_balanced <- plm(data = nlswork_balanced, ln_wage ~ union +
@@ -270,7 +289,6 @@ soiadoaisodiuas
       summary(re_balanced)
 ```
 
-lakjsdlkasjlkj
 
 ```{r}
   re <- plm(data = nlswork_clean, ln_wage ~ union +
