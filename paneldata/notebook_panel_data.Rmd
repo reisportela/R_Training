@@ -1,46 +1,32 @@
-# Panel Data Models with R - June 2021
-# By: Miguel Portela and Anabela Carneiro
-# NOTES: check
-# https://bookdown.org/ccolonescu/RPoE4/
-# https://cran.r-project.org/web/packages/plm/vignettes/plmPackage.html
+---
+title: "R Notebook: Panel Data Models with R - June 2021"
+output:
+  html_document:
+    df_print: paged
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter* (in Windows press *CTRL+Enter*).
 
 
-# Working area and packages -------------------------------------------------------------------
 
-# setwd("C:\\Users\\exu0o9\\Documents\\GitHub\\R_Training\\paneldata")
-
-setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/paneldata")
-
-# setwd("~/Documents/GitHub/R_Training/paneldata/")
-
-# WHEN USING MYBINDER DEFINE
-# setwd("/home/jovyan/paneldata")
-
+```{r Set Working Directory, include=FALSE}
 rm(list = ls())
+setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/paneldata")
+```
 
-# detach()
-# install.packages("devtools")
-# install.packages("pacman")
-# install.packages('here')
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I* (or *CTRL+Alt+I* in Windows).
 
-# install.packages("librarian")
-   # remotes::install_github("DesiQuintans/librarian")
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
 
-# --> INSTALL LATEX
-# install.packages('tinytex')
-# tinytex::install_tinytex()
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
 
-# LOG FILE
+# Package Management Tool
 
-sink("results/Regression.txt",split=TRUE)
+Here i am uploading my packages
 
-start_time <- Sys.time()
-
-##################################      
-
-# library(tidyverse) # Modern data science library 
-# library(haven)
-
+```{r include=FALSE}
 library(pacman)  #Package Management Tool
 
 pacman::p_load(here,
@@ -71,67 +57,39 @@ pacman::p_load(here,
               sandwich,
               broom,
               pdynmc)
+```
 
-    # LIBRARIES
-    
-    # library(librarian)
-    # 
-    # librarian::shelf(tidyverse,
-    # data.table,
-    # plotly,
-    # knitr,
-    # stargazer,
-    # kableExtra,
-    # ExPanDaR,
-    # SmartEDA,
-    # visdat,
-    # naniar,
-    # janitor,
-    # summarytools,
-    # plm,
-    # lfe,
-    # fixest,
-    # clubSandwich,
-    # car,
-    # gplots,
-    # tseries,
-    # lmtest,
-    # dlookr,
-    # MASS,
-    # robustbase,
-    # sandwich,
-    # broom,
-    # pdynmc)
+# Prepare data
 
+Here I am reading a Stata data file.
 
-# Read & Write Data --------------------------------------------------------------------
-
+```{r include = FALSE}
 nlswork <- read_dta("data/nlswork.dta")
-
   nls_nomiss <- na.omit(nlswork)
   write_dta(nls_nomiss,"data/nls_nomiss.dta")
+```
 
-# View(nlswork)
+# Statistics
 
-
-# Data description --------------------------------------------------------
-
+```{r}
   names(nlswork)
   head(nlswork)
-  str(nlswork)
-  dplyr::glimpse(nlswork)
+  
+  # str(nlswork)
+  # dplyr::glimpse(nlswork)
   
   dplyr::glimpse(nlswork$ln_wage)
   
   ExpData(nlswork,type=1)
   
   ExpData(nlswork,type=2)
+```
 
+## Exploratory data analysis
 
-# Statistics --------------------------------------------------------------
+Start discussing the statistics and graphs.
 
-## EDA: Exploratory Data Analysis
-
+```{r echo=FALSE}
   # eda_report(nlswork,output_dir = "EDA/",output_file = "eda_nlswork.pdf")
   
   summary(nlswork[,"grade"])
@@ -143,111 +101,106 @@ nlswork <- read_dta("data/nlswork.dta")
   ExpCatViz(nlswork)
   
   ExpNumViz(nlswork,Page=c(6,2))
-
-## TRY IN A 'JUPYTER NOTEBOOK': ExpNumViz(nlswork)
-
-# ExpNumViz(nlswork)
-
-# ExpOutliers(nlswork,varlist=c("grade"))
+```
 
 ## MISSING VALUES
+
+```{r Missing values}
 
   vis_dat(nlswork)
 
 # vis_miss(nlswork) # ALTERNATIVE
 
   gg_miss_upset(nlswork)
+```
 
-## -- > EXERCISE
-  
-  ## ExPanD(): type 'ExPanD()' in the Console and import the data 'nls_nomiss.dta'
 
+
+## Add a dataframe
+
+
+```{r include=FALSE}
 nls <- data.frame(nlswork)
-  
   summary(nls)
-  
-  stargazer(nls,
-              title = "Summary statistics",
-              label = "tb:statistcis",
-              table.placement = "ht",
-              header=FALSE)
+```
 
-## or
+## Export output
 
+
+```{r}
   stargazer(nls,
             title = "Summary statistics",
             label = "tb:statistcis",
             table.placement = "ht",
             header=FALSE,type="text")
+```
 
-## or a subset of variables
 
-  nls %>%
-    dplyr::select(ln_wage,grade) %>% 
-    stargazer(title="Shorter statistics",
-              label="tb:statistics:short",
-              table.placement = "ht",
-              header=FALSE,
-              type="text")
-  
-  plot(nlswork$grade,nlswork$ln_wage)
 
-## FIRST CHECK OF THE RELATIONSHIP BETWEEN EDUCATION AND GDP
+## Produce a graph
 
+````{r}
+plot(nlswork$grade,nlswork$ln_wage)
+```
+
+
+## Save the graph
+
+```{r echo=FALSE}
   nlswork %>%
     ggplot(aes(grade,ln_wage)) +
     labs(title = "Ln Wage vs. Grade") +
     ylab("Ln Wage") +
     xlab("Grade") +
     geom_point()
+ggsave("figures/graph1.png")
+```
+## Tabulations and further statistics
 
-## SAVE YOUR GRAPH
-
-  ggsave("figures/graph1.png")
-
-## -- TABULATIONS -- ##
-
+```{r echo=FALSE}
   tabyl(nlswork$race, sort = TRUE)
 
   summarytools::freq(nlswork$year, order = "freq")
   
   summarytools::freq(nlswork$race, order = "freq")
+```
 
-# *drop missing values*
+# A new dataset: exclude onservations with missing information in a subset of variables
 
+```{r include=FALSE}
   nlswork_clean <- drop_na(subset(nlswork,select = c(idcode, year, 
                                                      ln_wage, union, 
                                                      collgrad, age, 
                                                      tenure, 
                                                      not_smsa, south, c_city)))
+```
 
-# *Create new variables*
 
+## Add variable
+
+```{r include=FALSE}
   nlswork_clean$agesq <- nlswork_clean$age^2
   nlswork_clean$tensq <- nlswork_clean$tenure^2
-  
-  ExpData(nlswork_clean,type=1)
-  ExpData(nlswork_clean,type=2)
+```
 
-# attach(nlswork_clean)
 
-## <<>> --- REGRESSION ANALYSIS --- <<>> ##
+## Plot variables means
 
-# Exploratory Data Analysis
+```{r echo=FALSE}
+plotmeans(ln_wage ~ year ,data = nlswork_clean)
+```
 
-# coplot(ln_wage ~ year|idcode,type="b",data = nlswork_clean)
-# scatterplot(ln_wage ~ year|idcode,data = nlswork_clean)
+# Regression analysis
 
-  plotmeans(ln_wage ~ year ,data = nlswork_clean)
+- *Estimating a Mincerian Wage Equation*
 
-# *Estimating a Mincerian Wage Equation*
+- *POLS estimator with cluster-robust standard errors*
 
-# *POLS estimator with cluster-robust standard errors*
+## *Q1*
 
-# *Q1*
+### Pooled OLS model
 
-# --> Pooled OLS model
-
+```{r include=FALSE}
   ols <- lm(data = nlswork_clean, ln_wage ~ union +
               collgrad + age + agesq + tenure + tensq +
               not_smsa + south + c_city)
@@ -258,9 +211,11 @@ nls <- data.frame(nlswork)
                 not_smsa +south +c_city, model="pooling", index=c("idcode", "year"))
           
           summary(pols)
+```
 
-# stargazer(ols,type = "text")
+## Export regression output
 
+```{r echo=FALSE}
   stargazer(ols,pols,title = "Regression analysis", 
             model.numbers = FALSE,
             column.labels = c("OLS","Pooled"),
@@ -282,13 +237,17 @@ nls <- data.frame(nlswork)
             dep.var.labels.include = FALSE,
             style = "qje",
             type="text")
+```
 
-# Standard Metropolitan Statistical Area (SMSA):
+- *SMSA*: Standard Metropolitan Statistical Area
 
-  ftable(c_city) # 1 if central city
+```{r}
+# ftable(c_city) # 1 if central city
+```
 
 # CLUSTERED Standard-errors
 
+```{r}
   pols_robust <- coeftest(pols, function(x) vcovHC(x, type = 'sss')) 
   
   stargazer(pols,pols_robust,title = "Regression analysis", 
@@ -313,17 +272,21 @@ nls <- data.frame(nlswork)
             style = "qje",
             type="text")
 
+```
 
-# *Q2*
-#   
-# *Random effects estimator (RE)*
+## *Q2*
 
-# SEE THE DISCUSSION HERE for the comparison between R and Stata
+### *Random effects estimator (RE)*
+
+- SEE THE DISCUSSION HERE for the comparison between R and Stata
+
 # https://stats.stackexchange.com/questions/421374/different-results-from-random-effects-plm-r-and-xtreg-stata
-# R and Stata treat differently unbalanced panels
 
-# for a balanced panel we have
+- R and Stata treat differently unbalanced panels
 
+ **for a balanced panel we have**
+
+```{r}
   nlswork_balanced <- read_dta("data/nlswork_balanced.dta")
   
   re_balanced <- plm(data = nlswork_balanced, ln_wage ~ union +
@@ -331,7 +294,10 @@ nls <- data.frame(nlswork)
                        not_smsa +south +c_city, model="random",
                      index=c("idcode", "year"))
       summary(re_balanced)
+```
 
+
+```{r}
   re <- plm(data = nlswork_clean, ln_wage ~ union +
               collgrad +age +agesq +tenure +tensq +
               not_smsa +south +c_city, model="random",
@@ -339,12 +305,14 @@ nls <- data.frame(nlswork)
       summary(re)
 
   re_robust <- coeftest(re, function(x) vcovHC(x, type = 'sss')) 
-  re_robust_hc1 <- coeftest(re, function(x) vcovHC(x, type = 'HC1')) 
-  
-  
-  stargazer(pols,pols_robust,re_balanced,re,re_robust,re_robust_hc1,title = "Regression analysis", 
+```
+
+çoasieopiqwpo
+
+```{r}
+  stargazer(pols,pols_robust,re,re_robust,title = "Regression analysis", 
             model.numbers = FALSE,
-            column.labels = c("Pooled","Pooled (cluster)","Balanced","RE","RE (cluster","HC1"),
+            column.labels = c("Pooled","Pooled (cluster)","RE","RE (cluster"),
             label = "regressions",
             table.placement = "!ht",
             notes.append = FALSE,
@@ -363,26 +331,60 @@ nls <- data.frame(nlswork)
             dep.var.labels.include = FALSE,
             style = "qje",
             type="text")
+```
 
-# *LM test for the presence of unobserved effects*
 
+
+```{r}
+  stargazer(pols,pols_robust,re,re_robust,title = "Regression analysis", 
+            model.numbers = FALSE,
+            column.labels = c("Pooled","Pooled (cluster)","RE","RE (cluster"),
+            label = "regressions",
+            table.placement = "!ht",
+            notes.append = FALSE,
+            notes.align="l",
+            notes="Standard errors in parentheses.",
+            header = FALSE,
+            no.space = TRUE,
+            covariate.labels = c("Union","College Graduate","Age","Age sqrd.",
+                                 "Tenure","Tenure sqrd.","Not SMSA","South","City"),
+            omit = c("Constant"),
+            omit.stat = c("adj.rsq","f","ser"),
+            digits = 3,
+            digits.extra = 5,
+            omit.yes.no = c("Constant",""),
+            dep.var.caption="",
+            dep.var.labels.include = FALSE,
+            style = "qje",
+            type="text")
+```
+
+## LM test for the presence of unobserved effects
+
+```{r}
   plmtest(pols, type=c("bp"))
   
   kable(tidy(plmtest(pols, type=c("bp"))), format = "simple",caption=
           "LM test for the presence of unobserved effects")
+```
 
+## Fixed effects estimator (FE)
+
+```{r}
 # //Final slide 32
 # 
 # *Q3*
-#   
-#   *Fixed effects estimator (FE)*
+#
 
   fe <- plm(data = nlswork_clean, ln_wage ~ union +
               collgrad +age +agesq +tenure +tensq +
               not_smsa +south +c_city, model="within", index=c("idcode", "year"))
       
       summary(fe)
+```
 
+
+```{r}
   stargazer(pols,re,fe,title = "Regression analysis", 
             model.numbers = FALSE,
             column.labels = c("Pooled","RE","FE"),
@@ -405,6 +407,10 @@ nls <- data.frame(nlswork)
             style = "qje",
             type="text")
 
+```
+
+
+```{r}
 # Testing for fixed effects, null: OLS better than fixed
 # 'F test for individual effects' <<==>> 'F test that all u_i=0'
 
@@ -414,7 +420,10 @@ nls <- data.frame(nlswork)
       summary(ols_0)
   
   pFtest(fe, ols_0)
+```
 
+
+```{r}
 # generate fixed-effects
 
 # nlswork_clean$specific_effects <- fixef(fe)
@@ -445,15 +454,22 @@ nls <- data.frame(nlswork)
             style = "qje",
             type="text")
 
+```
+
+```{r}
 # *Q3.2*
 
   linearHypothesis(ols,c("age=0","agesq=0"))
   linearHypothesis(ols,c("age=0","agesq=0"), white.adjust = "hc1")
   
   Wald_test(fe, vcov = "CR1", cluster = nlswork_clean$idcode, 
-            constraints = constrain_zero(c("age","agesq")), test = "Naive-F")
+             constraints = constrain_zero(c("age","agesq")), test = "Naive-F")
 
+```
 
+## LSDV estimator
+
+```{r}
 # *LSDV Estimator=FE estimator* <<==>> takes too long
 # *using a smaller sample*
 
@@ -483,20 +499,22 @@ nlswork_balanced <- read_dta("data/nlswork_balanced_small.dta")
                                  "Tenure sqrd.","Not SMSA","South","City"),
             omit = c("Constant"),
             omit.stat = c("adj.rsq","f","ser"),
-            digits = 3,
-            digits.extra = 5,
+            digits = 6,
+            digits.extra = 7,
             omit.yes.no = c("Constant",""),
             dep.var.caption="",
             dep.var.labels.include = FALSE,
             style = "qje",
             type="text")
 
+```
 
+## Hausman test
+
+```{r}
 # //Final slide 35
 # 
 # *Q4*
-#   *Hausman test*
-
   fe_0 <- plm(data = nlswork_clean, ln_wage ~ union +
                 age +agesq +tenure +tensq +
                 not_smsa +south +c_city, model="within", index=c("idcode", "year"))
@@ -506,10 +524,14 @@ nlswork_balanced <- read_dta("data/nlswork_balanced_small.dta")
   
   phtest(fe_0, re_0)    
 
+```
+
+## BE estimator
+
+```{r}
 #   //Final slide 46
 # 
 # *Q5*
-#   *BE estimator
 
   be <- plm(data = nlswork_clean, ln_wage ~ union +
               collgrad +age +agesq +tenure +tensq +
@@ -518,11 +540,15 @@ nlswork_balanced <- read_dta("data/nlswork_balanced_small.dta")
   
       summary(be)
 
+```
+
+
+## FD estimator
+
+```{r}
 # //Final slide 53
 # 
 # *Q6*
-#   *FD estimator*
-
   fd <- plm(data = nlswork_clean, ln_wage ~ 0 + union +
               collgrad +age +agesq +tenure +tensq +
               not_smsa +south +c_city, model="fd",
@@ -530,11 +556,15 @@ nlswork_balanced <- read_dta("data/nlswork_balanced_small.dta")
     
     summary(fd)
 
-# *Output Table*
+```
 
-  stargazer(pols,re,fd,fe,be,title = "Regression analysis", 
+
+## Output Table
+
+```{r}
+  stargazer(pols,re,fe,be,title = "Regression analysis", 
             model.numbers = FALSE,
-            column.labels = c("OLS","RE","FD","FE","BE"),
+            column.labels = c("OLS","RE","FE","BE"),
             label = "regressions",
             table.placement = "!ht",
             notes.append = FALSE,
@@ -551,14 +581,14 @@ nlswork_balanced <- read_dta("data/nlswork_balanced_small.dta")
             dep.var.labels.include = FALSE,
             style = "qje",
             type="text")
+```
 
 
+# FURTHER SPECIFICATION TESTS FOR PANEL DATA
 
-# *FURTHER SPECIFICATION TESTS FOR PANEL DATA*
-#   
-#   // # Test for heteroskedasticity within panel data
-#   
+## Test for heteroskedasticity within panel data
 
+```{r ert}
 # H0) The null hypothesis for the Breusch-Pagan test is homoskedasticity
 
 # takes too long to compute
@@ -571,35 +601,47 @@ nlswork_balanced <- read_dta("data/nlswork_balanced_small.dta")
   bptest(data = nlswork_balanced, ln_wage ~ union +
            collgrad +age +agesq +tenure +tensq +
            not_smsa +south +c_city + factor(idcode), studentize=F)
+```
 
+## Test of serial correlation within panel data
 
+- Unobserved effects test <<>> Wooldridge's test for unobserved individual effects <<>>
 
-# // # Test of serial correlation within panel data
-
-# Unobserved effects test <<>> Wooldridge's test for unobserved individual effects <<>>
-
+```{r pwtest, echo=FALSE}
   pwtest(data = nlswork_clean, ln_wage ~ union +
            collgrad +age +agesq +tenure +tensq +
            not_smsa +south +c_city)
+```
 
-# Locally robust tests for serial correlation or random effects <<>> Baltagi and Li AR-RE joint test - balanced panel <<>>
+## Locally robust tests for serial correlation or random effects
 
+- Baltagi and Li AR-RE joint test - balanced panel
+
+```{r}
   pbsytest(data = nlswork_balanced, ln_wage ~ union +
              collgrad +age +agesq +tenure +tensq +
              not_smsa +south +c_city, test="j")
+```
 
-# General serial correlation tests <<>> Breusch-Godfrey/Wooldridge test for serial correlation in panel models <<>>
+## General serial correlation tests
 
+- Breusch-Godfrey/Wooldridge test for serial correlation in panel models <<>>
+
+```{r}
 pbgtest(fe, order = 2)
+```
 
-# Wooldridge's test for serial correlation in FE panels
+## Wooldridge's test for serial correlation in FE panels
 
+```{r}
   pwartest(data = nlswork_balanced, ln_wage ~ union +
              collgrad +age +agesq +tenure +tensq +
              not_smsa +south +c_city)
+```
 
-# Wooldridge first-difference-based test
+## Wooldridge first-difference-based test
 
+```{r}
   pwfdtest(data = nlswork_balanced, ln_wage ~ union +
              collgrad +age +agesq +tenure +tensq +
              not_smsa +south +c_city)
@@ -607,15 +649,20 @@ pbgtest(fe, order = 2)
   pwfdtest(data = nlswork_balanced, ln_wage ~ union +
              collgrad +age +agesq +tenure +tensq +
              not_smsa +south +c_city, h0="fe")
+```
 
-# Tests for cross-sectional dependence
+## Tests for cross-sectional dependence
 
+```{r}
   pcdtest(data = nlswork_balanced, ln_wage ~ union +
             collgrad +age +agesq +tenure +tensq +
             not_smsa +south +c_city)
+```
+
 
 # HIGH DIMENSIONAL FIXED-EFFECTS
 
+```{r}
 ## CHECK: 'lfe' and 'fixest'
 ### https://github.com/sgaure/lfe
 ### https://github.com/lrberge/fixest
@@ -626,7 +673,7 @@ pbgtest(fe, order = 2)
                     age +agesq +tenure +tensq +
                     not_smsa +south +c_city | idcode)
   
-      summary(HDFE1a,se="cluster")
+      summary(HDFE1a)
   
   
   HDFE1b <- felm(data = nlswork_clean, ln_wage ~ union +
@@ -642,7 +689,7 @@ pbgtest(fe, order = 2)
                     age +agesq +tenure +tensq +
                     not_smsa +south +c_city | idcode + year)
   
-      summary(HDFE2a,se="cluster")
+      summary(HDFE2a)
 
 
   HDFE2b <- felm(data = nlswork_clean, ln_wage ~ union +
@@ -651,103 +698,5 @@ pbgtest(fe, order = 2)
   
       summary(HDFE2b)
 
+```
 
-## <<>> --- SIMULATED DATA -- <<>> ##
-
-
-# Using package 'plm' -->> SIMULATED DATA (see the Stata file 'stata_do_example.do' that produces the data in folder tmp_files)
-
-  simulated <- read_dta("data/data_simulation.dta")
-
-# names(nlswork)
-# head(nlswork)
-# str(nlswork)
-
-## EDA: Exploratory Data Analysis
-
-# eda_report(simulated,output_dir = "EDA/",output_file = "eda_simulated.pdf")
-
-  ExpData(simulated,type=1)
-  ExpData(simulated,type=2)
-  
-  summary(simulated)
-  
-  ftable(simulated$year)
-  
-  ExpCTable(simulated)
-  ExpCatViz(simulated)
-
-## TRY IN A 'JUPYTER NOTEBOOK': ExpNumViz(nlswork)
-
-  ExpNumStat(simulated,by="A",Outlier = TRUE,round=2,Qnt=c(0.1,0.25,0.50,0.99))
-  ExpNumViz(simulated,Page=c(6,2))
-  
-  ExpOutliers(simulated,varlist=c("lnwage"))
-  
-  vis_dat(simulated)
-
-# gg_miss_upset(simulated)
-
-  stargazer(simulated,
-            title = "Summary statistics",
-            label = "tb:statistcis",
-            table.placement = "ht",
-            header=FALSE,type="text")
-
-## DASHBOARD
-
-  ####### ExPanD()
-
-## REGRESSIONS
-
-  pols <- plm(data = simulated, lnwage ~ educ + exper + 
-              exper2 + factor(year), 
-            model="pooling", index=c("workerid", "year"))
-
-  re <- plm(data = simulated, lnwage ~ educ + exper + 
-            exper2 + factor(year), 
-          model="random", index=c("workerid", "year"))
-
-  plmtest(pols, type=c("bp"))
-
-  fe <- plm(data = simulated, lnwage ~ educ + exper + 
-              exper2 + factor(year), 
-            model="within", index=c("workerid", "year"))
-  
-  pFtest(fe, pols)
-  phtest(fe, re)
-  
-  pols_robust <- coeftest(pols, function(x) vcovHC(x, type = 'sss')) 
-  re_robust <- coeftest(re, function(x) vcovHC(x, type = 'sss')) 
-  fe_robust <- coeftest(fe, function(x) vcovHC(x, type = 'sss')) 
-  
-  stargazer(pols_robust,re_robust, fe_robust,title = "Regression analysis", 
-            model.numbers = FALSE,
-            column.labels = c("Pooled (cluster)","RE (cluster)","FE (cluster"),
-            label = "regressions",
-            table.placement = "!ht",
-            notes.append = FALSE,
-            notes.align="l",
-            notes="Standard errors in parentheses.",
-            header = FALSE,
-            no.space = TRUE,
-            omit = c("Constant"),
-            omit.stat = c("adj.rsq","f","ser"),
-            digits = 3,
-            digits.extra = 5,
-            omit.yes.no = c("Constant",""),
-            dep.var.caption="",
-            dep.var.labels.include = FALSE,
-            style = "qje",
-            type="text")
-
-## OBSERVE THE MISTAKE FOLLOWING THE INTRODUCTION OF TIME DUMMIES AND EXPERIENCE IN
-## THE FIXED-EFFECTS MODEL
-
-##################################      
-
-end_time <- Sys.time()
-
-  end_time - start_time
-
-sink()

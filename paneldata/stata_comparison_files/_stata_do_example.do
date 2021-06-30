@@ -239,11 +239,11 @@ tab year, ge(yy)
 				xttest3
 
 	// # 4.2. test for serial correlation within panel data
-
+		drop yy*
 		tab year, gen(yy)
 			ret li
 
-		xtserial lnwage educ exper exper2 yy2-yy11
+		xtserial lnwage educ exper exper2 yy2-yy10
 			
 			xtreg lnwage educ exper exper2 i.year, fe cluster(workerid)
 
@@ -398,7 +398,7 @@ tab year, ge(yy)
 
 	use ../data/data_simulation, clear
 
-		tab year, ge(yy)
+		//tab year, ge(yy)
 
 		// # 7.1. estimate OLS & FE benchmark models
 
@@ -485,7 +485,7 @@ tab year, ge(yy)
 	// # 7.5. DYNAMIC FORMULATION OF WAGE
 
 		use ../data/data_simulation, clear
-			tab year, ge(yy)
+			//tab year, ge(yy)
 				set seed 234
 
 			drop lnwage
@@ -810,6 +810,5 @@ use ../data/pennxrate, clear
 		timer clear 1
 
 log close
-
 
 // === END === //
