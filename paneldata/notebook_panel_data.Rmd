@@ -26,7 +26,7 @@ The preview shows you a rendered HTML copy of the contents of the editor. Conseq
 
 Here i am uploading my packages
 
-```{r include=FALSE}
+```{r Libraries, include=FALSE}
 library(pacman)  #Package Management Tool
 
 pacman::p_load(here,
@@ -59,11 +59,11 @@ pacman::p_load(here,
               pdynmc)
 ```
 
-# Prepare data
+# Prepare the data
 
 Here I am reading a Stata data file.
 
-```{r include = FALSE}
+```{r Prepare data, include = FALSE}
 nlswork <- read_dta("data/nlswork.dta")
   nls_nomiss <- na.omit(nlswork)
   write_dta(nls_nomiss,"data/nls_nomiss.dta")
@@ -71,7 +71,7 @@ nlswork <- read_dta("data/nlswork.dta")
 
 # Statistics
 
-```{r}
+```{r Statistics}
   names(nlswork)
   head(nlswork)
   
@@ -89,7 +89,7 @@ nlswork <- read_dta("data/nlswork.dta")
 
 Start discussing the statistics and graphs.
 
-```{r echo=FALSE}
+```{r Exploratory data analysis, echo=FALSE}
   # eda_report(nlswork,output_dir = "EDA/",output_file = "eda_nlswork.pdf")
   
   summary(nlswork[,"grade"])
@@ -119,7 +119,7 @@ Start discussing the statistics and graphs.
 ## Add a dataframe
 
 
-```{r include=FALSE}
+```{r Add a dataframe, include=FALSE}
 nls <- data.frame(nlswork)
   summary(nls)
 ```
@@ -127,7 +127,7 @@ nls <- data.frame(nlswork)
 ## Export output
 
 
-```{r}
+```{r (simple) Export output}
   stargazer(nls,
             title = "Summary statistics",
             label = "tb:statistcis",
@@ -139,14 +139,14 @@ nls <- data.frame(nlswork)
 
 ## Produce a graph
 
-````{r}
+````{r Produce graph}
 plot(nlswork$grade,nlswork$ln_wage)
 ```
 
 
 ## Save the graph
 
-```{r echo=FALSE}
+```{r Save graph, echo=FALSE}
   nlswork %>%
     ggplot(aes(grade,ln_wage)) +
     labs(title = "Ln Wage vs. Grade") +
@@ -157,7 +157,7 @@ ggsave("figures/graph1.png")
 ```
 ## Tabulations and further statistics
 
-```{r echo=FALSE}
+```{r Tabulations and further statistics,echo=FALSE}
   tabyl(nlswork$race, sort = TRUE)
 
   summarytools::freq(nlswork$year, order = "freq")
@@ -167,7 +167,7 @@ ggsave("figures/graph1.png")
 
 # A new dataset: exclude onservations with missing information in a subset of variables
 
-```{r include=FALSE}
+```{r Exclude missings, include=FALSE}
   nlswork_clean <- drop_na(subset(nlswork,select = c(idcode, year, 
                                                      ln_wage, union, 
                                                      collgrad, age, 
@@ -178,7 +178,7 @@ ggsave("figures/graph1.png")
 
 ## Add variable
 
-```{r include=FALSE}
+```{r Add variable, include=FALSE}
   nlswork_clean$agesq <- nlswork_clean$age^2
   nlswork_clean$tensq <- nlswork_clean$tenure^2
 ```
@@ -186,7 +186,7 @@ ggsave("figures/graph1.png")
 
 ## Plot variables means
 
-```{r echo=FALSE}
+```{r Plot variables means, echo=FALSE}
 plotmeans(ln_wage ~ year ,data = nlswork_clean)
 ```
 
@@ -200,7 +200,7 @@ plotmeans(ln_wage ~ year ,data = nlswork_clean)
 
 ### Pooled OLS model
 
-```{r include=FALSE}
+```{r Pooled OLS, include=FALSE}
   ols <- lm(data = nlswork_clean, ln_wage ~ union +
               collgrad + age + agesq + tenure + tensq +
               not_smsa + south + c_city)
@@ -215,7 +215,7 @@ plotmeans(ln_wage ~ year ,data = nlswork_clean)
 
 ## Export regression output
 
-```{r echo=FALSE}
+```{r Export regression output, echo=FALSE}
   stargazer(ols,pols,title = "Regression analysis", 
             model.numbers = FALSE,
             column.labels = c("OLS","Pooled"),
@@ -241,13 +241,13 @@ plotmeans(ln_wage ~ year ,data = nlswork_clean)
 
 - *SMSA*: Standard Metropolitan Statistical Area
 
-```{r}
+```{r FTable}
 # ftable(c_city) # 1 if central city
 ```
 
 # CLUSTERED Standard-errors
 
-```{r}
+```{r CLUSTERED Standard-errors}
   pols_robust <- coeftest(pols, function(x) vcovHC(x, type = 'sss')) 
   
   stargazer(pols,pols_robust,title = "Regression analysis", 
@@ -286,7 +286,7 @@ plotmeans(ln_wage ~ year ,data = nlswork_clean)
 
  **for a balanced panel we have**
 
-```{r}
+```{r RE Balanced}
   nlswork_balanced <- read_dta("data/nlswork_balanced.dta")
   
   re_balanced <- plm(data = nlswork_balanced, ln_wage ~ union +
@@ -297,7 +297,7 @@ plotmeans(ln_wage ~ year ,data = nlswork_clean)
 ```
 
 
-```{r}
+```{r RE Robust}
   re <- plm(data = nlswork_clean, ln_wage ~ union +
               collgrad +age +agesq +tenure +tensq +
               not_smsa +south +c_city, model="random",
@@ -307,9 +307,9 @@ plotmeans(ln_wage ~ year ,data = nlswork_clean)
   re_robust <- coeftest(re, function(x) vcovHC(x, type = 'sss')) 
 ```
 
-çoasieopiqwpo
 
-```{r}
+
+```{r OUTPUT -- POLS,POLS Robust,RE,RE Robust}
   stargazer(pols,pols_robust,re,re_robust,title = "Regression analysis", 
             model.numbers = FALSE,
             column.labels = c("Pooled","Pooled (cluster)","RE","RE (cluster"),
@@ -335,7 +335,7 @@ plotmeans(ln_wage ~ year ,data = nlswork_clean)
 
 
 
-```{r}
+```{r OUTPUT; POLS;POLS Robust;RE;RE Robust}
   stargazer(pols,pols_robust,re,re_robust,title = "Regression analysis", 
             model.numbers = FALSE,
             column.labels = c("Pooled","Pooled (cluster)","RE","RE (cluster"),
@@ -361,7 +361,7 @@ plotmeans(ln_wage ~ year ,data = nlswork_clean)
 
 ## LM test for the presence of unobserved effects
 
-```{r}
+```{r LM test for the presence of unobserved effects}
   plmtest(pols, type=c("bp"))
   
   kable(tidy(plmtest(pols, type=c("bp"))), format = "simple",caption=
@@ -370,7 +370,7 @@ plotmeans(ln_wage ~ year ,data = nlswork_clean)
 
 ## Fixed effects estimator (FE)
 
-```{r}
+```{r Fixed effects estimator}
 # //Final slide 32
 # 
 # *Q3*
@@ -384,7 +384,7 @@ plotmeans(ln_wage ~ year ,data = nlswork_clean)
 ```
 
 
-```{r}
+```{r OUTPUT -- POLS;RE;FE}
   stargazer(pols,re,fe,title = "Regression analysis", 
             model.numbers = FALSE,
             column.labels = c("Pooled","RE","FE"),
@@ -410,7 +410,7 @@ plotmeans(ln_wage ~ year ,data = nlswork_clean)
 ```
 
 
-```{r}
+```{r Testing for fixed effects}
 # Testing for fixed effects, null: OLS better than fixed
 # 'F test for individual effects' <<==>> 'F test that all u_i=0'
 
@@ -423,7 +423,7 @@ plotmeans(ln_wage ~ year ,data = nlswork_clean)
 ```
 
 
-```{r}
+```{r FE Robust}
 # generate fixed-effects
 
 # nlswork_clean$specific_effects <- fixef(fe)
@@ -456,7 +456,7 @@ plotmeans(ln_wage ~ year ,data = nlswork_clean)
 
 ```
 
-```{r}
+```{r Linear Hypothesis}
 # *Q3.2*
 
   linearHypothesis(ols,c("age=0","agesq=0"))
@@ -469,7 +469,7 @@ plotmeans(ln_wage ~ year ,data = nlswork_clean)
 
 ## LSDV estimator
 
-```{r}
+```{r LSDV estimator}
 # *LSDV Estimator=FE estimator* <<==>> takes too long
 # *using a smaller sample*
 
@@ -511,7 +511,7 @@ nlswork_balanced <- read_dta("data/nlswork_balanced_small.dta")
 
 ## Hausman test
 
-```{r}
+```{r Hausman test}
 # //Final slide 35
 # 
 # *Q4*
@@ -528,7 +528,7 @@ nlswork_balanced <- read_dta("data/nlswork_balanced_small.dta")
 
 ## BE estimator
 
-```{r}
+```{r BE estimator}
 #   //Final slide 46
 # 
 # *Q5*
@@ -545,7 +545,7 @@ nlswork_balanced <- read_dta("data/nlswork_balanced_small.dta")
 
 ## FD estimator
 
-```{r}
+```{r FD estimator}
 # //Final slide 53
 # 
 # *Q6*
@@ -561,7 +561,7 @@ nlswork_balanced <- read_dta("data/nlswork_balanced_small.dta")
 
 ## Output Table
 
-```{r}
+```{r Output Table -- POLS;RE;FE;BE}
   stargazer(pols,re,fe,be,title = "Regression analysis", 
             model.numbers = FALSE,
             column.labels = c("OLS","RE","FE","BE"),
@@ -588,7 +588,7 @@ nlswork_balanced <- read_dta("data/nlswork_balanced_small.dta")
 
 ## Test for heteroskedasticity within panel data
 
-```{r ert}
+```{r Heteroskedasticity}
 # H0) The null hypothesis for the Breusch-Pagan test is homoskedasticity
 
 # takes too long to compute
@@ -607,7 +607,7 @@ nlswork_balanced <- read_dta("data/nlswork_balanced_small.dta")
 
 - Unobserved effects test <<>> Wooldridge's test for unobserved individual effects <<>>
 
-```{r pwtest, echo=FALSE}
+```{r Serial correlation -- Wooldridge, eval=FALSE}
   pwtest(data = nlswork_clean, ln_wage ~ union +
            collgrad +age +agesq +tenure +tensq +
            not_smsa +south +c_city)
@@ -617,7 +617,7 @@ nlswork_balanced <- read_dta("data/nlswork_balanced_small.dta")
 
 - Baltagi and Li AR-RE joint test - balanced panel
 
-```{r}
+```{r Serial correlation -- Baltagi and Li}
   pbsytest(data = nlswork_balanced, ln_wage ~ union +
              collgrad +age +agesq +tenure +tensq +
              not_smsa +south +c_city, test="j")
@@ -627,13 +627,13 @@ nlswork_balanced <- read_dta("data/nlswork_balanced_small.dta")
 
 - Breusch-Godfrey/Wooldridge test for serial correlation in panel models <<>>
 
-```{r}
+```{r Serial correlation -- Breusch-Godfrey/Wooldridge}
 pbgtest(fe, order = 2)
 ```
 
 ## Wooldridge's test for serial correlation in FE panels
 
-```{r}
+```{r Serial correlation -- Wooldridge 2}
   pwartest(data = nlswork_balanced, ln_wage ~ union +
              collgrad +age +agesq +tenure +tensq +
              not_smsa +south +c_city)
@@ -641,7 +641,7 @@ pbgtest(fe, order = 2)
 
 ## Wooldridge first-difference-based test
 
-```{r}
+```{r Serial correlation -- Wooldridge 3}
   pwfdtest(data = nlswork_balanced, ln_wage ~ union +
              collgrad +age +agesq +tenure +tensq +
              not_smsa +south +c_city)
@@ -653,7 +653,7 @@ pbgtest(fe, order = 2)
 
 ## Tests for cross-sectional dependence
 
-```{r}
+```{r Cross-sectional dependence}
   pcdtest(data = nlswork_balanced, ln_wage ~ union +
             collgrad +age +agesq +tenure +tensq +
             not_smsa +south +c_city)
@@ -662,7 +662,7 @@ pbgtest(fe, order = 2)
 
 # HIGH DIMENSIONAL FIXED-EFFECTS
 
-```{r}
+```{r HDFE}
 ## CHECK: 'lfe' and 'fixest'
 ### https://github.com/sgaure/lfe
 ### https://github.com/lrberge/fixest
@@ -699,4 +699,3 @@ pbgtest(fe, order = 2)
       summary(HDFE2b)
 
 ```
-

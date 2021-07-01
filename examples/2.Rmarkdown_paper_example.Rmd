@@ -16,6 +16,7 @@ header-includes:
 - \usepackage{dcolumn}
 - \usepackage{color}
 - \usepackage{pdfpages}
+- \usepackage[utf8]{inputenc}
 bibliography: references.bib
 biblio-style: kluwer
 mainfont: Times New Roman
@@ -28,13 +29,13 @@ base_format: rticles::elsevier_article
 abstract: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\\par \\textbf{Keywords:} Development Economics, Panel Data\\par \\textbf{JEL Codes}: J64, H31"
 ---
 
-```{r setup, include=FALSE}
+```{r Setup, include=FALSE}
 library(knitr)
 knitr::opts_chunk$set(include = FALSE)
 ```
 
 
-```{r packages, message=FALSE, include=FALSE, results='hide'}
+```{r Packages, message=FALSE, include=FALSE, results='hide'}
 rm(list = ls())
 
 setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/examples")
