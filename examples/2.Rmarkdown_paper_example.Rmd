@@ -57,10 +57,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 # data()
 attach(mtcars)
 nlswork <- read_dta("../data/nlswork.dta")
-nls<-data.frame(nlswork)
-summary(nlswork)
 attach(nlswork)
-summary(ln_wage)
+nls<-data.frame(nlswork)
 ```
 
 > You can type in **bold** or _italic_
@@ -234,40 +232,41 @@ For additional insights see @MacFarlane.
 # Build your report
 
 ```{r simple_number, echo=FALSE,results='hide'}
-summary(ln_wage)
+summary(nls,ln_wage)
 ii <- 4*9
 ```
 
 The average log wage in our data is `r round(mean(ln_wage,na.rm=TRUE),3)`, while the sum is `r ii`.
 
-```{r descriptive_stats, echo=FALSE, results="asis"}
+```{r Export Stats, echo=TRUE, message=FALSE, warning=FALSE, paged.print=FALSE, results="asis"}
 stargazer(nls,
-          title = "Summary table with stargazer",
-          label = "table1",
+          label = "tab:descriptive_stats",
+          title = "Table: Descriptive statistics",
           table.placement = "ht",
           header=FALSE)
 ```
 
-Table \@ref(table1) shows full data's summary statistics.^[You can also produce statistics for a sub set of variables; see Table \@ref(table:short).] `stargazer()` is and excellent solution to export outputs.
+Table \@ref(tab:descriptive_stats) shows full data's summary statistics.^[You can also produce statistics for a sub set of variables; see Table \@ref(table:stats_short).] `stargazer()` is an excellent solution to export outputs.
 
-```{r stats_short,echo=FALSE,results='asis'}
-nls %>%
-  select(tenure,ln_wage) %>%
-  stargazer(title = "Short statistics",
-          label = "table:short",
-          table.placement = "ht",
-          header=FALSE)
+
+```{r stats_short}
+nlswork %>% 
+  dplyr::select(tenure,ln_wage) %>%
+  stargazer(label = "tab:stats_short",
+            title = "Short statistics",
+            table.placement = "ht",
+            header=FALSE)
 ```
 
 See Figure \@ref(fig:wages-tenure).
 
-```{r wages-tenure, echo=FALSE,fig.cap="Log wages vs. tenure"}
+```{r fig:wages-tenure, echo=FALSE,fig.cap="Log wages vs. tenure"}
 plot(x=tenure,y=ln_wage)
 ```
 
 An alternative could be to export the figure and include it as an image.
 
-```{r figure-2, fig.cap="Alternative solution",echo =FALSE,results='hide'}
+```{r fig:figure-2, fig.cap="Alternative solution",echo =FALSE,results='hide'}
 nls2 <- as.data.frame(nlswork)
 
 nls2 %>%
@@ -282,9 +281,9 @@ See Figure \@ref(fig:figure-2). We could also include the figure in the followin
 
 ![Wages vs. tenure](./images/wages.png){width=65%}
 
-We couls as well include regression analysis. See Table \@ref(regressions) for an example.
+We could as well include regression analysis. See Table \@ref(regressions) for an example.
 
-```{r regression,echo=FALSE,results='asis'}
+```{r regressions, echo=TRUE, results='asis'}
 M1 <- lm(data = nls2,ln_wage ~ tenure)
 
 # plot(nls2)
