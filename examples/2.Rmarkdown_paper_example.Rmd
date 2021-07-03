@@ -16,7 +16,7 @@ header-includes:
 - \usepackage{dcolumn}
 - \usepackage{color}
 - \usepackage{pdfpages}
-- \usepackage{lipsum}
+- \usepackage[utf8]{inputenc}
 bibliography: references.bib
 biblio-style: kluwer
 mainfont: Times New Roman
@@ -26,20 +26,20 @@ link-citations: true
 documentclass: article
 geometry: "paperwidth=210mm,paperheight=297mm,left=27mm,right=27mm,top=27mm,bottom=27mm"
 base_format: rticles::elsevier_article
-abstract: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\\par \\textbf{Keywords:} Development Economics, Panel Data\\par \\textbf{JEL Codes}: J64, H31"
+abstract: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\\par \\textbf{Keywords:} Development Economics, Panel Data\\par \\textbf{JEL Codes}: J64, H31"
 ---
 
-```{r setup, include=FALSE}
+```{r Setup, include=FALSE}
 library(knitr)
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(include = FALSE)
 ```
 
 
-```{r packages, message=FALSE, include=FALSE, results='hide'}
+```{r Packages, message=FALSE, include=FALSE, results='hide'}
 rm(list = ls())
 
-# setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/examples")
-setwd('/Users/miguelportela/Documents/GitHub/R_Training/examples')
+setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/examples")
+# setwd('/Users/miguelportela/Documents/GitHub/R_Training/examples')
 ##setwd("C:\\Users\\exu0o9\\Documents\\GitHub\\R_Training\\examples")
 
 library(tidyverse)
@@ -57,13 +57,15 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 # data()
 attach(mtcars)
 nlswork <- read_dta("../data/nlswork.dta")
-nls<-data.frame(nlswork)
-summary(nlswork)
 attach(nlswork)
-summary(ln_wage)
+nls<-data.frame(nlswork)
 ```
 
-You can type in **bold** or _italic_. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Odio eu feugiat pretium nibh. **Quis varius quam quisque id diam vel. Arcu odio ut sem nulla pharetra.** Sem et tortor consequat id porta nibh venenatis cras sed. Eu non diam phasellus vestibulum lorem sed risus. Non quam lacus suspendisse faucibus interdum posuere. Aliquet enim tortor at auctor urna. Amet facilisis magna etiam tempor orci eu lobortis. _Maecenas ultricies mi eget mauris pharetra et. Pharetra et ultrices neque ornare aenean euismod elementum nisi. Aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque._ Fermentum dui faucibus in ornare quam. Auctor elit sed vulputate mi sit. You can put an __entire sentence in bold__ _or italic_.
+> You can type in **bold** or _italic_
+>
+> You can put an __entire sentence in bold__ _or italic_
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Odio eu feugiat pretium nibh. **Quis varius quam quisque id diam vel. Arcu odio ut sem nulla pharetra.** Sem et tortor consequat id porta nibh venenatis cras sed. Eu non diam phasellus vestibulum lorem sed risus. Non quam lacus suspendisse faucibus interdum posuere. Aliquet enim tortor at auctor urna. Amet facilisis magna etiam tempor orci eu lobortis. _Maecenas ultricies mi eget mauris pharetra et. Pharetra et ultrices neque ornare aenean euismod elementum nisi. Aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque._ Fermentum dui faucibus in ornare quam. Auctor elit sed vulputate mi sit.
 
 <!-- \pagebreak -->
 
@@ -73,50 +75,34 @@ If you want to type a `Header` see Section \@ref(literature).
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Augue mauris augue neque gravida in fermentum et sollicitudin ac. Placerat orci nulla pellentesque dignissim enim sit amet venenatis. Mollis nunc sed id semper risus in hendrerit. Tortor at risus viverra adipiscing. Blandit cursus risus at ultrices mi tempus. Egestas dui id ornare arcu odio ut sem. Sed sed risus pretium quam vulputate dignissim. Sagittis purus sit amet volutpat. Libero nunc consequat interdum varius sit amet mattis.
 
-According to @bdpPEG2019,
-
 > Penatibus et magnis dis parturient montes nascetur ridiculus mus. Cursus eget nunc scelerisque viverra mauris in aliquam. Viverra tellus in hac habitasse. Mattis vulputate enim nulla aliquet. Non pulvinar neque laoreet suspendisse interdum consectetur libero id faucibus. Pharetra massa massa ultricies mi quis hendrerit dolor magna eget. In pellentesque massa placerat duis ultricies lacus. Malesuada fames ac turpis egestas integer eget aliquet nibh. Vitae suscipit tellus mauris a diam.
 
 ## Insert a sub-section
 
-\lipsum[1-2]
-
 ### Sub sub-section
-
-\lipsum[1-1]
 
 # Insert
 
-\lipsum[1-1]
-
 ## Your first _link_
 
-[This is the text you will see.](https://www.markdowntutorial.com/)
-\lipsum[1-1]
-or [**using bold**.](https://www.markdowntutorial.com/)
+[This is the text you will see](https://www.markdowntutorial.com/)
 
-\lipsum[1-1]
-You can also use reference links to move to [_**my website**_][link1] or to [_Universidade do Minho_][link_uminho].
+or [**using bold**](https://www.markdowntutorial.com/)
+
+You can also use reference links to move to [_**my website**_][link1] or to [_Universidade do Minho_][link_uminho]
 
 How to use images and define size
 ====
 
-\lipsum[1-1]
-
 ## First using a relative size
 
-\lipsum[1-1]
-
-![UMinho](./images/uminho.png){width=31%}
+![](./images/uminho.png){width=31%}
 
 
-\lipsum[1-1]
-You can also define a __fixed size__,
+or a __fixed size__
 
 ![Universidade do Minho](./images/uminho.png){width="1.7in"
 height="0.7in"}
-
-\lipsum[1-1]
 
 You can also use an image from a link:
 
@@ -124,7 +110,7 @@ You can also use an image from a link:
 ![RStudio's logo](https://rstudio.com/wp-content/uploads/2018/10/RStudio-Logo-Flat.png){width=25%}
 -->
 
-When writing your document you can quote using carat (>). This is called a block quote. The following text was generated using [Lorem Ipsum](https://jaspervdj.be/lorem-markdownum/),
+When writing your document you can quote using carat (>). This is called a block quote. The following text was generated using [Lorem Ipsum](https://jaspervdj.be/lorem-markdownum/).
 
 > Tuas vocat velantibus rogos, quem tamen foedere **laetabere bipennifer** nulla
 se **camini**. In **forsitan**, in **verti iam** submissaeque faciam adversum et
@@ -180,9 +166,7 @@ A more complex example is discussed in Section \@ref(sec:literate:programming).
     3.	Develop a report
     4.	Publish the report
  
-Or list,
-
-  **To read**
+  **References**
 
 - Xie, Y., Allaire, J.J. and Grolemund, G., 2018. R markdown: The definitive guide. CRC Press. (https://bookdown.org/yihui/rmarkdown/), "_Course 5: Web-based tools for data analysis: JupyterLab environment and workflow optimization_"
     
@@ -192,22 +176,18 @@ Or list,
 
 # Paragraphs & Tables
 
-\lipsum[1-1]
-
 ## Using a double space at the end of the sentence
 
 Phaethon Delphos mea gravis excipiunt stabat: quem aqua taceam Phoebo, vir
 aratri, Ulixes haec perque.  
 Nactus dempserat sui regnat enim, acta stet Areos
-praesagaque in iacent? Fuerant crescentem vinci clamat.
+praesagaque in iacent? Fuerant crescentem vinci clamat.[^1]
 
 ## Add footnotes
 
-\lipsum[1-1] This is a footnote.[^1]
+This is a footnote.
 
-## This is a table written by me
-
-\lipsum[1-1]
+## This is a table
 
 Table: Sample table
 
@@ -247,47 +227,46 @@ y_{it} = \beta_0 + \beta_1 x_{it} + \eta_i + \varepsilon_{it}
 
 # Pandoc's manual
 
-For additional insights see @MacFarlane. See Pandoc's manual [here](https://pandoc.org/).
+For additional insights see @MacFarlane.
 
 # Build your report
 
-\lipsum[1-1]
-
 ```{r simple_number, echo=FALSE,results='hide'}
-summary(ln_wage)
+summary(nls,ln_wage)
 ii <- 4*9
 ```
 
-The average log wage in our data is *`r round(mean(ln_wage,na.rm=TRUE),3)`*, while the sum is **`r ii`**. \lipsum[1-1]
+The average log wage in our data is `r round(mean(ln_wage,na.rm=TRUE),3)`, while the sum is `r ii`.
 
-```{r descriptive_stats, echo=FALSE, results="asis"}
+```{r Export Stats, echo=TRUE, message=FALSE, warning=FALSE, paged.print=FALSE, results="asis"}
 stargazer(nls,
-          title = "Summary table with stargazer",
-          label = "table1",
+          label = "tab:descriptive_stats",
+          title = "Table: Descriptive statistics",
           table.placement = "ht",
           header=FALSE)
 ```
 
-Table \@ref(table1) shows full data's summary statistics.^[You can also produce statistics for a sub set of variables; see Table \@ref(table:short).] `stargazer()` is and excellent solution to export outputs. \lipsum[1-1]
+Table \@ref(tab:descriptive_stats) shows full data's summary statistics.^[You can also produce statistics for a sub set of variables; see Table \@ref(table:stats_short).] `stargazer()` is an excellent solution to export outputs.
 
-```{r stats_short,echo=FALSE,results='asis'}
-nls %>%
-  select(tenure,ln_wage) %>%
-  stargazer(title = "Short statistics",
-          label = "table:short",
-          table.placement = "ht",
-          header=FALSE)
+
+```{r stats_short}
+nlswork %>% 
+  dplyr::select(tenure,ln_wage) %>%
+  stargazer(label = "tab:stats_short",
+            title = "Short statistics",
+            table.placement = "ht",
+            header=FALSE)
 ```
 
-\lipsum[1-1] See Figure \@ref(fig:wages-tenure).
+See Figure \@ref(fig:wages-tenure).
 
-```{r wages-tenure, echo=FALSE,fig.cap="Log wages vs. tenure"}
+```{r fig:wages-tenure, echo=FALSE,fig.cap="Log wages vs. tenure"}
 plot(x=tenure,y=ln_wage)
 ```
 
-An alternative could be to export the figure and include it as an image. \lipsum[1-1]
+An alternative could be to export the figure and include it as an image.
 
-```{r figure-2, fig.cap="Alternative solution",echo =FALSE,results='hide',message=FALSE}
+```{r fig:figure-2, fig.cap="Alternative solution",echo =FALSE,results='hide'}
 nls2 <- as.data.frame(nlswork)
 
 nls2 %>%
@@ -304,7 +283,7 @@ See Figure \@ref(fig:figure-2). We could also include the figure in the followin
 
 We could as well include regression analysis. See Table \@ref(regressions) for an example.
 
-```{r regression,echo=FALSE,results='asis'}
+```{r regressions, echo=TRUE, results='asis'}
 M1 <- lm(data = nls2,ln_wage ~ tenure)
 
 # plot(nls2)
@@ -320,7 +299,7 @@ M3 <- lm(data=filter(nls2,year==80),ln_wage ~ tenure + union)
 # Stargazer manual
 # https://cran.r-project.org/web/packages/stargazer/stargazer.pdf
 
-stargazer(M1,M2,M3,title = "Regression analysis", model.numbers = FALSE,column.labels = c("Model 1", "Model 2","Model 3"),label = "regressions",table.placement = "!ht",notes.append = FALSE,notes.align="l",notes="Standard errors in parentheses.",header = FALSE,no.space = TRUE,covariate.labels = c("TENURE","UNION"),omit = c("Constant"),omit.stat = c("adj.rsq","f","ser"),digits = 3,digits.extra = 4,omit.yes.no = c("Constant",""),dep.var.caption="",dep.var.labels.include = FALSE,style = "qje")
+stargazer(M1,M2,M3,title = "Regression analysis", model.numbers = FALSE,column.labels = c("Model 1", "Model 2","Model 3"),label = "regressions",table.placement = "!ht",notes.append = FALSE,notes.align="l",notes="Standard errors in parentheses.",header = FALSE,no.space = TRUE,covariate.labels = c("TENURE","UNION"),omit = c("Constant"),omit.stat = c("adj.rsq","f","ser"),digits = 5,digits.extra = 4,omit.yes.no = c("Constant",""),dep.var.caption="",dep.var.labels.include = FALSE,style = "qje")
 
 betas<-coef(M2)
 r2 <- summary(M2)$r.squared
@@ -331,17 +310,6 @@ The estimated return to tenure is `r round(betas[3]*100,1)`\%. The $R^2$ is `r r
 We can write the estimated equation
 
 $$\hat{y_i}=`r round(betas[1],1)` + `r round(betas[2],2)`\times tenure_i + `r round(betas[3],2)`\times union_i$$
-\lipsum[1-1] You can also write it as,
-
-\begin{equation}
-\hat{y_i}=`r round(betas[1],1)` + `r round(betas[2],2)`\times tenure_i + `r round(betas[3],2)`\times union_i
-\end{equation}
-
-The note to the table can also be written differently. \lipsum[1-1]
-
-```{r Alternative regression Table,echo=FALSE,results='asis'}
-stargazer(M1,M2,M3,title = "Regression analysis", model.numbers = FALSE,column.labels = c("Model 1", "Model 2","Model 3"),label = "regressions",table.placement = "!ht",notes.append = FALSE,notes.align="l",notes="\\parbox[t]{7cm}{Standard errors in parentesis. Significance levels: ***, 1 \\%; **, 5 \\%; *, 1 \\%. Dependent variable: ln wage. All regression include time dummies.}",header = FALSE,no.space = TRUE,covariate.labels = c("TENURE","UNION"),omit = c("Constant"),omit.stat = c("adj.rsq","f","ser"),digits = 3,digits.extra = 4,omit.yes.no = c("Constant",""),dep.var.caption="",dep.var.labels.include = FALSE,style = "qje")
-```
 
 # Final remarks
 
@@ -395,7 +363,7 @@ export PATH=$PATH:/usr/lib/rstudio-server/bin/pandoc
 
 # Appendix: Chunk options {-}
 
-The following info is taken from [here](https://r4ds.had.co.nz/r-markdown.html#code-chunks). See the full list [here](http://yihui.name/knitr/options/).
+The following info is taken from [here](https://r4ds.had.co.nz/r-markdown.html#code-chunks). See the full list at [here](http://yihui.name/knitr/options/).
 
 - `eval` = FALSE prevents code from being evaluated;
 
