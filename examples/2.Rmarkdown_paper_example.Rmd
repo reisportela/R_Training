@@ -340,7 +340,7 @@ $$\hat{y_i}=`r round(betas[1],1)` + `r round(betas[2],2)`\times tenure_i + `r ro
 The note to the table can also be written differently. \lipsum[1-1]
 
 ```{r Alternative regression Table,echo=FALSE,results='asis'}
-stargazer(M1,M2,M3,title = "Regression analysis", model.numbers = FALSE,column.labels = c("Model 1", "Model 2","Model 3"),label = "regressions",table.placement = "!ht",notes.append = FALSE,notes.align="l",notes="\\parbox[t]{7cm}{Standard errors in parentesis. Significance levels: ***, 1 \\%; **, 5 \\%; *, 10 \\%. Dependent variable: ln wage. All regression include time dummies.}",header = FALSE,no.space = TRUE,covariate.labels = c("TENURE","UNION"),omit = c("Constant"),omit.stat = c("adj.rsq","f","ser"),digits = 3,digits.extra = 4,omit.yes.no = c("Constant",""),dep.var.caption="",dep.var.labels.include = FALSE,style = "qje")
+stargazer(M1,M2,M3,title = "Regression analysis", model.numbers = FALSE,column.labels = c("Model 1", "Model 2","Model 3"),label = "regressions2",table.placement = "!ht",notes.append = FALSE,notes.align="l",notes="\\parbox[t]{7cm}{Standard errors in parentesis. Significance levels: ***, 1 \\%; **, 5 \\%; *, 10 \\%. Dependent variable: ln wage. All regression include time dummies.}",header = FALSE,no.space = TRUE,covariate.labels = c("TENURE","UNION"),omit = c("Constant"),omit.stat = c("adj.rsq","f","ser"),digits = 3,digits.extra = 4,omit.yes.no = c("Constant",""),dep.var.caption="",dep.var.labels.include = FALSE,style = "qje")
 ```
 
 # Final remarks
