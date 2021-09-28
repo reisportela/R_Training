@@ -2,8 +2,8 @@
 # REGRESSION ANALYSIS AND CAUSALITY WITH R | By: Joao Cerejeira
 # CHECK: https://scpoecon.github.io/ScPoEconometrics/
 
-setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/regression")
-# setwd('/Users/miguelportela/Documents/GitHub/R_Training/regression')
+# setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/regression")
+setwd('/Users/miguelportela/Documents/GitHub/R_Training/regression')
 
 rm(list = ls())
 

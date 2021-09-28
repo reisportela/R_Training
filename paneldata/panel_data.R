@@ -1,4 +1,4 @@
-# Panel Data Models with R - June 2021
+# Panel Data Models with R - October 2021
 # By: Miguel Portela and Anabela Carneiro
 # NOTES: check
 # https://bookdown.org/ccolonescu/RPoE4/
@@ -7,9 +7,9 @@
 
 # Working area and packages -------------------------------------------------------------------
 
+setwd("/Users/miguelportela/Documents/GitHub/R_Training/paneldata")
 # setwd("C:\\Users\\exu0o9\\Documents\\GitHub\\R_Training\\paneldata")
-
-setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/paneldata")
+# setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/paneldata")
 
 # setwd("~/Documents/GitHub/R_Training/paneldata/")
 

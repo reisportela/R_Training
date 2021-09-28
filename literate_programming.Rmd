@@ -1,7 +1,7 @@
 ---
 title: "Applied Data Analysis School"
 author: "Miguel Portela"
-date: "October 27 and 29, 2020"
+date: "October 12 and 14, 2021"
 institute: "Universidade do Minho"
 output:
   beamer_presentation: default
@@ -22,7 +22,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r echo=FALSE,results='hide',message=FALSE}
 rm(list = ls())
-setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training")
+setwd("/Users/miguelportela/Documents/GitHub/R_Training")
+# setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training")
 # setwd("C:\\Users\\exu0o9\\Documents\\GitHub\\R_Training")
 # install.packages("rmarkdown")
 library(tidyverse)

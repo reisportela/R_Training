@@ -1,9 +1,9 @@
 ---
-title: 'R Notebook: Panel Data Models with R - June 2021'
+title: 'R Notebook: Panel Data Models with R - October 2021'
 output:
-  word_document: default
   html_document:
     df_print: paged
+  word_document: default
   pdf_document: default
 ---
 
@@ -17,7 +17,12 @@ Try executing this chunk by clicking the *Run* button within the chunk or by pla
 rm(list = ls())
 start_time <- Sys.time()
 library(here)
+
+here()
+
+# setwd("/Users/miguelportela/Documents/GitHub/R_Training/paneldata")
 # setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/paneldata")
+
 ```
 
 Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I* (or *CTRL+Alt+I* in Windows).
