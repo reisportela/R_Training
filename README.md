@@ -1,26 +1,39 @@
 # R training
 
-Use this link to run the project in mybinder
+Use one of the following alternatives to run the code:
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/reisportela/R_Training/HEAD?urlpath=rstudio)
+## 1. myBinder project:
 
-Or use the following MyBinder [repository](https://github.com/reisportela/R_plus_RStudio) and clone the contents of the exercise:
+> [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/reisportela/R_Training/HEAD?urlpath=rstudio)
 
-Direct link:
+## 2. myBinder repository:
+
+> [https://github.com/reisportela/R_plus_RStudio](https://github.com/reisportela/R_plus_RStudio)
+
+> and clone the contents of the exercise:
+
+### The direct link is
 
 RStudio: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/reisportela/R_plus_RStudio/HEAD?urlpath=rstudio)
 
-Go to:
+### Go to:
 
 File > New Project > Version Control > Git
 
-and paste the following link `https://github.com/reisportela/R_Training.git` in **Repository URL**
+> and paste the following link `https://github.com/reisportela/R_Training.git` in **Repository URL**
 
-Alternatively, you can use GESIS Notebooks,
-[https://notebooks.gesis.org/](https://notebooks.gesis.org/),
+## 3. GESIS Notebooks:
 
-[RStudioCloud](https://rstudio.cloud) -- direct link to the project, [https://rstudio.cloud/spaces/100541/project/2953903](https://rstudio.cloud/spaces/100541/project/2953903) --,
+> [https://notebooks.gesis.org/](https://notebooks.gesis.org/)
 
-CodeOcean, [https://codeocean.com](https://codeocean.com),
+## 4. [RStudioCloud](https://rstudio.cloud)
 
-or GitHub Codespaces.
+> Direct link to the project, [https://rstudio.cloud/spaces/100541/project/2953903](https://rstudio.cloud/spaces/100541/project/2953903)
+
+## 5. CodeOcean
+
+> Go to [https://codeocean.com](https://codeocean.com) and create a new capsule from [https://github.com/reisportela/R_Training](https://github.com/reisportela/R_Training)
+
+## 6. GitHub Codespaces
+
+## 7. Install R & RStudio in your machine and download the [project](https://github.com/reisportela/R_Training/archive/refs/heads/master.zip)
