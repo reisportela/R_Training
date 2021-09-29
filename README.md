@@ -17,5 +17,10 @@ File > New Project > Version Control > Git
 and paste the following link `https://github.com/reisportela/R_Training.git` in **Repository URL**
 
 Alternatively, you can use GESIS Notebooks,
-[https://notebooks.gesis.org/](https://notebooks.gesis.org/)
+[https://notebooks.gesis.org/](https://notebooks.gesis.org/),
 
+[RStudioCloud](https://rstudio.cloud), [https://rstudio.cloud/spaces/100541/project/2953903](https://rstudio.cloud/spaces/100541/project/2953903)
+
+CodeOcean, [https://codeocean.com](https://codeocean.com),
+
+or GitHub Codespaces.
