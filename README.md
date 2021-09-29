@@ -6,6 +6,8 @@ Use one of the following alternatives to run the code:
 
 > [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/reisportela/R_Training/HEAD?urlpath=rstudio)
 
+> Link: `https://mybinder.org/v2/gh/reisportela/R_Training/HEAD?urlpath=rstudio`
+
 ## 2. myBinder repository:
 
 > [https://github.com/reisportela/R_plus_RStudio](https://github.com/reisportela/R_plus_RStudio)
