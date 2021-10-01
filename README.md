@@ -39,3 +39,23 @@ File > New Project > Version Control > Git
 ## 6. GitHub Codespaces
 
 ## 7. Install R & RStudio in your machine and download the [project](https://github.com/reisportela/R_Training/archive/refs/heads/master.zip)
+
+## 8. Other
+
+<!--- SEE: https://www.dataschool.io/cloud-services-for-jupyter-notebook -->
+
+> [Google Cloud Platform](https://console.cloud.google.com/)
+
+> [Azure](https://azure.microsoft.com/)
+
+> [IBM Cloud Shell](https://cloud.ibm.com/shell)
+
+> [CognitiveLabs (IBM)](https://labs.cognitiveclass.ai/)
+
+> [Colab (Google)](https://colab.research.google.com/)
+
+> [Kaggle Kernels](https://www.kaggle.com/)
+
+> [CoCalc](https://cocalc.com/)
+
+> [Datalore](https://datalore.io/)
