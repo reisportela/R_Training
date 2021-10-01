@@ -46,7 +46,7 @@ File > New Project > Version Control > Git
 
 > [Google Cloud Platform](https://console.cloud.google.com/)
 
-> [Azure](https://azure.microsoft.com/)
+<!--- [Azure](https://azure.microsoft.com/) -->
 
 > [IBM Cloud Shell](https://cloud.ibm.com/shell)
 
