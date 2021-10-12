@@ -20,7 +20,7 @@ library(knitr)
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r echo=FALSE,results='hide',message=FALSE}
+```{r Libraries & Data, echo=FALSE,results='hide',message=FALSE}
 rm(list = ls())
 library(here)
 getwd()
@@ -53,7 +53,7 @@ summary(ln_wage)
 
 -   You can install a lightweight Latex flavor: [TinyTex](https://yihui.name/tinytex/)
 
-```{r eval=FALSE}
+```{r Install TinyTex, eval=FALSE}
 #  install.packages('tinytex')
 #  tinytex::install_tinytex()  
 ```
@@ -328,7 +328,7 @@ you will see $a^2+b^2=c^2$
 
 -   To change style download the "csl" file and add a reference to it in the YAML block. for example
 
-```{r eval=FALSE}
+```{r YAML - example, eval=FALSE}
 ---
 title: Title of my presentation
 author: My name
