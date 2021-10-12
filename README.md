@@ -87,7 +87,11 @@ Xie, Y., Allaire, J.J. and Grolemund, G., 2018. *R markdown: The definitive guid
 
 [https://bookdown.org/yihui/rmarkdown/](https://bookdown.org/yihui/rmarkdown/)
 
--- **Course 5**: Web-based tools for data analysis: JupyterLab environment and workflow optimization
+--
+
+See also:
+
+**Course 5**: Web-based tools for data analysis: JupyterLab environment and workflow optimization
 
 The Jupyter Notebook: https://jupyter-notebook.readthedocs.io/
 
