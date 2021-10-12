@@ -1,0 +1,384 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Simple markdown exercise},
+  pdfauthor={Miguel Portela},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{hyperref}
+\hypersetup{ colorlinks=true, linkcolor=blue, urlcolor=blue, }
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
+  % set entry spacing
+  \ifnum #2 > 0
+  \setlength{\parskip}{#2\baselineskip}
+  \fi
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+\title{Simple markdown exercise}
+\author{Miguel Portela}
+\date{2021}
+
+\begin{document}
+\maketitle
+
+Good afternoon!
+
+You can type in \textbf{bold} or \emph{italic}
+
+You can put an \textbf{entire sentence in bold} \emph{or italic}
+
+If you want to type a Header
+
+\hypertarget{first-header}{%
+\section{First header}\label{first-header}}
+
+or
+
+\hypertarget{insert-a-sub-section}{%
+\subsection{Insert a sub-section}\label{insert-a-sub-section}}
+
+\hypertarget{sub-sub-section}{%
+\subsubsection{Sub sub-section}\label{sub-sub-section}}
+
+\hypertarget{insert}{%
+\section{Insert}\label{insert}}
+
+\hypertarget{your-first-link}{%
+\subsection{\texorpdfstring{Your first
+\emph{link}}{Your first link}}\label{your-first-link}}
+
+\href{https://www.markdowntutorial.com/}{This is the text you will see}
+
+or \href{https://www.markdowntutorial.com/}{\textbf{using bold}}
+
+You can also use reference links to move to
+\href{http://www1.eeg.uminho.pt/economia/mangelo/}{\emph{\textbf{my
+website}}} or to \href{https://www.uminho.pt/EN/}{\emph{Universidade do
+Minho}}
+
+\hypertarget{how-to-use-images-and-define-size}{%
+\section{How to use images and define
+size}\label{how-to-use-images-and-define-size}}
+
+\hypertarget{first-using-a-relative-size}{%
+\subsection{First using a relative
+size}\label{first-using-a-relative-size}}
+
+\includegraphics[width=0.31\textwidth,height=\textheight]{./images/uminho.png}
+
+or a \textbf{fixed size}
+
+\begin{figure}
+\centering
+\includegraphics[width=1.7in,height=0.7in]{./images/uminho.png}
+\caption{Universidade do Minho}
+\end{figure}
+
+You can also use an image from a link:
+
+\begin{figure}
+\centering
+\includegraphics[width=0.25\textwidth,height=\textheight]{https://rstudio.com/wp-content/uploads/2018/10/RStudio-Logo-Flat.png}
+\caption{RStudio's logo}
+\end{figure}
+
+When writing your document you can quote using carat (\textgreater).
+This is called a block quote. The following text was generated using
+\href{https://jaspervdj.be/lorem-markdownum/}{Lorem Ipsum}.
+
+\begin{quote}
+Tuas vocat velantibus rogos, quem tamen foedere \textbf{laetabere
+bipennifer} nulla se \textbf{camini}. In \textbf{forsitan}, in
+\textbf{verti iam} submissaeque faciam adversum et quae. Tu ille
+postquam interdum, est sed Britannos, dedecus solae pectore at modo in
+adeste vitta tantummodo ingrato. Caedis numina, tonitruque iugum speciem
+corpore, leves hunc Zancle auferat umero foribusque cursus negate
+inhaerentem Styga Hebre meosque?
+
+Spes speciosoque dixit ferinae agros simulatque domum alimentaque pabula
+claro; a costis, a nec captus Aquilone. Pharonque donec, modo suo vires
+arcanis, quem illis Vesta quae dedit. Pervenerat placat lenta; sine
+finxit, tantum pater, tamen fila sedibus, sonent. Nempe caedit quas
+fundunt optima sua vultusque remolliat et habet tendebat Hesperidas:
+corniger. \emph{Digna} spatium effugere magne, a pectora hospes volant
+frena crinis resonant protinus; morte Hippomenen.
+\end{quote}
+
+Another markdown element you may want to use are \textbf{lists}.
+
+\hypertarget{course-outline}{%
+\section{Course Outline}\label{course-outline}}
+
+as an \emph{ordered list}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Markdown and Pandoc
+\item
+  Create a markdown document and run code
+\item
+  Develop a report
+\item
+  Publish the report
+\end{enumerate}
+
+or just as bullets
+
+\begin{itemize}
+\tightlist
+\item
+  Markdown and Pandoc
+\item
+  Create a markdown document and run code
+\end{itemize}
+
+where you may need additional depth. Use tabulations
+
+\begin{itemize}
+\tightlist
+\item
+  Markdown and Pandoc
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Create a markdown document and run code
+  \end{itemize}
+\item
+  Develop a report
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Publish the report
+  \end{itemize}
+\end{itemize}
+
+A more complex example
+
+\hypertarget{literate-programming-in-r-markdown}{%
+\section{LITERATE PROGRAMMING IN R
+MARKDOWN}\label{literate-programming-in-r-markdown}}
+
+\begin{itemize}
+\item
+  Date: 27 \& 29 October \textbar{} 17h00-20h00
+\item
+  Delivered by: Miguel Portela, University of Minho
+
+  Literate programming refers to melding a descriptive narrative and
+  computer code into a single document, from which both human-friendly
+  documentation and computer readable files can be created. Your work
+  should be transparent, easy to update, easy to maintain, and easy to
+  replicate. Literate programming saves time and effort, so we can
+  dedicate more time doing research. Literate programming is also useful
+  for teaching.
+\end{itemize}
+
+\textbf{Course Outline}
+
+\begin{verbatim}
+1.  Markdown and Pandoc
+2.  Create a markdown document and run code
+3.  Develop a report
+4.  Publish the report
+\end{verbatim}
+
+\textbf{References}
+
+\begin{itemize}
+\item
+  Xie, Y., Allaire, J.J. and Grolemund, G., 2018. R markdown: The
+  definitive guide. CRC Press.
+  (\url{https://bookdown.org/yihui/rmarkdown/}), ``\emph{Course 5:
+  Web-based tools for data analysis: JupyterLab environment and workflow
+  optimization}''
+\item
+  The Jupyter Notebook: \url{https://jupyter-notebook.readthedocs.io/}
+\item
+  \href{https://jupyter.org/}{Project Jupyter}
+\end{itemize}
+
+\hypertarget{paragraphs-tables}{%
+\section{Paragraphs \& Tables}\label{paragraphs-tables}}
+
+\hypertarget{using-a-double-space-at-the-end-of-the-sentence}{%
+\subsection{Using a double space at the end of the
+sentence}\label{using-a-double-space-at-the-end-of-the-sentence}}
+
+Phaethon Delphos mea gravis excipiunt stabat: quem aqua taceam Phoebo,
+vir aratri, Ulixes haec perque.\\
+Nactus dempserat sui regnat enim, acta stet Areos praesagaque in iacent?
+Fuerant crescentem vinci clamat.
+
+\hypertarget{add-footnotes}{%
+\subsection{Add footnotes}\label{add-footnotes}}
+
+This is a footnote.\footnote{Ad remorum vestem pater victor Megareus
+  lacrimas adsiduae regina sequenti Invidiae, ille tum aliquid. Locus
+  uno quid curruque dixit, me regis, deum \textbf{iamque}, et ripas
+  validum ubi! Auras amores quam feritatis apros demite ademptas est
+  \textbf{tanto}!}
+
+\hypertarget{this-is-a-table}{%
+\subsection{This is a table}\label{this-is-a-table}}
+
+\begin{longtable}[]{@{}lcr@{}}
+\caption{Sample table}\tabularnewline
+\toprule
+Tables & Are & Cool \\
+\midrule
+\endfirsthead
+\toprule
+Tables & Are & Cool \\
+\midrule
+\endhead
+Var 1 is & Left-Aligned & \$1271 \\
+Var 2 is & Centered & \$13 \\
+Var 3 is & Right-Aligned & \$7 \\
+\bottomrule
+\end{longtable}
+
+\hypertarget{the-yaml-concept}{%
+\section{The YAML concept}\label{the-yaml-concept}}
+
+You can add information to your document, like title, author, etc.,
+using \href{https://yaml.org/}{YAML}.
+
+\begin{quote}
+YAML: YAML Ain't Markup Language
+\end{quote}
+
+\begin{quote}
+What It Is: YAML is a human friendly data serialization standard for all
+programming languages.
+\end{quote}
+
+The following lines are comments so \emph{pandoc} will not compile them.
+You can use standard HTML tags to comments out sections of your code. To
+see their purpose add them to the beginning of the text.
+
+\hypertarget{citations}{%
+\subsection{Citations}\label{citations}}
+
+Lorem markdownum medulla: Est hanc instrumenta sibi; premit opem Dianae,
+\emph{ubi India} vocesque prodamne, quamvis? Et esse. Quod molire
+auxiliumque caelumque tertia hospes, fecerat sermonibus prensamque
+mortale summa, iubeatis coercet iugulum, \textbf{et}. For further
+discussion (see Solow, 1952:pp.31--32).
+
+\hypertarget{equations}{%
+\section{Equations}\label{equations}}
+
+You can write inline equations as \(y_i = \alpha_0 + \tau x_i + \psi_i\)
+or numbered equations,
+
+\begin{equation}
+y_{it} = \beta_0 + \beta_1 x_{it} + \eta_i + \varepsilon{it}
+\end{equation}
+
+\hypertarget{final-remarks}{%
+\section{Final remarks}\label{final-remarks}}
+
+For additional insights see MacFarlane (2020).
+
+\hypertarget{references}{%
+\section*{References}\label{references}}
+\addcontentsline{toc}{section}{References}
+
+\hypertarget{refs}{}
+\begin{CSLReferences}{1}{0}
+\leavevmode\hypertarget{ref-MacFarlane}{}%
+MacFarlane, J. (2020) {Pandoc User's Guide}. \emph{Link:
+https://pandoc.org/MANUAL.pdf}.
+
+\leavevmode\hypertarget{ref-solow1952structure}{}%
+Solow, R. (1952) On the structure of linear models. \emph{Econometrica}.
+20 (1), 29--46.
+
+\end{CSLReferences}
+
+\end{document}

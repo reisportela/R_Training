@@ -1,5 +1,5 @@
 ---
-title: "Simple markdown exercise\\thanks{We would also like to thank seminar and conference participants at the NIPE Research Seminars, the II Conferência do Conselho para a Produtividade and the Annual Conference of the Global Forum on Productivity. This paper is financed by National Funds of the FCT - Portuguese Foundation for Science and Technology, projects UIDB/03182/2020 and PTDC/EGE-ECO/29822/2017 (“It’s All About Productivity: contributions to the understanding of the sluggish performance of the Portuguese economy”).}"
+title: "Simple markdown exercise\\thanks{We would also like to thank seminar and conference participants at the NIPE Research Seminars, the II Conferência do Conselho para a Produtividade and the Annual Conference of the Global Forum on Productivity. This paper is financed by National Funds of the FCT - Portuguese Foundation for Science and Technology, projects UIDB/03182/2020 and PTDC/EGE-ECO/29822/2017 (“It’s All About Productivity: contributions to the understanding of the sluggish performance of the Portuguese economy”). -- see Card and Krueger}"
 author: "Miguel Portela\\thanks{NIPE/Universidade do Minho and IZA, Bonn. Contact: miguel.portela@eeg.uminho.pt.}"
 # date: "2021"
 date: '`r gsub("^0", "", format(Sys.time(), "%d %B, %Y"))`'
@@ -38,10 +38,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r Packages, message=FALSE, include=FALSE, results='hide'}
 rm(list = ls())
+library(here)
 
-# setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/examples")
-setwd('/Users/miguelportela/Documents/GitHub/R_Training/examples')
-##setwd("C:\\Users\\exu0o9\\Documents\\GitHub\\R_Training\\examples")
+setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/literate_programming/examples")
+# setwd('/Users/miguelportela/Documents/GitHub/R_Training/literate_programming/examples')
+##setwd("C:\\Users\\exu0o9\\Documents\\GitHub\\R_Training\\literate_programming\\examples")
 
 library(tidyverse)
 library(ggplot2)
@@ -57,7 +58,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 ```{r data_sets, echo=FALSE,results='hide',message=FALSE}
 # data()
 attach(mtcars)
-nlswork <- read_dta("../data/nlswork.dta")
+nlswork <- read_dta("../../data/nlswork.dta")
 attach(nlswork)
 nls<-data.frame(nlswork)
 ```
