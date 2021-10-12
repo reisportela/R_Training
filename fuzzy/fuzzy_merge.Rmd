@@ -1,0 +1,40 @@
+---
+title: "Fuzzy merge exercise"
+output: html_notebook
+---
+
+# An exercise
+
+```{r setup}
+knitr::opts_chunk$set(include = FALSE)
+rm(list = ls())
+library("phonics")
+library(fuzzywuzzyR)
+library(here)
+here()
+setwd('/Users/miguelportela/Documents/GitHub/R_Training/fuzzy/')
+getwd()
+```
+
+## Phonics
+
+```{r}
+library("phonics")
+
+x1 <- "Catherine"
+x2 <- "Kathryn"
+x3 <- "Katrina"
+x4 <- "William"
+
+x <- c(x1, x2, x3, x4)
+
+soundex(x1)
+
+```
+
+## fuzzywuzzyR
+
+```{r}
+
+```
+
