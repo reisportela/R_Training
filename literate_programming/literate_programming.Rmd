@@ -35,6 +35,10 @@ library(ggplot2)
 library(haven)
 library(rmarkdown)
 
+# find pandoc
+
+  rmarkdown::find_pandoc()
+
 # data()
 attach(mtcars)
 nlswork <- read_dta("../data/nlswork.dta")

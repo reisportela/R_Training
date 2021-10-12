@@ -39,8 +39,9 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r Packages, message=FALSE, include=FALSE, results='hide'}
 rm(list = ls())
 library(here)
+here()
 
-setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/literate_programming/examples")
+# setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/literate_programming/examples")
 # setwd('/Users/miguelportela/Documents/GitHub/R_Training/literate_programming/examples')
 ##setwd("C:\\Users\\exu0o9\\Documents\\GitHub\\R_Training\\literate_programming\\examples")
 
