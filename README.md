@@ -86,13 +86,3 @@ Referências:
 Xie, Y., Allaire, J.J. and Grolemund, G., 2018. *R markdown: The definitive guide*. CRC Press.
 
 [https://bookdown.org/yihui/rmarkdown/](https://bookdown.org/yihui/rmarkdown/)
-
---
-
-See also:
-
-**Course 5**: Web-based tools for data analysis: JupyterLab environment and workflow optimization
-
-The Jupyter Notebook: https://jupyter-notebook.readthedocs.io/
-
-Project Jupyter: https://jupyter.org/
