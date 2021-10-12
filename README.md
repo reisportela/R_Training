@@ -59,3 +59,32 @@ File > New Project > Version Control > Git
 > [CoCalc](https://cocalc.com/)
 
 > [Datalore](https://datalore.io/)
+
+# Training
+
+## LITERATE PROGRAMMING EM R MARKDOWN | 12 e 14/10/2021 | By: Miguel Portela
+
+Data: 12 e 14 de Outubro | 18h00-21h00
+
+Lecionado por: Miguel Portela, Universidade do Minho
+
+Literate Programming trata-se de fusão de uma narrativa descritiva com um código de computador num único documento, a partir do qual tanto a documentação legível por humanos, quanto os arquivos legíveis por computador, podem ser criados.
+
+O trabalho deve ser transparente, fácil de atualizar, manter e replicar.
+
+Literate Programming permite economizar tempo e esforço, permitindo dedicar mais tempo à pesquisa. Literate Programming também é útil para o ensino.
+
+Programa: 
+
+1. Markdown e Pandoc
+2. Crie um documento de Markdown e execute o código
+3. Desenvolva um relatório
+4. Publique o relatório
+
+Referências:
+
+Xie, Y., Allaire, J.J. and Grolemund, G., 2018. *R markdown: The definitive guide*. CRC Press. (https://bookdown.org/yihui/rmarkdown/)Course 5: Web-based tools for data analysis: JupyterLab environment and workflow optimization
+
+The Jupyter Notebook: https://jupyter-notebook.readthedocs.io/
+
+Project Jupyter: https://jupyter.org/
