@@ -12,7 +12,7 @@ subtitle: LITERATE PROGRAMMING IN R MARKDOWN
 theme: Copenhagen
 header-includes:
 - \usepackage{hyperref}
-- \hypersetup{ colorlinks=true, linkcolor=blue, urlcolor=blue, }
+- \hypersetup{ colorlinks=true, linkcolor=red, urlcolor=blue, }
 ---
 
 ```{r setup, include=FALSE}
@@ -41,7 +41,7 @@ library(rmarkdown)
 
 # data()
 attach(mtcars)
-nlswork <- read_dta("../data/nlswork.dta")
+nlswork <- read_dta("nlswork.dta")
 summary(nlswork)
 attach(nlswork)
 summary(ln_wage)
@@ -82,7 +82,7 @@ you can write a report
 
 a paper
 
--   Hartgerink, C. H. J., Wicherts, J. M., & van Assen, M. A. L. M. (2017). [Too Good to be False: Nonsignificant Results Revisited](https://www.collabra.org/articles/10.1525/collabra.71/galley/82/download/). *Collabra: Psychology*, 3(1), 9.
+-   Hartgerink, C. H. J., Wicherts, J. M., & van Assen, M. A. L. M. (2017). [Too Good to be False: Nonsignificant Results Revisited](https://online.ucpress.edu/collabra/article-pdf/3/1/9/467109/71-894-1-pb.pdf). *Collabra: Psychology*, 3(1), 9.
 
 edit a book
 
