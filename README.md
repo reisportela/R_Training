@@ -2,13 +2,17 @@
 
 Use one of the following alternatives to run the code:
 
-## 1. myBinder project:
+## 1. [RStudioCloud](https://rstudio.cloud)
+
+> Direct link to the project, [https://rstudio.cloud/spaces/100541/project/2953903](https://rstudio.cloud/spaces/100541/project/2953903)
+
+## 2. myBinder project:
 
 > [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/reisportela/R_Training/HEAD?urlpath=rstudio)
 
 > Link: `https://mybinder.org/v2/gh/reisportela/R_Training/HEAD?urlpath=rstudio`
 
-## 2. myBinder repository:
+## 3. myBinder repository:
 
 > [https://github.com/reisportela/R_plus_RStudio](https://github.com/reisportela/R_plus_RStudio)
 
@@ -24,13 +28,9 @@ File > New Project > Version Control > Git
 
 > and paste the following link `https://github.com/reisportela/R_Training.git` in **Repository URL**
 
-## 3. GESIS Notebooks:
+## 4. GESIS Notebooks:
 
 > [https://notebooks.gesis.org/](https://notebooks.gesis.org/)
-
-## 4. [RStudioCloud](https://rstudio.cloud)
-
-> Direct link to the project, [https://rstudio.cloud/spaces/100541/project/2953903](https://rstudio.cloud/spaces/100541/project/2953903)
 
 ## 5. CodeOcean
 
@@ -60,6 +60,7 @@ File > New Project > Version Control > Git
 
 > [Datalore](https://datalore.io/)
 
+<!--
 # Training
 
 ## LITERATE PROGRAMMING EM R MARKDOWN | 12 e 14/10/2021 | By: Miguel Portela
@@ -86,3 +87,5 @@ Referências:
 Xie, Y., Allaire, J.J. and Grolemund, G., 2018. *R markdown: The definitive guide*. CRC Press.
 
 [https://bookdown.org/yihui/rmarkdown/](https://bookdown.org/yihui/rmarkdown/)
+
+-->
