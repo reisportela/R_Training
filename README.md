@@ -60,6 +60,10 @@ File > New Project > Version Control > Git
 
 > [Datalore](https://datalore.io/)
 
+> [StarCluster](http://star.mit.edu/cluster/)
+
+<!-- https://lamadon.com/computing.html -->
+
 <!--
 # Training
 
