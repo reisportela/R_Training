@@ -239,3 +239,78 @@ or a **Jupyter Lab**
 > [IBM Skills Network Lab](https://labs.cognitiveclass.ai/)
 > 
 > [RStudio Cloud](https://rstudio.cloud/)
+
+> ----
+
+# How to prepare a Singularity script
+
+1. Download the script [container_singularity.def](https://github.com/reisportela/R_Training/tree/master/_containers/container_singularity.def)
+
+2. Adapt the file to your project
+
+3. Test the script at [Sylabs](https://cloud.sylabs.io/) and build a Singularity image (e.g., my_RStudio.sif)
+
+4. Test the image
+
+- In your computer in case you have singularity installed
+
+- Use GitHub' CodeSpaces
+
+6. If you are running Linux do as follows:
+
+- Open a TERMINAL and type `singularity shell my_RStudio.sif`
+
+- Once inside Singularity type `rstudio`
+
+- Now you can use your RStudio flavor within your computer and point to your data in `initial_dataset`
+
+# Build a container on your computer using singularity
+
+1. Install `singularity` from [https://sylabs.io/guides/3.0/user-guide/installation.html](https://sylabs.io/guides/3.0/user-guide/installation.html)
+
+2. For Linux to install using package
+
+3. For MacOs or Windows follow the instruction on on to install Vagrant and Vagrant Manager (you need to have Virtual box installed)
+
+4. Difficulty: your computer must be able to run hardware accellarion
+
+5. Specific notes on Vagrant
+
+> Check details [here](https://techtldr.com/how-to-copy-one-file-from-vagrant-virtual-machine-to-local-host/)
+
+- open a Terminal and type `vagrant port`
+
+- you can copy files between your computer (**host**) and Vagrant (**guest**) using the following lines
+
+`scp -P 2200 vagrant@127.0.0.1:/vagrant/some-file.txt`
+
+`scp -P 2222 vagrant@127.0.0.1:/home/vagrant/containers/BPLIM_Dashboard.sif .`
+
+- in Vagrant you have `sudo` permissions
+
+> password:: `vagrant`
+> login:: `vagrant`
+
+## Build and use the Vagrant machine
+
+Open a Terminal and move to the folder of your choice
+
+- Initialize a Project Directory: `vagrant init hashicorp/bionic64`
+
+- Install and Specify a Box: `vagrant box add hashicorp/bionic64`
+
+- Bring up a virtual machine: `vagrant up`
+
+- SSH into the machine: `vagrant ssh`
+
+- Build and image inside vagrant: `sudo singularity build BPLIM_Dashboard.sif bplim_Dashboard.def`
+
+or `sudo singularity build BPLIM_Dashboard.sif bplim_Dashboard.def` in case you prefer a `sandbox`
+
+- Test the image: `singularity shell --writable build BPLIM_Dashboard.sif`
+
+- Clean temporary files: `rm -rf /tmp/*`
+
+- Inside vagrant your host folder is mounted here `/vagrant`
+
+- Your `home` folder is located here `/home/vagrant`
