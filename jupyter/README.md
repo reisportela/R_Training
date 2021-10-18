@@ -1,3 +1,4 @@
+<!--
 ---
 title: "WEB-BASED TOOLS FOR DATA ANALYSIS: JUPYTERLAB ENVIRONMENT AND WORKFLOW OPTIMIZATION"
 author: "Miguel Portela"
@@ -6,22 +7,14 @@ output:
   pdf_document: default
   html_document: default
 header-includes:
-- \usepackage{hyperref}
-- \hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue, }
-- \usepackage{float}
-- \usepackage{dcolumn}
-- \usepackage{color}
 - \usepackage{pdfpages}
-- \usepackage{lipsum}
-- \usepackage[utf8]{inputenc}
-bibliography: references.bib
-biblio-style: kluwer
 mainfont: Times New Roman
 sansfont: Times New Roman
 fontsize: 12pt
 link-citations: true
 geometry: "paperwidth=210mm,paperheight=297mm,left=27mm,right=27mm,top=27mm,bottom=27mm"
 ---
+-->
 
 **The following material is available on GitHub**
 
