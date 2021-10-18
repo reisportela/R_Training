@@ -240,7 +240,7 @@ or a **Jupyter Lab**
 > 
 > [RStudio Cloud](https://rstudio.cloud/)
 
-> ----
+----
 
 # How to prepare a Singularity script
 
