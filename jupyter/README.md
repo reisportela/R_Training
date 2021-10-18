@@ -16,6 +16,13 @@ geometry: "paperwidth=210mm,paperheight=297mm,left=27mm,right=27mm,top=27mm,bott
 ---
 -->
 
+## WEB-BASED TOOLS FOR DATA ANALYSIS: JUPYTERLAB ENVIRONMENT AND WORKFLOW OPTIMIZATION
+
+### Miguel Portela
+
+> October 2021
+
+
 **The following material is available on GitHub**
 
 [https://github.com/reisportela/R_Training](https://github.com/reisportela/R_Training)
