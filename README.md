@@ -18,9 +18,13 @@ Use one of the following alternatives to run the code:
 
 > and clone the contents of the exercise:
 
-### The direct link is
+### The direct link to RStudio is
 
 RStudio: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/reisportela/R_plus_RStudio/HEAD?urlpath=rstudio)
+
+or to the notebook
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/reisportela/R_plus_RStudio/HEAD)
 
 ### Go to:
 
