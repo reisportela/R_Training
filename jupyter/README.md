@@ -1,3 +1,4 @@
+<!--
 ---
 title: "WEB-BASED TOOLS FOR DATA ANALYSIS: JUPYTERLAB ENVIRONMENT AND WORKFLOW OPTIMIZATION"
 author: "Miguel Portela"
@@ -14,6 +15,7 @@ fontsize: 12pt
 link-citations: true
 geometry: "paperwidth=210mm,paperheight=297mm,left=27mm,right=27mm,top=27mm,bottom=27mm"
 ---
+-->
 
 ## WEB-BASED TOOLS FOR DATA ANALYSIS: JUPYTERLAB ENVIRONMENT AND WORKFLOW OPTIMIZATION
 
