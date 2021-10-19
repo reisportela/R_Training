@@ -1,4 +1,3 @@
-<!--
 ---
 title: "WEB-BASED TOOLS FOR DATA ANALYSIS: JUPYTERLAB ENVIRONMENT AND WORKFLOW OPTIMIZATION"
 author: "Miguel Portela"
@@ -8,13 +7,13 @@ output:
   html_document: default
 header-includes:
 - \usepackage{pdfpages}
+- \usepackage{graphicx}
 mainfont: Times New Roman
 sansfont: Times New Roman
 fontsize: 12pt
 link-citations: true
 geometry: "paperwidth=210mm,paperheight=297mm,left=27mm,right=27mm,top=27mm,bottom=27mm"
 ---
--->
 
 ## WEB-BASED TOOLS FOR DATA ANALYSIS: JUPYTERLAB ENVIRONMENT AND WORKFLOW OPTIMIZATION
 
