@@ -196,3 +196,4 @@ Report generation information:
  *  Function call: `makeDataReport(data = sample, render = FALSE, file = "sample.Rmd", 
     replace = TRUE)`
 
+
