@@ -158,8 +158,9 @@ Choose the new environment and start a Jupyter Notebook. R kernel will now be av
     
     Activate the shortcuts in the OS Terminal. You can also start a Terminal inside the notebook:
     
-![](./_images/NotebookTerminal.png){width=31%}
     
+![](./_images/NotebookTerminal.png){width=15%}
+
     Type in the Terminal:
     
     `jupyter labextension install @techrah/text-shortcuts`
