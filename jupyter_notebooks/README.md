@@ -30,79 +30,184 @@ geometry: "paperwidth=210mm,paperheight=297mm,left=27mm,right=27mm,top=27mm,bott
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/reisportela/R_Training/HEAD?urlpath=lab)
 
-# 1. Operating system
+
+# 1. Operating system: compatible with
 
 - Linux (e.g., Ubuntu 20.04), OSX Catalina, Windows 10
 
-# 2. Packages
+
+
+# 2. Install [Jupyter Notebook](https://jupyter.org/) (and JupyterLab)
+
+> "The Jupyter Notebook is an open-source web application that allows you to **create and share** documents that contain _live code_, equations, visualizations and **narrative text**. Uses include: data cleaning and transformation, numerical simulation, statistical modeling, data visualization, machine learning, and much more."
+
+
+## 2.1 Through Anaconda -- [https://www.anaconda.com](https://www.anaconda.com/)
+
+Go to Anaconda's website and install [Anaconda Individual Edition](https://www.anaconda.com/products/individual)
+
+![](./_images/Anaconda0.png){width=31%}
+
+Anaconda includes the installation of
+
+- Jupyter Notebook & JupyterLab
+
+- Python
+
+![](./_images/AnacondaDesktop.png){width=31%}
+
+
+## 2.2 Setup the different softwares manually
 
 > **Windows**: consider installing [Chocolatey](https://chocolatey.org/), a package manager for Windows (similar to `yum` in CentOS or `brew` in OSX)
-
-- Python: install Anaconda -- [https://www.anaconda.com](https://www.anaconda.com/)
 
 > **Example, using Chocolatey**: `choco install anaconda3`
 >
 > or download and install
 
+- **Python**: [https://www.python.org/](https://www.python.org/)
+
 - **R**: [https://www.r-project.org](https://www.r-project.org/)
+
 - **Julia**: [https://julialang.org](https://julialang.org/)
-- **Stata**: [https://www.stata.com](https://www.stata.com/)
 
 > Recomendation: install [RStudio](https://rstudio.com/products/rstudio/download/)
 
-# 3. [Jupyter](https://jupyter.org/)
 
-> "The Jupyter Notebook is an open-source web application that allows you to **create and share** documents that contain _live code_, equations, visualizations and **narrative text**. Uses include: data cleaning and transformation, numerical simulation, statistical modeling, data visualization, machine learning, and much more."
-
-## 3.1 Install [jupyter](https://jupyter.org/install)
+### Install [Jupyter](https://jupyter.org/install)
 
 - Open a Terminal in either Linux or OSX
+
 - Open Windows Powershell as Administrator
 
 _*Run the following lines*_
 
-- **jupyter notebook**: *pip install notebook* **or** *conda install -c conda-forge notebook*
-- **jupyter lab**: *pip install jupyterlab* **or** *conda install -c conda-forge jupyterlab*
+- **jupyter notebook**:
 
-## 3.2 Install your [kernels](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels)
+> `pip install notebook`
 
-- **Python**: this should be the first one installed [ipykernel](https://pypi.org/project/ipykernel/)
+- **or**
 
-- **R**: [irkernel](https://irkernel.github.io/installation/)
+> `conda install -c conda-forge notebook`
 
-    Open an R console, e.g. within RStudio, and execute sequentially, *install.packages('IRkernel')*, *IRkernel::installspec()*
+- **jupyter lab**:
+
+> `pip install jupyterlab`
+
+- **or**
+
+> `conda install -c conda-forge jupyterlab`
+
+## 2.3 Start a 'notebook' or 'lab'
+
+### 2.3.1 Using Anaconda
+
+> Click in Jupyter Notebook icon
+
+![](./_images/Anaconda_Desktop_Jupyter_icon.png){width=31%}
+
+
+### 2.3.2 Using a Terminal
+
+Open a `Terminal`/`Power shell`, move to your working folder and type:
+
+- **jupyter notebook**: `jupyter notebook`
+
+- **jupyter lab**: `jupyter lab`
+
+### 2.3.3 It should open your browser with the notebook and the installed kernels.
+
+![](./_images/Notebook.png){width=31%}
+
+
+## 3. Install your [kernels](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels)
+
+### 3.1 Inside Anaconda
+
+> Make R kernel available for Jupyter
+
+Create a new environment
+
+![](./_images/Anaconda1.png){width=31%}
+
+following these steps
+
+![](./_images/Anaconda2.png){width=31%}
+
+Tick the box for R
+
+![](./_images/Anaconda3.png){width=31%}
+
+and you will see your new environment
+
+![](./_images/Anaconda4.png){width=31%}
+
+Choose the new environment and start a Jupyter Notebook. R kernel will now be available inside your kernell
+
+### 3.2 Outside Anaconda and for several kernels
+
+1. **Python**: this should be the first one installed [ipykernel](https://pypi.org/project/ipykernel/)
+
+2. **R**: [irkernel](https://irkernel.github.io/installation/)
+
+    Open an R console, e.g. within RStudio, and execute sequentially,
     
-    Add `Node.js` and `npm`
+    `install.packages('IRkernel')`
     
-    Visit [Nodejs.org](https://nodejs.org/en/download/) to **install** `Node.js` and `npm`
+    `IRkernel::installspec()`
+    
+    Activate the shortcuts in the OS Terminal. You can also start a Terminal inside the notebook:
+    
+![](./_images/NotebookTerminal.png){width=31%}
+    
+    Type in the Terminal:
+    
+    `jupyter labextension install @techrah/text-shortcuts`
+    
+    
+    Install *Jupyter_contrib_nbextensions* following the steps described **[here](https://jupyter-contrib-nbextensions.readthedocs.io/en/latest/install.html)**
+    
+[Installing jupyter_contrib_nbextensions](https://jupyter-contrib-nbextensions.readthedocs.io/en/latest/install.html)
 
-- **Julia**: [IJulia](https://github.com/JuliaLang/IJulia.jl)
+    `conda install -c conda-forge jupyter_contrib_nbextensions`
+    
+    `jupyter contrib nbextension install --user`
+
+[jupyter_nbextensions_configurator](https://github.com/Jupyter-contrib/jupyter_nbextensions_configurator)
+
+    `conda install -c conda-forge jupyter_nbextensions_configurator`
+    
+    `http://localhost:8888/nbextensions?` or `http://localhost:8890/tree#nbextensions_configurator`
+
+[Using Jupyter Notebook extensions](https://docs.anaconda.com/anaconda/user-guide/tasks/use-jupyter-notebook-extensions/?highlight=nbextension#obtaining-the-extensions)
+
+
+    
+--------    
+    
+    > Add `Node.js` and `npm`
+    
+    > Visit [Nodejs.org](https://nodejs.org/en/download/) to **install** `Node.js` and `npm`
+
+
+3. **Julia**: [IJulia](https://github.com/JuliaLang/IJulia.jl)
 
     Run Julia and execute sequentially, *using Pkg*, *Pkg.add("IJulia")*
 
-- **Stata**: [stata_kernel](https://github.com/kylebarron/stata_kernel)
+4. **Stata**: [stata_kernel](https://github.com/kylebarron/stata_kernel)
 
 >   for Stata see the instructions by [Kyle Barron](https://kylebarron.dev/stata_kernel/getting_started/)
 >
 >    [Magics](https://kylebarron.dev/stata_kernel/using_stata_kernel/magics/) -- "Magics are programs provided by stata_kernel that enhance the experience of working with Stata in Jupyter."
 
 
-## 3.3 Start 'notebook' or 'lab'
-
-Open a `Terminal`/`Power shell`, move to your working folder and type:
-
-- **jupyter notebook**: *jupyter notebook*
-
-- **jupyter lab**: *jupyter lab*
-
-It should open your browser with the notebook and the installed kernels.
-
-
-## 3.4 Remove a Kernel
+### You can remove a Kernel:
 
 > `jupyter kernelspec list`
 >
 > `jupyter kernelspec uninstall unwanted-kernel`
+
+
 
 # 4. [Binder](https://jupyter.org/binder)
 
