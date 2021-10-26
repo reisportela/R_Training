@@ -1,6 +1,7 @@
 ---
 title: 'R Notebook: REGRESSION ANALYSIS AND CAUSALITY WITH R'
-author: 'João Cereira'
+author: 'João Cereira & Miguel Portela'
+date: "October 2021"
 output:
   html_document:
     df_print: paged
@@ -9,22 +10,18 @@ output:
 ---
 
 
-
-```{r}
-# CHECK: https://scpoecon.github.io/ScPoEconometrics/
-
-# setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/regression")
-# setwd('/Users/miguelportela/Documents/GitHub/R_Training/regression')
-
+```{r setup, include=FALSE}
 rm(list = ls())
 
-# LOG FILE
+lapply(names(sessionInfo()$otherPkgs), function(pkgs)
+  detach(
+    paste0('package:', pkgs),
+    character.only = T,
+    unload = T,
+    force = T
+  ))
 
-# sink("logs/Regression.txt")
-
-start_time <- Sys.time()
-
-# LIBRARIES
+# LIBRARIES (see for example https://www.tidyverse.org/)
 
 library(tidyverse)
 library(ggplot2)
@@ -43,9 +40,23 @@ library(lmtest)
 library(sandwich)
 library(car)
 library(broom)
+library(forecast)
 library(here)
+```
 
-here()
+
+
+```{r}
+# CHECK: https://scpoecon.github.io/ScPoEconometrics/
+
+setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/regression")
+# setwd('/Users/miguelportela/Documents/GitHub/R_Training/regression')
+# setwd("C:/GitHub/R_Training/regression")
+
+# LOG FILE
+# sink("logs/Regression.txt")
+
+start_time <- Sys.time()
 
 # DATA
 
@@ -53,6 +64,7 @@ world_data <- as.data.frame(read_dta("data/world_data.dta"))
 
 names(world_data)
 head(world_data)
+
 # View(world_data)
 str(world_data)
 
@@ -62,11 +74,11 @@ dplyr::glimpse(world_data$logGDPpc2000)
 ExpData(world_data,type=1)
 ExpData(world_data,type=2)
 
+eda_report(world_data,output_file = "eda_world_data.html", output_format = "html")
+
 # STATISTICS
 
-## EDA
-
-# eda_report(world_data,output_dir = "EDA/",output_file = "eda_world_data.pdf")
+## EDA (Exploratory Data Analysis)
 
 summary(world_data[,"educ_sec"])
 
@@ -415,7 +427,8 @@ world_data %>%
   
   end_time - start_time
   
-  # sink()
+# sink()
 
+  
 ```
 

@@ -2,21 +2,7 @@
 # REGRESSION ANALYSIS AND CAUSALITY WITH R | By: Joao Cerejeira & Miguel Portela
 # CHECK: https://scpoecon.github.io/ScPoEconometrics/
 
-# setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/regression")
-# setwd('/Users/miguelportela/Documents/GitHub/R_Training/regression')
-
-setwd("C:\\Users\\mangelo.EEG\\Documents\\GitHub\\R_Training\\regression")
-
 rm(list = ls())
-
-# LOG FILE
-
-# sink("logs/Regression.txt")
-
-
-# Start the clock
-
-  start_time <- Sys.time()
 
 # LIBRARIES (see for example https://www.tidyverse.org/)
 
@@ -37,6 +23,24 @@ library(lmtest)
 library(sandwich)
 library(car)
 library(broom)
+library(forecast)
+library(here)
+
+# Working folder
+
+here()
+
+setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/regression")
+# setwd('/Users/miguelportela/Documents/GitHub/R_Training/regression')
+# setwd("C:/GitHub/R_Training/regression")
+
+getwd()
+
+# LOG FILE
+
+# sink("logs/Regression.txt")
+
+start_time <- Sys.time()
 
 # DATA
 
@@ -65,6 +69,7 @@ summary(world_data[,"educ_sec"])
 ExpNumStat(world_data,by="A",Outlier = TRUE,round=2,Qnt=c(0.1,0.20,0.50))
 
 # ExpCTable(world_data)
+
 # ExpCatViz(world_data)
 
 ExpNumViz(world_data,Page=c(6,2))
@@ -125,7 +130,7 @@ world_data %>%
 
   ## FIRST REGRESSION
 
-    reg1 <- lm(logGDPpc2000 ~ educ_sec,data = world_data)
+    reg1 <- lm(logGDPpc2000 ~ educ_sec)
       summary(reg1)
 
         # View(reg1)  # see what happens with this command
@@ -158,9 +163,7 @@ world_data %>%
     
     M1 <- lm(data=world_data, growthGDPpc ~ logGDPpc2000 + educ_sec + invest_growth + trade2000 + gov2000,na.action = na.exclude)
       summary(M1)
-      
-    # M1_standard <- lmbeta(data=world_data, growthGDPpc ~ logGDPpc2000 + educ_sec + invest_growth + trade2000 + gov2000,na.action = na.exclude)
-      
+  
   ## ANOVA
     
     M1.aov <- aov(data=world_data, growthGDPpc ~ logGDPpc2000 + educ_sec + invest_growth + trade2000 + gov2000,na.action = na.exclude)
@@ -409,3 +412,5 @@ world_data %>%
   end_time - start_time
   
 # sink()
+
+  
