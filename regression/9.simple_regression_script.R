@@ -12,7 +12,7 @@ library(haven)
 
 ## REGRESSION
 
-  M1 <- lm(data=world_data, growthGDPpc ~ logGDPpc2000 + educ_sec + invest_growth + trade2000 + gov2000,na.action = na.exclude)
+  M1 <- lm(data = world_data, growthGDPpc ~ logGDPpc2000 + educ_sec + invest_growth + trade2000 + gov2000,na.action = na.exclude)
   
     summary(M1)
 
