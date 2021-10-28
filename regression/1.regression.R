@@ -358,16 +358,24 @@ world_data %>%
         summary(iv,vcov=sandwich,diagnostics = TRUE)
         
         
-# Diff-in-Diff
+# Diff-in-Diff -- Data::SEE: https://catalog.ihsn.org/catalog/148
+
+    # The datasets include the followings:
+    #     - Education
+    #     - Household asset and expenditure
+    #     - Microcredit participation
+    #     - Village is accessible by road all year
+    #     - Proportion of village land irrigated
+    #     - Village prices of rice, wheat, milk, potato, egg, edible oil
         
   hh_9198 <- read_dta("data/hh_9198_v2.dta")
   
-  hh_9198$lnland <- log(1+hh_9198$hhland/100)
+  hh_9198$lnland <- log(1+hh_9198$hhland/100)   # ADD a variable to the data
   
-  attach(hh_9198)
+    attach(hh_9198)
   
-  # dfmfd=treated: HH has female microcredit participant: 1=Y, 0=N
-  # year=after: Year of observation: 0=1991, 1=1998
+  # dfmfd = treated: HH (HouseHold) has female microcredit participant: 1=Y, 0=N
+  # year = after: Year of observation: 0=1991, 1=1998
   # exptot: HH per capita total expenditure: Tk/year
   # lexptot = ln(exptot)
   
@@ -377,9 +385,10 @@ world_data %>%
   
   ftable(hh_9198$treated,hh_9198$after)
   
-  DiD1 <- lm(data=hh_9198,lexptot ~ factor(treated)*factor(after))
-  
-  DiD2 <- lm(data=hh_9198,lexptot ~ factor(treated)*factor(after) + 
+  DiD1 <- lm(data = hh_9198, lexptot ~ factor(treated)*factor(after))
+    summary(DiD1)
+
+  DiD2 <- lm(data = hh_9198, lexptot ~ factor(treated)*factor(after) + 
                sexhead + agehead + educhead + lnland + vaccess + 
                pcirr + rice + wheat + milk + oil + egg)
   
@@ -394,7 +403,7 @@ world_data %>%
             header = FALSE,
             no.space = TRUE,
             covariate.labels = c("Treated0","After"),
-            omit = c("Constant"),
+            omit = c("Constant","sexhead","agehead","educhead","lnland","vaccess","pcirr","rice","wheat","milk","oil","egg"),
             omit.stat = c("adj.rsq","f","ser"),
             digits = 2,
             digits.extra = 4,
