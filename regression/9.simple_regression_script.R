@@ -1,5 +1,6 @@
 # Data Analysis: 2021
 # REGRESSION ANALYSIS AND CAUSALITY WITH R | By: Joao Cerejeira & Miguel Portela
+# SEE: https://rstudio-pubs-static.s3.amazonaws.com/240657_5157ff98e8204c358b2118fa69162e18.html
 
 setwd("C:\\Users\\mangelo.EEG\\Documents\\GitHub\\R_Training\\regression")
 
@@ -18,11 +19,12 @@ library(haven)
 
 ## VCE Estimates
 
-print(vcov(M1))
+  print(vcov(M1))
 
 ## Output table
 
 library(stargazer)
+
 stargazer(M1,title = "Regression analysis", 
           model.numbers = FALSE,
           column.labels = c("Model 1"),
@@ -75,14 +77,23 @@ stargazer(M0,M1,M2,M3,title = "Regression analysis",
 ## Further statistics
 
 library(dplyr)
+library(tidyverse)
+
+require(ggpubr)
+require(tidyverse)
+require(Hmisc)
+require(corrplot)
 
 ### CORRELATION
 
 data()
+
 data("CigaretteDemand")
 
-  corr <- round(cor(CigaretteDemand),2)
+  corr <- round(cor(CigaretteDemand),3)
   corr
+
+  corrplot(corr, method = "circle")
 
 ### Normality test
 
