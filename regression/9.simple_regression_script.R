@@ -70,3 +70,20 @@ stargazer(M0,M1,M2,M3,title = "Regression analysis",
           dep.var.labels.include = FALSE,
           style = "qje",
           type="text")
+
+
+## Further statistics
+
+library(dplyr)
+
+### CORRELATION
+
+data()
+data("CigaretteDemand")
+
+  corr <- round(cor(CigaretteDemand),2)
+  corr
+
+### Normality test
+
+shapiro.test(CigaretteDemand$salestax)
