@@ -6,6 +6,7 @@ setwd("C:\\Users\\mangelo.EEG\\Documents\\GitHub\\R_Training\\regression")
 rm(list = ls())
 
 ## DATA
+library(haven)
 
   world_data <- as.data.frame(read_dta("data/world_data.dta"))
 
