@@ -292,6 +292,7 @@ world_data %>%
     ## HYPOTHESIS TESTING    
     
       linearHypothesis(mm1,c("hours=0"))
+      linearHypothesis(mm1,c("hours=0","(Intercept) = 0"))
     
     ## COLINEARITY: VIF
     
