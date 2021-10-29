@@ -382,7 +382,7 @@ world_data %>%
   str(hh_9198)
   ExpData(hh_9198,type=1)
   ExpData(hh_9198,type=2)
-  
+
   ftable(hh_9198$treated,hh_9198$after)
   
   DiD1 <- lm(data = hh_9198, lexptot ~ factor(treated)*factor(after))
@@ -403,7 +403,7 @@ world_data %>%
             header = FALSE,
             no.space = TRUE,
             covariate.labels = c("Treated0","After"),
-            omit = c("Constant","sexhead","agehead","educhead","lnland","vaccess","pcirr","rice","wheat","milk","oil","egg"),
+            omit = c("Constant","agehead","educhead","lnland","vaccess","pcirr","rice","wheat","milk","oil","egg"),
             omit.stat = c("adj.rsq","f","ser"),
             digits = 2,
             digits.extra = 4,
