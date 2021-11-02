@@ -1,8 +1,8 @@
-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------
       name:  <unnamed>
        log:  C:\Users\mangelo.EEG\Documents\GitHub\R_Training\paneldata\stata_comparison_files/panel_data_results.txt
   log type:  text
- opened on:  29 Jun 2021, 15:30:40
+ opened on:   2 Nov 2021, 17:11:11
 
 . 
 . *saving output*
@@ -30,10 +30,10 @@
 Contains data from data/nlswork.dta
   obs:        28,534                          National Longitudinal Survey.  Young Women 14-26 years of age in 1968
  vars:            21                          7 Dec 2004 17:02
-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------
               storage   display    value
 variable name   type    format     label      variable label
-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------
 idcode          int     %8.0g                 NLS id
 year            byte    %8.0g                 interview year
 birth_yr        byte    %8.0g                 birth year
@@ -55,7 +55,7 @@ tenure          float   %9.0g                 job tenure, in years
 hours           int     %8.0g                 usual hours worked
 wks_work        int     %8.0g                 weeks worked last year
 ln_wage         float   %9.0g                 ln(wage/GNP deflator)
-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------
 Sorted by: idcode  year
 
 . 
@@ -1558,463 +1558,26 @@ corr(u_i, Xb)  = 0.2085                         Prob > F          =     0.0000
 . 
 . reghdfe ln_wage union age agesq tenure tensq /*
 > */ not_smsa south c_city,absorb(fe_worker0=idcode)      
-(dropped 673 singleton observations)
-(MWFE estimator converged in 1 iterations)
+type mismatch:  exp.exp:  transmorphic found where struct expected
+r(3000);
 
-HDFE Linear regression                            Number of obs   =     18,334
-Absorbing 1 HDFE group                            F(   8,  14865) =     302.62
-                                                  Prob > F        =     0.0000
-                                                  R-squared       =     0.7560
-                                                  Adj R-squared   =     0.6990
-                                                  Within R-sq.    =     0.1401
-                                                  Root MSE        =     0.2545
+end of do-file
 
-------------------------------------------------------------------------------
-     ln_wage |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
--------------+----------------------------------------------------------------
-       union |   .0938772   .0069662    13.48   0.000     .0802226    .1075319
-         age |    .024259   .0034467     7.04   0.000      .017503     .031015
-       agesq |  -.0002262   .0000553    -4.09   0.000    -.0003346   -.0001178
-      tenure |   .0329658   .0016465    20.02   0.000     .0297384    .0361931
-       tensq |  -.0011002   .0001029   -10.69   0.000    -.0013019   -.0008985
-    not_smsa |   -.093105   .0129697    -7.18   0.000    -.1185271   -.0676829
-       south |  -.0632216   .0132788    -4.76   0.000    -.0892497   -.0371936
-      c_city |    .011409   .0088964     1.28   0.200    -.0060291    .0288471
-       _cons |   1.161505   .0531287    21.86   0.000     1.057366    1.265643
-------------------------------------------------------------------------------
+r(3000);
 
-Absorbed degrees of freedom:
------------------------------------------------------+
- Absorbed FE | Categories  - Redundant  = Num. Coefs |
--------------+---------------------------------------|
-      idcode |      3461           0        3461     |
------------------------------------------------------+
+. which reghdfe
+c:\ado\plus\r\reghdfe.ado
+*! version 6.12.1 27June2021
 
-.         
+. do "C:\tmp\STD544c_000000.tmp"
+
 . reghdfe ln_wage union age agesq tenure tensq /*
 > */ not_smsa south c_city,absorb(fe_worker1=idcode) vce(cluster idcode)
-(dropped 673 singleton observations)
-(MWFE estimator converged in 1 iterations)
+type mismatch:  exp.exp:  transmorphic found where struct expected
+r(3000);
 
-HDFE Linear regression                            Number of obs   =     18,334
-Absorbing 1 HDFE group                            F(   8,   3460) =     168.03
-Statistics robust to heteroskedasticity           Prob > F        =     0.0000
-                                                  R-squared       =     0.7560
-                                                  Adj R-squared   =     0.6990
-                                                  Within R-sq.    =     0.1401
-Number of clusters (idcode)  =      3,461         Root MSE        =     0.2545
+end of do-file
 
-                             (Std. Err. adjusted for 3,461 clusters in idcode)
-------------------------------------------------------------------------------
-             |               Robust
-     ln_wage |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
--------------+----------------------------------------------------------------
-       union |   .0938772   .0095658     9.81   0.000     .0751221    .1126324
-         age |    .024259   .0050086     4.84   0.000     .0144389    .0340792
-       agesq |  -.0002262   .0000814    -2.78   0.005    -.0003858   -.0000666
-      tenure |   .0329658   .0020856    15.81   0.000     .0288767    .0370548
-       tensq |  -.0011002   .0001262    -8.72   0.000    -.0013476   -.0008528
-    not_smsa |   -.093105   .0197912    -4.70   0.000    -.1319086   -.0543014
-       south |  -.0632216   .0216547    -2.92   0.004     -.105679   -.0207643
-      c_city |    .011409   .0126062     0.91   0.366    -.0133074    .0361253
-       _cons |   1.161505   .0775519    14.98   0.000     1.009452    1.313557
-------------------------------------------------------------------------------
+r(3000);
 
-Absorbed degrees of freedom:
------------------------------------------------------+
- Absorbed FE | Categories  - Redundant  = Num. Coefs |
--------------+---------------------------------------|
-      idcode |      3461        3461           0    *|
------------------------------------------------------+
-* = FE nested within cluster; treated as redundant for DoF computation
-
-. 
-. 
-. *including time dummies*
-. 
-. reghdfe ln_wage union agesq tenure tensq /*
-> */ not_smsa south c_city i.year,absorb(fe_worker2=idcode) vce(cluster idcode)
-(dropped 673 singleton observations)
-(MWFE estimator converged in 1 iterations)
-
-HDFE Linear regression                            Number of obs   =     18,334
-Absorbing 1 HDFE group                            F(  18,   3460) =      85.72
-Statistics robust to heteroskedasticity           Prob > F        =     0.0000
-                                                  R-squared       =     0.7577
-                                                  Adj R-squared   =     0.7009
-                                                  Within R-sq.    =     0.1461
-Number of clusters (idcode)  =      3,461         Root MSE        =     0.2537
-
-                             (Std. Err. adjusted for 3,461 clusters in idcode)
-------------------------------------------------------------------------------
-             |               Robust
-     ln_wage |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
--------------+----------------------------------------------------------------
-       union |   .0954324   .0095401    10.00   0.000     .0767275    .1141372
-       agesq |  -.0005379   .0001014    -5.30   0.000    -.0007367    -.000339
-      tenure |   .0330384   .0020971    15.75   0.000     .0289267    .0371501
-       tensq |  -.0011371   .0001279    -8.89   0.000     -.001388   -.0008863
-    not_smsa |  -.0913874    .019666    -4.65   0.000    -.1299457   -.0528292
-       south |  -.0644664    .021721    -2.97   0.003    -.1070536   -.0218792
-      c_city |   .0103361   .0126613     0.82   0.414    -.0144882    .0351605
-             |
-        year |
-         71  |   .0534663   .0115531     4.63   0.000     .0308146     .076118
-         72  |   .0862197   .0152963     5.64   0.000      .056229    .1162104
-         73  |   .1077725   .0196588     5.48   0.000     .0692285    .1463165
-         77  |   .2541778   .0383868     6.62   0.000     .1789147     .329441
-         78  |   .3167626   .0440812     7.19   0.000     .2303348    .4031904
-         80  |   .3715541   .0554495     6.70   0.000      .262837    .4802712
-         82  |   .4522347     .06781     6.67   0.000      .319283    .5851864
-         83  |   .5083446   .0745643     6.82   0.000     .3621501    .6545391
-         85  |   .6231732   .0881275     7.07   0.000      .450386    .7959604
-         87  |   .7269885   .1027265     7.08   0.000     .5255777    .9283992
-         88  |    .812349   .1132136     7.18   0.000     .5903768    1.034321
-             |
-       _cons |   1.820315   .0474371    38.37   0.000     1.727308    1.913323
-------------------------------------------------------------------------------
-
-Absorbed degrees of freedom:
------------------------------------------------------+
- Absorbed FE | Categories  - Redundant  = Num. Coefs |
--------------+---------------------------------------|
-      idcode |      3461        3461           0    *|
------------------------------------------------------+
-* = FE nested within cluster; treated as redundant for DoF computation
-
-. 
-. 
-. reghdfe ln_wage union agesq tenure tensq /*
-> */ not_smsa south c_city,absorb(idcode year)  vce(cluster idcode)
-(dropped 673 singleton observations)
-(MWFE estimator converged in 8 iterations)
-
-HDFE Linear regression                            Number of obs   =     18,334
-Absorbing 2 HDFE groups                           F(   7,   3460) =      69.75
-Statistics robust to heteroskedasticity           Prob > F        =     0.0000
-                                                  R-squared       =     0.7577
-                                                  Adj R-squared   =     0.7009
-                                                  Within R-sq.    =     0.0638
-Number of clusters (idcode)  =      3,461         Root MSE        =     0.2537
-
-                             (Std. Err. adjusted for 3,461 clusters in idcode)
-------------------------------------------------------------------------------
-             |               Robust
-     ln_wage |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
--------------+----------------------------------------------------------------
-       union |   .0954324   .0095401    10.00   0.000     .0767275    .1141372
-       agesq |  -.0005379   .0001014    -5.30   0.000    -.0007367    -.000339
-      tenure |   .0330384   .0020971    15.75   0.000     .0289267    .0371501
-       tensq |  -.0011371   .0001279    -8.89   0.000     -.001388   -.0008863
-    not_smsa |  -.0913874    .019666    -4.65   0.000    -.1299457   -.0528292
-       south |  -.0644664    .021721    -2.97   0.003    -.1070536   -.0218792
-      c_city |   .0103361   .0126613     0.82   0.414    -.0144882    .0351605
-       _cons |   2.245017   .1042693    21.53   0.000     2.040581    2.449452
-------------------------------------------------------------------------------
-
-Absorbed degrees of freedom:
------------------------------------------------------+
- Absorbed FE | Categories  - Redundant  = Num. Coefs |
--------------+---------------------------------------|
-      idcode |      3461        3461           0    *|
-        year |        12           1          11     |
------------------------------------------------------+
-* = FE nested within cluster; treated as redundant for DoF computation
-
-. 
-. 
-. 
-. *identifying the singletons*
-. 
-. sort idcode year
-
-. 
-. by idcode: gen d=1
-
-. 
-. by idcode: egen count_years=sum(d)
-
-. 
-. tabulate count_years
-
-count_years |      Freq.     Percent        Cum.
-------------+-----------------------------------
-          1 |        673        3.54        3.54
-          2 |      1,116        5.87        9.41
-          3 |      1,665        8.76       18.17
-          4 |      1,864        9.81       27.98
-          5 |      2,150       11.31       39.29
-          6 |      2,100       11.05       50.34
-          7 |      2,289       12.04       62.38
-          8 |      2,432       12.80       75.18
-          9 |      1,665        8.76       83.94
-         10 |      1,460        7.68       91.62
-         11 |        957        5.03       96.65
-         12 |        636        3.35      100.00
-------------+-----------------------------------
-      Total |     19,007      100.00
-
-. 
-. 
-. 
-. *Using the panelstat command from Paulo Guimaraes"
-. // net install panelstat, from("https://github.com/pguimaraes99/panelstat/raw/master/") replace
-. 
-. panelstat idcode year
-
-Using gtools for faster results
-
-*****************************************************
-Analyzing data/nlswork.dta
-*****************************************************
-
-*****************************************************
-Basic descriptives
-*****************************************************
-There are 19007 time x individuals observations
-There are 4134 unique individuals
-Time values range from 70 to 88
-Maximum time range is 19
-The average number of periods per individual is 4.60
-The level of completeness is 24.20% (100% is a fully balanced panel)
-Average number of gaps per individual is 2.16
-Average gap size is 2.18
-Largest gap is 16
-*****************************************************
-
-*****************************************************
-Distribution of number of observations per individual
-*****************************************************
-
- Observ per |
- individual |      Freq.     Percent        Cum.
-------------+-----------------------------------
-          1 |        673       16.28       16.28
-          2 |        558       13.50       29.78
-          3 |        555       13.43       43.20
-          4 |        466       11.27       54.48
-          5 |        430       10.40       64.88
-          6 |        350        8.47       73.34
-          7 |        327        7.91       81.25
-          8 |        304        7.35       88.61
-          9 |        185        4.48       93.08
-         10 |        146        3.53       96.61
-         11 |         87        2.10       98.72
-         12 |         53        1.28      100.00
-------------+-----------------------------------
-      Total |      4,134      100.00
-
-*****************************************************
-Number of individuals per time unit
-*****************************************************
-
-       Time |      Freq.     Percent        Cum.
-------------+-----------------------------------
-         70 |        775        4.08        4.08
-         71 |        927        4.88        8.95
-         72 |      1,210        6.37       15.32
-         73 |      1,054        5.55       20.87
-         77 |      2,125       11.18       32.05
-         78 |      1,335        7.02       39.07
-         80 |      1,660        8.73       47.80
-         82 |      2,063       10.85       58.66
-         83 |      1,788        9.41       68.06
-         85 |      2,073       10.91       78.97
-         87 |      2,127       11.19       90.16
-         88 |      1,870        9.84      100.00
-------------+-----------------------------------
-      Total |     19,007      100.00
-
-
-. 
-. panelstat idcode year, gaps nosum
-
-Using gtools for faster results
-*****************************************************
-Distribution of the size of the time gaps
-*****************************************************
-
-    Size of |
-  time gaps |      Freq.     Percent        Cum.
-------------+-----------------------------------
-          1 |      5,412       60.54       60.54
-          2 |        937       10.48       71.03
-          3 |      1,133       12.67       83.70
-          4 |        692        7.74       91.44
-          5 |        167        1.87       93.31
-          6 |        164        1.83       95.14
-          7 |        109        1.22       96.36
-          8 |         56        0.63       96.99
-          9 |         90        1.01       98.00
-         10 |         35        0.39       98.39
-         11 |         39        0.44       98.83
-         12 |         33        0.37       99.19
-         13 |         27        0.30       99.50
-         14 |         31        0.35       99.84
-         15 |         10        0.11       99.96
-         16 |          4        0.04      100.00
-------------+-----------------------------------
-      Total |      8,939      100.00
-
-*****************************************************
-Distribution of the number of gaps by individual
-*****************************************************
-
-  Number of |
-   gaps per |
- individual |      Freq.     Percent        Cum.
-------------+-----------------------------------
-          0 |        974       23.56       23.56
-          1 |        747       18.07       41.63
-          2 |        726       17.56       59.19
-          3 |        597       14.44       73.63
-          4 |        563       13.62       87.25
-          5 |        465       11.25       98.50
-          6 |         62        1.50      100.00
-------------+-----------------------------------
-      Total |      4,134      100.00
-
-
-. 
-. panelstat idcode year, demog nosum
-
-Using gtools for faster results
-*****************************************************
-Time changes - incumbents, entrants and exits
-*****************************************************
-
-  +-------------------------------------------------------------------------+
-  | time   total   inc1   entry   first   reent   inc2   exit   last   reex |
-  |-------------------------------------------------------------------------|
-  |   70     775      0     775     775       0    471    304     65    239 |
-  |   71     927    471     456     456       0    627    300     77    223 |
-  |   72    1210    627     583     467     116    706    504    118    386 |
-  |   73    1054    706     348     247     101      0   1054    121    933 |
-  |   77    2125      0    2125     927    1198   1127    998    250    748 |
-  |-------------------------------------------------------------------------|
-  |   78    1335   1127     208     140      68      0   1335    134   1201 |
-  |   80    1660      0    1660     239    1421      0   1660    113   1547 |
-  |   82    2063      0    2063     261    1802   1488    575    182    393 |
-  |   83    1788   1488     300     134     166      0   1788    224   1564 |
-  |   85    2073      0    2073     222    1851      0   2073    368   1705 |
-  |-------------------------------------------------------------------------|
-  |   87    2127      0    2127     154    1973   1515    612    612      0 |
-  |   88    1870   1515     355     112     243      0   1870   1870      0 |
-  +-------------------------------------------------------------------------+
-time - time period
-total - total number of individuals at time t 
-inc1 - number of individuals at t that are also present at t-1 
-entry - number of individuals at t that are not present at t-1 
-first - number of individuals at t who show up for the first time at t
-reent - number of individuals at t that are reentering at time t
-inc2 - number of individuals at t that are also present at t+1 
-exit - number of individuals at t that are not present at t+1 
-last - number of individuals at t that are not present at any future time
-reexit - number of individuals at t not present at t+1 that appear in later times
-
-the following identities hold:
-total[t+1]=total[t]-exit[t]+entry[t+1]
-inc1=total-entry)
-entry=first+reent
-inc2=inc1[t+1]
-exit=last+reexit
-
-. 
-. panelstat idcode year, wiv(union, keep) nosum
-
-Using gtools for faster results
-*****************************************************
-
-*****************************************************
-Analyzing variable union within idcode 
-*****************************************************
-
-There are 100.00% nonmissing observations (19007 out of 19007)
-
-For the variable union we have:
-     values range from 0 to 1
-     673 singleton idcode-observations with non-missing value (16.28%) 
-     0 singleton idcode-observations with missing value ( 0.00%) 
-     0 non-singleton idcode-observations with all values missing ( 0.00%) 
-     0 non-singleton idcode-observations with only one valid value ( 0.00%) 
-     2226 non-singleton idcode-observations with year invariant and non-missing values (53.85%) 
-     0 non-singleton idcode-observations with year invariant and missing values ( 0.00%) 
-     1235 non-singleton idcode-observations with year variant and non-missing values (29.87%) 
-     0 non-singleton idcode-observations with year variant and missing values ( 0.00%) 
-
-Distribution of all observations for union
-
-
-                            _wiv_union |      Freq.     Percent        Cum.
----------------------------------------+-----------------------------------
-1 singleton non-missing                |        673        3.54        3.54
-5 time invariant with non-missing      |     10,812       56.88       60.43
-7 time variant with non-missing        |      7,522       39.57      100.00
----------------------------------------+-----------------------------------
-                                 Total |     19,007      100.00
-
-. 
-. panelstat idcode year, rel(ln_wage,keep) nosum
-
-Using gtools for faster results
-
-*****************************************************
-Relative changes over time for ln_wage (threshold set to 100)
-*****************************************************
-
-   _rel_L1_ln_wage |      Freq.     Percent        Cum.
--------------------+-----------------------------------
-1 positive change  |      3,790       19.94       19.94
-2 negative change  |      2,088       10.99       30.93
-3 no change        |         23        0.12       31.05
-4 abnormal pos chg |         20        0.11       31.15
-5 abnormal neg chg |         13        0.07       31.22
-6 missing          |     13,073       68.78      100.00
--------------------+-----------------------------------
-             Total |     19,007      100.00
-
-Note: Relative change is calculated with respect to the average of x_{t} and x_{t-1}
-
-. 
-. panelstat idcode year, rel(hours,keep) nosum
-
-Using gtools for faster results
-
-*****************************************************
-Relative changes over time for hours (threshold set to 100)
-*****************************************************
-
-     _rel_L1_hours |      Freq.     Percent        Cum.
--------------------+-----------------------------------
-1 positive change  |      1,105        5.81        5.81
-2 negative change  |      1,050        5.52       11.34
-3 no change        |      3,693       19.43       30.77
-4 abnormal pos chg |         25        0.13       30.90
-5 abnormal neg chg |         40        0.21       31.11
-6 missing          |     13,094       68.89      100.00
--------------------+-----------------------------------
-             Total |     19,007      100.00
-
-Note: Relative change is calculated with respect to the average of x_{t} and x_{t-1}
-
-. 
-. 
-. //save "tmp_files/nlswork.dta",replace
-. 
-. timer off 1
-
-. timer list 1
-
-. di _new(1) "MINUTES: " %5.1f r(t1)/60
-
-MINUTES:     .
-
-. timer clear 1
-
-. 
-. log close
-      name:  <unnamed>
-       log:  C:\Users\mangelo.EEG\Documents\GitHub\R_Training\paneldata\stata_comparison_files/panel_data_results.txt
-  log type:  text
- closed on:  29 Jun 2021, 15:30:50
-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+. exit, clear
