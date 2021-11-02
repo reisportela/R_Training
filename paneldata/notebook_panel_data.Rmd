@@ -23,10 +23,10 @@ Here I am uploading my packages (code omitted).
 
 ```{r setup, include=FALSE}
 rm(list = ls())
-start_time <- Sys.time()
-
+start_time <- Sys.time()  # calcular o tempo de execução do programa
+# update.packages()
 # setwd("/Users/miguelportela/Documents/GitHub/R_Training/paneldata")
-# setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/paneldata")
+setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/paneldata")
 
 library(pacman)  #Package Management Tool
 
@@ -148,7 +148,7 @@ plot(nlswork$grade,nlswork$ln_wage)
 
 ## Save the graph
 
-```{r Save graph, echo=FALSE}
+```{r Save graph, eval=FALSE, include=FALSE}
   nlswork %>%
     ggplot(aes(grade,ln_wage)) +
     labs(title = "Ln Wage vs. Grade") +
