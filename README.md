@@ -70,7 +70,11 @@ File > New Project > Version Control > Git
 
 - [Harvard Dataverse](https://dataverse.harvard.edu/)
 
+- [European Social Survey](http://www.europeansocialsurvey.org/)
 
+- [Orbis](http://orbiseurope.bvdinfo.com/ip)
+
+- 
 
 <!-- https://lamadon.com/computing.html -->
 
