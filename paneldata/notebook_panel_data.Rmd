@@ -1,10 +1,10 @@
 ---
 title: 'R Notebook: Panel Data Models with R - October 2021'
 output:
+  pdf_document: default
+  word_document: default
   html_document:
     df_print: paged
-  word_document: default
-  pdf_document: default
 ---
 
 This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
@@ -36,6 +36,16 @@ pacman::p_load(here,
               data.table,
               plotly,
               knitr,
+              fixest,
+              plm,
+              car,
+              robustbase,
+              clubSandwich,
+              sandwich,
+              broom,
+              tseries,
+              lmtest,
+              gplots,
               stargazer,
               kableExtra,
               ExPanDaR,
@@ -44,19 +54,9 @@ pacman::p_load(here,
               naniar,
               janitor,
               summarytools,
-              plm,
               lfe,
-              fixest,
-              clubSandwich,
-              car,
-              gplots,
-              tseries,
-              lmtest,
               dlookr,
               MASS,
-              robustbase,
-              sandwich,
-              broom,
               pdynmc)
 ```
 
@@ -141,7 +141,7 @@ nls <- data.frame(nlswork)
 
 ## Produce a graph
 
-````{r Produce graph}
+```{undefined eval=FALSE, include=FALSE}
 plot(nlswork$grade,nlswork$ln_wage)
 ```
 
