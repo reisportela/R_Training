@@ -68,6 +68,8 @@ File > New Project > Version Control > Git
 
 ## 9. Data
 
+- [Causality with `R`](https://bookdown.org/paul/applied-causal-analysis/)
+
 - [PORDATA](https://www.pordata.pt/)
 
 - [Harvard Dataverse](https://dataverse.harvard.edu/)
