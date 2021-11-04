@@ -74,7 +74,7 @@ File > New Project > Version Control > Git
 
 - [Orbis](http://orbiseurope.bvdinfo.com/ip)
 
-- [Angrist Data Archive](Angrist Data Archive) -- (see, *e.g.*, [Card](http://economics.mit.edu/faculty/angrist/data1/mhe/card))
+- [Angrist Data Archive](https://economics.mit.edu/faculty/angrist/data1/data) -- (see, *e.g.*, [Card](http://economics.mit.edu/faculty/angrist/data1/mhe/card))
 
 - [AMECO](https://ec.europa.eu/info/business-economy-euro/indicators-statistics/economic-databases/macro-economic-database-ameco/ameco-database_en)
 
