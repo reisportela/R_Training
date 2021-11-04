@@ -74,7 +74,35 @@ File > New Project > Version Control > Git
 
 - [Orbis](http://orbiseurope.bvdinfo.com/ip)
 
-- 
+- [Angrist Data Archive](Angrist Data Archive) -- (see, *e.g.*, [Card](http://economics.mit.edu/faculty/angrist/data1/mhe/card))
+
+- [AMECO](https://ec.europa.eu/info/business-economy-euro/indicators-statistics/economic-databases/macro-economic-database-ameco/ameco-database_en)
+
+- [Comtrade](https://comtrade.un.org/)
+
+- [INE](https://www.ine.pt/)
+
+- [Eurostat](https://ec.europa.eu/eurostat)
+
+- [OECD](https://stats.oecd.org/)
+
+- [World Bank](https://data.worldbank.org/)
+
+- [FRED](https://fred.stlouisfed.org/)
+
+- [Journal of Applied Econometrics Data Archive](http://qed.econ.queensu.ca/jae/)
+
+- [Banco de Portugal Microdata Research Laboratory (BPLIM) ](https://bplim.bportugal.pt/)
+
+- [Google Public Data](https://www.google.com/publicdata/directory)
+
+- [NBER](https://www.nber.org/research/data)
+
+- [American Economic Association::Journal Data and Program Archives / Replication Studies](https://www.aeaweb.org/rfe/showCat.php?cat_id=9)
+
+- check [Datasets list in EEG's website](https://www.eeg.uminho.pt/en/investigar/recursos/Pages/default.aspx)
+
+
 
 <!-- https://lamadon.com/computing.html -->
 
