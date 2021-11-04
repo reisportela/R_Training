@@ -229,7 +229,7 @@ plotmeans(ln_wage ~ year ,data = nlswork_clean)
             header = FALSE,
             no.space = TRUE,
             covariate.labels = c("Union","Collage Graduate","Age","Age sqrd.",
-                                 "Tenure","Tenure sqrd.","Not SMSA","South","City"),
+                                 "Tenur","Tenure sqrd.","Not SMSA","South","City"),
             omit = c("Constant"),
             omit.stat = c("adj.rsq","f","ser"),
             digits = 3,
