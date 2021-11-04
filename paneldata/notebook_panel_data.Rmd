@@ -7,13 +7,15 @@ output:
   pdf_document: default
 ---
 
-This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+# Introduction
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code.
 
 Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter* (in Windows press *CTRL+Enter*).
 
 Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I* (or *CTRL+Alt+I* in Windows).
 
-When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file).
 
 The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
 
@@ -116,10 +118,7 @@ Start discussing the statistics and graphs.
   gg_miss_upset(nlswork)
 ```
 
-
-
 ## Add a dataframe
-
 
 ```{r Add a dataframe, include=FALSE}
 nls <- data.frame(nlswork)
@@ -127,7 +126,6 @@ nls <- data.frame(nlswork)
 ```
 
 ## Export output
-
 
 ```{r (simple) Export output}
   stargazer(nls,
@@ -137,14 +135,11 @@ nls <- data.frame(nlswork)
             header=FALSE,type="text")
 ```
 
-
-
 ## Produce a graph
 
 ```{undefined eval=FALSE, include=FALSE}
 plot(nlswork$grade,nlswork$ln_wage)
 ```
-
 
 ## Save the graph
 
@@ -157,6 +152,7 @@ plot(nlswork$grade,nlswork$ln_wage)
     geom_point()
 ggsave("figures/graph1.png")
 ```
+
 ## Tabulations and further statistics
 
 ```{r Tabulations and further statistics,echo=FALSE}
@@ -177,14 +173,12 @@ ggsave("figures/graph1.png")
                                                      not_smsa, south, c_city)))
 ```
 
-
 ## Add variable
 
 ```{r Add variable, include=FALSE}
   nlswork_clean$agesq <- nlswork_clean$age^2
   nlswork_clean$tensq <- nlswork_clean$tenure^2
 ```
-
 
 ## Plot variables means
 
@@ -194,9 +188,9 @@ plotmeans(ln_wage ~ year ,data = nlswork_clean)
 
 # Regression analysis
 
-- *Estimating a Mincerian Wage Equation*
+-   *Estimating a Mincerian Wage Equation*
 
-- *POLS estimator with cluster-robust standard errors*
+-   *POLS estimator with cluster-robust standard errors*
 
 ## *Q1*
 
@@ -241,7 +235,7 @@ plotmeans(ln_wage ~ year ,data = nlswork_clean)
             type="text")
 ```
 
-- *SMSA*: Standard Metropolitan Statistical Area
+-   *SMSA*: Standard Metropolitan Statistical Area
 
 ```{r FTable}
 # ftable(c_city) # 1 if central city
@@ -280,13 +274,13 @@ plotmeans(ln_wage ~ year ,data = nlswork_clean)
 
 ### *Random effects estimator (RE)*
 
-- SEE THE DISCUSSION HERE for the comparison between R and Stata
+-   SEE THE DISCUSSION HERE for the comparison between R and Stata
 
-# https://stats.stackexchange.com/questions/421374/different-results-from-random-effects-plm-r-and-xtreg-stata
+# <https://stats.stackexchange.com/questions/421374/different-results-from-random-effects-plm-r-and-xtreg-stata>
 
-- R and Stata treat differently unbalanced panels
+-   R and Stata treat differently unbalanced panels
 
- **for a balanced panel we have**
+**for a balanced panel we have**
 
 ```{r RE Balanced}
   nlswork_balanced <- read_dta("data/nlswork_balanced.dta")
@@ -298,18 +292,15 @@ plotmeans(ln_wage ~ year ,data = nlswork_clean)
       summary(re_balanced)
 ```
 
-
 ```{r RE Robust}
   re <- plm(data = nlswork_clean, ln_wage ~ union +
               collgrad +age +agesq +tenure +tensq +
               not_smsa +south +c_city, model="random",
             index=c("idcode", "year"))
-      summary(re)
+      # summary(re)
 
-  re_robust <- coeftest(re, function(x) vcovHC(x, type = 'sss')) 
+  re_robust <- coeftest(re, function(x) vcovHC(x, type = 'sss'))
 ```
-
-
 
 ```{r OUTPUT -- POLS,POLS Robust,RE,RE Robust}
   stargazer(pols,pols_robust,re,re_robust,title = "Regression analysis", 
@@ -334,8 +325,6 @@ plotmeans(ln_wage ~ year ,data = nlswork_clean)
             style = "qje",
             type="text")
 ```
-
-
 
 ```{r OUTPUT; POLS;POLS Robust;RE;RE Robust}
   stargazer(pols,pols_robust,re,re_robust,title = "Regression analysis", 
@@ -385,7 +374,6 @@ plotmeans(ln_wage ~ year ,data = nlswork_clean)
       summary(fe)
 ```
 
-
 ```{r OUTPUT -- POLS;RE;FE}
   stargazer(pols,re,fe,title = "Regression analysis", 
             model.numbers = FALSE,
@@ -411,7 +399,6 @@ plotmeans(ln_wage ~ year ,data = nlswork_clean)
 
 ```
 
-
 ```{r Testing for fixed effects}
 # Testing for fixed effects, null: OLS better than fixed
 # 'F test for individual effects' <<==>> 'F test that all u_i=0'
@@ -423,7 +410,6 @@ plotmeans(ln_wage ~ year ,data = nlswork_clean)
   
   pFtest(fe, ols_0)
 ```
-
 
 ```{r FE Robust}
 # generate fixed-effects
@@ -544,7 +530,6 @@ nlswork_balanced <- read_dta("data/nlswork_balanced_small.dta")
 
 ```
 
-
 ## FD estimator
 
 ```{r FD estimator}
@@ -559,7 +544,6 @@ nlswork_balanced <- read_dta("data/nlswork_balanced_small.dta")
     summary(fd)
 
 ```
-
 
 ## Output Table
 
@@ -585,7 +569,6 @@ nlswork_balanced <- read_dta("data/nlswork_balanced_small.dta")
             type="text")
 ```
 
-
 # FURTHER SPECIFICATION TESTS FOR PANEL DATA
 
 ## Test for heteroskedasticity within panel data
@@ -607,7 +590,7 @@ nlswork_balanced <- read_dta("data/nlswork_balanced_small.dta")
 
 ## Test of serial correlation within panel data
 
-- Unobserved effects test <<>> Wooldridge's test for unobserved individual effects <<>>
+-   Unobserved effects test \<\<\>\> Wooldridge's test for unobserved individual effects \<\<\>\>
 
 ```{r Serial correlation -- Wooldridge, eval=FALSE}
   pwtest(data = nlswork_clean, ln_wage ~ union +
@@ -617,7 +600,7 @@ nlswork_balanced <- read_dta("data/nlswork_balanced_small.dta")
 
 ## Locally robust tests for serial correlation or random effects
 
-- Baltagi and Li AR-RE joint test - balanced panel
+-   Baltagi and Li AR-RE joint test - balanced panel
 
 ```{r Serial correlation -- Baltagi and Li}
   pbsytest(data = nlswork_balanced, ln_wage ~ union +
@@ -627,7 +610,7 @@ nlswork_balanced <- read_dta("data/nlswork_balanced_small.dta")
 
 ## General serial correlation tests
 
-- Breusch-Godfrey/Wooldridge test for serial correlation in panel models <<>>
+-   Breusch-Godfrey/Wooldridge test for serial correlation in panel models \<\<\>\>
 
 ```{r Serial correlation -- Breusch-Godfrey/Wooldridge}
 pbgtest(fe, order = 2)
@@ -660,7 +643,6 @@ pbgtest(fe, order = 2)
             collgrad +age +agesq +tenure +tensq +
             not_smsa +south +c_city)
 ```
-
 
 # HIGH DIMENSIONAL FIXED-EFFECTS
 
@@ -705,7 +687,6 @@ pbgtest(fe, order = 2)
 # Exercise with simulated data
 
 See the Stata file 'stata_do_example.do' that produces the data in folder tmp_files.
-
 
 ```{r simulated}
 simulated <- read_dta("data/data_simulation.dta")
@@ -762,7 +743,6 @@ simulated <- read_dta("data/data_simulation.dta")
 
 **OBSERVE THE MISTAKE FOLLOWING THE INTRODUCTION OF TIME DUMMIES AND EXPERIENCE IN THE FIXED-EFFECTS MODEL**
 
-
 ```{r}
   pols <- plm(data = simulated, lnwage ~ educ + exper + 
               exper2 + factor(year), 
@@ -797,7 +777,7 @@ simulated <- read_dta("data/data_simulation.dta")
             no.space = TRUE,
             omit = c("Constant"),
             omit.stat = c("adj.rsq","f","ser"),
-            digits = 3,
+            digits = 4,
             digits.extra = 5,
             omit.yes.no = c("Constant",""),
             dep.var.caption="",
@@ -818,3 +798,7 @@ end_time - start_time
 ```{r End Chunk}
 #
 ```
+
+# Conclusion
+
+leijroiuroiwu asljhjdfklijojiwuqoweiuwo
