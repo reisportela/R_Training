@@ -1,10 +1,10 @@
 ---
 title: 'R Notebook: Panel Data Models with R - October 2021'
 output:
-  pdf_document: default
-  word_document: default
   html_document:
     df_print: paged
+  word_document: default
+  pdf_document: default
 ---
 
 This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
@@ -229,7 +229,7 @@ plotmeans(ln_wage ~ year ,data = nlswork_clean)
             header = FALSE,
             no.space = TRUE,
             covariate.labels = c("Union","Collage Graduate","Age","Age sqrd.",
-                                 "Tenur","Tenure sqrd.","Not SMSA","South","City"),
+                                 "Tenure","Tenure sqrd.","Not SMSA","South","City"),
             omit = c("Constant"),
             omit.stat = c("adj.rsq","f","ser"),
             digits = 3,
