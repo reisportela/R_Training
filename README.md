@@ -72,6 +72,8 @@ File > New Project > Version Control > Git
 
 - [Causality with `R`](https://bookdown.org/paul/applied-causal-analysis/)
 
+- [PSID](https://psidonline.isr.umich.edu/)
+
 - [PORDATA](https://www.pordata.pt/)
 
 - [Harvard Dataverse](https://dataverse.harvard.edu/)
