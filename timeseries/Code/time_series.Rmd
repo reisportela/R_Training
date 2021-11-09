@@ -36,15 +36,17 @@ pacman::p_load(here,
         #xlsx,
         #readxl,
         ggplot2,
+        aer,
         TSA,
-        tseries,
-        fma,
         forecast,
-        gdata,
+        fma,
+        fpp,
+        expsmooth,
         lmtest,
+        tseries,
+        gdata,
         foreign,
         pacman,
-        fpp,
         urca)
 ```
 
@@ -60,17 +62,24 @@ plot(beer,type = "l")
 ### Lecture 1.b
 
 ```{r DATA__WAGES}
-data(wages)
+data(wages) # ?TSA (Cryer, J. D. Time Series Analysis, Duxbury Press, 1986.)
 
 plot(wages,type = "l")
 mydata <- read.xls("sunspot.xlsx", 1)
 # print(mydata)
-#mydata2 = read.xls ("sunspot.xlsx", sheet = 1, header = TRUE)
+#mydata2 = read.xls("sunspot.xlsx", sheet = 1, header = TRUE)
 ```
 
 ```{r Lecture 1.b__Plot}
+# Sunspots: a temporary phenomena on the Sun’s photosphere that appear darker than the surrounding areas
+# Sunspots appear on an 11-year solar cycle, so we should expect to see a seasonality component to the data
+
 sunspot <- as.ts(mydata$Sunspot)
 postscript(file="sunspot.eps", paper="special", width=10, height=7, horizontal=FALSE) 
+plot(sunspot ~ Year, mydata, type = "l")
+```
+
+```{r Sunspot}
 plot(sunspot ~ Year, mydata, type = "l")
 ```
 

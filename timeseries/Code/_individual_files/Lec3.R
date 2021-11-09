@@ -1,0 +1,10 @@
+library(forecast)
+data(elecsales, package = "fpp")
+plot(elecsales,ylab="Electricity", xlab="Year")
+ma.1 <- ma(elecsales,order=5)
+plot(elecsales, main="Electricity",
+     ylab="GWh", xlab="Year")
+lines(ma(elecsales,3),col="red")
+lines(ma(elecsales,9),col="blue")
+print(ma.1)
+print(elecsales)
