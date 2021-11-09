@@ -799,6 +799,3 @@ end_time - start_time
 #
 ```
 
-# Conclusion
-
-leijroiuroiwu asljhjdfklijojiwuqoweiuwo
