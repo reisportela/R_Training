@@ -1,0 +1,838 @@
+---
+title: 'Data Analysis School: FORECASTING METHODS AND APPLICATIONS WITH R'
+author: "Cristina Amado / UMinho"
+output:
+  html_document:
+    df_print: paged
+---
+
+## Plan of the course
+
+1. Introduction to Forecasting
+2. Regression Analysis and Forecasting
+3. Exponential Smoothing Methods
+4. Univariate Time Series Models
+5. Trend and Seasonality
+6. Forecasting Volatility
+
+### Setup
+
+```{r setup}
+knitr::opts_chunk$set(include = TRUE)
+# install.packages('pacman')  # Package Management Tool
+rm(list=ls())
+library(here)
+library(pacman)
+start_time <- Sys.time()  # calcular o tempo de execução do programa
+# setwd("/Users/miguelportela/Documents/GitHub/R_Training/time_series")
+# setwd('D:\\miguel\\Dropbox\\1.miguel\\1.formacao\\r\\forecasting\\2.Lecture_Code\\_2021')
+# setwd('D:\\miguel\\Dropbox\\Modelação e Análise de Dados com R - Módulo 8\\Code')
+setwd('C:\\Users\\mangelo.EEG\\Documents\\GitHub\\R_Training\\timeseries\\Code')
+getwd()
+
+pacman::p_load(here,
+        tidyverse,
+        haven,
+        #xlsx,
+        #readxl,
+        ggplot2,
+        TSA,
+        tseries,
+        fma,
+        forecast,
+        gdata,
+        lmtest,
+        foreign,
+        pacman,
+        fpp,
+        urca)
+```
+
+### Lecture 1.a
+
+```{r Data_BEER}
+# data: gold, tempdub, sales, google, oil.price, wages, larain
+# data("beer",package="fma")
+plot(beer,type = "l")
+```
+
+
+### Lecture 1.b
+
+```{r DATA__WAGES}
+data(wages)
+
+plot(wages,type = "l")
+mydata <- read.xls("sunspot.xlsx", 1)
+# print(mydata)
+#mydata2 = read.xls ("sunspot.xlsx", sheet = 1, header = TRUE)
+```
+
+```{r Lecture 1.b__Plot}
+sunspot <- as.ts(mydata$Sunspot)
+postscript(file="sunspot.eps", paper="special", width=10, height=7, horizontal=FALSE) 
+plot(sunspot ~ Year, mydata, type = "l")
+```
+
+### Lecture 2.a
+
+```{r Monthly Australian beer production: Jan 1991 - Aug 1995 (2.a)}
+# data("beer", package = "fma")
+plot(beer,type = "l")
+```
+
+> 80% and 95% forecast interval: level=c(80,95)
+
+```{r Lecture 2.b__PlotBeer}
+beerfor1 <- meanf(beer, h=12)
+plot(beerfor1, main="mean")
+beerfor2 <- naive(beer, h=12)
+plot(beerfor2, main="naive")
+beerfor3 <- snaive(beer, h=12)
+plot(beerfor3, main="snaive")
+beerfor4 <- rwf(beer, drift=TRUE, h=12)
+plot(beerfor4, main="drift")
+```
+
+```{r Lecture 2.b__Accuracy}
+#plot(forecast(beerfor4,level=c(80,95)))
+summary(beerfor1)
+summary(beerfor2)
+accuracy(beerfor1)
+accuracy(beerfor2)
+accuracy(beerfor3)
+accuracy(beerfor4)
+```
+
+### Lecture 2.b
+
+```{r Dow-Jones index on 292 trading days ending 26 Aug 1994 (2.b)}
+# data("dj",package = "fma")
+plot(dj)
+```
+
+> Use 250 observations in the in-sample period
+
+```{r Lecture 2.b__Plot}
+dj1 <- window(dj, end=250)
+plot(dj1)
+```
+
+#Out-of-sample period from 251 until 292
+```{r Out-of-sample}
+dj2 <- window(dj, start=251)
+```
+
+```{r Lecture 2.b__djfor}
+#80% and 95% forecast interval: level=c(80,95)
+djfor1 <- meanf(dj1, h=42)
+plot(djfor1, main="mean")
+djfor2 <- naive(dj1, h=42)
+plot(djfor2, main="naive")
+djfor3 <- snaive(dj1, h=42)
+plot(djfor3, main="snaive")
+djfor4 <- rwf(dj1, drift=TRUE, h=42)
+plot(djfor4, main="drift")
+```
+
+> measures of forecast accuracy
+
+```{r Measures of forecast accuracy}
+accuracy(meanf(dj1,h=42), dj2)
+accuracy(naive(dj1,h=42), dj2)
+accuracy(snaive(dj1,h=42), dj2)
+accuracy(rwf(dj1,drift=TRUE,h=42), dj2)
+```
+
+### Lecture 2.c
+
+```{r DATA__HPRICE1}
+# download.file('http://fmwww.bc.edu/ec-p/data/wooldridge/hprice1.dta','hprice1.dta',mode='wb')
+hprice <- read.dta('hprice1.dta')
+```
+
+> Some statistics
+
+```{r Some statistics}
+  summary(hprice)
+  cor(hprice)
+  cor(hprice$price,hprice$sqrft)
+```
+
+> OLS estimation single regression
+
+```{r Lecture 2.c__OLS estimation single regression}
+lm.r <- lm(price ~ sqrft, data = hprice)
+summary(lm.r)
+```
+
+> Residuals
+
+```{r Lecture 2.c__Residuals}
+resid(lm.r) #lm.r$res 
+```
+
+> Predicted values
+
+```{r Lecture 2.c__Predicted values}
+fitted(lm.r) #lm.r$fit 
+```
+
+> Scatterplot with fitted line
+
+```{r Lecture 2.c__Scatterplot with fitted line}
+plot(price ~ sqrft, hprice)
+abline(lm.r) 
+plot(lm.r$res ~ sqrft, hprice)
+```
+
+> Regression with logs between lprice and lsqrft
+
+```{r Lecture 2.c__Regression with logs between lprice and lsqrft}
+lm.r4 <- lm(lprice ~ lsqrft, data = hprice)
+summary(lm.r4)
+plot(lm.r4$res ~ lsqrft, hprice)
+plot(lprice ~ lsqrft, hprice)
+abline(lm.r4)
+```
+
+> Regression with logs between lprice and lassess
+
+```{r Lecture 2.c__Regression with logs between lprice and lassess}
+lm.r5 <- lm(lprice ~ lassess, data = hprice)
+summary(lm.r5)
+plot(lm.r5$res ~ lassess, hprice)
+plot(lprice ~ lassess, hprice)
+abline(lm.r5)
+```
+
+> Confidence intervals for the coefficients
+
+```{r Lecture 2.c__Confidence intervals for the coefficients}
+confint(lm.r5,level=0.95)
+```
+
+> Prediction interval for a single observation
+
+```{r Lecture 2.c__Prediction interval for a single observation}
+plot(lprice ~ lassess, hprice)
+abline(lm.r5)
+newdata = data.frame(lassess=250)
+```
+
+> Interval estimate on the mean at a specific point
+
+```{r Lecture 2.c__Interval estimate on the mean at a specific point}
+con.1 <- predict(lm.r5, newdata, level = 0.90, interval="confidence")
+# lines(newdata,con.1[,c("lwr","upr")],col="red",lty=1,type="l")
+newdata = data.frame(lassess=250)
+```
+
+> Interval estimate on a single future observation
+
+```{r Lecture 2.c__Interval estimate on a single future observation}
+pred.1 <- predict(lm.r5, newdata, level = 0.90, interval="predict")
+# lines(newdata,pred.1[,c("lwr","upr")],col="blue",lty=1,type="l")
+```
+
+> Plot prediction interval
+
+```{r Lecture 2.c__Plot prediction interval}
+conf.2 <- predict(lm.r5, level = 0.95, interval="confidence")
+pred.2 <- predict(lm.r5, level = 0.95, interval="predict")
+fitted = pred.2[,1]
+pred.lower = pred.2[,2]
+pred.upper = pred.2[,3]
+plot(lprice ~ lassess, hprice)
+lines(hprice$lassess,fitted,col="red",lwd=2)
+lines(hprice$lassess,pred.lower,lwd=1,col="blue")
+lines(hprice$lassess,pred.upper,lwd=1,col="blue")
+```
+
+> OLS estimation multiple regression
+
+```{r Lecture 2.c__OLS estimation multiple regression}
+lm.r2 <- lm(price ~ sqrft + bdrms, data = hprice)
+summary(lm.r2)
+```
+
+> OLS estimation multiple regression
+
+```{r Lecture 2.c__OLS estimation multiple regression --}
+lm.r3 <- lm(lprice ~ lsqrft + llotsize, data = hprice)
+summary(lm.r3)
+```
+
+### Lecture 2.d
+
+```{r Lecture 2.d__DATA}
+download.file('http://fmwww.bc.edu/ec-p/data/wooldridge/wage1.dta','wage1.dta',mode='wb')
+wage <- read.dta('wage1.dta')
+```
+
+```{r Lecture 2.d__Fit__Plot}
+fit.r <- lm(lwage ~ educ + exper, data = wage)
+summary(fit.r)
+plot(fit.r$res ~ educ, wage)
+plot(lwage ~ educ, wage)
+abline(fit.r)
+```
+
+> Coefficients
+
+```{r Lecture 2.d__Coefficients}
+fit.r$coef #(or coef(fit.r))
+```
+
+> Residuals
+
+```{r Lecture 2.d__Residuals}
+fit.r$res 
+```
+
+> Predicted values
+
+```{r Lecture 2.d__Predicted values}
+fit.r$fit 
+```
+
+> Prediction interval for a single observation
+
+```{r Prediction interval for a single observation}
+newdata = data.frame(educ=12, exper=5)
+```
+
+> Interval estimate on the mean at a specific point
+
+```{r Interval estimate on the mean at a specific point}
+predict(fit.r, newdata, level = 0.95, interval="confidence")
+```
+
+> Interval estimate on a single future observation
+
+```{r Interval estimate on a single future observation}
+predict(fit.r, newdata, level = 0.95, interval="predict")
+```
+
+> Prediction interval for several observations
+
+```{r Prediction interval for several observations}
+neweduc=c(12,15,16)
+newexper=c(5,7,10)
+predict(fit.r,data.frame(educ = neweduc,exper=newexper), 
+        level = 0.95, interval = "predict")
+```
+
+### Lecture 3.0
+
+```{r Lecture 3.0__DATA}
+data(elecsales, package = "fpp")
+plot(elecsales,ylab="Electricity", xlab="Year")
+ma.1 <- ma(elecsales,order=5)
+plot(elecsales, main="Electricity",
+     ylab="GWh", xlab="Year")
+lines(ma(elecsales,3),col="red")
+lines(ma(elecsales,9),col="blue")
+print(ma.1)
+print(elecsales)
+```
+
+### Lecture 3.a
+
+```{r Lecture 3.a__DATA}
+data(oil, package = "fpp")
+plot(oil)
+oildata <- window(oil,start=1996,end=2007)
+plot(oildata, ylab="Oil (millions of tonnes)", xlab="Year")
+```
+
+> Simple exponential smoothing
+
+```{r Simple exponential smoothing}
+# lo=y1 or initial=optimal
+
+fit1 <- ses(oildata, alpha=0.2, initial="simple", h=3)
+
+fit2 <- ses(oildata, alpha=0.6, initial="simple", h=3)
+
+# fit3 <- ses(oildata, h=3)
+```
+
+> Plot for alpha=0.2,0.6,0.89
+
+```{r Plot for alpha}
+plot(fit1, plot.conf=FALSE, ylab="Oil (millions of tonnes)",
+     xlab="Year", main="", fcol="white", type="o")
+lines(fitted(fit1), col="blue", type="o")
+lines(fitted(fit2), col="red", type="o")
+# lines(fitted(fit3), col="green", type="o")
+lines(fit1$mean, col="blue", type="o")
+lines(fit2$mean, col="red", type="o")
+# lines(fit3$mean, col="green", type="o")
+legend("topleft",lty=1, col=c(1,"blue","red","green"), 
+       c("data", expression(alpha == 0.2), expression(alpha == 0.6),
+         expression(alpha == 0.89)),pch=1)
+oildata
+```
+
+> Level lt for each alpha
+
+```{r Level lt for each alpha}
+fit1$model$state
+fit2$model$state
+
+# fit3$model$state
+# fitted(fit1)
+# fitted(fit2)
+# fitted(fit3)
+```
+
+> Summary of results
+
+```{r Lecture 3.a__Summary of results}
+summary(fit1)
+summary(fit2)
+# summary(fit3)
+```
+
+### Lecture 3.b
+
+```{r Lecture 3.b__Plot}
+data(ausair, package = "fpp")
+#original data - from 1970 until 2010
+plot(ausair) 
+```
+
+```{r Lecture 3.b__Fit}
+air <- window(ausair,start=1990,end=2004)
+fit1 <- holt(air, alpha=0.8, beta=0.2, initial="simple", h=5) 
+fit2 <- holt(air, alpha=0.8, beta=0.2, initial="simple", exponential=TRUE, h=5) 
+# fit3 <- holt(air, alpha=0.8, beta=0.2, damped=TRUE, initial="simple", h=5) 
+plot(air,ylab="Air passengers", xlab="Year")
+air
+#print(air)
+```
+
+> Results for first model
+
+```{r  Lecture 3.b__Results for first model}
+#level lt and trend bt
+fit1$model$state 
+#Fitted values (lt+bt)
+fitted(fit1)
+```
+
+> Forecasts
+
+```{r Lecture 3.b__Forecasts}
+fit1$mean
+```
+
+> Plots
+
+```{r Lecture 3.b__Plots}
+plot(fit2, type="o", ylab="Air passengers", xlab="Year", 
+     fcol="white", plot.conf=FALSE, main="")
+lines(fitted(fit1), col="blue") 
+lines(fitted(fit2), col="red")
+# lines(fitted(fit3), col="green")
+lines(fit1$mean, col="blue", type="o") 
+lines(fit2$mean, col="red", type="o")
+# lines(fit3$mean, col="green", type="o")
+legend("topleft", lty=1, col=c("black","blue","red","green"), 
+       c("Data","Holt's linear trend","Exponential trend","Additive damped trend"))
+```
+
+
+> Forecast results
+
+```{r Lecture 3.b__Forecast results}
+summary(fit1)
+summary(fit2)
+# summary(fit3)
+```
+
+### Lecture 3.c
+
+```{r Lecture 3.c__DATA__Plot}
+data(austourists, package = "fpp")
+#original data - from 1970 until 2010
+plot(austourists, ylab="Tourists", xlab="Year") 
+aust <- window(austourists,start=2005)
+#print(aust)
+```
+
+```{r Lecture 3.c__Fit, eval=FALSE, include=FALSE}
+fit1 <- hw(aust,seasonal="additive")
+fit2 <- hw(aust,seasonal="multiplicative")
+fit3 <- hw(aust,seasonal="additive", damped=TRUE)
+fit4 <- hw(aust,seasonal="multiplicative", damped=TRUE)
+#level lt, trend bt, and seasons 
+fit1$model$state 
+```
+
+> Fitted values (lt+bt)
+
+```{r Lecture 3.c__Fitted values (lt+bt), eval=FALSE, include=FALSE}
+fitted(fit1)
+```
+
+> Forecasts
+
+```{r Lecture 3.c__Forecasts, eval=FALSE, include=FALSE}
+fit1$mean
+plot(fit2,ylab="Tourists (millions)",
+     plot.conf=FALSE, type="o", fcol="white", xlab="Year",main="")
+lines(fitted(fit1), col="red", lty=2)
+lines(fitted(fit2), col="green", lty=2)
+lines(fit1$mean, type="o", col="red")
+lines(fit2$mean, type="o", col="green")
+lines(fitted(fit3), col="blue", lty=2)
+lines(fitted(fit4), col="grey", lty=2)
+lines(fit3$mean, type="o", col="blue")
+lines(fit4$mean, type="o", col="grey")
+legend("topleft",lty=1, pch=1, col=1:3, 
+       c("data","Holt Winters' Additive","Holt Winters' Multiplicative"))
+```
+
+> Forecast results
+
+```{r Lecture 3.c__Forecast results, eval=FALSE, include=FALSE}
+summary(fit1)
+summary(fit2)
+summary(fit3)
+summary(fit4)
+```
+
+### Lecture 3.d
+
+```{r Automatic forecasting from Hyndman et al. (IJF, 2002)}
+data(ausbeer, package = "fpp")
+plot(ausbeer, ylab="Beer", xlab="Year") 
+```
+
+> `ets`
+
+```{r eval=FALSE, include=FALSE}
+#ets(error,trend,seasonal)
+#error=A,M
+#trend=N,A,Ad,M,Md
+#seasonal=N,A,M
+fit1 <- ets(ausbeer)
+fcast1 <- forecast(fit1,h=20)
+summary(fit1)
+plot(fit1)
+fit2 <- ets(ausbeer,model="AAA",damped=FALSE)
+fcast2 <- forecast(fit2,h=20)
+summary(fit2)
+plot(fit2)
+#plot(forecast(fit1,level=c(95),fan=TRUE))
+```
+
+### Lecture 4.0
+
+```{r Dow-Jones index on 292 trading days ending 26 Aug 1994 ----}
+data("dj", package = "fma")
+```
+```{r Lecture 4.0__Plot}
+par(mfrow=c(1,1))
+plot(dj)
+retdj<-diff(log(dj))
+plot(retdj)
+acf(dj, lag.max = 30, na=na.omit, main="", ylab="ACF", xlab="Lag")
+```
+
+> `acf`
+
+```{r Lecture 4.0__acf}
+#acf(retdj, lag.max = 30, na=na.omit, main="", ylab="ACF", xlab="Lag",ylim=c(-0.2,0.2))
+acf(retdj, lag.max = 30, na=na.omit, main="", ylab="ACF", xlab="Lag")
+ar2<-arima.sim(model=list(ar=c(.9,-.2)),n=100) + 0.3
+ar1<-arima.sim(model=list(ar=c(.8)),n=100) 
+plot(ar2)
+plot(ar1)
+acf(ar1)
+pacf(ar1)
+acf(ar2)
+pacf(ar2)
+```
+
+```{r Lecture 4.0__pacf}
+ma2<-arima.sim(model=list(ma=c(-.7,.1)),n=100)
+ma1<-arima.sim(model=list(ma=c(.4)),n=100) + 0.1
+plot(ma1)
+plot(ma2)
+acf(ma1, lag.max = 40)
+pacf(ma1,lag.max = 40)
+acf(ma2)
+pacf(ma2)
+set.seed(123)
+wn = rnorm(500, mean=0, sd=1)
+plot(wn, type="l", ylab="wn", xlab="time")
+acf(wn)
+rw <- cumsum(rnorm(500, mean = 0))
+plot(rw, type="l", ylab="rw", xlab="time")
+acf(rw)
+```
+
+### Lecture 4.a
+
+```{r Dow Jones Index}
+# data("dj", package = "fma")
+```
+
+> Check (non)stationarity
+
+```{r Lecture 4.a__acf}
+plot(dj)
+acf(dj)
+pacf(dj)
+```
+
+> Augmented Dickey-Fuller
+
+> Augmented Dickey Fuller test
+
+```{r Lecture 4.a__adf}
+adf=ur.df(dj,type="none",lags=1)
+summary(adf)
+```
+
+> adf.test(dj)
+
+```{r Lecture 4.a__adf test(dj)}
+retdj <- diff(log(dj))
+plot(retdj)
+acf(retdj)
+pacf(retdj)
+```
+
+> ARIMA(0,1,0)
+
+```{r Lecture 4.a__ARIMA(0,1,0)}
+dj.ar1 <- arima(dj, c(0, 1, 0))
+summary(dj.ar1) #
+acf(residuals(dj.ar1))
+Box.test(residuals(dj.ar1), lag=20, fitdf=0, type="Ljung")
+tsdiag(dj.ar1) 
+# plot(forecast(dj.ar1)) #
+```
+
+> AR(1)
+
+```{r AR(1)}
+dj_ar1 <- arima(dj, c(1, 0, 0))
+summary(dj_ar1)
+acf(residuals(dj_ar1))
+Box.test(residuals(dj_ar1), lag=20, fitdf=1, type="Ljung")
+tsdiag(dj_ar1) 
+# plot(forecast(dj_ar1))
+pred.2 <- predict(dj_ar1, level = 0.95, interval="predict")
+pred.2
+```
+
+
+### Lecture 4.b
+
+```{r US Gross Domestic Product}
+load("usgdp5190.rda")
+dlgdp <- usgdp5190
+```
+
+> Check (non)stationarity
+
+```{r Check (non)stationarity}
+plot(dlgdp)
+acf(dlgdp)
+pacf(dlgdp)
+Box.test(dlgdp, 10)
+Box.test(dlgdp, 10, type = "Ljung-Box")
+ar(dlgdp)
+gdp.ar1 <- arima(dlgdp, c(3, 0, 0))
+summary(gdp.ar1)
+gdp.ar2 <- arima(dlgdp, c(1, 0, 0)) #BIC
+summary(gdp.ar2)
+tsdiag(gdp.ar2) 
+```
+
+> Diagnostics
+
+```{r Diagnostics}
+tsdiag(gdp.ar1) 
+```
+
+> Automatic modelling: AR models
+
+```{r Lecture 4.b__Automatic modelling -- AR models}
+gdpAR <- auto.arima(dlgdp, d=0, D=0, max.p=12, max.q=0, max.P=0, max.Q=0, 
+                    max.order=12, ic="bic", stepwise=FALSE, approximation=FALSE)
+summary(gdpAR)
+```
+
+> Automatic modelling: ARMA models
+
+```{r Lecture 4.b__Automatic modelling: ARMA models}
+gdpARMA <- auto.arima(dlgdp, d=0, D=0, max.p=12, max.q=12, max.P=0, max.Q=0, 
+                    max.order=6, ic="aic", stepwise=FALSE, approximation=FALSE)
+```
+
+> Check with BIC
+
+```{r Lecture 4.b__Check with BIC}
+summary(gdpARMA)
+tsdiag(gdpARMA)
+gdp.ma2 <- arima(dlgdp, c(0, 0, 2))
+summary(gdp.ma2)
+```
+
+> Diagnostics
+
+```{r Lecture 4.b__Diagnostics}
+tsdiag(gdp.ma2) 
+```
+
+
+### Lecture 4.c
+
+```{r Lecture 4.c__DATA}
+load("tb3m5605.rda")
+tbill <- tb3m5605
+```
+
+> Check (non)stationarity
+
+```{r Lecture 4.c__Check non-stationarity}
+plot(tbill)
+acf(tbill)
+dltb <- diff(log(tbill))
+plot(dltb)
+acf(dltb)
+acf(dltb^2)
+pacf(dltb)
+```
+
+> Which ARMA model to choose?
+
+```{r Lecture 4.c__Which ARMA model to choose}
+tsdisplay(dltb) # forecast library
+```
+
+> Use BIC (try also a pure AR)
+
+```{r Lecture 4.c__Use BIC (try also a pure AR)}
+tbBIC <- auto.arima(dltb, d=0, D=0, max.p=10, max.q=10, max.P=0, max.Q=0,
+                     max.order=10, ic="bic", stepwise=FALSE, approximation=FALSE)
+summary(tbBIC)
+```
+
+> Diagnostics
+
+```{r Lecture 4.c__Diagnostics}
+tsdiag(tbBIC)
+```
+
+> Use AIC
+
+```{r Lecture 4.c__Use AIC}
+tbAIC1 <- auto.arima(dltb, max.order=5, ic="aic", stepwise=FALSE, approximation=FALSE)
+summary(tbAIC1)
+```
+
+> Diagnostics
+
+```{r Lecture 4.c__Diagnostics -}
+tsdiag(tbAIC1)
+```
+
+> Try tbAIC also with max.order=12
+
+```{r Lecture 4.c__Try tbAIC also with max.order}
+tbAIC2 <- auto.arima(dltb, d=0, D=0, max.p=0, max.q=12, max.P=0, max.Q=0,
+                    max.order=12, ic="aic", stepwise=FALSE, approximation=FALSE)
+summary(tbAIC2)
+```
+
+> Diagnostics
+
+```{r Lecture 4.c__Diagnostics --}
+tsdiag(tbAIC2)
+acf(residuals(tbAIC2))
+Box.test(residuals(tbAIC2), lag=20, fitdf=7, type="Ljung")
+```
+
+> Exclude non-statistically significant coefficients
+
+```{r Lecture 4.c__Exclude non-statistically significant coefficients}
+#NA means that the coefficient is not fixed and is estimated; last coefficient 
+#refers to the constant
+#fl<-structure(list(mean=K,x=Dem2,fitted=tbMA0$fitted),class="forecast")
+tbMA0 <- arima(dltb, order = c(0,0,7),
+               fixed = c(NA, NA, NA, 0, 0, NA, NA, 0))
+
+# summary(tbMA)
+# tsdiag(tbMA)
+
+summary(tbMA0)
+tsdiag(tbMA0)
+
+dltb_fc <- forecast(tbAIC2, h = 30)
+dltb_fc
+```
+
+
+```{r Lecture 4.c__Plot}
+#plot(gdp_fc, shaded = FALSE)
+#plot(gdp_fc, shadecols = grey(c(0.8, 0.6)))
+plot(dltb_fc)
+```
+
+
+### Lecture 4.d
+
+> Data
+
+```{r US Gross Domestic Product (percent change)}
+load("usgdp5190.rda")
+dlgdp <- usgdp5190
+```
+
+> Check (non)stationarity
+
+```{r Lecture 4.d__Check (non)stationarity}
+plot(dlgdp)
+acf(dlgdp)
+pacf(dlgdp)
+gdp <- 100*dlgdp
+plot(gdp)
+gdp.ar1 <- arima(gdp, c(1, 0, 0))
+summary(gdp.ar1)
+```
+
+> Predict
+
+```{r Lecture 4.d__Predict, eval=FALSE, include=FALSE}
+#pred1 <- predict(gdp.ar1, n.ahead = 4)
+#pred1
+gdp_fc <- forecast(gdp.ar1, h = 20)
+gdp_fc
+```
+
+> Plot
+
+```{r Lecture 4.d__Plot, eval=FALSE, include=FALSE}
+#plot(gdp_fc, shaded = FALSE)
+plot(gdp_fc)
+```
+
+
+## Close the log file
+
+```{r End Time}
+end_time <- Sys.time()
+end_time - start_time
+  # sprintf(end_time - start_time,fmt = '%#.1f')
+```
+
+```{r -- End Chunk --}
+#
+```
