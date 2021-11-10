@@ -20,15 +20,18 @@ output:
 ```{r setup}
 knitr::opts_chunk$set(include = TRUE)
 # install.packages('pacman')  # Package Management Tool
+#install.packages('fpp3', dependencies = TRUE)
 rm(list=ls())
 library(here)
 library(pacman)
 start_time <- Sys.time()  # calcular o tempo de execução do programa
-# setwd("/Users/miguelportela/Documents/GitHub/R_Training/time_series")
+setwd("/Users/miguelportela/Documents/GitHub/R_Training/timeseries/Code")
 # setwd('D:\\miguel\\Dropbox\\1.miguel\\1.formacao\\r\\forecasting\\2.Lecture_Code\\_2021')
 # setwd('D:\\miguel\\Dropbox\\Modelação e Análise de Dados com R - Módulo 8\\Code')
-setwd('C:\\Users\\mangelo.EEG\\Documents\\GitHub\\R_Training\\timeseries\\Code')
+# setwd('C:\\Users\\mangelo.EEG\\Documents\\GitHub\\R_Training\\timeseries\\Code')
 getwd()
+
+# CHECK: `fpp3` package https://pkg.robjhyndman.com/fpp3-package/
 
 pacman::p_load(here,
         tidyverse,
@@ -37,10 +40,10 @@ pacman::p_load(here,
         #readxl,
         ggplot2,
         aer,
+        fpp3,
         TSA,
         forecast,
         fma,
-        fpp,
         expsmooth,
         lmtest,
         tseries,
@@ -296,13 +299,13 @@ fit.r$coef #(or coef(fit.r))
 > Residuals
 
 ```{r Lecture 2.d__Residuals}
-fit.r$res 
+# fit.r$res 
 ```
 
 > Predicted values
 
 ```{r Lecture 2.d__Predicted values}
-fit.r$fit 
+# fit.r$fit 
 ```
 
 > Prediction interval for a single observation
