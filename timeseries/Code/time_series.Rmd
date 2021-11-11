@@ -25,10 +25,10 @@ rm(list=ls())
 library(here)
 library(pacman)
 start_time <- Sys.time()  # calcular o tempo de execução do programa
-setwd("/Users/miguelportela/Documents/GitHub/R_Training/timeseries/Code")
+# setwd("/Users/miguelportela/Documents/GitHub/R_Training/timeseries/Code")
 # setwd('D:\\miguel\\Dropbox\\1.miguel\\1.formacao\\r\\forecasting\\2.Lecture_Code\\_2021')
 # setwd('D:\\miguel\\Dropbox\\Modelação e Análise de Dados com R - Módulo 8\\Code')
-# setwd('C:\\Users\\mangelo.EEG\\Documents\\GitHub\\R_Training\\timeseries\\Code')
+setwd('C:\\Users\\mangelo.EEG\\Documents\\GitHub\\R_Training\\timeseries\\Code')
 getwd()
 
 # CHECK: `fpp3` package https://pkg.robjhyndman.com/fpp3-package/
