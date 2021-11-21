@@ -25,10 +25,10 @@ rm(list=ls())
 library(here)
 library(pacman)
 start_time <- Sys.time()  # calcular o tempo de execução do programa
-setwd("/Users/miguelportela/Documents/GitHub/R_Training/timeseries/Code")
+# setwd("/Users/miguelportela/Documents/GitHub/R_Training/timeseries/Code")
 # setwd('D:\\miguel\\Dropbox\\1.miguel\\1.formacao\\r\\forecasting\\2.Lecture_Code\\_2021')
 # setwd('D:\\miguel\\Dropbox\\Modelação e Análise de Dados com R - Módulo 8\\Code')
-# setwd('C:\\Users\\mangelo.EEG\\Documents\\GitHub\\R_Training\\timeseries\\Code')
+setwd('C:\\Users\\mangelo.EEG\\Documents\\GitHub\\R_Training\\timeseries\\Code')
 getwd()
 
 # CHECK: `fpp3` package https://pkg.robjhyndman.com/fpp3-package/
@@ -39,7 +39,7 @@ pacman::p_load(here,
         #xlsx,
         #readxl,
         ggplot2,
-        aer,
+        AER,
         fpp3,
         TSA,
         forecast,
@@ -367,7 +367,7 @@ fit1 <- ses(oildata, alpha=0.2, initial="simple", h=3)
 
 fit2 <- ses(oildata, alpha=0.6, initial="simple", h=3)
 
-# fit3 <- ses(oildata, h=3)
+fit3 <- ses(oildata, alpha=0.89, initial="simple", h=3)
 ```
 
 > Plot for alpha=0.2,0.6,0.89
@@ -377,10 +377,10 @@ plot(fit1, plot.conf=FALSE, ylab="Oil (millions of tonnes)",
      xlab="Year", main="", fcol="white", type="o")
 lines(fitted(fit1), col="blue", type="o")
 lines(fitted(fit2), col="red", type="o")
-# lines(fitted(fit3), col="green", type="o")
+lines(fitted(fit3), col="green", type="o")
 lines(fit1$mean, col="blue", type="o")
 lines(fit2$mean, col="red", type="o")
-# lines(fit3$mean, col="green", type="o")
+lines(fit3$mean, col="green", type="o")
 legend("topleft",lty=1, col=c(1,"blue","red","green"), 
        c("data", expression(alpha == 0.2), expression(alpha == 0.6),
          expression(alpha == 0.89)),pch=1)
@@ -393,10 +393,10 @@ oildata
 fit1$model$state
 fit2$model$state
 
-# fit3$model$state
-# fitted(fit1)
-# fitted(fit2)
-# fitted(fit3)
+fit3$model$state
+fitted(fit1)
+fitted(fit2)
+fitted(fit3)
 ```
 
 > Summary of results
@@ -404,7 +404,7 @@ fit2$model$state
 ```{r Lecture 3.a__Summary of results}
 summary(fit1)
 summary(fit2)
-# summary(fit3)
+summary(fit3)
 ```
 
 ### Lecture 3.b
@@ -419,7 +419,7 @@ plot(ausair)
 air <- window(ausair,start=1990,end=2004)
 fit1 <- holt(air, alpha=0.8, beta=0.2, initial="simple", h=5) 
 fit2 <- holt(air, alpha=0.8, beta=0.2, initial="simple", exponential=TRUE, h=5) 
-# fit3 <- holt(air, alpha=0.8, beta=0.2, damped=TRUE, initial="simple", h=5) 
+# fit3 <- holt(air, alpha=0.8, beta=0.2, damped=TRUE, initial="simple", h=5)
 plot(air,ylab="Air passengers", xlab="Year")
 air
 #print(air)
@@ -447,10 +447,10 @@ plot(fit2, type="o", ylab="Air passengers", xlab="Year",
      fcol="white", plot.conf=FALSE, main="")
 lines(fitted(fit1), col="blue") 
 lines(fitted(fit2), col="red")
-# lines(fitted(fit3), col="green")
+lines(fitted(fit3), col="green")
 lines(fit1$mean, col="blue", type="o") 
 lines(fit2$mean, col="red", type="o")
-# lines(fit3$mean, col="green", type="o")
+lines(fit3$mean, col="green", type="o")
 legend("topleft", lty=1, col=c("black","blue","red","green"), 
        c("Data","Holt's linear trend","Exponential trend","Additive damped trend"))
 ```
@@ -461,7 +461,7 @@ legend("topleft", lty=1, col=c("black","blue","red","green"),
 ```{r Lecture 3.b__Forecast results}
 summary(fit1)
 summary(fit2)
-# summary(fit3)
+summary(fit3)
 ```
 
 ### Lecture 3.c
