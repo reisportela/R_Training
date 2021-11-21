@@ -27,8 +27,8 @@ Here I am uploading my packages (code omitted).
 rm(list = ls())
 start_time <- Sys.time()  # calcular o tempo de execução do programa
 # update.packages()
-# setwd("/Users/miguelportela/Documents/GitHub/R_Training/paneldata")
-setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/paneldata")
+setwd("/Users/miguelportela/Documents/GitHub/R_Training/paneldata")
+# setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/paneldata")
 
 library(pacman)  #Package Management Tool
 
