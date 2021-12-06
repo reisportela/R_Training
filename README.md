@@ -40,11 +40,15 @@ File > New Project > Version Control > Git
 
 > Go to [https://codeocean.com](https://codeocean.com) and create a new capsule from [https://github.com/reisportela/R_Training](https://github.com/reisportela/R_Training)
 
-## 6. GitHub Codespaces
+## 6. WHOLETALE
 
-## 7. Install R & RStudio in your machine and download the [project](https://github.com/reisportela/R_Training/archive/refs/heads/master.zip)
+> Try it at [https://wholetale.org/](https://wholetale.org/)
 
-## 8. Other
+## 7. GitHub Codespaces
+
+## 8. Install R & RStudio in your machine and download the [project](https://github.com/reisportela/R_Training/archive/refs/heads/master.zip)
+
+## 9. Other
 
 <!--- SEE: https://www.dataschool.io/cloud-services-for-jupyter-notebook -->
 
@@ -66,7 +70,7 @@ File > New Project > Version Control > Git
 
 > [StarCluster](http://star.mit.edu/cluster/)
 
-## 9. Data
+## 10. Data
 
 - [Binder Examples](https://github.com/binder-examples)
 
