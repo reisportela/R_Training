@@ -130,11 +130,11 @@ File > New Project > Version Control > Git
 
 - Click in 'CREATE'
 
-![](media/SylabsCreate.png){width="1.2in"}
+![](media/SylabsCreate.png){width="0.7in"}
 
 - In the following step upload your '.def' file or copy/paste its contents in the Text box:
 
-![](media/SylabsBuildContainer.png){width="1.7in"}
+![](media/SylabsBuildContainer.png){width="0.7in"}
 
 - Sylabs runs a first test on the validity of your script and releases the button 'Build' (click on it)
 
@@ -158,7 +158,7 @@ File > New Project > Version Control > Git
 
 - Start RStudio by typping `rstudio` (small caps)
 
-![](media/Singularity_Terminal_Prompt.png){width="1.7in"}
+![](media/Singularity_Terminal_Prompt.png){width="0.7in"}
 
 
 
