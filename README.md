@@ -116,6 +116,56 @@ File > New Project > Version Control > Git
 
 
 
+# Build your container
+
+- You can write a script to build your container using our definition file template [container_BPLIM_RStudio_researchers.def](https://github.com/BPLIM/Manuals/tree/master/ExternalServer/container_BPLIM_RStudio_researchers.def) available at our [GitHub repository](https://github.com/BPLIM/Manuals/tree/master/ExternalServer)
+
+- In this template we setup a machine running Ubuntu 20.04, R 4.1 and RStudio 1.3.1093
+
+- You can add your packages in line 90 within `c()`; e.g.,
+
+> `c("tidyverse","haven")`
+
+- Test your script and build the container using [SylabsCloud](https://cloud.sylabs.io/) (you can use your GitHub account to login)
+
+- Click in 'CREATE'
+
+![](media/SylabsCreate.png){width="1.2in"}
+
+- In the following step upload your '.def' file or copy/paste its contents in the Text box:
+
+![](media/SylabsBuildContainer.png){width="1.7in"}
+
+- Sylabs runs a first test on the validity of your script and releases the button 'Build' (click on it)
+
+- Follow the outcome at the bottom of the screen and check for possible error messages
+
+- Once you succeed in building the container, you cand send us the definition file with your changes
+
+### Use the container in BPLIM's server
+
+- Open a `Terminal`
+
+- Move to your project's folder
+
+> `cd /bplimext/projects/YOURPROJECTID/tools/containers`
+
+- Start the container by typing
+
+> `singularity shell YOURPROJECTID.sif`
+
+- The prompt of the `Terminal` will show: `Singularity`
+
+- Start RStudio by typping `rstudio` (small caps)
+
+![](media/Singularity_Terminal_Prompt.png){width="1.7in"}
+
+
+
+- Once inside RStudio you have access to the original folder structure of your project
+
+
+
 <!-- https://lamadon.com/computing.html -->
 
 <!--
