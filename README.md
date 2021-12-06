@@ -130,17 +130,17 @@ File > New Project > Version Control > Git
 
 - Click in 'CREATE'
 
-![](media/SylabsCreate.png){width="0.7in"}
+![](media/SylabsCreate.png)
 
 - In the following step upload your '.def' file or copy/paste its contents in the Text box:
 
-![](media/SylabsBuildContainer.png){width="0.7in"}
+![](media/SylabsBuildContainer.png)
 
 - Sylabs runs a first test on the validity of your script and releases the button 'Build' (click on it)
 
 - Follow the outcome at the bottom of the screen and check for possible error messages
 
-- Once you succeed in building the container, you cand send us the definition file with your changes
+- Once you succeed in building the container, you can send us the definition file with your changes
 
 ### Use the container in BPLIM's server
 
@@ -158,7 +158,7 @@ File > New Project > Version Control > Git
 
 - Start RStudio by typping `rstudio` (small caps)
 
-![](media/Singularity_Terminal_Prompt.png){width="0.7in"}
+![](media/Singularity_Terminal_Prompt.png)
 
 
 
