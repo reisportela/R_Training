@@ -70,6 +70,10 @@ File > New Project > Version Control > Git
 
 > [StarCluster](http://star.mit.edu/cluster/)
 
+> [Galileo](https://hypernetlabs.io/galileo/)
+
+> [WholeTale](https://wholetale.org/)
+
 ## 10. Data
 
 - [Binder Examples](https://github.com/binder-examples)
