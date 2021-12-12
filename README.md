@@ -40,11 +40,15 @@ File > New Project > Version Control > Git
 
 > Go to [https://codeocean.com](https://codeocean.com) and create a new capsule from [https://github.com/reisportela/R_Training](https://github.com/reisportela/R_Training)
 
-## 6. GitHub Codespaces
+## 6. WHOLETALE
 
-## 7. Install R & RStudio in your machine and download the [project](https://github.com/reisportela/R_Training/archive/refs/heads/master.zip)
+> Try it at [https://wholetale.org/](https://wholetale.org/)
 
-## 8. Other
+## 7. GitHub Codespaces
+
+## 8. Install R & RStudio in your machine and download the [project](https://github.com/reisportela/R_Training/archive/refs/heads/master.zip)
+
+## 9. Other
 
 <!--- SEE: https://www.dataschool.io/cloud-services-for-jupyter-notebook -->
 
@@ -66,7 +70,7 @@ File > New Project > Version Control > Git
 
 > [StarCluster](http://star.mit.edu/cluster/)
 
-## 9. Data
+## 10. Data
 
 - [Binder Examples](https://github.com/binder-examples)
 
@@ -109,6 +113,56 @@ File > New Project > Version Control > Git
 - [American Economic Association::Journal Data and Program Archives / Replication Studies](https://www.aeaweb.org/rfe/showCat.php?cat_id=9)
 
 - check [Datasets list in EEG's website](https://www.eeg.uminho.pt/en/investigar/recursos/Pages/default.aspx)
+
+
+
+# Build your container
+
+- You can write a script to build your container using our definition file template [container_BPLIM_RStudio_researchers.def](https://github.com/BPLIM/Manuals/tree/master/ExternalServer/container_BPLIM_RStudio_researchers.def) available at our [GitHub repository](https://github.com/BPLIM/Manuals/tree/master/ExternalServer)
+
+- In this template we setup a machine running Ubuntu 20.04, R 4.1 and RStudio 1.3.1093
+
+- You can add your packages in line 90 within `c()`; e.g.,
+
+> `c("tidyverse","haven")`
+
+- Test your script and build the container using [SylabsCloud](https://cloud.sylabs.io/) (you can use your GitHub account to login)
+
+- Click in 'CREATE'
+
+![](media/SylabsCreate.png)
+
+- In the following step upload your '.def' file or copy/paste its contents in the Text box:
+
+![](media/SylabsBuildContainer.png)
+
+- Sylabs runs a first test on the validity of your script and releases the button 'Build' (click on it)
+
+- Follow the outcome at the bottom of the screen and check for possible error messages
+
+- Once you succeed in building the container, you can send us the definition file with your changes
+
+### Use the container in BPLIM's server
+
+- Open a `Terminal`
+
+- Move to your project's folder
+
+> `cd /bplimext/projects/YOURPROJECTID/tools/containers`
+
+- Start the container by typing
+
+> `singularity shell YOURPROJECTID.sif`
+
+- The prompt of the `Terminal` will show: `Singularity`
+
+- Start RStudio by typping `rstudio` (small caps)
+
+![](media/Singularity_Terminal_Prompt.png)
+
+
+
+- Once inside RStudio you have access to the original folder structure of your project
 
 
 

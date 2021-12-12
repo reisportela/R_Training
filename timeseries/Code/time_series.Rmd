@@ -18,7 +18,7 @@ output:
 ### Setup
 
 ```{r setup}
-knitr::opts_chunk$set(include = TRUE)
+knitr::opts_chunk$set(warning = FALSE, echo = TRUE)
 # install.packages('pacman')  # Package Management Tool
 #install.packages('fpp3', dependencies = TRUE)
 rm(list=ls())
@@ -243,13 +243,13 @@ newdata = data.frame(lassess=250)
 > Interval estimate on a single future observation
 
 ```{r Lecture 2.c__Interval estimate on a single future observation}
-pred.1 <- predict(lm.r5, newdata, level = 0.90, interval="predict")
+pred.1 <- predict(lm.r5, newdata, level = 0.95, interval="predict")
 # lines(newdata,pred.1[,c("lwr","upr")],col="blue",lty=1,type="l")
 ```
 
 > Plot prediction interval
 
-```{r Lecture 2.c__Plot prediction interval}
+```{r Lecture 2.c__Plot prediction interval, warning=FALSE}
 conf.2 <- predict(lm.r5, level = 0.95, interval="confidence")
 pred.2 <- predict(lm.r5, level = 0.95, interval="predict")
 fitted = pred.2[,1]
