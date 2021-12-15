@@ -167,6 +167,11 @@ File > New Project > Version Control > Git
 - Once inside RStudio you have access to the original folder structure of your project
 
 
+# Reproducibility
+
+- [AER: Use of Docker for Reproducibility in Economics](https://aeadataeditor.github.io/posts/2021-11-16-docker)
+
+- [AER: Creating a Stata project with automated Docker builds](https://github.com/AEADataEditor/stata-project-with-docker)
 
 <!-- https://lamadon.com/computing.html -->
 
