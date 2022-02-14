@@ -204,3 +204,77 @@ Xie, Y., Allaire, J.J. and Grolemund, G., 2018. *R markdown: The definitive guid
 [https://bookdown.org/yihui/rmarkdown/](https://bookdown.org/yihui/rmarkdown/)
 
 -->
+
+
+# Projeto em Economia Aplicada
+
+## Install R in your computer
+
+### Alternative A:
+
+1. Instal [R](https://cran.r-project.org/bin/windows/base/)
+2. Install [RStudio IDE](https://www.rstudio.com/products/rstudio/download/)
+
+### Alternative B:
+
+- Install [Anaconda](https://www.anaconda.com/)
+
+**or** Run R using online services: see the discussion [here](https://github.com/reisportela/R_Training)
+
+
+## R Training
+
+> **Author**: Nelson Areal/U Minho - [https://nelsonareal.net/](https://nelsonareal.net/)
+
+> February 2022
+
+
+## SECTION A. Introduction to R
+
+### STEPS:
+
+A.1. Go to Nelson's `Introduction to R' and explore its contents: [https://intro2r.nelsonareal.net/en](https://intro2r.nelsonareal.net/en)
+
+A.2. Create a profile and login to RStudio Cloud: [https://rstudio.cloud/](https://rstudio.cloud/)
+
+	- You can use your Gmail or GitHub account
+
+A.3. Run the following two session in RStudio Cloud
+
+A.3.1. Session 1: [https://nareal.net/g-intro2r-s1](https://nareal.net/g-intro2r-s1)
+
+A.3.2. Session 2: [http://nareal.net/g-intro2r-s2](http://nareal.net/g-intro2r-s2)
+
+
+## SECTION B. Data visualisation with R
+
+### Run the following two sessions in RStudio Cloud:
+
+B.1. Session 1: [http://nareal.net/g-dv-s1](http://nareal.net/g-dv-s1)
+
+B.2. Session 2: [http://nareal.net/g-dv-s2](http://nareal.net/g-dv-s2)
+
+
+
+# Building a Dashboard with R
+
+- See the outcome [here](http://www1.eeg.uminho.pt/economia/mangelo/R_Dashboard.html)
+
+ #### Explore the following links:
+ 
+- [https://rstudio.github.io/flexdashboard/articles/examples.html](https://rstudio.github.io/flexdashboard/articles/examples.html)
+
+- [https://rstudio.github.io/flexdashboard/articles/using.html](https://rstudio.github.io/flexdashboard/articles/using.html)
+
+- [https://pkgs.rstudio.com/flexdashboard/](https://pkgs.rstudio.com/flexdashboard/)
+
+
+# REFERENCES
+
+1. [R for Data Science](https://r4ds.had.co.nz/)
+5. [R Graphics Cookbook](https://r-graphics.org/)
+6. [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/)
+2. [How to Choose the Right Data Visualization](https://chartio.com/learn/charts/how-to-choose-data-visualization/)
+4. [Practical Statistics for Data Scientists](https://www.oreilly.com/library/view/practical-statistics-for/9781491952955/)
+9. [A Visual Guide to Stata Graphics](https://www.stata.com/bookstore/visual-guide-to-stata-graphics/)
+3. [Causal Inference: The Mixtape](https://mixtape.scunning.com/introduction.html)
