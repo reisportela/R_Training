@@ -4,10 +4,10 @@
 # SEE: https://rstudio-pubs-static.s3.amazonaws.com/240657_5157ff98e8204c358b2118fa69162e18.html
 
 # setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/regression")
-# setwd('/Users/miguelportela/Documents/GitHub/R_Training/regression')
+setwd('/Users/miguelportela/Documents/GitHub/R_Training/regression')
+# setwd("C:\\Users\\mangelo.EEG\\Documents\\GitHub\\R_Training\\regression")
 
-setwd("C:\\Users\\mangelo.EEG\\Documents\\GitHub\\R_Training\\regression")
-
+gc()
 rm(list = ls())
 
 # LOG FILE
@@ -38,6 +38,10 @@ library(lmtest)
 library(sandwich)
 library(car)
 library(broom)
+library(here)
+
+here()
+
 
 # DATA
 
