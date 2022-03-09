@@ -1,0 +1,96 @@
+---
+title: "(Fast) Introduction to R"
+author: "Miguel Portela"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output:
+  beamer_presentation: default
+  ioslides_presentation: default
+  slidy_presentation: default
+  pdf_document: default
+subtitle: Jump into a notebook
+theme: Warsaw
+header-includes:
+- \usepackage{hyperref}
+- \hypersetup{ colorlinks=true, linkcolor=red, urlcolor=blue, }
+---
+
+## My beamer
+
+> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et elit blandit, ultrices nulla a, volutpat lacus. Praesent arcu risus, varius id varius commodo, auctor ac purus. Nam quis turpis a eros tempus molestie lobortis sed quam. Maecenas volutpat lacus in enim iaculis, scelerisque aliquam arcu rhoncus. Cras arcu nisi, accumsan vel accumsan sed, imperdiet eu sem. Vivamus ultrices convallis mi, ut vestibulum nibh imperdiet eu. Ut ac nisi lectus. Aenean hendrerit, nisi at commodo vulputate, sem neque sodales ante, id facilisis nibh dui et odio.
+
+<!-- ## Setup -->
+
+```{r setup, echo=FALSE, include=FALSE}
+library(knitr)
+# knitr::opts_chunk$set(echo = TRUE)
+library(haven)
+library(rmarkdown)
+library(writexl)
+library(Hmisc)
+library(naniar)
+library(here)
+
+rm(list = ls())
+here()
+getwd()
+
+HOME <- "B:\\GitHub\\R_Training\\RIntro"
+  setwd(HOME)
+
+```
+
+<!-- ## Load your libraries -->
+
+```{r Libraries & Data, echo=FALSE,results='hide',message=FALSE}
+library(tidyverse)
+library(readxl)
+library(visdat)
+library(stargazer)
+
+```
+## Outline
+
+1. Motivation
+2. Data
+3. Conceptual discussion
+
+
+## Load your data
+
+Using point and click
+
+![Point and click](media/point_click.png){width=31%}
+
+which corresponds to the following code
+
+```{r}
+nlswork <- read_excel("nlswork.xlsx")
+df <- as.data.frame(nlswork)
+
+```
+
+## Statistics
+
+
+```{r, echo = FALSE, results='asis'}
+    df %>%
+      dplyr::select(collgrad,ttl_exp,hours) %>% 
+      stargazer(title="Shorter statistics",
+      summary.stat(c(max,mean)),
+      type= "latex",
+      covariate.labels = c("Collage Graduate","Experience","Hours"),
+      digits = 2, header = FALSE)
+```
+
+## My histogram
+
+```{r echo=FALSE, warning=FALSE, results='asis'}
+df %>% 
+      ggplot(aes(ttl_exp,ln_wage)) +
+      labs(title = "Ln Wage vs. Experience") +
+      ylab("Ln Wage") +
+      xlab("Experience") +
+      geom_point()
+
+```
+
