@@ -49,8 +49,8 @@ library(here)
 ```{r}
 # CHECK: https://scpoecon.github.io/ScPoEconometrics/
 
-setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/regression")
-# setwd('/Users/miguelportela/Documents/GitHub/R_Training/regression')
+# setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/regression")
+setwd('/Users/miguelportela/Documents/GitHub/R_Training/regression')
 # setwd("C:/GitHub/R_Training/regression")
 
 # LOG FILE
@@ -74,7 +74,7 @@ dplyr::glimpse(world_data$logGDPpc2000)
 ExpData(world_data,type=1)
 ExpData(world_data,type=2)
 
-eda_report(world_data,output_file = "eda_world_data.html", output_format = "html")
+# eda_report(world_data,output_file = "eda_world_data.html", output_format = "html")
 
 # STATISTICS
 
