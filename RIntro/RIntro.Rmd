@@ -2,11 +2,6 @@
 title: "(Fast) Introduction to R"
 author: "Miguel Portela"
 date: "`r format(Sys.time(), '%d %B %Y')`"
-output:
-  beamer_presentation: default
-  ioslides_presentation: default
-  slidy_presentation: default
-  pdf_document: default
 subtitle: Jump into a notebook
 theme: Warsaw
 header-includes:
@@ -34,7 +29,7 @@ rm(list = ls())
 here()
 getwd()
 
-HOME <- "B:\\GitHub\\R_Training\\RIntro"
+HOME <- "/Users/miguelportela/Documents/GitHub/R_Training/RIntro"
   setwd(HOME)
 
 ```
@@ -48,41 +43,192 @@ library(visdat)
 library(stargazer)
 
 ```
-## Outline
+# Outline
 
 1. Motivation
 2. Data
 3. Conceptual discussion
 
 
-## Load your data
+# 3. Import data (from an excel file)
 
-Using point and click
+## Load your data using point and click
 
 ![Point and click](media/point_click.png){width=31%}
 
 which corresponds to the following code
 
 ```{r}
-nlswork <- read_excel("nlswork.xlsx")
+nlswork <- as.data.frame(read_excel("nlswork.xlsx"))
+# nlswork <- read_dta("nlswork.dta") # in case you have a Stata data source
+
+```
+
+## 3.2. Define the object as a DataFrame
+
+```{r}
 df <- as.data.frame(nlswork)
 
 ```
 
-## Statistics
+
+# 4. Data manipulation -- check the pipe operator, %>%
+
+
+## 4.1. Select a subset of variables
+
+```{r}
+nlswork_s<- nlswork %>% 
+  select(idcode, ln_wage) 
+
+```
+
+## 4.2. Rename variables
+
+```{r}
+nlswork_r <- nlswork %>% 
+  rename(cae = ind_code)
+
+```
+
+## 4.3. Filter a subset of observations
+
+```{r}
+nlswork_f<- nlswork %>% 
+  filter(age > 40) 
+
+```
+
+## 4.4. Mutate: create variables
+
+```{r}
+# nlswork_m <- nlswork %>% 
+#   mutate(ln_asd=ln(age))
+
+```
+
+## 4.5. Manipulate the data in a single sequence
+
+```{r}
+nlswork1<- nlswork %>% 
+  rename(cae = ind_code) %>%
+  select(idcode, ln_wage, age) %>% 
+  filter(age > 40) %>%
+  mutate(age2=age^2)
+
+```
+
+
+# 5. Descriptive statistics
+
+```{r}
+# install.packages("stargazer")
+library(stargazer)
+df %>% 
+  count()
+
+summary(df)
+table(df$race, df$collgrad)
+str(df)
+
+```
 
 
 ```{r, echo = FALSE, results='asis'}
     df %>%
       dplyr::select(collgrad,ttl_exp,hours) %>% 
       stargazer(title="Shorter statistics",
-      summary.stat(c(max,mean)),
-      type= "latex",
+      type= "text",
+      out = "Stats.html",
       covariate.labels = c("Collage Graduate","Experience","Hours"),
-      digits = 2, header = FALSE)
+      digits = 2, summary.stat = c("min","mean","sd","max"),
+      header = FALSE)
 ```
 
-## My histogram
+## 5.1. Export descriptive statistics table to html, with 2 digits
+
+```{r}
+nlswork %>%
+  dplyr::select(age, collgrad, ttl_exp, union, hours) %>% 
+  stargazer(title="Shorter statistics",
+            type= "text", out = "Statistics_output.html",
+            digits = 2)
+
+```
+
+## 5.2. Export descriptive statistics table to txt, with 3 digits
+
+```{r}
+nlswork %>%
+  dplyr::select(age, collgrad, ttl_exp, union, hours) %>% 
+  stargazer(title="Shorter statistics",
+            type= "text", out = "Statistics_output.txt",
+            digits = 3)
+
+```
+
+## 5.3. Transposing the descriptive statistics table
+
+```{r}
+nlswork %>%
+  dplyr::select(age, collgrad, ttl_exp, union, hours) %>% 
+  stargazer(title="Shorter statistics",
+            type= "text", out = "Statistics_output2.txt",
+            digits = 3, flip=TRUE)
+
+```
+
+
+
+# 6. Visualize missing information:
+
+<!-- # https://cran.r-project.org/web/packages/naniar/vignettes/naniar-visualisation.htmlhttps://cran.r-project.org/web/packages/naniar/vignettes/naniar-visualisation.html -->
+
+```{r}
+# install.packages("visdat")
+# install.packages("naniar")
+library(naniar)
+vis_miss(nlswork)
+
+```
+
+```{r}
+gg_miss_var(nlswork) + labs(y = "Total missing values for each variable")
+gg_miss_upset(nlswork)
+
+```
+
+```{r}
+n_var_miss(nlswork)
+
+ggplot(nlswork,aes(x=age,y=ln_wage))+
+  geom_point()
+
+ggplot(nlswork,aes(x=age,y=ln_wage))+
+  geom_miss_point()
+
+ggplot(nlswork,aes(x=age,y=ln_wage))+
+  geom_miss_point() +
+  facet_wrap(~race)
+
+gg_miss_fct(x = nlswork,fct = year)
+
+```
+
+
+### Alternative
+
+```{r}
+library(visdat)
+vis_dat(nlswork)
+
+```
+
+# 7. Visualisation to explore your data
+
+## 7.1. Categorical variable
+
+### My histogram
 
 ```{r echo=FALSE, warning=FALSE, results='asis'}
 df %>% 
@@ -92,5 +238,39 @@ df %>%
       xlab("Experience") +
       geom_point()
 
+```
+
+```{r}
+ggplot(data = nlswork) +
+  geom_bar(mapping=aes(x=as.factor(collgrad))) +
+  xlab("College graduate (1=Yes)")
+
+nlswork %>% 
+  count(collgrad)
+```
+
+  
+## 7.2. Continuous variable
+
+```{r}
+ggplot(data = nlswork) +
+  geom_histogram(mapping = aes(x = wks_work), binwidth = 0.5)
+
+```
+
+## 7.3 Categorical and continuous variables
+
+```{r}
+df %>% ggplot(aes(x=as.factor(collgrad), y=ln_wage)) +
+  geom_boxplot(fill="slateblue", alpha=0.2) + 
+  xlab("College graduate (1=Yes)")
+```
+
+```{r,warning=FALSE}
+df %>% ggplot(mapping = aes(x = ln_wage, y = ..density..)) +
+    xlab("ln(wage)") +
+    ylab("Density") +
+    geom_freqpoly(mapping = aes(colour = factor(collgrad, labels=c("No", "Yes")))) +
+  labs(color ="College degree")
 ```
 
