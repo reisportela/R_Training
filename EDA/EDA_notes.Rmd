@@ -21,8 +21,8 @@ output:
   library(haven)
   library(readxl)
 
-Sys.setenv("plotly_username"="theomitsa")
-Sys.setenv("plotly_api_key"="Ojps7ld5FByuyrpKV2zC")
+Sys.setenv("plotly_username"="reisportela")
+Sys.setenv("plotly_api_key"="3bwfj4aFVl7VcTphTddJ")
 
 ```
 
@@ -84,13 +84,14 @@ dupj
 ```{r}
 library(DataExplorer)
 introduce(sal)
-
+introduce(df)
 ```
 
 ### For each column print the number of missing cases
 
 ```{r}
 apply(apply(sal,2,is.na),2,sum)
+apply(apply(df,2,is.na),2,sum)
 
 ```
 
@@ -98,6 +99,7 @@ apply(apply(sal,2,is.na),2,sum)
 
 ```{r}
 sal[!complete.cases(sal),]
+df[!complete.cases(df),]
 
 ```
 
@@ -105,6 +107,7 @@ sal[!complete.cases(sal),]
 
 ```{r}
 summary(sal)
+summary(df)
 
 ```
 
@@ -113,6 +116,7 @@ summary(sal)
 ```{r}
 library(psych)
 psych::describe(sal)
+psych::describe(df)
 
 ```
 
@@ -121,7 +125,10 @@ psych::describe(sal)
 ```{r}
 library(dataMaid)
 summarize(sal)
-makeDataReport(sal, replace=TRUE,output="gg.html")
+makeDataReport(sal, replace=TRUE,output="dM_sal.html")
+
+summarize(df)
+makeDataReport(df, replace=TRUE,output="dM_nlswork.html")
 
 ```
 
@@ -131,6 +138,7 @@ makeDataReport(sal, replace=TRUE,output="gg.html")
 library(summarytools)
 dfSummary(sal)
 
+dfSummary(df)
 ```
 
 ```{r}
@@ -138,30 +146,36 @@ library(inspectdf)
 inspect_num(sal)
 inspect_cat(sal)
 
+inspect_num(df)
+inspect_cat(df)
 ```
 
 ```{r}
 library(prettyR)
 prettyR::describe(sal)
 
+prettyR::describe(df)
 ```
 
 ```{r}
 library(Hmisc)
 Hmisc::describe(sal)
 
+Hmisc::describe(df)
 ```
 
 ```{r}
 library(funModeling)
 profiling_num(sal)
 
+profiling_num(df)
 ```
 
 ```{r}
 library(skimr)
 skim(sal)
 
+skim(df)
 ```
 
 ## Univariate Group Statistics
@@ -170,6 +184,7 @@ skim(sal)
 ```{r}
 tapply(sal$salary,sal$sex,mean,na.rm=TRUE)
 
+tapply(df$ln_wage,df$union,mean,na.rm=TRUE)
 ```
 
 > Within groups, print detailed statistical information of the var under examination.
@@ -178,6 +193,7 @@ tapply(sal$salary,sal$sex,mean,na.rm=TRUE)
 library(psych)
 describeBy(sal$salary,group=sal$sex)
 
+describeBy(df$ln_wage,group=df$union)
 ```
 
 ### Use dplyr functions
@@ -186,7 +202,12 @@ describeBy(sal$salary,group=sal$sex)
 newgroup<-sal%>%filter(discipline=='A')%>%
   group_by(sex,rank)%>%summarise(Avgsal=mean(salary))
 
-newgroup
+  newgroup
+
+newgroup<-df%>%filter(south==1)%>%
+  group_by(union,collgrad)%>%summarise(Avgsal=mean(grade))
+
+  newgroup
 
 ```
 
@@ -196,6 +217,8 @@ newgroup
 ggplot(sal,aes(sex,salary))+geom_boxplot()
 ggplot(sal,aes(x=rank, fill=sex))+geom_bar()
 
+ggplot(df,aes(collgrad,age))+geom_boxplot()
+ggplot(df,aes(x=collgrad, fill=union))+geom_bar()
 ```
 
 ### BIVARIATE STATISTICS
@@ -204,9 +227,15 @@ ggplot(sal,aes(x=rank, fill=sex))+geom_bar()
 
 ```{r}
 library(plotly)
+## CHECK 'API' here: https://plotly.com/r/getting-started-with-chart-studio/
+
 gg1<-ggplot(na.omit(sal), aes(salary,yrs.since.phd, col=sex))+geom_point()+geom_smooth(method=lm)
 p1<-ggplotly(gg1)
 api_create(p1,filename="plot of salary vs yrs.since.phd")
+
+# gg2<-ggplot(na.omit(df), aes(ln_wage,hours, col=south))+geom_point()+geom_smooth(method=lm)
+# p2<-ggplotly(gg2)
+# api_create(p2,filename="plot of ln_wage vs hours")
 
 ```
 
@@ -231,9 +260,14 @@ library(plotly)
 ```{r}
 sal1<-select_if(sal, is.numeric)
 cor(na.omit(sal1))
+
 library(stats)
 cor.test(sal1$salary,sal1$yrs.service)
 
+df1<-select_if(df, is.numeric)
+cor(na.omit(df1))
+
+cor.test(df1$ln_wage,df1$age)
 ```
 
 ## Correlation plots
@@ -245,6 +279,9 @@ library(corrplot)
 cc<-cor(na.omit(sal1))
 corrplot(cc,method="pie")
 
+ss<-cor(na.omit(df1))
+corrplot(ss,method="pie")
+
 ```
 
 ### PerformanceAnalytics package
@@ -253,6 +290,7 @@ corrplot(cc,method="pie")
 library(PerformanceAnalytics)
 chart.Correlation(sal1, histogram=TRUE, pch=19)
 
+# chart.Correlation(df1, histogram=TRUE, pch=19)
 ```
 
 ### ggcorrplot package
@@ -262,6 +300,8 @@ library(ggcorrplot)
 ggcorrplot(cor(na.omit(sal1)), p.mat = cor_pmat(na.omit(sal1)), hc.order=TRUE, type='lower')
 cor_pmat(na.omit(sal1))
 
+ggcorrplot(cor(na.omit(df1)), p.mat = cor_pmat(na.omit(df1)), hc.order=TRUE, type='lower')
+cor_pmat(na.omit(df1))
 ```
 
 ## ALL INCLUSIVE CORRELATION
@@ -272,6 +312,7 @@ cor_pmat(na.omit(sal1))
 library(DataExplorer)
 plot_correlation(sal)
 
+plot_correlation(df)
 ```
 
 ### psych package
@@ -280,6 +321,7 @@ plot_correlation(sal)
 library(psych)
 pairs.panels(sal,bg=c("yellow","blue")[sal$sex],pch=21, cex.cor=6, scale=TRUE)
 
+# pairs.panels(df,bg=c("yellow","blue")[df$collgrad],pch=21, cex.cor=6, scale=TRUE)
 ```
 
 ### GGally package
@@ -288,6 +330,7 @@ pairs.panels(sal,bg=c("yellow","blue")[sal$sex],pch=21, cex.cor=6, scale=TRUE)
 library(GGally)
 ggpairs(sal)
 
+# ggpairs(df)
 ```
 
 ### Test of Independence
@@ -295,10 +338,16 @@ ggpairs(sal)
 ```{r}
 table(sal$rank)
 table(sal$rank,sal$sex)
+
+table(df$south)
+table(df$south,df$union)
+
 library(gmodels)
 t2<-CrossTable(sal$rank,sal$sex,chisq=TRUE,fisher=TRUE)
 t2
 
+a2<-CrossTable(df$south,df$union,chisq=TRUE,fisher=TRUE)
+a2
 ```
 
 
@@ -311,6 +360,11 @@ filtered2<-filter(sal, sex=='Female')
 c2<-(filtered2[6])
 t.test(c1,c2)
 
+filtered<-filter(df, union==1)
+c1<-(filtered[6])
+filtered2<-filter(df, union==0)
+c2<-(filtered2[6])
+t.test(c1,c2)
 ```
 
 ### T-test with rank as the fixed effect
@@ -369,6 +423,9 @@ saldata<-na.omit(sal1)
 salr <- saldata[,c("yrs.service", "salary")]
 #OutlierDetection(salr)
 
+df1<-select(df,ln_wage,collgrad)
+dfdata <- df1 %>% select(c(collgrad,ln_wage)) %>% na.omit()
+dfr <- dfdata[,c("collgrad", "ln_wage")]
 ```
 
 ### Package Chemometrics
@@ -381,6 +438,11 @@ names(mahal_dist) <- 1:nrow(saldata)
 ff<-sort(mahal_dist, decreasing = TRUE)
 ff
 
+# kk<-Moutlier(dfdata)
+# mahal_dist<-kk$south
+# names(mahal_dist) <- 1:nrow(dfdata)
+# ff<-sort(mahal_dist, decreasing = TRUE)
+# ff
 ```
 
 ### Package Mvoutlier
@@ -403,6 +465,7 @@ out$outliers
 library(DataExplorer)
 create_report(sal,y="salary")
 
+create_report(df,y="ln_wage")
 ```
 
 ## AEDA
@@ -413,6 +476,8 @@ library(AEDA)
 fastReport(data=sal)
 rmarkdown::render("MainReport.rmd")
 
+fastReport(data=df)
+rmarkdown::render("MainReport_nlswork.rmd")
 ```
 
 ## ExPanDaR
@@ -421,6 +486,7 @@ rmarkdown::render("MainReport.rmd")
 library(ExPanDaR)
 ExPanD(sal)
 
+ExPanD(df)
 ```
 
 ## RtutoR
