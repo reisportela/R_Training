@@ -73,7 +73,7 @@ library(janitor)
 dupj<-get_dupes(sal)
 dupj
 
-dupj<-get_dupes(df$idcode)
+dupj<-get_dupes(df)
 dupj
 ```
 

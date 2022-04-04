@@ -1,0 +1,18 @@
+## Correlation Summary Report
+
+```{r loadCorrObj_corr.result, echo = FALSE, message = FALSE, warning = FALSE}
+if (!require("stats",character.only = TRUE)) {
+    install.packages("stats",dep=TRUE)
+    if(!require("stats",character.only = TRUE)) stop("Package not found")
+    }
+if (!require("GGally",character.only = TRUE)) {
+    install.packages("GGally",dep=TRUE)
+    if(!require("GGally",character.only = TRUE)) stop("Package not found")
+    }
+corr.result = readRDS("corr.result.rds")
+```
+### Correlation Plot
+This Plot shows the `r corr.result$method` correlation for interval scaled variables. The size and color of the circles indicate the strength of the correlation.
+```{r, echo=FALSE}
+ggcorr(data = NULL, cor_matrix = corr.result$corr.matrix, geom = "circle", nbreaks = 10)
+```

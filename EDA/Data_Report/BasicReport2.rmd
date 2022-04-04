@@ -1,0 +1,36 @@
+## Basic Summary Report
+
+```{r loadBasicSumObj_basic.task, echo = FALSE, message = FALSE, warning = FALSE}
+basic.task = readRDS("basic.task.rds")
+if (!require("knitr",character.only = TRUE)) {
+    install.packages("knitr",dep=TRUE)
+    if(!require("knitr",character.only = TRUE)) stop("Package not found")
+    }
+if (!require("kableExtra",character.only = TRUE)) {
+    install.packages("kableExtra",dep=TRUE)
+    if(!require("kableExtra",character.only = TRUE)) stop("Package not found")
+    }
+if (!require("DT",character.only = TRUE)) {
+    install.packages("DT",dep=TRUE)
+    if(!require("DT",character.only = TRUE)) stop("Package not found")
+    }
+```
+### Basic Summary
+
+The dataset `r basic.task$task$dataset.name ` is `r object.size(basic.task$task$env$data) `  megabytes in size.
+In total there are `r basic.task$task$size ` observations, `r basic.task$basic.data.summary$basic.summary.list$NAs ` missing values and `r basic.task$basic.data.summary$basic.summary.list$dim ` columns.
+
+### Missing Value Summary
+
+```{r NA_summary_basic.task, echo = FALSE, message = FALSE, warning = FALSE}
+if (!is.null(basic.task$na.summary$na.df)) {
+#kable(basic.task$na.summary$na.df, caption = 'Missing Value Summary', format = 'html') %>% kable_styling(full_width = TRUE)
+datatable(basic.task$na.summary$na.df, rownames = FALSE, filter = 'bottom', options = list(
+  pageLength = 5, autoWidth = TRUE))
+} 
+
+if (!is.null(basic.task$na.summary$image)) {
+print(basic.task$na.summary$ggplot)
+  basic.task$na.summary$image()
+}
+```
