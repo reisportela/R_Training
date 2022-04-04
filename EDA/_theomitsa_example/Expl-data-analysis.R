@@ -4,6 +4,7 @@ Sys.setenv("plotly_username"="theomitsa")
 Sys.setenv("plotly_api_key"="Ojps7ld5FByuyrpKV2zC")
 
 ########## READ THE INPUT FILE ##############
+setwd("/Users/miguelportela/Documents/GitHub/R_Training/EDA/_theomitsa_example")
 sal<-read.csv("Salaries2.csv",header=TRUE)
 
 ######################QUICK DATAFRAME CHECK####################

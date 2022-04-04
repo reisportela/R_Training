@@ -1,0 +1,40 @@
+---
+title: "AEDA Report"
+date: "01 Abril 2022"
+output:
+  html_document:
+    theme: cosmo
+    toc: TRUE
+    toc_depth: 2
+    df_print: paged
+---
+## Abstract
+
+This exploratory data analysis report was created by the R package
+<a href='https://github.com/ptl93/AEDA' target='_blank'>AEDA</a>.
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+try(library(AEDA))
+try(devtools::load_all())
+```
+```{r BasicReport_basic.task, child = "Data_Report/BasicReport3.rmd"}
+```
+
+```{r NumericReport_num.sum.result, child = "Data_Report/NumSumReport3.rmd"}
+```
+
+```{r CorrPlot_corr.result, child = "Data_Report/CorrReport3.rmd"}
+```
+
+```{r ClusterAnalysisReport_cluster.analysis.result, child = "Data_Report/ClusterAnalysisReport3.rmd"}
+```
+
+```{r PCAReport_pca.result, child = "Data_Report/PCAReport3.rmd"}
+```
+
+```{r MSDAnalysisReport_mds.analysis.result, child = "Data_Report/MDSAnalysisReport3.rmd"}
+```
+
+```{r FAReport_fa.result, child = "Data_Report/FactorAnalysisReport3.rmd"}
+```
+
