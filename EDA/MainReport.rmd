@@ -17,24 +17,24 @@ This exploratory data analysis report was created by the R package
 try(library(AEDA))
 try(devtools::load_all())
 ```
-```{r BasicReport_basic.task, child = "Data_Report/BasicReport5.rmd"}
+```{r BasicReport_basic.task, child = "Data_Report/BasicReport6.rmd"}
 ```
 
-```{r NumericReport_num.sum.result, child = "Data_Report/NumSumReport5.rmd"}
+```{r NumericReport_num.sum.result, child = "Data_Report/NumSumReport6.rmd"}
 ```
 
-```{r CorrPlot_corr.result, child = "Data_Report/CorrReport5.rmd"}
+```{r CorrPlot_corr.result, child = "Data_Report/CorrReport6.rmd"}
 ```
 
-```{r ClusterAnalysisReport_cluster.analysis.result, child = "Data_Report/ClusterAnalysisReport5.rmd"}
+```{r ClusterAnalysisReport_cluster.analysis.result, child = "Data_Report/ClusterAnalysisReport6.rmd"}
 ```
 
-```{r PCAReport_pca.result, child = "Data_Report/PCAReport5.rmd"}
+```{r PCAReport_pca.result, child = "Data_Report/PCAReport6.rmd"}
 ```
 
-```{r MSDAnalysisReport_mds.analysis.result, child = "Data_Report/MDSAnalysisReport5.rmd"}
+```{r MSDAnalysisReport_mds.analysis.result, child = "Data_Report/MDSAnalysisReport6.rmd"}
 ```
 
-```{r FAReport_fa.result, child = "Data_Report/FactorAnalysisReport5.rmd"}
+```{r FAReport_fa.result, child = "Data_Report/FactorAnalysisReport6.rmd"}
 ```
 
