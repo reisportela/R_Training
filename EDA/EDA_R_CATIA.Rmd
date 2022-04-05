@@ -1,0 +1,642 @@
+---
+title: 'R Notebook: EDA'
+author: "Miguel Portela (U Minho) - v.Cátial"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+  word_document: default
+---
+
+<!-- # 0. Setup -->
+
+<!-- ## 0.1. Clear memory & Load libraries -->
+
+```{r, setup, echo=FALSE, include=FALSE}
+  gc()
+  rm(list = ls())
+  knitr::opts_knit$set(root.dir = 'C:/Users/exu0o9/Documents/GitHub/R_Training/EDA')
+  library(tidyverse)
+  library(haven)
+  library(readxl)
+  library(writexl)
+  library(Hmisc)
+  library(stargazer)
+  library(visdat)
+  library(naniar)
+  library(here)
+  library(summarytools)
+```
+-->
+<!-- ## 0.2. Set working directory -->
+
+
+```{r, include=FALSE}
+   here()
+  #HOME <- "C:\\Users\\id7877\\Documents\\GitHub\\projeto_economia_aplicada\\cátia\\EDA"
+  #setwd(HOME)
+    #getwd()
+```
+
+<!-- # For discussion CHECK: https://datacarpentry.org/R-genomics/index.html -->
+
+<!-- https://towardsdatascience.com/discovering-the-treasures-of-22-r-exploratory-analysis-packages-9bb1c5b4e6f8 -->
+
+# Introduction
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend lorem ut sagittis porta. Aliquam erat volutpat. Proin imperdiet dictum urna vitae dictum. Fusce facilisis iaculis accumsan. Curabitur tempus, lectus sit amet commodo hendrerit, sapien massa imperdiet tellus, a hendrerit dui dolor at purus. Sed mattis, risus et tincidunt egestas, augue felis porttitor massa, laoreet iaculis justo nulla ac odio. Quisque iaculis eu eros a convallis. Fusce luctus metus ullamcorper leo rutrum, vitae placerat est tincidunt. Phasellus tincidunt mollis pulvinar. Donec iaculis nunc nisl. Pellentesque faucibus rhoncus odio id consectetur. Sed auctor felis at aliquet dictum. Nullam nisi massa, maximus nec suscipit condimentum, cursus vitae arcu. Aenean tempus facilisis magna et mattis. Integer ullamcorper risus in justo volutpat, eget pulvinar nulla tempor.
+
+# The context
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend lorem ut sagittis porta. Aliquam erat volutpat. Proin imperdiet dictum urna vitae dictum. Fusce facilisis iaculis accumsan. Curabitur tempus, lectus sit amet commodo hendrerit, sapien massa imperdiet tellus, a hendrerit dui dolor at purus. Sed mattis, risus et tincidunt egestas, augue felis porttitor massa, laoreet iaculis justo nulla ac odio. Quisque iaculis eu eros a convallis. Fusce luctus metus ullamcorper leo rutrum, vitae placerat est tincidunt. Phasellus tincidunt mollis pulvinar. Donec iaculis nunc nisl. Pellentesque faucibus rhoncus odio id consectetur. Sed auctor felis at aliquet dictum. Nullam nisi massa, maximus nec suscipit condimentum, cursus vitae arcu. Aenean tempus facilisis magna et mattis. Integer ullamcorper risus in justo volutpat, eget pulvinar nulla tempor.
+
+
+*Our model* can now be **defined** as:
+
+\begin{equation}
+lnwage_i = \beta_0 + \beta_1 Grade_i + \beta_2 Experience +  \beta_3 Experience^{2}_{i} + \varepsilon_i
+\end{equation}
+
+
+# Empirical analysis
+
+## Data
+
+<!-- ## 1.1. Read data from the Web; save it in CSV, excel and Stata formats -->
+
+```{r, include=FALSE}
+  df_0 <- as.data.frame(read_dta(url("http://www.stata-press.com/data/r17/nlswork.dta")))
+    write_csv(df_0,"nlswork.csv")
+    write_xlsx(df_0,"nlswork.xlsx")
+    write_dta(df_0,"nlswork.dta")
+```
+
+<!-- ## 1.2. Read the local data file -->
+
+```{r, include=FALSE}
+  # Examples for reading .csv and .xlsx files
+    # df_base <- read.csv("nlswork.csv")
+    # df_base <- read_stata("nlswork.dta")   # Read a data file in Stata format
+    
+df_base <- read_excel("nlswork.xlsx")
+
+```
+
+<!-- # 2.3. Define the data object as a DataFrame -->
+
+```{r, include=FALSE}
+  df <- as.data.frame(df_base)
+
+```
+  
+## Visualize missing values
+
+```{r echo=FALSE}
+  # Two alternatives that are complementary
+  vis_dat(df_base)
+  gg_miss_upset(df_base)
+
+```
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel tortor sapien. Morbi nibh risus, vehicula ac est nec, vehicula tristique dolor. Vivamus porttitor vestibulum laoreet. Phasellus id dui aliquet odio vestibulum viverra.
+
+<!-- # - EDA 
+-->
+
+```{r, include=FALSE}
+
+#https://cran.r-project.org/web/packages/summarytools/vignettes/introduction.html
+# Data Frame Summaries
+view(dfSummary(df_base))
+# Frequency Tables
+freq(df_base$collgrad, plain.ascii = FALSE, style = "rmarkdown")
+# Cross-Tabulations
+ctable(x = df_base$collgrad,
+       y = df_base$race,
+       prop = "r")
+# Grouped Statistics: stby()
+(nlswork_stats_by_race <- stby(data      = df_base,
+                               INDICES   = df_base$race,
+                               FUN       = descr,
+                               stats     = "common",
+                               transpose = FALSE))
+                             
+# Grouped Statistics: group_by()
+library(dplyr)
+df_base %>%
+  group_by(race) %>%
+  descr(stats = "fivenum")
+```
+
+##
+explorem estes packages for Automated EDA: (1) ExpanDaR; (2) dlookr; (3) DataExplorer; (4) GGally; (5) SmartEDA; (6) AEDA
+12:11
+
+-- isto é o que eu estou a estudar:
+
+https://towardsdatascience.com/discovering-the-treasures-of-22-r-exploratory-analysis-packages-9bb1c5b4e6f8
+
+
+-->
+
+```{r}
+library(janitor)
+dupv<-get_dupes(df)
+```
+
+
+```{r eval=FALSE, include=FALSE}
+# Statistics --------------------------------------------------------------
+
+## EDA: Exploratory Data Analysis
+library(dlookr)
+
+eda_web_report(df, output_dir = ".", author = "Miguel Portela", output_file = "EDA_NLSWORK.html", theme = "blue", browse = FALSE)
+
+# eda_report(nlswork,output_dir = "",output_file = "eda_nlswork.pdf")
+  
+  summary(df[,"grade"])
+  
+  ExpNumStat(df,by="A",Outlier = TRUE,round=2,Qnt=c(0.1,0.20,0.50))
+
+# ExpCTable(nlswork)
+
+  ExpCatViz(df)
+  
+  ExpNumViz(df,Page=c(6,2))
+
+## TRY IN A 'JUPYTER NOTEBOOK': ExpNumViz(nlswork)
+
+#ExpNumViz(nlswork)
+
+#ExpOutliers(nlswork,varlist=c("grade"))
+
+```
+
+Sed aliquam justo orci, vel tempor ligula mattis tristique. Praesent sed quam sit amet nisl finibus tempor vel vel libero. Quisque elementum risus erat, mollis tincidunt ex tincidunt a.
+
+```{r eval=FALSE, include=FALSE}
+
+## -- > ExPanDaR
+  # install.packages('ExPanDaR')
+  library(ExPanDaR)
+  
+  ## -->> ExPanD(): type 'ExPanD()' in the Console and import the data
+
+```
+
+<!-- # 2.5. Clean missing values: Examples -->
+
+```{r, include=FALSE}
+  count(df_base)
+
+  # eliminate observations/lines with missing values on wks_work
+    df <- df %>% 
+      filter(!is.na(wks_work))
+      count(df)
+  
+  # drop missing values in all variables
+    df_clean <- drop_na(df)
+      summary(df_clean[,1])
+      count(df_clean)
+
+```
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet fermentum mauris. Fusce vitae libero eros. Sed porta tempus aliquam. Fusce vitae enim ante. Donec viverra velit est. Curabitur mattis, quam vel feugiat egestas, neque enim egestas sem, in bibendum felis magna ac diam. Curabitur vitae magna turpis. Duis vehicula mi quis ligula dictum tempor. Mauris sit amet malesuada nisi, nec dictum sapien. Nam tempus fermentum lorem ac gravida. Suspendisse laoreet rutrum placerat. Pellentesque nec odio vel ante sagittis efficitur. Quisque vulputate purus ac augue sollicitudin semper. Sed in lacinia ex. Sed augue lacus, ullamcorper vel risus sit amet, rutrum faucibus tortor.
+
+```{r}
+df_base %>% select(idcode,ln_wage,age,tenure,collgrad,grade,ind_code) %>% 
+  filter(age > 40) %>% 
+  mutate(age2=age^2) %>% 
+  group_by(ind_code) %>% 
+  filter(n()>1) %>% 
+  collect() %>% 
+  count()
+```
+
+
+<!-- ## 2.6. Create variables -->
+  
+  <!-- # Strings -->
+  
+```{r, include=FALSE}
+  df <- df %>% 
+    mutate(union_str = as.character(union),wages_str = as.character(ln_wage))
+    
+    names(df)
+
+```
+
+  <!-- # create new variables as numeric -->
+
+```{r, include=FALSE}
+  df <- df %>% 
+    mutate(wages_n = as.numeric(wages_str),union_n = as.numeric(factor(union_str)))
+
+```
+  
+  <!-- # Conditional definition: categorical variable -->
+
+```{r, include=FALSE}
+  df <- df %>% 
+    mutate(young = cut(age,breaks=c(min(),25,max())))
+      table(df[,"young"])
+
+```
+
+  <!-- # math functions -->
+  
+```{r, include=FALSE}
+  df <- df %>% 
+    mutate(exper_sq = ttl_exp^2)
+
+```
+    
+# Exploratory Data Analysis
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet fermentum mauris. Fusce vitae libero eros. Sed porta tempus aliquam. Fusce vitae enim ante. Donec viverra velit est. Curabitur mattis, quam vel feugiat egestas, neque enim egestas sem, in bibendum felis magna ac diam. Curabitur vitae magna turpis. Duis vehicula mi quis ligula dictum tempor. Mauris sit amet malesuada nisi, nec dictum sapien. Nam tempus fermentum lorem ac gravida. Suspendisse laoreet rutrum placerat. Pellentesque nec odio vel ante sagittis efficitur. Quisque vulputate purus ac augue sollicitudin semper. Sed in lacinia ex. Sed augue lacus, ullamcorper vel risus sit amet, rutrum faucibus tortor.
+
+```{r, echo=FALSE}
+  names(df)
+  head(df)
+  # str(df)
+  # glimpse(df)
+
+```
+
+> See a short amount of data
+
+```{r,echo=FALSE}
+df %>% filter(age>=45) %>% arrange(birth_yr)
+```
+
+
+
+## Summary statistics
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet fermentum mauris. Fusce vitae libero eros. Sed porta tempus aliquam. Fusce vitae enim ante. Donec viverra velit est. Curabitur mattis, quam vel feugiat egestas, neque enim egestas sem, in bibendum felis magna ac diam. Curabitur vitae magna turpis. Duis vehicula mi quis ligula dictum tempor. Mauris sit amet malesuada nisi, nec dictum sapien. Nam tempus fermentum lorem ac gravida. Suspendisse laoreet rutrum placerat. Pellentesque nec odio vel ante sagittis efficitur. Quisque vulputate purus ac augue sollicitudin semper. Sed in lacinia ex. Sed augue lacus, ullamcorper vel risus sit amet, rutrum faucibus tortor.
+
+  <!-- ### All variables -->
+  
+```{r,echo=FALSE,include=FALSE}
+    summary(df)
+
+```
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet fermentum mauris. Fusce vitae libero eros. Sed porta tempus aliquam. Fusce vitae enim ante. Donec viverra velit est. Curabitur mattis, quam vel feugiat egestas, neque enim egestas sem, in bibendum felis magna ac diam. Curabitur vitae magna turpis. Duis vehicula mi quis ligula dictum tempor. Mauris sit amet malesuada nisi, nec dictum sapien. Nam tempus fermentum lorem ac gravida. Suspendisse laoreet rutrum placerat. Pellentesque nec odio vel ante sagittis efficitur. Quisque vulputate purus ac augue sollicitudin semper. Sed in lacinia ex. Sed augue lacus, ullamcorper vel risus sit amet, rutrum faucibus tortor.
+
+  <!-- ### One variable -->
+  
+```{r, include=FALSE}
+    summary(df[,"grade"])
+
+```
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet fermentum mauris. Fusce vitae libero eros. Sed porta tempus aliquam. Fusce vitae enim ante. Donec viverra velit est. Curabitur mattis, quam vel feugiat egestas, neque enim egestas sem, in bibendum felis magna ac diam. Curabitur vitae magna turpis. Duis vehicula mi quis ligula dictum tempor. Mauris sit amet malesuada nisi, nec dictum sapien. Nam tempus fermentum lorem ac gravida. Suspendisse laoreet rutrum placerat. Pellentesque nec odio vel ante sagittis efficitur. Quisque vulputate purus ac augue sollicitudin semper. Sed in lacinia ex. Sed augue lacus, ullamcorper vel risus sit amet, rutrum faucibus tortor.
+
+### Statistics for specific variable
+  
+```{r, echo=FALSE}
+    summary(df[,c("grade","union","ln_wage")])
+
+```
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet fermentum mauris. Fusce vitae libero eros. Sed porta tempus aliquam.
+
+## Tabulations
+  
+```{r,echo=FALSE}
+  table(df[,"young"])
+  table1 <- table(df$union,df$collgrad)
+    print(table1)
+
+```
+  
+  <!-- # Add row/column with sums -->
+  
+```{r, echo=FALSE}
+    margin.table(table1,1)
+    margin.table(table1,2)
+
+```
+
+  <!-- ## Report proportions -->
+  
+```{r, echo=FALSE}
+    prop.table(table1)
+    prop.table(table1,1)
+    prop.table(table1,2)
+
+```
+  
+  <!-- # Round the numbers -->
+  
+```{r, eval=FALSE,include=FALSE}
+    tt1 <- prop.table(table1)
+    round(tt1,1)
+
+```
+    
+
+  # Alternative
+```{r,eval=FALSE,include=FALSE}
+    ftable(df$union,df$collgrad)
+
+```
+
+<!-- ## Export the output -->
+
+### Our summary statistics
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet fermentum mauris. Fusce vitae libero eros.
+
+
+```{r, echo=FALSE}
+    stargazer(df,
+      title = "Summary statistics",
+      type= "text", out = "Statistics.txt",
+      digits = 2)
+
+```
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet fermentum mauris. Fusce vitae libero eros.
+
+
+
+### (...) or a subset of variables
+  
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet fermentum mauris. Fusce vitae libero eros.
+
+
+```{r Statistics (short), echo=FALSE, warning=FALSE, results='asis'}
+    df %>%
+      dplyr::select(year,age,collgrad,ttl_exp,union,hours) %>% 
+      stargazer(title="Shorter statistics",
+      type= "text", out = "Statistics_output.html",
+      digits = 2)
+
+```
+
+<!-- # 5. Graphs::Explore::https://www.r-graph-gallery.com/index.html -->
+
+The following **Histogram** shows that (...) Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet fermentum mauris. Fusce vitae libero eros.
+
+
+  <!-- # 5.1. Histogram -->
+  
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+    HH <- df %>% 
+      ggplot(aes(x=ln_wage)) +
+      geom_histogram(bins = 27)
+    
+      HH
+
+```
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet fermentum mauris. Fusce vitae libero eros.
+
+
+  <!-- # 5.2. Density -->
+
+Alternatively, one can picture a *density*. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet fermentum mauris. Fusce vitae libero eros.
+
+
+  
+```{r, echo=FALSE}
+      ggplot(df,aes(x=ln_wage)) +
+      geom_density(color="red")
+```
+
+  <!-- # 5.3. Scatter -->
+
+Yet another alternative is a scatter plot. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet fermentum mauris. Fusce vitae libero eros.
+
+
+```{r, echo=FALSE}
+    SS <- df %>%
+      ggplot(aes(ttl_exp,ln_wage)) +
+      labs(title = "Ln Wage vs. Experience") +
+      ylab("Ln Wage") +
+      xlab("Experience") +
+      geom_point()
+  
+    SS
+
+```
+
+Lorem ipsum dolor sit amet, deuconsectetur adipiscing elit. Mauris sit amet fermentum mauris. Fusce vitae libero eros.
+
+    
+    <!-- ## SAVE YOUR GRAPH -->
+    
+```{r, echo=FALSE,include=FALSE}
+      ggsave("graph1.png")
+
+```
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet fermentum mauris. Fusce vitae libero eros.
+
+
+# Regression analysis: Ordinary Least Squares (OLS)
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet fermentum mauris. Fusce vitae libero eros.
+
+
+<!-- # Create additional variables -->
+
+```{r,echo=FALSE,include=FALSE}
+      df_ols <- df %>% 
+        mutate(age_sq = age^2,tenure_sq = tenure^2, experience = ttl_exp,
+               experience_sq = experience^2)
+
+```
+      
+  ## *Estimating a Mincerian Wage Equation*
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet fermentum mauris. Fusce vitae libero eros.
+
+        
+        ### Model 1
+        
+```{r,echo=FALSE}
+    ols1 <- lm(data = df_ols, ln_wage ~ grade)
+        summary(ols1)
+
+```
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet fermentum mauris. Fusce vitae libero eros.
+
+        
+        ### Model 2
+        
+```{r,echo=FALSE}
+    ols2 <- lm(data = df_ols, ln_wage ~ grade + 
+                 experience + experience_sq)
+      summary(ols2)
+betas <-coef(ols2)
+r2 <- summary(ols2)$r.squared
+```
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet fermentum mauris. Fusce vitae libero eros.
+
+      <!-- ## Export regression output -->
+
+## Our regression Table
+
+```{r Regressions, echo=FALSE, warning=FALSE, results='asis'}
+      stargazer(ols1,ols2,title = "Regression analysis", 
+                model.numbers = FALSE,
+                column.labels = c("Model (1)","Model (2)"),
+                label = "regressions",
+                table.placement = "!ht",
+                notes.append = FALSE,
+                notes.align="l",
+                notes="Standard errors in parentheses.",
+                header = FALSE,
+                no.space = TRUE,
+                covariate.labels = c("Grade","Experience","Experienced sqrd."),
+                omit = c("Constant"),
+                omit.stat = c("adj.rsq","f","ser"),
+                digits = 3,
+                digits.extra = 6,
+                omit.yes.no = c("Constant",""),
+                dep.var.caption="",
+                dep.var.labels.include = FALSE,
+                style = "qje",
+                type = "html",
+                out = "Regression_output.html")
+
+```
+
+Here we discuss the results of the estimations, including interpretation and hypothesis testing.
+
+The estimated return to *Grade* is `r round(betas[2]*100,3)`\%. The $R^2$ is `r round(r2,2)`. However, when using Model (1) the return is `r round(coef(ols1)[2]*100,1)`, while the quality of the adjustment is `r round(summary(ols1)$r.squared,1)`.
+
+We can write the estimated equation as
+
+$$\hat{y_i}=`r round(betas[1],1)` + `r round(betas[2],2)`\times Grade_i + `r round(betas[3],2)`\times experience_i + `r round(betas[4],2)`\times experience^{2}_{i}$$
+
+\begin{equation}
+\frac{\partial lnwage_i}{\partial Grade_i} = \beta_1
+\end{equation}
+
+We will test the following hypothesis:
+
+$H_0: \beta_1 = 0$
+
+$H_1: \beta_1 \neq 0$
+
+The joint significance test can be defined as
+
+$$H_0: \beta_2 = \beta_3 = 0$$
+
+$$H_1: H_0 \quad is \quad false $$
+
+
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet fermentum mauris. Fusce vitae libero eros. Sed porta tempus aliquam. Fusce vitae enim ante. Donec viverra velit est. Curabitur mattis, quam vel feugiat egestas, neque enim egestas sem, in bibendum felis magna ac diam. Curabitur vitae magna turpis. Duis vehicula mi quis ligula dictum tempor. Mauris sit amet malesuada nisi, nec dictum sapien. Nam tempus fermentum lorem ac gravida. Suspendisse laoreet rutrum placerat. Pellentesque nec odio vel ante sagittis efficitur. Quisque vulputate purus ac augue sollicitudin semper. Sed in lacinia ex. Sed augue lacus, ullamcorper vel risus sit amet, rutrum faucibus tortor.
+
+<!-- Open the HTML file and copy/paste to the word file -->
+
+# Conclusion
+
+In this paper we show that (...)
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet fermentum mauris. Fusce vitae libero eros. Sed porta tempus aliquam. Fusce vitae enim ante. Donec viverra velit est. Curabitur mattis, quam vel feugiat egestas, neque enim egestas sem, in bibendum felis magna ac diam. Curabitur vitae magna turpis. Duis vehicula mi quis ligula dictum tempor. Mauris sit amet malesuada nisi, nec dictum sapien. Nam tempus fermentum lorem ac gravida. Suspendisse laoreet rutrum placerat. Pellentesque nec odio vel ante sagittis efficitur. Quisque vulputate purus ac augue sollicitudin semper. Sed in lacinia ex. Sed augue lacus, ullamcorper vel risus sit amet, rutrum faucibus tortor.
+
+<!-- START TESTS -->
+
+```{r}
+Salaries <- read.csv("~/GitHub/R_Training/EDA/Salaries.csv")
+sal <- as.data.frame(Salaries)
+
+sal <- sal %>% select(-X)
+names(sal)
+
+```
+
+```{r}
+dim(sal)
+
+```
+```{r}
+str(sal)
+```
+
+```{r}
+uv <- unique(sal)
+dim(uv)
+```
+
+<!-- janitor -->
+
+```{r}
+library(janitor)
+dupv<-get_dupes(sal)
+dupv 
+```
+
+<!-- DataExplorer -->
+
+```{r}
+library(DataExplorer)
+introduce(sal)
+```
+```{r}
+apply(apply(sal,2,is.na),2,sum)
+```
+
+```{r}
+sal[!complete.cases(sal),]
+```
+
+# 3. Univariate Statistics
+
+## 3.1 Univariate Column Statistics
+
+```{r}
+summary(sal)
+```
+
+```{r}
+library(psych)
+describe(sal)
+
+```
+```{r}
+#library(dataMaid)
+#makeDataReport(sal)
+```
+
+```{r}
+# summarytools, inspectdf, Hmisc, prettyR, funModeling, skimr
+```
+
+
+## 3.2 Univariate Group Statistics
+
+```{r}
+tapply(sal$salary,sal$sex,mean,na.rm=TRUE)
+```
+
+```{r}
+library(psych)
+describeBy(sal$salary,group=sal$sex)
+```
+
+```{r}
+newgroup<-sal%>%filter(discipline=='A')%>%
+group_by(sex,rank)%>%summarise(Avgsal=mean(salary))
+
+newgroup
+```
+
+```{r}
+ggplot(sal,aes(sex,salary))+geom_boxplot()
+
+ggplot(sal,aes(x=rank, fill=sex))+geom_bar()
+```
+
+
+<!-- ENNND TESTS -->
+  
