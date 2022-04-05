@@ -397,6 +397,11 @@ saldata<-na.omit(sal1)
 salr <- saldata[,c("yrs.service", "salary")]
 #OutlierDetection(salr)
 
+#install.packages("outliertree")
+library(outliertree)
+
+outlier.tree(sal)
+
 ```
 
 ### Package Chemometrics
