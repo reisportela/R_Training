@@ -1,0 +1,461 @@
+---
+title: 'Notes on EDA'
+author: 'Miguel Portela - V.01'
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+  word_document: default
+---
+
+> EDA WITH R
+
+## SET THE ENV VARIABLES FOR PLOTLY.COM
+
+```{r, setup, echo=FALSE, include=FALSE}
+  gc()
+  rm(list = ls())
+  knitr::opts_knit$set(root.dir = '/Users/joanacima/Documents/GitHub/R_Training/EDA/')
+  library(tidyverse)
+  library(haven)
+  library(readxl)
+
+Sys.setenv("plotly_username"="theomitsa")
+Sys.setenv("plotly_api_key"="Ojps7ld5FByuyrpKV2zC")
+
+```
+
+
+## READ THE INPUT FILE
+
+```{r}
+sal<-read.csv("_theomitsa_example/Salaries2.csv",header=TRUE)
+
+df_base <- read_excel("nlswork.xlsx")
+df <- as.data.frame(df_base)
+```
+
+## QUICK DATAFRAME CHECK
+
+### Dimensions of the dataset
+
+```{r}
+dim(sal)
+dim(df)
+
+```
+
+### Number and Types of Variables
+
+```{r}
+str(sal)
+str(df)
+
+```
+
+### Duplicates
+### How many are the unique values
+
+```{r}
+uu<-unique(sal)
+dim(uu)
+
+uu<-unique(df)
+dim(uu)
+```
+
+
+### Which Are the Duplicates
+
+```{r}
+library(janitor)
+dupj<-get_dupes(sal)
+dupj
+
+dupj<-get_dupes(df)
+dupj
+```
+
+### Missing Data
+
+### Print the no. of complete rows and total no.of missing cases
+
+```{r}
+library(DataExplorer)
+introduce(sal)
+
+```
+
+### For each column print the number of missing cases
+
+```{r}
+apply(apply(sal,2,is.na),2,sum)
+
+```
+
+### Print the cases(rows) with the missing values
+
+```{r}
+sal[!complete.cases(sal),]
+
+```
+
+### UNIVARIATE STATISTICS
+
+```{r}
+summary(sal)
+
+```
+
+### psych package
+
+```{r}
+library(psych)
+psych::describe(sal)
+
+```
+
+### dataMaid package
+
+```{r}
+library(dataMaid)
+summarize(sal)
+makeDataReport(sal, replace=TRUE,output="gg.html")
+
+```
+
+### Additional univariate description functions
+
+```{r}
+library(summarytools)
+dfSummary(sal)
+
+# Frequency Tables
+freq(sal$sex)
+
+# Cross-Tabulations (row proportions)
+ctable(x = sal$rank, 
+       y = sal$sex, 
+       prop = "r")
+
+# Cross-Tabulations (column proportions)
+ctable(x = sal$rank, 
+       y = sal$sex, 
+       prop = "c")
+
+# Grouped Statistics: stby()
+
+(df_sal_stats_by_sex <- stby(data      = sal, 
+                               INDICES   = sal$sex, 
+                               FUN       = descr, 
+                               stats     = "common", 
+                               transpose = FALSE))
+
+# Grouped Statistics: group_by()
+
+library(dplyr)
+sal %>% 
+  group_by(sex) %>% 
+  descr(stats = "fivenum")
+
+```
+
+```{r}
+library(inspectdf)
+inspect_num(sal)
+inspect_cat(sal)
+
+```
+
+```{r}
+library(prettyR)
+prettyR::describe(sal)
+
+```
+
+```{r}
+library(Hmisc)
+Hmisc::describe(sal)
+
+```
+
+```{r}
+library(funModeling)
+profiling_num(sal)
+
+```
+
+```{r}
+library(skimr)
+skim(sal)
+
+```
+
+## Univariate Group Statistics
+### Use tapply() to group by a factor
+
+```{r}
+tapply(sal$salary,sal$sex,mean,na.rm=TRUE)
+
+```
+
+> Within groups, print detailed statistical information of the var under examination.
+
+```{r}
+library(psych)
+describeBy(sal$salary,group=sal$sex)
+
+```
+
+### Use dplyr functions
+
+```{r}
+newgroup<-sal%>%filter(discipline=='A')%>%
+  group_by(sex,rank)%>%summarise(Avgsal=mean(salary))
+
+newgroup
+
+```
+
+### Plots of Univariate Statistics (boxplot,histogram)
+
+```{r}
+ggplot(sal,aes(sex,salary))+geom_boxplot()
+ggplot(sal,aes(x=rank, fill=sex))+geom_bar()
+
+```
+
+### BIVARIATE STATISTICS
+
+### Interactive Scatter Plot
+
+```{r}
+library(plotly)
+gg1<-ggplot(na.omit(sal), aes(salary,yrs.since.phd, col=sex))+geom_point()+geom_smooth(method=lm)
+p1<-ggplotly(gg1)
+api_create(p1,filename="plot of salary vs yrs.since.phd")
+
+```
+
+### Interactive 3D plot
+
+```{r}
+library(plotly)
+
+#fig<-plot_ly(sal, x=~salary,y=~yrs.service,z=~yrs.since.phd,color=~sex,color_discrete_map={"female":"red"})%>% add_markers()
+
+#fig
+#api_create(fig,filename="3D plot")
+
+```
+
+
+
+## Correlations
+
+### Correlations displayed in a table with package stats
+
+```{r}
+sal1<-select_if(sal, is.numeric)
+cor(na.omit(sal1))
+library(stats)
+cor.test(sal1$salary,sal1$yrs.service)
+
+```
+
+## Correlation plots
+
+### Corrplot package
+
+```{r}
+library(corrplot)
+cc<-cor(na.omit(sal1))
+corrplot(cc,method="pie")
+
+```
+
+### PerformanceAnalytics package
+
+```{r}
+library(PerformanceAnalytics)
+chart.Correlation(sal1, histogram=TRUE, pch=19)
+
+```
+
+### ggcorrplot package
+
+```{r}
+library(ggcorrplot)
+ggcorrplot(cor(na.omit(sal1)), p.mat = cor_pmat(na.omit(sal1)), hc.order=TRUE, type='lower')
+cor_pmat(na.omit(sal1))
+
+```
+
+## ALL INCLUSIVE CORRELATION
+
+### DataExplorer package
+
+```{r}
+library(DataExplorer)
+plot_correlation(sal)
+
+```
+
+### psych package
+
+```{r}
+library(psych)
+pairs.panels(sal,bg=c("yellow","blue")[sal$sex],pch=21, cex.cor=6, scale=TRUE)
+
+```
+
+### GGally package
+
+```{r}
+library(GGally)
+ggpairs(sal)
+
+```
+
+### Test of Independence
+
+```{r}
+table(sal$rank)
+table(sal$rank,sal$sex)
+library(gmodels)
+t2<-CrossTable(sal$rank,sal$sex,chisq=TRUE,fisher=TRUE)
+t2
+
+```
+
+
+### T-test of Significant Diferences
+
+```{r echo=FALSE}
+filtered<-filter(sal, sex=='Male')
+c1<-(filtered[6])
+filtered2<-filter(sal, sex=='Female')
+c2<-(filtered2[6])
+t.test(c1,c2)
+
+```
+
+### T-test with rank as the fixed effect
+
+```{r echo=FALSE}
+filtered<-filter(sal, sex=='Male',rank=='Prof')
+c1<-(filtered[6])
+filtered2<-filter(sal, sex=='Female', rank=='Prof')
+c2<-(filtered2[6])
+t.test(c1,c2)
+
+```
+
+## OUTLIERS
+
+### Univariate Outlier Detection
+
+### Interactive histogramM
+
+```{r echo=FALSE}
+library(plotly)
+p1<-ggplot(sal,aes(sex,salary))+geom_boxplot()
+p1
+pp<-ggplotly(p1)
+api_create(pp, filename = "boxplot-salary-sex")
+
+```
+
+### Package extremevalues
+
+```{r echo=FALSE}
+library(extremevalues)
+L<-getOutliers(sal$salary)
+outlierPlot(sal$salary,L)
+
+```
+
+### Package OutlierDetection
+
+```{r eval=FALSE, include=FALSE}
+# library(outliers)
+#library(OutlierDetection)
+
+#UnivariateOutlierDetection(sal$salary)
+
+```
+
+### Multivariate Outlier Detection
+
+### Package OutlierDetection
+
+```{r echo=FALSE}
+#library(OutlierDetection)
+sal1<-select(sal,salary,yrs.service)
+saldata<-na.omit(sal1)
+salr <- saldata[,c("yrs.service", "salary")]
+#OutlierDetection(salr)
+
+```
+
+### Package Chemometrics
+
+```{r echo=FALSE}
+library(chemometrics)
+gg<-Moutlier(saldata)
+mahal_dist<-gg$md
+names(mahal_dist) <- 1:nrow(saldata)
+ff<-sort(mahal_dist, decreasing = TRUE)
+ff
+
+```
+
+### Package Mvoutlier
+
+```{r echo=FALSE}
+library(mvoutlier)
+par("mar")
+par(mar=c(1,1,1,1))
+out <- chisq.plot(saldata)
+out$outliers
+
+```
+
+
+# AUTOMATIC
+
+## DataExplorer
+
+```{r echo=FALSE, include=FALSE}
+library(DataExplorer)
+create_report(sal,y="salary")
+
+```
+
+## AEDA
+
+```{r echo=FALSE,include=FALSE}
+#library(efficient)
+library(AEDA)
+fastReport(data=sal)
+#rmarkdown::render("MainReport.rmd")
+
+```
+
+## ExPanDaR
+
+```{r eval=FALSE, include=FALSE}
+library(ExPanDaR)
+ExPanD(sal)
+
+```
+
+## RtutoR
+
+```{r eval=FALSE, include=FALSE}
+library(RtutoR)
+gg=generate_exploratory_analysis_ppt(sal,target_var="salary",output_file_name="Rtutorreport.pptx")
+
+```
+
