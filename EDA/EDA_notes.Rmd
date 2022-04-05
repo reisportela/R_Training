@@ -1,6 +1,6 @@
 ---
 title: 'Notes on EDA'
-author: 'Miguel Portela - V.01'
+author: 'Miguel Portela - V.02'
 date: "`r format(Sys.time(), '%d %B %Y')`"
 output:
   html_document:
@@ -476,8 +476,8 @@ library(AEDA)
 fastReport(data=sal)
 rmarkdown::render("MainReport.rmd")
 
-fastReport(data=df)
-rmarkdown::render("MainReport_nlswork.rmd")
+# fastReport(data=df)
+# rmarkdown::render("MainReport_nlswork.rmd")
 ```
 
 ## ExPanDaR
@@ -493,7 +493,7 @@ ExPanD(df)
 
 ```{r eval=FALSE, include=FALSE}
 library(RtutoR)
-gg=generate_exploratory_analysis_ppt(sal,target_var="salary",output_file_name="Rtutorreport.pptx")
+# gg=generate_exploratory_analysis_ppt(sal,target_var="salary",output_file_name="Rtutorreport.pptx")
 
 ```
 

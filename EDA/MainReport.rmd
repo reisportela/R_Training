@@ -1,6 +1,6 @@
 ---
 title: "AEDA Report"
-date: "04 Abril 2022"
+date: "05 Abril 2022"
 output:
   html_document:
     theme: cosmo
@@ -17,24 +17,24 @@ This exploratory data analysis report was created by the R package
 try(library(AEDA))
 try(devtools::load_all())
 ```
-```{r BasicReport_basic.task, child = "Data_Report/BasicReport6.rmd"}
+```{r BasicReport_basic.task, child = "Data_Report/BasicReport8.rmd"}
 ```
 
-```{r NumericReport_num.sum.result, child = "Data_Report/NumSumReport6.rmd"}
+```{r NumericReport_num.sum.result, child = "Data_Report/NumSumReport8.rmd"}
 ```
 
-```{r CorrPlot_corr.result, child = "Data_Report/CorrReport6.rmd"}
+```{r CorrPlot_corr.result, child = "Data_Report/CorrReport8.rmd"}
 ```
 
-```{r ClusterAnalysisReport_cluster.analysis.result, child = "Data_Report/ClusterAnalysisReport6.rmd"}
+```{r ClusterAnalysisReport_cluster.analysis.result, child = "Data_Report/ClusterAnalysisReport8.rmd"}
 ```
 
-```{r PCAReport_pca.result, child = "Data_Report/PCAReport6.rmd"}
+```{r PCAReport_pca.result, child = "Data_Report/PCAReport8.rmd"}
 ```
 
-```{r MSDAnalysisReport_mds.analysis.result, child = "Data_Report/MDSAnalysisReport6.rmd"}
+```{r MSDAnalysisReport_mds.analysis.result, child = "Data_Report/MDSAnalysisReport8.rmd"}
 ```
 
-```{r FAReport_fa.result, child = "Data_Report/FactorAnalysisReport6.rmd"}
+```{r FAReport_fa.result, child = "Data_Report/FactorAnalysisReport8.rmd"}
 ```
 
