@@ -278,3 +278,9 @@ B.2. Session 2: [http://nareal.net/g-dv-s2](http://nareal.net/g-dv-s2)
 4. [Practical Statistics for Data Scientists](https://www.oreilly.com/library/view/practical-statistics-for/9781491952955/)
 9. [A Visual Guide to Stata Graphics](https://www.stata.com/bookstore/visual-guide-to-stata-graphics/)
 3. [Causal Inference: The Mixtape](https://mixtape.scunning.com/introduction.html)
+
+
+# PowerBI web examples
+
+[Brighter Future - FJN](https://joseneves.org/pt/brighter-future)
+
