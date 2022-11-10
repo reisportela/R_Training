@@ -284,3 +284,5 @@ B.2. Session 2: [http://nareal.net/g-dv-s2](http://nareal.net/g-dv-s2)
 
 [Brighter Future - FJN](https://joseneves.org/pt/brighter-future)
 
+
+[APA, Purdue](https://owl.purdue.edu/owl/research_and_citation/apa_style/apa_formatting_and_style_guide/in_text_citations_the_basics.html#:~:text=When%20using%20APA%20format%2C%20follow,the%20end%20of%20the%20paper.)
