@@ -9,7 +9,7 @@
             "version": "none",
             "installJupyterlab": true,
             "installRMarkdown": true,
-            "installDevTools": true,
+            "installDevTools": true
         }
     },
     "remoteUser": "rstudio"
