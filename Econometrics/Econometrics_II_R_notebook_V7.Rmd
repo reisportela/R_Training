@@ -1,5 +1,5 @@
 ---
-title: 'Econometrics II - academic year 2021/2022'
+title: 'Econometrics II - academic year 2022/2023'
 subtitle: 'What defines my salary: is it ageing, career or studying?'
 author: "Miguel Portela (U Minho) and Jorge Sanjo (Planet Earth)"
 date: "`r format(Sys.time(), '%d %B %Y')`"
