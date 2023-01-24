@@ -25,10 +25,13 @@ Here I am uploading my packages (code omitted).
 
 ```{r setup, include=FALSE}
 rm(list = ls())
+gc()
 start_time <- Sys.time()  # calcular o tempo de execução do programa
 # update.packages()
-setwd("/Users/miguelportela/Documents/GitHub/R_Training/paneldata")
+# setwd("/Users/miguelportela/Documents/GitHub/R_Training/paneldata")
 # setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/paneldata")
+
+setwd('B:\\GitHub\\R_Training\\paneldata')
 
 library(pacman)  #Package Management Tool
 
@@ -67,7 +70,7 @@ pacman::p_load(here,
 Here I am reading a Stata data file (code omitted).
 
 ```{r Prepare data, include = FALSE}
-here()
+# here()
 nlswork <- read_dta("data/nlswork.dta")
   nls_nomiss <- na.omit(nlswork)
   write_dta(nls_nomiss,"data/nls_nomiss.dta")
