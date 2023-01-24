@@ -1,0 +1,864 @@
+---
+title: 'Econometrics II - academic year 2021/2022'
+subtitle: 'What defines my salary: is it ageing, career or studying?'
+author: "Miguel Portela (U Minho) and Jorge Sanjo (Planet Earth)"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output:
+  bookdown::html_document2:
+    number_sections: true
+  bookdown::pdf_document2:
+    number_sections: true
+  bookdown::word_document2:
+    number_sections: true
+bibliography: references.bib
+nocite: |
+  @wooldridge2019introductory, @gujarati2008basic
+csl: european-economic-review.csl
+fontsize: 12pt
+link-citations: true
+---
+
+<!-- Check the following link for a discussion on R Markdown: https://bookdown.org/yihui/rmarkdown-cookbook/ -->
+
+<!-- # 0. Setup -->
+
+<!-- ## 0.1. Clear memory & Load libraries -->
+
+<br>
+
+```{r setup, include=FALSE}
+  gc()
+  rm(list = ls())
+  
+  DOCTYPE <- "html"
+  
+  # knitr::opts_knit$set(root.dir = '/Users/miguelportela/Dropbox/3.aulas/2021/licenciatura/econometria_ii/3.assignment_template')
+
+  # knitr::opts_knit$set(root.dir = 'D:\\miguel\\Dropbox\\3.aulas\\2021\\licenciatura\\econometria_ii\\3.assignment_template')
+  
+library(tidyverse)
+library(haven)
+library(readxl)
+library(writexl)
+library(Hmisc)
+library(stargazer)
+library(visdat)
+library(naniar)
+library(here)
+library(summarytools)
+library(robustbase)
+library(lmtest)
+library(sandwich)
+library(car)
+library(broom)
+library(forecast)
+library(equatiomatic)
+  
+```
+
+<!-- ## 0.2. Set working directory::currently ignored -->
+
+```{r Set working directory (not used), include=FALSE}
+  here()
+  # HOME <- "/Users/miguelportela/Dropbox/3.aulas/2021/licenciatura/econometria_ii/3.assignment_template/template"
+  # setwd(HOME)
+    # getwd()
+```
+
+<!-- # For discussion CHECK: https://datacarpentry.org/R-genomics/index.html -->
+
+# Introduction
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend lorem ut sagittis porta. Aliquam erat volutpat. Proin imperdiet dictum urna vitae dictum. Fusce facilisis iaculis accumsan. Curabitur tempus, lectus sit amet commodo hendrerit, sapien massa imperdiet tellus, a hendrerit dui dolor at purus. Sed mattis, risus et tincidunt egestas, augue felis porttitor massa, laoreet iaculis justo nulla ac odio. Quisque iaculis eu eros a convallis. Fusce luctus metus ullamcorper leo rutrum, vitae placerat est tincidunt. Phasellus tincidunt mollis pulvinar. Donec iaculis nunc nisl. Pellentesque faucibus rhoncus odio id consectetur. Sed auctor felis at aliquet dictum. Nullam nisi massa, maximus nec suscipit condimentum, cursus vitae arcu. Aenean tempus facilisis magna et mattis. Integer ullamcorper risus in justo volutpat, eget pulvinar nulla tempor. See Section \@ref(context).
+
+# The context {#context}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend lorem ut sagittis porta. Aliquam erat volutpat. Proin imperdiet dictum urna vitae dictum. Fusce facilisis iaculis accumsan. Curabitur tempus, lectus sit amet commodo hendrerit, sapien massa imperdiet tellus, a hendrerit dui dolor at purus. Sed mattis, risus et tincidunt egestas, augue felis porttitor massa, laoreet iaculis justo nulla ac odio -- see @{hall2010constr}.
+
+Quisque iaculis eu eros a convallis. Fusce luctus metus ullamcorper leo rutrum, vitae placerat est tincidunt. Phasellus tincidunt mollis pulvinar. Donec iaculis nunc nisl. Pellentesque faucibus rhoncus odio id consectetur. Sed auctor felis at aliquet dictum. Nullam nisi massa, maximus nec suscipit condimentum, cursus vitae arcu. Aenean tempus facilisis magna et mattis. Integer ullamcorper risus in justo volutpat, eget pulvinar nulla tempor.
+
+
+*Our model* can now be **defined** as:
+
+\begin{equation}
+ lnwage_i = \beta_0 + \beta_1 Grade_i + \beta_2 Experience_{i} +  \beta_3 Experience^{2}_{i} + \varepsilon_i
+ (\#eq:eqmain)
+\end{equation}
+
+
+In equation \@ref(eq:eqmain) luctus eros et dolor aliquet gravida. Fusce in leo suscipit lacus venenatis ultricies. Duis at vehicula ex. Vestibulum accumsan ipsum nisl, sit amet tempor ipsum sagittis at. Aenean nec feugiat velit. Donec vulputate aliquam metus, ac dapibus magna volutpat nec. Phasellus volutpat elit purus, quis elementum turpis imperdiet et. Quisque tempor, tellus a congue rutrum, massa leo rhoncus urna, eget auctor libero tortor vel enim. Vivamus maximus lectus enim, ut placerat enim lacinia at. Phasellus fermentum risus nec urna feugiat, et ullamcorper quam euismod. Mauris eget quam id nisl rutrum sodales. Donec sed tellus sapien. Cras egestas odio diam, et porttitor tellus rhoncus in. Suspendisse sodales sem pulvinar lorem accumsan, ac congue elit consequat. For a detailed discussion see @romer1990growthinov.
+
+# Data and descriptive statistics
+
+Sed neque tortor, viverra at enim molestie, porttitor fermentum libero. Integer viverra at lectus sit amet semper. Curabitur eget fringilla diam. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi fermentum purus quis ante pulvinar maximus. Nulla facilisi. Nulla facilisi. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed euismod lacus quis magna luctus fermentum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris at interdum lacus.
+
+## Data
+
+
+Nulla congue imperdiet nisi ut fringilla. In pharetra hendrerit ipsum ac luctus. Pellentesque quis semper massa. Maecenas at vestibulum nisl. Nunc id commodo nunc. Sed vehicula facilisis libero, eget tempor justo. Sed non elit tempor risus sagittis rhoncus. Pellentesque tincidunt tempus convallis. Aenean pretium risus et iaculis lobortis.
+
+<!-- ## 1.1. Read data from the Web; save it in CSV, excel and Stata formats -->
+
+```{r Read data from the Web; save it; write data, eval =TRUE, include=FALSE}
+  df_0 <- as.data.frame(read_dta(url("http://www.stata-press.com/data/r17/nlswork.dta")))
+    write_csv(df_0,"nlswork.csv")
+    write_xlsx(df_0,"nlswork.xlsx")
+    write_dta(df_0,"nlswork.dta")
+```
+
+<!-- ## 1.2. Read the local data file -->
+
+```{r Read the local data file, include=FALSE}
+  # Examples for reading .csv and .xlsx files
+    # df_base <- read.csv("nlswork.csv")
+    # df_base <- read_excel("nlswork.xlsx")
+  
+    df_base <- read_stata("nlswork.dta")   # Read a data file in Stata format
+
+```
+
+<!-- # 2.3. Define the data object as a DataFrame -->
+
+```{r Define the data object as a DataFrame, include=FALSE}
+  df <- as.data.frame(df_base)
+
+```
+  
+## Visualize missing values
+
+
+Nulla congue imperdiet nisi ut fringilla. In pharetra hendrerit ipsum ac luctus. Pellentesque quis semper massa. Maecenas at vestibulum nisl. Nunc id commodo nunc. Sed vehicula facilisis libero, eget tempor justo. Sed non elit tempor risus sagittis rhoncus. Pellentesque tincidunt tempus convallis. Aenean pretium risus et iaculis lobortis.
+
+```{r Visualize missing values, echo=FALSE,warning=FALSE,message=FALSE}
+  # Two alternatives that are complementary
+  vis_dat(df_base)
+  gg_miss_upset(df_base)
+
+```
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel tortor sapien. Morbi nibh risus, vehicula ac est nec, vehicula tristique dolor. Vivamus porttitor vestibulum laoreet. Phasellus id dui aliquet odio vestibulum viverra.
+
+```{r Further statistics, eval=FALSE, echo=FALSE, include=FALSE}
+# Statistics -------------------------------------------
+
+## EDA: Exploratory Data Analysis
+library(dlookr)
+
+eda_web_report(df, output_dir = ".", author = "Miguel Portela", output_file = "EDA_NLSWORK.html", theme = "blue", browse = FALSE)
+
+# eda_report(nlswork,output_dir = "",output_file = "eda_nlswork.pdf")
+  
+  summary(df[,"grade"])
+  
+  ExpNumStat(df,by="A",Outlier = TRUE,round=2,Qnt=c(0.1,0.20,0.50))
+
+# ExpCTable(nlswork)
+
+  ExpCatViz(df)
+  
+  ExpNumViz(df,Page=c(6,2))
+
+## TRY IN A 'JUPYTER NOTEBOOK': ExpNumViz(nlswork)
+
+# ExpNumViz(nlswork)
+
+# ExpOutliers(nlswork,varlist=c("grade"))
+
+```
+
+Sed aliquam justo orci, vel tempor ligula mattis tristique. Praesent sed quam sit amet nisl finibus tempor vel vel libero. Quisque elementum risus erat, mollis tincidunt ex tincidunt a.
+
+```{r Try ExPanDaR, eval=FALSE, include=FALSE}
+## -- > ExPanDaR
+  # install.packages('ExPanDaR')
+  library(ExPanDaR)
+  
+  ## -->> ExPanD(): type 'ExPanD()' in the Console and import the data
+
+```
+
+<!-- # 2.5. Clean missing values: Examples -->
+
+```{r Clean missing values, echo=FALSE, include=FALSE}
+  count(df_base)
+
+  # eliminate observations/lines with missing values on wks_work
+    df <- df %>% 
+      filter(!is.na(wks_work))
+      count(df)
+  
+  # drop missing values in all variables
+    df_clean <- drop_na(df)
+      summary(df_clean[,1])
+      count(df_clean)
+
+```
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet fermentum mauris. Fusce vitae libero eros. Sed porta tempus aliquam. Fusce vitae enim ante. Donec viverra velit est. Curabitur mattis, quam vel feugiat egestas, neque enim egestas sem, in bibendum felis magna ac diam. Curabitur vitae magna turpis. Duis vehicula mi quis ligula dictum tempor. Mauris sit amet malesuada nisi, nec dictum sapien. Nam tempus fermentum lorem ac gravida. Suspendisse laoreet rutrum placerat. Pellentesque nec odio vel ante sagittis efficitur. Quisque vulputate purus ac augue sollicitudin semper. Sed in lacinia ex. Sed augue lacus, ullamcorper vel risus sit amet, rutrum faucibus tortor.
+
+```{r Select variables, filter, create variables,include=FALSE}
+tmp <- df_base %>% dplyr::select(idcode,ln_wage,age,tenure,collgrad,grade,ind_code) %>% 
+  filter(age > 40) %>% 
+  mutate(age2=age^2) %>% 
+  group_by(ind_code) %>% 
+  filter(n()>1) %>% 
+  count()
+
+tmp
+
+```
+
+
+<!-- ## 2.6. Create variables -->
+  
+  <!-- # Strings -->
+  
+```{r String variables, include=FALSE}
+  df <- df %>% 
+    mutate(union_str = as.character(union),wages_str = as.character(ln_wage))
+    
+    names(df)
+
+```
+
+  <!-- # create new variables as numeric -->
+
+```{r Create new variables as numeric, include=FALSE}
+  df <- df %>% 
+    mutate(wages_n = as.numeric(wages_str),union_n = as.numeric(factor(union_str)))
+
+```
+  
+  <!-- # Conditional definition: categorical variable -->
+
+```{r Conditional definition: categorical variable, include=FALSE}
+  df <- df %>% 
+    mutate(young = cut(age,breaks=c(min(),25,max())))
+      table(df[,"young"])
+
+```
+
+  <!-- # math functions -->
+  
+```{r Math functions, include=FALSE}
+  df <- df %>% 
+    mutate(exper_sq = ttl_exp^2)
+
+```
+    
+## Exploratory Data Analysis
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet fermentum mauris. Fusce vitae libero eros. Sed porta tempus aliquam. Fusce vitae enim ante. Donec viverra velit est. Curabitur mattis, quam vel feugiat egestas, neque enim egestas sem, in bibendum felis magna ac diam. Curabitur vitae magna turpis. Duis vehicula mi quis ligula dictum tempor. Mauris sit amet malesuada nisi, nec dictum sapien. Nam tempus fermentum lorem ac gravida. Suspendisse laoreet rutrum placerat. Pellentesque nec odio vel ante sagittis efficitur. Quisque vulputate purus ac augue sollicitudin semper. Sed in lacinia ex. Sed augue lacus, ullamcorper vel risus sit amet, rutrum faucibus tortor.
+
+```{r List variables names, echo=FALSE}
+  names(df)
+  # head(df)
+  # str(df)
+  # glimpse(df)
+
+```
+
+> See a short amount of data
+
+```{r See a short amount of data,echo=FALSE,include=FALSE}
+df %>% filter(age>=45) %>% arrange(birth_yr)
+```
+
+Nunc varius tristique ex, ut tincidunt sapien aliquet at. Phasellus et varius nunc, a ultricies ex. Donec maximus imperdiet orci. Aenean varius lacus id nisl finibus vehicula. Donec finibus laoreet varius. Donec pharetra enim aliquet, tristique libero ac, consequat metus. In sed erat in odio vehicula lobortis -- see Table \@ref(tab:data).
+
+```{r Data, echo=FALSE}
+knitr::kable(df[1:5, 1:5], caption = "Our data.")
+```
+
+
+## Summary statistics
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet fermentum mauris. Fusce vitae libero eros. Sed porta tempus aliquam. Fusce vitae enim ante. Donec viverra velit est. Curabitur mattis, quam vel feugiat egestas, neque enim egestas sem, in bibendum felis magna ac diam. Curabitur vitae magna turpis. Duis vehicula mi quis ligula dictum tempor. Mauris sit amet malesuada nisi, nec dictum sapien. Nam tempus fermentum lorem ac gravida. Suspendisse laoreet rutrum placerat. Pellentesque nec odio vel ante sagittis efficitur. Quisque vulputate purus ac augue sollicitudin semper. Sed in lacinia ex. Sed augue lacus, ullamcorper vel risus sit amet, rutrum faucibus tortor.
+
+  <!-- ### All variables -->
+  
+```{r Summary statistics -- All variables,echo=FALSE,include=FALSE}
+    summary(df)
+
+```
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet fermentum mauris. Fusce vitae libero eros. Sed porta tempus aliquam. Fusce vitae enim ante. Donec viverra velit est. Curabitur mattis, quam vel feugiat egestas, neque enim egestas sem, in bibendum felis magna ac diam. Curabitur vitae magna turpis. Duis vehicula mi quis ligula dictum tempor. Mauris sit amet malesuada nisi, nec dictum sapien. Nam tempus fermentum lorem ac gravida. Suspendisse laoreet rutrum placerat. Pellentesque nec odio vel ante sagittis efficitur. Quisque vulputate purus ac augue sollicitudin semper. Sed in lacinia ex. Sed augue lacus, ullamcorper vel risus sit amet, rutrum faucibus tortor.
+
+  <!-- ### One variable -->
+  
+```{r Statistics for one variable, include=FALSE}
+    summary(df[,"grade"])
+
+```
+
+
+### Statistics for specific variables
+  
+```{r Statistics for specific variables, include=FALSE}
+    summary(df[,c("grade","union","ln_wage")])
+
+```
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet fermentum mauris. Fusce vitae libero eros. Sed porta tempus aliquam.
+
+### Tabulations
+
+Aliquam ut convallis mi, vel mollis nunc. Praesent vulputate imperdiet dictum. Nunc libero velit, malesuada et luctus vitae, sollicitudin eget mi. Aenean in nunc id orci dignissim pharetra id at risus. Integer quis velit vitae urna ornare scelerisque tincidunt a libero. Ut et tortor id mauris suscipit hendrerit. In ut hendrerit erat. Maecenas vel tempor ante. Vestibulum lectus velit, maximus id nibh non, lobortis euismod libero. Pellentesque in felis arcu. Maecenas at dui eu dolor feugiat luctus at sit amet mauris. Proin mattis ipsum id metus pharetra, a ultricies augue posuere. Sed malesuada mi elit, sit amet placerat eros bibendum molestie.
+
+```{r Tabulations,echo=FALSE}
+  table(df[,"young"])
+  table1 <- table(df$union,df$collgrad)
+    print(table1)
+
+```
+  
+<!-- # Add row/column with sums -->
+
+Nam dui tellus, semper id hendrerit sodales, laoreet vel tellus. Vestibulum ornare condimentum justo et luctus. Mauris blandit sollicitudin suscipit. Duis et tincidunt tellus, non tincidunt lectus. Nulla sed lacus nisl. Aliquam molestie eu nulla pellentesque aliquet. Nam ut hendrerit tellus. Duis placerat, nibh quis mollis finibus, massa felis suscipit sem, dapibus imperdiet justo diam non massa. In quis posuere leo. Sed lacinia, odio ut aliquet viverra, sapien arcu aliquam ante, eget scelerisque nisi odio non lorem. Aenean ex felis, cursus eget feugiat nec, dictum ut arcu. Maecenas varius, lacus sed ornare molestie, mi leo ultrices ex, ut aliquet ipsum mi id leo. Aliquam ipsum nunc, dapibus ac sollicitudin sit amet, lobortis eget leo. Morbi efficitur placerat ex, in pulvinar justo posuere sit amet.
+
+```{r Frequencies -- Add row/column with sums, echo=FALSE}
+    margin.table(table1,1)
+    margin.table(table1,2)
+
+```
+
+<!-- ## Report proportions -->
+
+Cras malesuada dolor ante, id auctor ligula lobortis eu. Etiam consequat lectus eu lacus aliquam, ut bibendum nisi fringilla. Nunc lacus arcu, imperdiet id vehicula sit amet, efficitur elementum sapien. Pellentesque auctor elit lorem, nec gravida lorem porta sed. Integer suscipit magna dui, sit amet aliquam libero placerat eu. Donec odio lectus, pellentesque in tincidunt eu, lobortis vel lacus. Morbi tristique tincidunt nibh ut facilisis. Nunc euismod finibus libero non aliquet. Maecenas finibus libero nisl, vitae consequat diam pharetra eu. Etiam pretium, neque et vehicula bibendum, risus nibh efficitur nunc, eget laoreet erat magna vel magna. Nulla aliquam quam non placerat tincidunt. Proin ut lacus sit amet nisi lacinia faucibus nec eget metus. Pellentesque sed mattis mi.
+
+```{r Report proportions, include=FALSE}
+    prop.table(table1)
+    prop.table(table1,1)
+    prop.table(table1,2)
+
+```
+  
+<!-- # Round the numbers -->
+  
+```{r Round the numbers, eval=FALSE,include=FALSE}
+    tt1 <- prop.table(table1)
+    round(tt1,1)
+
+```
+    
+
+### Alternative
+
+Nunc vel elementum nunc. Proin vel eros blandit, consectetur erat nec, facilisis neque. Pellentesque eu nibh ut ex tempor efficitur. Aliquam at orci viverra, tristique est sit amet, imperdiet nunc. Donec elit turpis, euismod eu elit et, bibendum posuere nunc. Nunc ornare finibus tellus, eget lacinia felis semper in. Nulla mollis nibh ante, a scelerisque sem posuere varius. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque vel velit orci. Nunc ut interdum urna. Integer nunc turpis, tincidunt eu maximus dapibus, pretium eget ipsum. Cras semper tortor ac posuere semper. Maecenas non quam orci. Etiam non neque in tortor dapibus facilisis.
+
+```{r Frequency table (alternative),eval=FALSE,include=FALSE}
+    ftable(df$union,df$collgrad)
+```
+
+<!-- ## Export the output -->
+
+### Our summary statistics
+
+Integer viverra ornare eros. Ut porttitor congue odio, et venenatis nisl ultricies sed. Suspendisse ullamcorper molestie lectus eu tincidunt. Fusce convallis mi eget diam hendrerit convallis. Maecenas ac ligula erat. Nam aliquet lacus eget lorem congue, ut ultrices nisl vestibulum. Etiam eu erat quis lectus rutrum mollis. Donec vitae tellus ut leo cursus molestie at vel risus. Integer id pharetra quam. Suspendisse elit ligula, egestas vitae tristique ac, egestas sit amet massa. Curabitur suscipit dapibus congue. Curabitur vitae efficitur nibh, et placerat augue. Nullam egestas scelerisque sapien vitae suscipit. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+
+
+```{r Statistics (table), echo=FALSE}
+    stargazer(df,
+      title = "Summary statistics",
+      type= DOCTYPE, out = "Statistics.txt",
+      digits = 2)
+```
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet fermentum mauris. Fusce vitae libero eros.
+
+Or
+
+### (...) or a subset of variables
+  
+Curabitur tincidunt nibh quis mauris egestas aliquet. Mauris nec sodales lacus. Quisque accumsan quis est eget commodo. Donec purus massa, consequat in congue non, sagittis sed leo. Aliquam ante magna, bibendum eget dui quis, commodo condimentum urna. Vivamus pretium est a augue sodales varius. Sed in efficitur nulla, vel iaculis diam. Sed feugiat ex ut libero eleifend, nec luctus felis dignissim. Curabitur pretium ullamcorper iaculis. Cras iaculis purus sed justo rhoncus fermentum eget vitae nisi. Fusce porta nisi leo, tincidunt accumsan arcu pulvinar ut.
+
+
+```{r Statistics (short), echo=FALSE, warning=FALSE,results='asis'}
+    df %>%
+      dplyr::select(year,age,collgrad,ttl_exp,union,hours) %>% 
+      stargazer(title="Shorter statistics",
+      type= DOCTYPE, out = "Statistics_output.html",
+      digits = 2)
+
+```
+
+or
+
+```{r Statistics (short) - alt., echo=FALSE, warning=FALSE,results='asis'}
+    df %>%
+      dplyr::select(year,age,collgrad,ttl_exp,union,hours) %>% 
+      stargazer(title="Shorter statistics - alt.",
+      digits = 2)
+
+```
+
+
+<!-- # 5. Graphs::Explore::https://www.r-graph-gallery.com/index.html -->
+
+The following **Histogram** shows that (...) Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet fermentum mauris. Fusce vitae libero eros.
+
+
+<!-- # 5.1. Histogram -->
+  
+See Figure \@ref(fig:wage-hist).
+
+```{r wage-hist, fig.cap="L wages", include=FALSE}
+df %>% 
+      ggplot(aes(x=ln_wage)) +
+      geom_histogram(bins = 27)
+```
+
+```{r Wages, fig.cap="L wages", include=FALSE}
+   HH <- df %>% 
+      ggplot(aes(x=ln_wage)) +
+      geom_histogram(bins = 27)
+
+  HH
+
+```
+
+Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In feugiat magna erat, vitae venenatis nisl pellentesque ut. Fusce feugiat mauris ut ultricies suscipit. Nam malesuada ante non purus consectetur aliquet. Nunc porttitor dui et imperdiet varius. Aliquam posuere finibus hendrerit. Donec condimentum nisi efficitur, sagittis velit nec, blandit nulla. Mauris lobortis consequat nibh ac lacinia. Nullam placerat vitae felis non faucibus. Sed sit amet urna ut velit consectetur faucibus a a erat. Donec ultricies vitae nunc id commodo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In eu leo sed ligula cursus convallis. In hac habitasse platea dictumst. Vivamus imperdiet aliquet commodo.
+
+
+<!-- # 5.2. Density -->
+
+Alternatively, one can picture a *density*. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet fermentum mauris. Fusce vitae libero eros.
+
+  
+```{r Density, include=FALSE}
+      DD <- ggplot(df,aes(x=ln_wage)) +
+      geom_density(color="blue")
+
+  DD
+
+```
+
+```{r Histogram vs. density side by side, echo = FALSE, message=FALSE,warning=FALSE}
+library(ggpubr)
+
+      figure <- ggarrange(HH, DD,
+                          labels = c("Hist.1", "Dens.1"),
+                          ncol = 2, nrow = 1)
+      figure
+
+```
+
+
+<!-- # 5.3. Scatter -->
+
+Yet another alternative is a scatter plot. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet fermentum mauris. Fusce vitae libero eros.
+
+
+```{r Scatter plot, echo=FALSE}
+    SS <- df %>%
+      ggplot(aes(ttl_exp,ln_wage)) +
+      labs(title = "Ln Wage vs. Experience") +
+      ylab("Ln Wage") +
+      xlab("Experience") +
+      geom_point()
+  
+    SS
+
+```
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet fermentum mauris. Fusce vitae libero eros.
+
+    
+<!-- ## SAVE YOUR GRAPH -->
+    
+```{r Save your graph, echo=FALSE,include=FALSE}
+      ggsave("graph1.png")
+
+```
+
+
+
+# Regression analysis: Ordinary Least Squares (OLS)
+
+Phasellus convallis euismod sapien eu vulputate. Maecenas et sollicitudin nulla, non porttitor enim. Aenean ultricies sapien tortor, at pellentesque eros molestie a. Maecenas pharetra tincidunt mauris. Nulla condimentum, mauris sed sodales malesuada, lorem magna ultricies ligula, non imperdiet quam urna at erat. Aenean in risus nec tortor commodo aliquet vitae a mi. Phasellus lobortis diam quis justo placerat ullamcorper. Sed semper nisl tortor. Aenean varius iaculis finibus. Proin sollicitudin tristique mi, eget aliquam justo fermentum id. Vestibulum aliquet consequat dui, vel ornare erat facilisis vitae. Vivamus ornare pellentesque augue, scelerisque feugiat turpis placerat id. Nulla dictum molestie enim non feugiat. Morbi velit ante, molestie nec ullamcorper eu, laoreet ac magna.
+
+
+<!-- # Create additional variables -->
+
+```{r Create additional variables,echo=FALSE,include=FALSE}
+      df_ols <- df %>% 
+        mutate(age_sq = age^2,tenure_sq = tenure^2, experience = ttl_exp,
+               experience_sq = experience^2)
+
+# Add categorical variable to the data frame
+df_ols$high_hours <- as.factor(ifelse(df_ols$hours > mean(df_ols$hours, na.rm = TRUE), 'Low hours', 'High hours'))
+
+df_ols %>% 
+  group_by(high_hours) %>% 
+  summarise(n = n())
+
+```
+      
+## *Estimating a Mincerian Wage Equation*
+
+Donec euismod ex ac justo varius, eget congue urna feugiat. Sed sollicitudin mauris id neque interdum vestibulum. Nulla facilisis feugiat justo, in eleifend est fringilla non. Nullam in imperdiet orci. Suspendisse congue metus non ligula sodales porta. Curabitur nunc lectus, viverra at porttitor ac, auctor nec nisi. Mauris in sem vitae dui aliquam facilisis. Suspendisse eu tortor nec nibh mollis congue. Sed porttitor maximus ante, sit amet suscipit dui lobortis ac. Pellentesque eu ex sed ex posuere rutrum nec nec ipsum. Nunc cursus elit libero, nec tincidunt tortor auctor id. Suspendisse varius turpis nibh, a facilisis urna porttitor id. Fusce placerat sem id est posuere, eu mattis diam elementum. Etiam non nisi dolor. Sed sagittis lobortis ultrices. Vestibulum eget pulvinar tellus, ut dignissim odio.
+
+\begin{equation}
+lnwage_i = \beta_0 + \beta_1 Grade_i + \beta_2 Experience +  \beta_3 Experience^{2}_{i} + \varepsilon_i (\#eq:M1)
+\end{equation}
+
+Ut ultrices lacus id velit facilisis faucibus. Aenean tempus mi ut tristique rutrum. Pellentesque dictum orci id diam molestie, vitae molestie ipsum viverra. Duis porta ante ut tempor vestibulum. Donec convallis in leo vel ultrices. Pellentesque sit amet vestibulum urna. Curabitur ac cursus sapien. Nam commodo vulputate nisl ut consequat. Nullam nisi nulla, blandit in purus nec, pharetra pellentesque ex -- see Equation \@ref(eq:M1).
+
+
+### Model 1
+
+Praesent nec magna velit. Nunc ac placerat lacus, in pretium tellus. Vivamus dapibus velit a volutpat mattis. Nunc porttitor massa at lacus tristique rutrum. Nam et eleifend neque. Quisque neque ante, imperdiet eget laoreet ac, euismod quis lorem. Nulla facilisi.
+
+
+```{r Model (1),include=FALSE}
+    ols1 <- lm(data = df_ols, ln_wage ~ grade)
+        summary(ols1)
+
+```
+
+Sed rutrum ultricies tellus sodales malesuada. In sed dapibus augue. Phasellus enim velit, tempor ac cursus non, molestie vel ante. Mauris a lectus pharetra, finibus sem maximus, accumsan leo. Aliquam viverra nibh eu nibh congue tristique. Vestibulum at enim ultricies lorem facilisis ultrices. Proin in ex nec urna sagittis commodo. Pellentesque et quam at lorem porttitor luctus ut non nisl. Pellentesque at tristique nisl. Mauris pellentesque in orci id vestibulum. Vestibulum dapibus nisl sem, vulputate lobortis ex semper ut.
+
+        
+### Model 2
+
+Nam non volutpat sapien. Quisque gravida vel tortor non tincidunt. Donec mollis lorem a nunc euismod, vel posuere erat sodales. Cras libero orci, pretium rutrum justo sed, hendrerit bibendum quam. Maecenas ac cursus ipsum. Aenean mollis metus ornare velit ultricies gravida. Vestibulum nunc mauris, ultrices at odio ut, euismod maximus lorem. Nullam rutrum ipsum est, sit amet mattis justo fringilla ac. Nulla facilisi. Curabitur non venenatis dui. Duis quis tincidunt lorem, quis viverra nunc. Nulla consequat lorem ac tellus eleifend pharetra. Cras sit amet justo sollicitudin, lobortis nulla eget, ullamcorper ligula. Donec vel nibh semper, blandit felis eget, vestibulum ipsum.
+    
+```{r Model (2),echo=FALSE}
+    ols2 <- lm(data = df_ols, ln_wage ~ grade + 
+                 experience + experience_sq)
+      summary(ols2)
+betas <-coef(ols2)
+r2 <- summary(ols2)$r.squared
+```
+
+Ut ornare dapibus aliquam. Donec eget lectus justo. Vivamus a leo posuere, vehicula erat eu, ultrices erat. Vivamus pharetra lacus et porta dapibus. Suspendisse ultrices rhoncus eros at suscipit. Sed felis eros, maximus in magna id, cursus commodo quam. Vivamus pulvinar, dui id tincidunt convallis, risus nunc cursus ex, sollicitudin facilisis tellus erat sed lacus.
+
+```{r Variance-CoVariance}
+vcov(ols2)
+```
+
+
+Ut lobortis metus in pellentesque congue. Pellentesque elementum metus augue, ac pellentesque tortor blandit vitae. Etiam massa diam, aliquam eget pharetra sollicitudin, egestas eu dui. Pellentesque eu consequat nunc, nec posuere purus. Curabitur ac tellus ut sapien ultricies porta vel sit amet justo.
+
+<!-- ## Export regression output -->
+
+## First results
+
+### Output table and discussion
+
+The estimation results are presented in Table \@ref{tab:Regressions}. Fusce pulvinar pretium metus, ut convallis tortor consectetur in. Pellentesque vitae sollicitudin nisi. Mauris tellus lorem, finibus et lectus in, tristique fermentum ex. Donec porttitor vestibulum sodales. Integer et magna scelerisque, commodo urna eget, iaculis felis. Mauris vel mattis ipsum. Nulla eget viverra ligula. Ut id volutpat ipsum, nec porttitor sem. Etiam vel sagittis odio. Nam erat nisi, feugiat vitae ipsum ac, gravida mattis urna. Aliquam porta vestibulum volutpat.
+
+```{r Regressions: models (1) and (2), echo=FALSE, warning=FALSE, results='asis'}
+      stargazer(ols1,ols2, 
+                model.numbers = FALSE, title = "Estimates of wage determinants",
+                column.labels = c("Model (1)","Model (2)"),
+                label = "regressions",
+                table.placement = "!ht",
+                notes.append = FALSE,
+                notes.align="l",
+                notes="Standard errors in parentheses.",
+                header = FALSE,
+                no.space = TRUE,
+                covariate.labels = c("Grade","Experience","Experienced sqrd."),
+                omit = c("Constant"),
+                omit.stat = c("adj.rsq","f","ser"),
+                digits = 6,
+                digits.extra = 6,
+                omit.yes.no = c("Constant",""),
+                dep.var.caption="",
+                dep.var.labels.include = FALSE,
+                style = "qje",
+                type = DOCTYPE,
+                out = "Regression_output.html")
+
+```
+
+Here we discuss the results of the estimations, including interpretation and hypothesis testing.
+
+
+Quisque eleifend eget quam vel mollis. Praesent in rhoncus nulla. Etiam ultricies odio a justo pharetra, non faucibus justo pulvinar. Aliquam tempor placerat magna quis eleifend. Donec quis sem rhoncus, malesuada mi eu, tempus nunc. Nullam ornare rutrum ante, vitae ultrices tellus convallis vitae. Mauris sed maximus quam. Fusce scelerisque mollis quam, vel pellentesque lectus consectetur et. Aliquam erat volutpat. Aenean fermentum at leo sit amet imperdiet. Vivamus tortor elit, auctor ac rutrum sit amet, facilisis eget diam. Sed tincidunt ipsum vitae eros posuere accumsan. Sed vitae tortor et mi venenatis rhoncus a nec augue.
+
+The estimated return to *Grade* is `r round(betas[2]*100,2)`\%. The $R^2$ is `r round(r2,2)`. However, when using Model (1) the return is `r round(coef(ols1)[2]*100,1)`, while the quality of the adjustment is `r round(summary(ols1)$r.squared,1)`.
+
+We can write the estimated equation as
+
+$$\hat{y_i}=`r round(betas[1],1)` + `r round(betas[2],2)`\times Grade_i + `r round(betas[3],2)`\times experience_i + `r round(betas[4],2)`\times experience^{2}_{i}$$
+Aliquam ornare, odio dictum malesuada mattis, mi est tincidunt tortor, a varius ante lacus nec dolor. Suspendisse semper nibh eu tristique placerat. Mauris sed luctus augue. Cras sodales justo tellus, sollicitudin fringilla dui rhoncus ac. In convallis interdum justo dictum pellentesque. Nulla ultricies turpis lectus, in imperdiet lacus aliquet ac. Vivamus porta venenatis efficitur. Sed interdum efficitur tortor et gravida. Fusce accumsan purus eget libero maximus luctus. Morbi in tristique purus. Maecenas metus eros, euismod a nisi elementum, egestas scelerisque ligula. Pellentesque sed placerat eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque vitae ornare magna. Vivamus at dolor nunc. Vestibulum auctor urna faucibus nunc faucibus pulvinar.
+
+```{r Write equation from estimates, echo=FALSE, warning=FALSE, message=FALSE}
+equatiomatic::extract_eq(ols1)
+
+equatiomatic::extract_eq(ols1, use_coefs = TRUE)
+```
+
+
+Nam purus nulla, gravida sit amet rhoncus eget, aliquam rutrum ligula. Pellentesque tristique luctus nunc, et scelerisque lorem sodales fermentum. Aenean eu rhoncus ex, in feugiat metus. Fusce eget sem vel odio aliquet suscipit vitae vel nulla. Phasellus efficitur orci quis justo auctor, a fringilla nibh dictum. Quisque id tempor ligula, quis ornare felis. Curabitur neque mi, cursus vitae purus sed, consequat cursus urna. Vestibulum ante urna, rhoncus sit amet lobortis id, varius eget ex. Nullam vehicula volutpat sem. Praesent accumsan at justo eget scelerisque. Donec ut varius mauris. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed nec felis magna. Sed sed efficitur tortor, dictum maximus neque. Vivamus blandit gravida diam, vel porta ipsum. Donec auctor ut orci nec rutrum.
+
+
+\begin{equation}
+\frac{\partial lnwage_i}{\partial Grade_i} = \beta_1
+\end{equation}
+
+We will test the following hypothesis:
+
+$H_0: \beta_1 = 0$
+
+$H_1: \beta_1 \neq 0$
+
+The joint significance test can be defined as
+
+$$H_0: \beta_2 = \beta_3 = 0$$
+
+$$H_1: H_0 \quad is \quad false $$
+Aliquam ornare, odio dictum malesuada mattis, mi est tincidunt tortor, a varius ante lacus nec dolor. Suspendisse semper nibh eu tristique placerat. Mauris sed luctus augue. Cras sodales justo tellus, sollicitudin fringilla dui rhoncus ac. In convallis interdum justo dictum pellentesque. Nulla ultricies turpis lectus, in imperdiet lacus aliquet ac. Vivamus porta venenatis efficitur. Sed interdum efficitur tortor et gravida. Fusce accumsan purus eget libero maximus luctus. Morbi in tristique purus. Maecenas metus eros, euismod a nisi elementum, egestas scelerisque ligula. Pellentesque sed placerat eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque vitae ornare magna. Vivamus at dolor nunc. Vestibulum auctor urna faucibus nunc faucibus pulvinar.
+
+
+### HYPOTHESIS TESTING: automatic command
+
+Vestibulum sem augue, rutrum et blandit eget, hendrerit nec quam. Morbi sit amet ipsum at nulla gravida mollis. Ut arcu arcu, dictum id mauris at, convallis suscipit mauris. Suspendisse tempor suscipit velit. Quisque consectetur enim nec vestibulum varius. Vivamus eleifend eget sem non varius. Pellentesque ut ligula vel arcu vulputate lacinia vel a mi. Etiam feugiat tempor lobortis. Suspendisse efficitur suscipit dictum. Quisque quis nulla vitae eros mollis aliquet sed id magna. Vivamus malesuada risus vel tellus elementum, nec bibendum turpis venenatis. Morbi in tellus est. Vivamus eget sollicitudin diam.
+
+```{r Automatic linear hypothesis testing}
+    
+      linearHypothesis(ols1,c("grade=0"))
+
+```
+
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet fermentum mauris. Fusce vitae libero eros. Sed porta tempus aliquam. Fusce vitae enim ante. Donec viverra velit est. Curabitur mattis, quam vel feugiat egestas, neque enim egestas sem, in bibendum felis magna ac diam. Curabitur vitae magna turpis. Duis vehicula mi quis ligula dictum tempor. Mauris sit amet malesuada nisi, nec dictum sapien. Nam tempus fermentum lorem ac gravida. Suspendisse laoreet rutrum placerat. Pellentesque nec odio vel ante sagittis efficitur. Quisque vulputate purus ac augue sollicitudin semper. Sed in lacinia ex. Sed augue lacus, ullamcorper vel risus sit amet, rutrum faucibus tortor.
+
+<!-- Open the HTML file and copy/paste to the word file -->
+
+### Additional quality measures: AIC & BIC
+
+Vestibulum feugiat neque vitae mi aliquet, eu venenatis massa finibus. Nulla maximus eros lacus, vitae commodo nibh consectetur non. Sed odio diam, elementum id pharetra ut, faucibus quis nibh. Donec eu sagittis justo. Suspendisse in lectus augue. Donec condimentum nibh id libero porta rhoncus. Morbi vitae euismod diam, in iaculis mauris. Cras ullamcorper sodales mattis. Vestibulum interdum feugiat massa, nec sollicitudin felis viverra in. Nullam pretium tellus id ligula accumsan, eu elementum quam blandit. Donec sit amet nulla fringilla, porta ex in, vehicula enim. Nunc tempor orci fermentum dignissim imperdiet.
+
+
+
+```{r Information criteria, echo=FALSE}
+    
+      AIC(ols1)
+      BIC(ols1)
+    
+      AIC(ols2)
+      BIC(ols2)
+
+```
+
+
+### COLINEARITY: VIF
+
+Nam dapibus ipsum ut magna pellentesque convallis. Vestibulum sit amet turpis vel enim tempor commodo dapibus vel elit. In in iaculis lectus. Maecenas consequat enim vel varius imperdiet. Phasellus vitae nunc lobortis, cursus dui quis, molestie dolor. Phasellus vitae ornare tellus, id egestas purus. Quisque commodo, orci vehicula consequat condimentum, ante metus ornare ipsum, sit amet finibus nisi ante non libero. Donec sed hendrerit velit. Cras sollicitudin nisl vitae sem malesuada, eu fermentum lectus laoreet. Vivamus dignissim metus quam, ut luctus massa iaculis et. Fusce sed eros sapien. Sed eget blandit eros, ullamcorper aliquam odio. Integer suscipit ac leo id suscipit. Integer ante massa, interdum at urna eget, consequat accumsan augue. Cras pulvinar, elit nec pellentesque euismod, justo ante fermentum tortor, sed ultrices ipsum lacus ac ante. Pellentesque ac turpis faucibus, vestibulum nulla sed, molestie ante.
+
+```{r VIF, echo=FALSE}
+    
+      car::vif(ols2)
+
+```
+
+
+
+## Chow test
+
+Nulla facilisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur vulputate nisi dolor, id posuere metus mollis sed. Cras ac dolor eu erat molestie cursus non eu nunc. Ut malesuada ligula sem, quis sodales purus gravida vel. Sed ut lacinia velit. Suspendisse rutrum ex quis lectus feugiat consequat. Fusce iaculis nisl et nisi rhoncus, at rhoncus lacus eleifend. Maecenas volutpat erat tellus, at elementum velit vehicula sit amet.
+
+```{r Chow test}
+ols3 <- lm(ln_wage ~ grade + experience + experience_sq + union,data=df_ols,na.action = na.exclude)
+      
+  df_ols_central_city <- df_ols %>% 
+    filter(c_city == 1)
+
+  df_ols_nocentral_city <- df_ols %>% 
+    filter(c_city == 0)
+
+ols3_central_city <-lm(ln_wage ~ grade + experience + experience_sq + union,data=df_ols_central_city,na.action = na.exclude)
+summary(ols3_central_city)
+
+ols3_nocentral_city <-lm(ln_wage ~ grade + experience + experience_sq + union,data=df_ols_nocentral_city,na.action = na.exclude)
+summary(ols3_nocentral_city)
+
+```
+
+
+
+```{r Chow test (output table), echo=FALSE,message=FALSE, warning=FALSE, results='asis'}
+        stargazer(ols1,ols2,ols3,ols3_central_city,ols3_nocentral_city,
+        model.numbers = FALSE, title = "Robust estimates of wage determinants",
+        column.labels = c("Model (1)","Model (2)","Model (3)","Model (3 - C.City)","Model (3 - NoC.City)"),
+        label = "robust",
+        covariate.labels = c("Grade", "Experince", "Exper. Sqr.", "Union"),
+        header = FALSE,
+        model.names = F,
+        no.space = TRUE,
+        omit = c("Constant"),
+        omit.stat = c("adj.rsq","f","ser"),
+        omit.yes.no = c("Constant",""),
+        digits = 5, digits.extra = 6,
+        dep.var.caption=NULL,dep.var.labels = NULL,
+        dep.var.labels.include = FALSE,
+        style = "qje",
+        type = DOCTYPE,
+        out = "Regression_output_robust.html",
+        notes.append = FALSE,
+        notes.align="l",
+        star.char = c("+", "++", "+++"),
+        star.cutoffs = c(0.1, 0.05, 0.01),
+        notes = c("Robust standard-errors in parentheses. Significance levels: +, 10%; ++, 5%; +++, 1%."))
+
+```
+
+
+
+Pellentesque id mollis neque. Curabitur ultrices purus id elementum pretium. Integer ligula lacus, luctus quis magna in, dignissim rhoncus neque. Quisque pretium massa vehicula mattis efficitur. Praesent placerat sem a risus cursus, sit amet posuere libero porttitor. Vestibulum ultrices accumsan mauris a auctor. In nibh diam, tincidunt eget sodales eget, egestas vel sapien. In lacus velit, maximus vel interdum eu, pellentesque vel neque. Fusce lacinia, elit nec finibus ullamcorper, quam ipsum malesuada orci, non egestas odio sem quis lacus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus imperdiet dictum ipsum at aliquam.
+
+
+```{r Chow statistic, include=FALSE}
+chi2_Chow <- round(((deviance(ols3)-(deviance(ols3_central_city)+deviance(ols3_nocentral_city)))/(dim(model.matrix(ols3))[2]))/((deviance(ols3_central_city)+deviance(ols3_nocentral_city))/(nobs(ols3)-2*dim(model.matrix(ols3))[2])),1)
+
+```
+
+The statistic of the Chow test is `r chi2_Chow`.
+
+
+```{r Model (4), echo = FALSE}
+ols4 <- lm(ln_wage ~ grade + experience + experience_sq + union + c_city + union*c_city,data=df_ols,na.action = na.exclude)
+summary(ols4)
+
+```
+
+## RESET test
+
+```{r RESET test}
+resettest(ln_wage ~ grade + experience + experience_sq + union + c_city + union*c_city,data=df_ols,power = 2,type = "fitted")
+```
+
+
+## HETEROSKEDASTICITY
+
+Duis faucibus vitae nisi pulvinar suscipit. Mauris imperdiet mauris ante, eu ornare tellus lacinia quis. Quisque semper, nulla id pellentesque porta, eros ex pellentesque sapien, ut mattis nulla nisl et ipsum. Mauris id dolor lectus. Nam erat purus, tempor eu suscipit et, facilisis et nulla. Sed lacinia metus orci, a imperdiet mauris pulvinar vel. Cras sit amet sem odio. Aenean lacus massa, pharetra et sodales lacinia, congue ac magna. Morbi placerat, metus at consectetur scelerisque, nulla libero volutpat magna, vitae hendrerit ex diam sed urna. Nulla at tortor tortor. Nam a dolor interdum, sollicitudin ipsum vitae, venenatis ex. Suspendisse a tempor elit.
+
+
+
+```{r Breush-Pagan, echo=FALSE}
+      
+      df_ols$residuals <- residuals(ols4)
+        plot(df_ols$grade,df_ols$residuals)
+      
+      df_ols <- df_ols %>% 
+        mutate(residuals_sq = residuals^2)
+      
+      df_ols <- df_ols %>% 
+          mutate(y_hat = ln_wage - residuals,y_hat2 = y_hat^2)
+        # nlswork$residuals_sq <- residuals(mm4)^2
+        
+        bp <- summary(lm(residuals_sq ~ grade + experience + experience_sq + union + c_city + union*c_city,data=df_ols,na.action = na.exclude))
+        
+          bp$r.squared*nrow(as.data.frame(bp$residuals))
+
+```
+
+### Breusch-Pagan test
+
+Phasellus non sodales dolor, sit amet accumsan ligula. Nullam sapien lacus, convallis vel enim eu, ultricies tempus sapien. Etiam rhoncus, erat vitae ultrices consequat, ex mi pharetra erat, vel lobortis lectus velit sed urna. Sed ullamcorper pellentesque faucibus. Donec vulputate mi odio, ut viverra dui laoreet sed. Phasellus venenatis eros posuere pretium ullamcorper. Proin elementum non urna luctus cursus. Suspendisse tempus justo iaculis orci semper consectetur. Fusce et dictum ex.
+
+```{r Breusch-Pagan test, include=FALSE}
+  bp0 <- bptest(ols4)
+```
+Nulla facilisi. Aliquam nec dolor sed quam mattis egestas tempus vel mi. Nam commodo eros mi, id fringilla arcu consectetur non. Donec accumsan laoreet justo nec sagittis. Maecenas et sem ac augue scelerisque porttitor nec et metus. Mauris fringilla non ex sed lobortis. Vestibulum a elit efficitur, ultrices sem id, pretium eros. Sed eu elit dui.
+
+Cras odio quam, dignissim vel varius sit amet, volutpat in ipsum. Nulla facilisi. The test has a statistic of *`r round(bp0$statistic,1)`*,  with **`r bp0$parameter`** degrees of freedom, and an associated p-value of about `r round(bp0$p.value,3)`.
+
+### White test
+
+Donec in iaculis mi. Aenean diam metus, tincidunt sit amet urna et, congue mollis tellus. Integer feugiat magna commodo orci fringilla varius. Aliquam et condimentum libero. Aenean purus enim, vehicula accumsan ipsum vel, imperdiet cursus dui.
+
+
+```{r White test, include=FALSE, paged.print=TRUE}
+          bp <- bptest(ols4,~ I(grade^2) 
+                       + I(experience^2) 
+                       + I(experience_sq^2) 
+                       + grade*experience 
+                       + grade*experience_sq 
+                       + grade*union
+                       + grade*c_city
+                       + grade*union*c_city
+                       + experience*experience_sq 
+                       + experience*union
+                       + experience*c_city
+                       + experience*union*c_city
+                       + experience_sq*union
+                       + experience_sq*c_city
+                       + experience_sq*union*c_city
+                       ,data=df_ols)
+
+stat <- bp$statistic
+bp
+```
+
+Cras odio quam, dignissim vel varius sit amet, volutpat in ipsum. Nulla facilisi. The test has a statistic of *`r round(bp$statistic,1)`*,  with **`r bp$parameter`** degrees of freedom, and an associated p-value of about `r round(bp$p.value,3)`.
+
+```{r Automatic procedures for heteroskedasticity tests, eval=FALSE, include=FALSE}
+library(skedastic)
+white_lm(ols4)
+breusch_pagan(ols4)
+```
+
+
+Vivamus convallis, purus vitae euismod mattis, mi magna blandit lectus, ac molestie felis arcu a sem. Nunc eu ipsum magna. Sed malesuada sodales nunc, ut cursus libero bibendum vitae. Aenean eget ligula molestie, scelerisque urna eu, suscipit sem. In hac habitasse platea dictumst. Duis bibendum rutrum est, et iaculis nisl ultrices ut. Integer consectetur iaculis dui, ac egestas eros ultricies sed. Nullam quis porttitor erat.
+
+### Robust estimation
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu metus sem. Curabitur vitae metus in ligula pulvinar feugiat. Fusce consectetur velit et orci pretium, quis efficitur ex pharetra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc porttitor urna enim, non efficitur nunc varius non. Proin dignissim nisi varius ligula volutpat, nec placerat tellus ultrices. Suspendisse accumsan mollis augue vel gravida. Donec a libero nisl. Donec magna odio, feugiat in maximus sed, aliquet quis sapien.
+
+
+```{r Rubust estimation, echo=FALSE,message=FALSE, warning=FALSE, results='asis'}
+        r1ols4 <- coeftest(ols4,vcov =vcovHC(ols4,type = "HC1"))   # HC1 gives us the White standard errors
+        r2ols4 <- coeftest(ols4,vcov =sandwich)
+        
+        stargazer(ols4,r1ols4,
+        model.numbers = FALSE, title = "Robust estimates of wage determinants",
+        column.labels = c("Model (4)","Model (4 - Robust)"),
+        label = "robust",
+        covariate.labels = c("Grade", "Experince", "Exper. Sqr.", "Union", "Central city","C.City x Union"),
+        header = FALSE,
+        model.names = F,
+        no.space = TRUE,
+        omit = c("Constant"),
+        omit.stat = c("adj.rsq","f","ser"),
+        omit.yes.no = c("Constant",""),
+        digits = 5, digits.extra = 6,
+        dep.var.caption=NULL,dep.var.labels = NULL,
+        dep.var.labels.include = FALSE,
+        style = "qje",
+        type = "text",
+        out = "Regression_output_robust.html",
+        notes.append = FALSE,
+        notes.align="l",
+        star.char = c("+", "++", "+++"),
+        star.cutoffs = c(0.1, 0.05, 0.01),
+        notes = c("Robust standard-errors in parentheses.", "Significance levels: +, 10%; ++, 5%; +++, 1%."))
+
+```
+
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu metus sem. Curabitur vitae metus in ligula pulvinar feugiat. Fusce consectetur velit et orci pretium, quis efficitur ex pharetra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc porttitor urna enim, non efficitur nunc varius non. Proin dignissim nisi varius ligula volutpat, nec placerat tellus ultrices. Suspendisse accumsan mollis augue vel gravida. Donec a libero nisl. Donec magna odio, feugiat in maximus sed, aliquet quis sapien [@harmon2003returns].
+
+# Conclusion
+
+In this paper we show that consectetur adipiscing elit. Mauris sit amet fermentum mauris. Fusce vitae libero eros. Sed porta tempus aliquam. Fusce vitae enim ante. Donec viverra velit est. Curabitur mattis, quam vel feugiat egestas, neque enim egestas sem, in bibendum felis magna ac diam. Curabitur vitae magna turpis. Duis vehicula mi quis ligula dictum tempor. Mauris sit amet malesuada nisi, nec dictum sapien. Nam tempus fermentum lorem ac gravida. Suspendisse laoreet rutrum placerat. Pellentesque nec odio vel ante sagittis efficitur. Quisque vulputate purus ac augue sollicitudin semper. Sed in lacinia ex. Sed augue lacus, ullamcorper vel risus sit amet, rutrum faucibus tortor.
+
+It follows from our analysis that lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu metus sem. Curabitur vitae metus in ligula pulvinar feugiat. Fusce consectetur velit et orci pretium, quis efficitur ex pharetra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc porttitor urna enim, non efficitur nunc varius non. Proin dignissim nisi varius ligula volutpat, nec placerat tellus ultrices. Suspendisse accumsan mollis augue vel gravida. Donec a libero nisl. Donec magna odio, feugiat in maximus sed, aliquet quis sapien.
+
+<!-- The following line transforms the notebook in a script -->
+
+```{r Produce the script corresponding to the RMarkdown,eval=FALSE,include=FALSE}
+# knitr::purl("/Users/miguelportela/Dropbox/3.aulas/2021/licenciatura/econometria_ii/3.assignment_template/Econometrics_II_R_notebook_V6.Rmd")
+
+knitr::purl("D:\\miguel\\Dropbox\\3.aulas\\2021\\licenciatura\\econometria_ii\\3.assignment_template\\Econometrics_II_R_notebook_V6.Rmd")
+```
+
+
+
+# References
+
+<!-- # See https://www.zotero.org/styles for the bibliography styles -->
+
+<br>
