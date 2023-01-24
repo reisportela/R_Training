@@ -411,9 +411,7 @@ df %>%
    HH <- df %>% 
       ggplot(aes(x=ln_wage)) +
       geom_histogram(bins = 27)
-
-  HH
-
+HH
 ```
 
 Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In feugiat magna erat, vitae venenatis nisl pellentesque ut. Fusce feugiat mauris ut ultricies suscipit. Nam malesuada ante non purus consectetur aliquet. Nunc porttitor dui et imperdiet varius. Aliquam posuere finibus hendrerit. Donec condimentum nisi efficitur, sagittis velit nec, blandit nulla. Mauris lobortis consequat nibh ac lacinia. Nullam placerat vitae felis non faucibus. Sed sit amet urna ut velit consectetur faucibus a a erat. Donec ultricies vitae nunc id commodo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In eu leo sed ligula cursus convallis. In hac habitasse platea dictumst. Vivamus imperdiet aliquet commodo.
@@ -431,6 +429,8 @@ Alternatively, one can picture a *density*. Lorem ipsum dolor sit amet, consecte
   DD
 
 ```
+
+
 
 ```{r Histogram vs. density side by side, echo = FALSE, message=FALSE,warning=FALSE}
 library(ggpubr)
