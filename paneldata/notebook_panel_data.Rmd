@@ -1,5 +1,6 @@
 ---
 title: 'R Notebook: Panel Data Models with R - October 2021'
+author: 'Miguel Portela'
 output:
   pdf_document: default
   word_document: default
@@ -24,14 +25,15 @@ The preview shows you a rendered HTML copy of the contents of the editor. Conseq
 Here I am uploading my packages (code omitted).
 
 ```{r setup, include=FALSE}
+
+knitr::opts_knit$set(root.dir = '/Users/miguelportela/Documents/GitHub/R_Training/paneldata')
+
 rm(list = ls())
 gc()
 start_time <- Sys.time()  # calcular o tempo de execução do programa
 # update.packages()
 # setwd("/Users/miguelportela/Documents/GitHub/R_Training/paneldata")
 # setwd("C:/Users/mangelo.EEG/Documents/GitHub/R_Training/paneldata")
-
-setwd('B:\\GitHub\\R_Training\\paneldata')
 
 library(pacman)  #Package Management Tool
 
@@ -63,6 +65,8 @@ pacman::p_load(here,
               dlookr,
               MASS,
               pdynmc)
+
+#here()
 ```
 
 # Prepare the data
@@ -71,6 +75,7 @@ Here I am reading a Stata data file (code omitted).
 
 ```{r Prepare data, include = FALSE}
 # here()
+getwd()
 nlswork <- read_dta("data/nlswork.dta")
   nls_nomiss <- na.omit(nlswork)
   write_dta(nls_nomiss,"data/nls_nomiss.dta")
@@ -787,7 +792,19 @@ simulated <- read_dta("data/data_simulation.dta")
             dep.var.labels.include = FALSE,
             style = "qje",
             type="text")
+
+## OBSERVE THE MISTAKE FOLLOWING THE INTRODUCTION OF TIME DUMMIES AND EXPERIENCE IN
+## THE FIXED-EFFECTS MODEL
+
 ```
+
+
+<!-- The following line transforms the notebook in a script -->
+
+```{r Produce the script corresponding to the RMarkdown,eval=FALSE,include=FALSE}
+knitr::purl("/Users/miguelportela/Documents/GitHub/R_Training/paneldata/notebook_panel_data.Rmd")
+```
+
 
 ## Close the log file
 

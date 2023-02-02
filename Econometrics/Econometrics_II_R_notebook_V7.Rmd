@@ -852,7 +852,7 @@ It follows from our analysis that lorem ipsum dolor sit amet, consectetur adipis
 ```{r Produce the script corresponding to the RMarkdown,eval=FALSE,include=FALSE}
 # knitr::purl("/Users/miguelportela/Dropbox/3.aulas/2021/licenciatura/econometria_ii/3.assignment_template/Econometrics_II_R_notebook_V6.Rmd")
 
-knitr::purl("D:\\miguel\\Dropbox\\3.aulas\\2021\\licenciatura\\econometria_ii\\3.assignment_template\\Econometrics_II_R_notebook_V6.Rmd")
+knitr::purl("D:\\miguel\\Dropbox\\3.aulas\\2021\\licenciatura\\econometria_ii\\3.assignment_template\\Econometrics_II_R_notebook_V7.Rmd")
 ```
 
 

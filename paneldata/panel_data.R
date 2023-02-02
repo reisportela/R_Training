@@ -285,7 +285,7 @@ nls <- data.frame(nlswork)
 
 # Standard Metropolitan Statistical Area (SMSA):
 
-  ftable(c_city) # 1 if central city
+  # ftable(c_city) # 1 if central city
 
 # CLUSTERED Standard-errors
 
