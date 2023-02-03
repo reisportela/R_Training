@@ -1,11 +1,12 @@
 ---
 title: 'R Notebook: Panel Data Models with R - October 2021'
 author: 'Miguel Portela'
+date: "`r format(Sys.time(), '%d %B %Y')`"
 output:
-  pdf_document: default
-  word_document: default
   html_document:
     df_print: paged
+  pdf_document: default
+  word_document: default
 ---
 
 # Introduction
@@ -87,7 +88,7 @@ nlswork <- read_dta("data/nlswork.dta")
   names(nlswork)
   head(nlswork)
   
-  # str(nlswork)
+  str(nlswork)
   # dplyr::glimpse(nlswork)
   
   dplyr::glimpse(nlswork$ln_wage)
@@ -171,7 +172,7 @@ ggsave("figures/graph1.png")
   summarytools::freq(nlswork$race, order = "freq")
 ```
 
-# A new dataset: exclude onservations with missing information in a subset of variables
+# A new dataset: exclude observations with missing information in a subset of variables
 
 ```{r Exclude missings, include=FALSE}
   nlswork_clean <- drop_na(subset(nlswork,select = c(idcode, year, 
@@ -186,6 +187,9 @@ ggsave("figures/graph1.png")
 ```{r Add variable, include=FALSE}
   nlswork_clean$agesq <- nlswork_clean$age^2
   nlswork_clean$tensq <- nlswork_clean$tenure^2
+  
+nlswork_clean <- nlswork_clean %>% mutate(collgrad_union = collgrad*union,collgrad_south = collgrad*south)
+
 ```
 
 ## Plot variables means
@@ -216,6 +220,7 @@ plotmeans(ln_wage ~ year ,data = nlswork_clean)
           
           summary(pols)
 ```
+
 
 ## Export regression output
 
@@ -248,6 +253,7 @@ plotmeans(ln_wage ~ year ,data = nlswork_clean)
 ```{r FTable}
 # ftable(c_city) # 1 if central city
 ```
+
 
 # CLUSTERED Standard-errors
 
@@ -334,7 +340,7 @@ plotmeans(ln_wage ~ year ,data = nlswork_clean)
             type="text")
 ```
 
-```{r OUTPUT; POLS;POLS Robust;RE;RE Robust}
+```{r OUTPUT; POLS;POLS Robust;RE;RE Robust, eval=FALSE}
   stargazer(pols,pols_robust,re,re_robust,title = "Regression analysis", 
             model.numbers = FALSE,
             column.labels = c("Pooled","Pooled (cluster)","RE","RE (cluster"),

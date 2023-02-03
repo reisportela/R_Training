@@ -1,14 +1,14 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2022/dev) (preloaded format=pdflatex 2022.9.29)  29 SEP 2022 14:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2022/dev) (preloaded format=pdflatex 2023.2.3)  3 FEB 2023 08:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **notebook_panel_data.tex
 (./notebook_panel_data.tex
-LaTeX2e <2022-06-01> patch level 5
-L3 programming layer <2022-08-30> (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+LaTeX2e <2022-11-01> patch level 1
+L3 programming layer <2023-02-01> (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2022/07/02 v1.4n Standard LaTeX document class
 (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/base/size10.clo
-File: size10.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
+File: size10.clo 2022/07/02 v1.4n Standard LaTeX file (size option)
 )
 \c@part=\count185
 \c@section=\count186
@@ -18,22 +18,22 @@ File: size10.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
 \c@subparagraph=\count190
 \c@figure=\count191
 \c@table=\count192
-\abovecaptionskip=\skip47
-\belowcaptionskip=\skip48
-\bibindent=\dimen138
+\abovecaptionskip=\skip48
+\belowcaptionskip=\skip49
+\bibindent=\dimen140
 ) (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2022/04/08 v2.17n AMS math features
-\@mathmargin=\skip49
+\@mathmargin=\skip50
 For additional information on amsmath, use the `?' option.
 (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2021/08/26 v2.01 AMS text
 (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks16
-\ex@=\dimen139
+\ex@=\dimen141
 )) (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen140
+\pmbraise@=\dimen142
 ) (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
@@ -54,7 +54,7 @@ LaTeX Info: Redefining \big on input line 722.
 LaTeX Info: Redefining \Big on input line 723.
 LaTeX Info: Redefining \bigg on input line 724.
 LaTeX Info: Redefining \Bigg on input line 725.
-\big@size=\dimen141
+\big@size=\dimen143
 LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
 \macc@depth=\count198
@@ -72,15 +72,15 @@ LaTeX Info: Redefining \Relbar on input line 971.
 \column@=\count269
 \maxfields@=\count270
 \andhelp@=\toks18
-\eqnshift@=\dimen142
-\alignsep@=\dimen143
-\tagshift@=\dimen144
-\tagwidth@=\dimen145
-\totwidth@=\dimen146
-\lineht@=\dimen147
+\eqnshift@=\dimen144
+\alignsep@=\dimen145
+\tagshift@=\dimen146
+\tagwidth@=\dimen147
+\totwidth@=\dimen148
+\lineht@=\dimen149
 \@envbody=\toks19
-\multlinegap=\skip50
-\multlinetaggap=\skip51
+\multlinegap=\skip51
+\multlinetaggap=\skip52
 \mathdisplay@stack=\toks20
 LaTeX Info: Redefining \[ on input line 2953.
 LaTeX Info: Redefining \] on input line 2954.
@@ -148,8 +148,6 @@ File: color.cfg 2016/01/02 v1.6 sample color configuration
 Package xcolor Info: Driver file: pdftex.def on input line 227.
 (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
-\stockwidth=\dimen148
-\stockheight=\dimen149
 ) (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/graphics/mathcolor.ltx)
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1353.
 Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1357.
@@ -181,7 +179,7 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \Gm@layoutvoffset=\dimen157
 \Gm@dimlist=\toks24
 ) (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Package: fancyvrb 2022/06/06 4.5 verbatim text (tvz,hv)
+Package: fancyvrb 2023/01/19 4.5a verbatim text (tvz,hv)
 \FV@CodeLineNo=\count274
 \FV@InFile=\read2
 \FV@TabBox=\box53
@@ -190,17 +188,17 @@ Package: fancyvrb 2022/06/06 4.5 verbatim text (tvz,hv)
 \FV@OutFile=\write3
 ) (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/framed/framed.sty
 Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
-\OuterFrameSep=\skip52
+\OuterFrameSep=\skip53
 \fb@frw=\dimen158
 \fb@frh=\dimen159
 \FrameRule=\dimen160
 \FrameSep=\dimen161
 ) (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/tools/longtable.sty
 Package: longtable 2021-09-01 v4.17 Multi-page Table package (DPC)
-\LTleft=\skip53
-\LTright=\skip54
-\LTpre=\skip55
-\LTpost=\skip56
+\LTleft=\skip54
+\LTright=\skip55
+\LTpre=\skip56
+\LTpost=\skip57
 \LTchunksize=\count277
 \LTcapwidth=\dimen162
 \LT@head=\box54
@@ -233,13 +231,13 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \@lastruleclass=\count285
 \@thisrulewidth=\dimen175
 ) (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/tools/array.sty
-Package: array 2022/03/10 v2.5f Tabular extension package (FMi)
+Package: array 2022/09/04 v2.5g Tabular extension package (FMi)
 \col@sep=\dimen176
 \ar@mcellbox=\box59
 \extrarowheight=\dimen177
 \NC@list=\toks26
-\extratabsurround=\skip57
-\backup@length=\skip58
+\extratabsurround=\skip58
+\backup@length=\skip59
 \ar@cellbox=\box60
 ) (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
@@ -247,12 +245,12 @@ Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
 \calc@Bcount=\count287
 \calc@Adimen=\dimen178
 \calc@Bdimen=\dimen179
-\calc@Askip=\skip59
-\calc@Bskip=\skip60
+\calc@Askip=\skip60
+\calc@Bskip=\skip61
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
 \calc@Ccount=\count288
-\calc@Cskip=\skip61
+\calc@Cskip=\skip62
 ) (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count289
@@ -275,9 +273,9 @@ Package graphics Info: Driver file: pdftex.def on input line 107.
 \Gin@req@width=\dimen182
 ) (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/multirow/multirow.sty
 Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
-\multirow@colwidth=\skip62
+\multirow@colwidth=\skip63
 \multirow@cntb=\count290
-\multirow@dima=\skip63
+\multirow@dima=\skip64
 \bigstrutjot=\dimen183
 ) (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/wrapfig/wrapfig.sty
 \wrapoverhang=\dimen184
@@ -296,15 +294,17 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 ) (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/colortbl/colortbl.sty
 Package: colortbl 2022/06/20 v1.0f Color table columns (DPC)
 \everycr=\toks30
-\minrowclearance=\skip64
+\minrowclearance=\skip65
 \rownum=\count293
 ) (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/pdflscape/pdflscape.sty
-Package: pdflscape 2019/12/05 v0.12 Display of landscape pages in PDF (HO)
+Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
+(/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty
+Package: pdflscape-nometadata 2022-10-28 v0.13 Display of landscape pages in PDF (HO)
 (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/graphics/lscape.sty
 Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
-) (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/tabu/tabu.sty
+)) (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/tabu/tabu.sty
 Package: tabu 2019/01/11 v2.9 - flexible LaTeX tabulars (FC+tabu-fixed)
 (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/varwidth/varwidth.sty
 Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
@@ -334,7 +334,7 @@ Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
 \tabu@arstrutbox=\box67
 \tabu@hleads=\box68
 \tabu@vleads=\box69
-\tabu@cellskip=\skip65
+\tabu@cellskip=\skip66
 ) (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/threeparttable/threeparttable.sty
 Package: threeparttable 2003/06/13  v 3.0
 \@tempboxb=\box70
@@ -345,11 +345,11 @@ Package: environ 2014/05/04 v0.3 A new way to define environments
 (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/trimspaces/trimspaces.sty
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 ))
-\TPTL@width=\skip66
+\TPTL@width=\skip67
 ) (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/generic/ulem/ulem.sty
 \UL@box=\box71
 \UL@hyphenbox=\box72
-\UL@skip=\skip67
+\UL@skip=\skip68
 \UL@hook=\toks33
 \UL@height=\dimen197
 \UL@pe=\count301
@@ -363,7 +363,7 @@ Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
 \c@nlinenum=\count302
 \TeXr@lab=\toks34
 ) (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hyperref.sty
-Package: hyperref 2022-09-22 v7.00t Hypertext links for LaTeX
+Package: hyperref 2022-11-13 v7.00u Hypertext links for LaTeX
 (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
 Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
 ) (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
@@ -374,8 +374,8 @@ Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
-) (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty
-Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+) (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
 ) (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
 ) (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/generic/pdfescape/pdfescape.sty
@@ -401,7 +401,7 @@ Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 \Hy@linkcounter=\count304
 \Hy@pagecounter=\count305
 (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.def
-File: pd1enc.def 2022-09-22 v7.00t Hyperref: PDFDocEncoding definition (HO)
+File: pd1enc.def 2022-11-13 v7.00u Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 ) (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/generic/intcalc/intcalc.sty
@@ -411,7 +411,7 @@ Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 )
 \Hy@SavedSpaceFactor=\count306
 (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/hyperref/puenc.def
-File: puenc.def 2022-09-22 v7.00t Hyperref: PDF Unicode definition (HO)
+File: puenc.def 2022-11-13 v7.00u Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
 ... no UTF-8 mapping file for font encoding PU
 )
@@ -455,7 +455,7 @@ package with kernel methods
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hpdftex.def
-File: hpdftex.def 2022-09-22 v7.00t Hyperref driver for pdfTeX
+File: hpdftex.def 2022-11-13 v7.00u Hyperref driver for pdfTeX
 (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/base/atveryend-ltx.sty
 Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend package
 with kernel methods
@@ -469,32 +469,33 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 285.
 )
-\Hy@SectionHShift=\skip68
+\Hy@SectionHShift=\skip69
 ) (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-File: l3backend-pdftex.def 2022-08-30 L3 backend support: PDF output (pdfTeX)
+File: l3backend-pdftex.def 2023-01-16 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count314
 \l__pdf_internal_box=\box74
-) (./notebook_panel_data.aux)
+)
+No file notebook_panel_data.aux.
 \openout1 = `notebook_panel_data.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
 (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -535,310 +536,129 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring OFF on input line 133.
-(./notebook_panel_data.out) (./notebook_panel_data.out)
+Package hyperref Info: Link coloring OFF on input line 134.
 \@outlinefile=\write4
 \openout4 = `notebook_panel_data.out'.
 
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 135.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 136.
 (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 135.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 136.
 (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 135.
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 136.
 (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 135.
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 136.
 (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 135.
+(Font)              <12> on input line 136.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 135.
+(Font)              <8> on input line 136.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 135.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 135.
+(Font)              <6> on input line 136.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 136.
 (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 135.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 136.
 (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 174.
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 175.
 (/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [1
 
-{/Users/miguelportela/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
-<notebook_panel_data_files/figure-latex/Exploratory data analysis-1.pdf, id=202, 459.7175pt x 300.12125pt>
+{/Users/miguelportela/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
+Overfull \hbox (49.99347pt too wide) in paragraph at lines 280--280
+[]\T1/lmtt/m/n/10 ##  - attr(*, "label")= chr "National Longitudinal Survey.  Young Women 14-26 years of age in 1968"[] 
+ []
+
+[3] [4]
+<notebook_panel_data_files/figure-latex/Exploratory data analysis-1.pdf, id=39, 459.7175pt x 300.12125pt>
 File: notebook_panel_data_files/figure-latex/Exploratory data analysis-1.pdf Graphic file (type pdf)
 <use notebook_panel_data_files/figure-latex/Exploratory data analysis-1.pdf>
-Package pdftex.def Info: notebook_panel_data_files/figure-latex/Exploratory data analysis-1.pdf  used on input line 363.
+Package pdftex.def Info: notebook_panel_data_files/figure-latex/Exploratory data analysis-1.pdf  used on input line 437.
 (pdftex.def)             Requested size: 459.74442pt x 300.13882pt.
-[4]
-<notebook_panel_data_files/figure-latex/Exploratory data analysis-2.pdf, id=207, 459.7175pt x 300.12125pt>
+[5]
+<notebook_panel_data_files/figure-latex/Exploratory data analysis-2.pdf, id=44, 459.7175pt x 300.12125pt>
 File: notebook_panel_data_files/figure-latex/Exploratory data analysis-2.pdf Graphic file (type pdf)
 <use notebook_panel_data_files/figure-latex/Exploratory data analysis-2.pdf>
-Package pdftex.def Info: notebook_panel_data_files/figure-latex/Exploratory data analysis-2.pdf  used on input line 370.
+Package pdftex.def Info: notebook_panel_data_files/figure-latex/Exploratory data analysis-2.pdf  used on input line 444.
 (pdftex.def)             Requested size: 459.74442pt x 300.13882pt.
-[5 <./notebook_panel_data_files/figure-latex/Exploratory data analysis-1.pdf> <./notebook_panel_data_files/figure-latex/Exploratory data analysis-2.pdf>]
-<notebook_panel_data_files/figure-latex/Exploratory data analysis-3.pdf, id=222, 459.7175pt x 300.12125pt>
+[6 <./notebook_panel_data_files/figure-latex/Exploratory data analysis-1.pdf> <./notebook_panel_data_files/figure-latex/Exploratory data analysis-2.pdf>]
+<notebook_panel_data_files/figure-latex/Exploratory data analysis-3.pdf, id=59, 459.7175pt x 300.12125pt>
 File: notebook_panel_data_files/figure-latex/Exploratory data analysis-3.pdf Graphic file (type pdf)
 <use notebook_panel_data_files/figure-latex/Exploratory data analysis-3.pdf>
-Package pdftex.def Info: notebook_panel_data_files/figure-latex/Exploratory data analysis-3.pdf  used on input line 377.
+Package pdftex.def Info: notebook_panel_data_files/figure-latex/Exploratory data analysis-3.pdf  used on input line 451.
 (pdftex.def)             Requested size: 459.74442pt x 300.13882pt.
-<notebook_panel_data_files/figure-latex/Exploratory data analysis-4.pdf, id=223, 459.7175pt x 302.12875pt>
+<notebook_panel_data_files/figure-latex/Exploratory data analysis-4.pdf, id=60, 459.7175pt x 302.12875pt>
 File: notebook_panel_data_files/figure-latex/Exploratory data analysis-4.pdf Graphic file (type pdf)
 <use notebook_panel_data_files/figure-latex/Exploratory data analysis-4.pdf>
-Package pdftex.def Info: notebook_panel_data_files/figure-latex/Exploratory data analysis-4.pdf  used on input line 384.
+Package pdftex.def Info: notebook_panel_data_files/figure-latex/Exploratory data analysis-4.pdf  used on input line 458.
 (pdftex.def)             Requested size: 459.71637pt x 302.128pt.
-[6 <./notebook_panel_data_files/figure-latex/Exploratory data analysis-3.pdf>]
-<notebook_panel_data_files/figure-latex/Exploratory data analysis-5.pdf, id=233, 459.7175pt x 302.12875pt>
+[7 <./notebook_panel_data_files/figure-latex/Exploratory data analysis-3.pdf>]
+<notebook_panel_data_files/figure-latex/Exploratory data analysis-5.pdf, id=71, 459.7175pt x 302.12875pt>
 File: notebook_panel_data_files/figure-latex/Exploratory data analysis-5.pdf Graphic file (type pdf)
 <use notebook_panel_data_files/figure-latex/Exploratory data analysis-5.pdf>
-Package pdftex.def Info: notebook_panel_data_files/figure-latex/Exploratory data analysis-5.pdf  used on input line 391.
+Package pdftex.def Info: notebook_panel_data_files/figure-latex/Exploratory data analysis-5.pdf  used on input line 465.
 (pdftex.def)             Requested size: 459.71637pt x 302.128pt.
-[7 <./notebook_panel_data_files/figure-latex/Exploratory data analysis-4.pdf> <./notebook_panel_data_files/figure-latex/Exploratory data analysis-5.pdf>]
-<notebook_panel_data_files/figure-latex/Exploratory data analysis-6.pdf, id=249, 459.7175pt x 302.12875pt>
+[8 <./notebook_panel_data_files/figure-latex/Exploratory data analysis-4.pdf> <./notebook_panel_data_files/figure-latex/Exploratory data analysis-5.pdf>]
+<notebook_panel_data_files/figure-latex/Exploratory data analysis-6.pdf, id=86, 459.7175pt x 302.12875pt>
 File: notebook_panel_data_files/figure-latex/Exploratory data analysis-6.pdf Graphic file (type pdf)
 <use notebook_panel_data_files/figure-latex/Exploratory data analysis-6.pdf>
-Package pdftex.def Info: notebook_panel_data_files/figure-latex/Exploratory data analysis-6.pdf  used on input line 398.
+Package pdftex.def Info: notebook_panel_data_files/figure-latex/Exploratory data analysis-6.pdf  used on input line 472.
 (pdftex.def)             Requested size: 459.71637pt x 302.128pt.
-<notebook_panel_data_files/figure-latex/Exploratory data analysis-7.pdf, id=250, 459.7175pt x 302.12875pt>
+<notebook_panel_data_files/figure-latex/Exploratory data analysis-7.pdf, id=87, 459.7175pt x 302.12875pt>
 File: notebook_panel_data_files/figure-latex/Exploratory data analysis-7.pdf Graphic file (type pdf)
 <use notebook_panel_data_files/figure-latex/Exploratory data analysis-7.pdf>
-Package pdftex.def Info: notebook_panel_data_files/figure-latex/Exploratory data analysis-7.pdf  used on input line 405.
+Package pdftex.def Info: notebook_panel_data_files/figure-latex/Exploratory data analysis-7.pdf  used on input line 479.
 (pdftex.def)             Requested size: 459.71637pt x 302.128pt.
-[8 <./notebook_panel_data_files/figure-latex/Exploratory data analysis-6.pdf>]
-<notebook_panel_data_files/figure-latex/Exploratory data analysis-8.pdf, id=260, 459.7175pt x 302.12875pt>
+[9 <./notebook_panel_data_files/figure-latex/Exploratory data analysis-6.pdf>]
+<notebook_panel_data_files/figure-latex/Exploratory data analysis-8.pdf, id=97, 459.7175pt x 302.12875pt>
 File: notebook_panel_data_files/figure-latex/Exploratory data analysis-8.pdf Graphic file (type pdf)
 <use notebook_panel_data_files/figure-latex/Exploratory data analysis-8.pdf>
-Package pdftex.def Info: notebook_panel_data_files/figure-latex/Exploratory data analysis-8.pdf  used on input line 412.
+Package pdftex.def Info: notebook_panel_data_files/figure-latex/Exploratory data analysis-8.pdf  used on input line 486.
 (pdftex.def)             Requested size: 459.71637pt x 302.128pt.
-[9 <./notebook_panel_data_files/figure-latex/Exploratory data analysis-7.pdf> <./notebook_panel_data_files/figure-latex/Exploratory data analysis-8.pdf>]
-<notebook_panel_data_files/figure-latex/Exploratory data analysis-9.pdf, id=275, 461.725pt x 319.1925pt>
+[10 <./notebook_panel_data_files/figure-latex/Exploratory data analysis-7.pdf> <./notebook_panel_data_files/figure-latex/Exploratory data analysis-8.pdf>]
+<notebook_panel_data_files/figure-latex/Exploratory data analysis-9.pdf, id=112, 461.725pt x 319.1925pt>
 File: notebook_panel_data_files/figure-latex/Exploratory data analysis-9.pdf Graphic file (type pdf)
 <use notebook_panel_data_files/figure-latex/Exploratory data analysis-9.pdf>
-Package pdftex.def Info: notebook_panel_data_files/figure-latex/Exploratory data analysis-9.pdf  used on input line 418.
+Package pdftex.def Info: notebook_panel_data_files/figure-latex/Exploratory data analysis-9.pdf  used on input line 492.
 (pdftex.def)             Requested size: 461.72388pt x 319.19171pt.
-<notebook_panel_data_files/figure-latex/Exploratory data analysis-10.pdf, id=276, 259.97125pt x 109.40875pt>
+<notebook_panel_data_files/figure-latex/Exploratory data analysis-10.pdf, id=113, 259.97125pt x 109.40875pt>
 File: notebook_panel_data_files/figure-latex/Exploratory data analysis-10.pdf Graphic file (type pdf)
 <use notebook_panel_data_files/figure-latex/Exploratory data analysis-10.pdf>
-Package pdftex.def Info: notebook_panel_data_files/figure-latex/Exploratory data analysis-10.pdf  used on input line 419.
+Package pdftex.def Info: notebook_panel_data_files/figure-latex/Exploratory data analysis-10.pdf  used on input line 493.
 (pdftex.def)             Requested size: 259.97061pt x 109.40846pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 418--420
+Underfull \hbox (badness 10000) in paragraph at lines 492--494
 [][]
  []
 
-<notebook_panel_data_files/figure-latex/Missing values-1.pdf, id=277, 453.695pt x 300.12125pt>
-File: notebook_panel_data_files/figure-latex/Missing values-1.pdf Graphic file (type pdf)
-<use notebook_panel_data_files/figure-latex/Missing values-1.pdf>
-Package pdftex.def Info: notebook_panel_data_files/figure-latex/Missing values-1.pdf  used on input line 437.
-(pdftex.def)             Requested size: 453.6939pt x 300.12051pt.
-[10 <./notebook_panel_data_files/figure-latex/Exploratory data analysis-9.pdf> <./notebook_panel_data_files/figure-latex/Exploratory data analysis-10.pdf>]
-<notebook_panel_data_files/figure-latex/Missing values-2.pdf, id=293, 455.7025pt x 310.15875pt>
-File: notebook_panel_data_files/figure-latex/Missing values-2.pdf Graphic file (type pdf)
-<use notebook_panel_data_files/figure-latex/Missing values-2.pdf>
-Package pdftex.def Info: notebook_panel_data_files/figure-latex/Missing values-2.pdf  used on input line 447.
-(pdftex.def)             Requested size: 455.70137pt x 310.15799pt.
-[11 <./notebook_panel_data_files/figure-latex/Missing values-1.pdf>] [12 <./notebook_panel_data_files/figure-latex/Missing values-2.pdf>] [13]
-<notebook_panel_data_files/figure-latex/Plot variables means-1.pdf, id=327, 436.63126pt x 250.9375pt>
-File: notebook_panel_data_files/figure-latex/Plot variables means-1.pdf Graphic file (type pdf)
-<use notebook_panel_data_files/figure-latex/Plot variables means-1.pdf>
-Package pdftex.def Info: notebook_panel_data_files/figure-latex/Plot variables means-1.pdf  used on input line 565.
-(pdftex.def)             Requested size: 436.63019pt x 250.93687pt.
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 572.
-(/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/lm/ts1lmr.fd
-File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) [14 <./notebook_panel_data_files/figure-latex/Plot variables means-1.pdf>]
-LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 635.
-LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 635.
-(/Users/miguelportela/Library/TinyTeX/texmf-dist/tex/latex/lm/ts1lmtt.fd
-File: ts1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) [15]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14.4> on input line 707.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 707.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 707.
 
-Overfull \hbox (14.12468pt too wide) in paragraph at lines 707--707
-[][][]$\T1/lmr/bx/n/14.4 https : / / stats . stackexchange . com / questions / 421374 / di^^[erent -[] results -[]
- []
+! LaTeX Error: Unicode character ^^[ (U+001B)
+               not set up for use with LaTeX.
 
-[16] [17] [18] [19]
-Overfull \hbox (56.32799pt too wide) in alignment at lines 926--931
- [] [] [] [] [] 
- []
-
-
-Overfull \hbox (56.32799pt too wide) in alignment at lines 931--935
- [] [] [] [] [] 
- []
-
-
-Overfull \hbox (56.32799pt too wide) in alignment at lines 935--939
- [] [] [] [] [] 
- []
-
-[20] [21] [22] [23] [24] [25] [26] [27] [28] [29] [30]
-Overfull \hbox (139.24321pt too wide) in paragraph at lines 1610--1610
-[]\T1/lmtt/m/n/10 ## data:  ln_wage ~ union + collgrad + age + agesq + tenure + tensq + not_smsa +     south + c_city + factor(idcode)[] 
- []
-
-[31] [32]
-Overfull \hbox (49.99347pt too wide) in paragraph at lines 1763--1763
-[]\T1/lmtt/m/n/10 ## data:  ln_wage ~ union + collgrad + age + agesq + tenure + tensq + not_smsa +     south + c_city[] 
- []
-
-
-LaTeX Font Warning: Font shape `T1/lmtt/bx/it' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/sl' tried instead on input line 1771.
-
-
-LaTeX Font Warning: Font shape `TS1/lmtt/bx/it' in size <10> not available
-(Font)              Font shape `TS1/lmtt/b/sl' tried instead on input line 1771.
-
-[33]
-Overfull \hbox (385.9925pt too wide) in paragraph at lines 1851--1851
-[]\T1/lmtt/m/n/10 ##    felm(formula = ln_wage ~ union + age + agesq + tenure + tensq +      not_smsa + south + c_city | idcode, data = nlswork_clean,      clustervar = c("idcode"))[] 
- []
-
-[34]
-Overfull \hbox (422.74239pt too wide) in paragraph at lines 1931--1931
-[]\T1/lmtt/m/n/10 ##    felm(formula = ln_wage ~ union + age + agesq + tenure + tensq +      not_smsa + south + c_city | idcode + year, data = nlswork_clean,      clustervar = c("idcode"))[] 
- []
-
-[35] [36] [37] [38]
-<notebook_panel_data_files/figure-latex/simulatted - EDA-1.pdf, id=479, 459.7175pt x 300.12125pt>
-File: notebook_panel_data_files/figure-latex/simulatted - EDA-1.pdf Graphic file (type pdf)
-<use notebook_panel_data_files/figure-latex/simulatted - EDA-1.pdf>
-Package pdftex.def Info: notebook_panel_data_files/figure-latex/simulatted - EDA-1.pdf  used on input line 2167.
-(pdftex.def)             Requested size: 459.74442pt x 300.13882pt.
-<notebook_panel_data_files/figure-latex/simulatted - EDA-2.pdf, id=480, 459.7175pt x 302.12875pt>
-File: notebook_panel_data_files/figure-latex/simulatted - EDA-2.pdf Graphic file (type pdf)
-<use notebook_panel_data_files/figure-latex/simulatted - EDA-2.pdf>
-Package pdftex.def Info: notebook_panel_data_files/figure-latex/simulatted - EDA-2.pdf  used on input line 2174.
-(pdftex.def)             Requested size: 459.71637pt x 302.128pt.
-[39 <./notebook_panel_data_files/figure-latex/simulatted - EDA-1.pdf>]
-<notebook_panel_data_files/figure-latex/simulatted - EDA-3.pdf, id=490, 459.7175pt x 302.12875pt>
-File: notebook_panel_data_files/figure-latex/simulatted - EDA-3.pdf Graphic file (type pdf)
-<use notebook_panel_data_files/figure-latex/simulatted - EDA-3.pdf>
-Package pdftex.def Info: notebook_panel_data_files/figure-latex/simulatted - EDA-3.pdf  used on input line 2181.
-(pdftex.def)             Requested size: 459.71637pt x 302.128pt.
-[40 <./notebook_panel_data_files/figure-latex/simulatted - EDA-2.pdf> <./notebook_panel_data_files/figure-latex/simulatted - EDA-3.pdf>]
-<notebook_panel_data_files/figure-latex/simulatted - EDA-4.pdf, id=505, 459.7175pt x 302.12875pt>
-File: notebook_panel_data_files/figure-latex/simulatted - EDA-4.pdf Graphic file (type pdf)
-<use notebook_panel_data_files/figure-latex/simulatted - EDA-4.pdf>
-Package pdftex.def Info: notebook_panel_data_files/figure-latex/simulatted - EDA-4.pdf  used on input line 2188.
-(pdftex.def)             Requested size: 459.71637pt x 302.128pt.
-<notebook_panel_data_files/figure-latex/simulatted - EDA-5.pdf, id=506, 459.7175pt x 302.12875pt>
-File: notebook_panel_data_files/figure-latex/simulatted - EDA-5.pdf Graphic file (type pdf)
-<use notebook_panel_data_files/figure-latex/simulatted - EDA-5.pdf>
-Package pdftex.def Info: notebook_panel_data_files/figure-latex/simulatted - EDA-5.pdf  used on input line 2195.
-(pdftex.def)             Requested size: 459.71637pt x 302.128pt.
-[41 <./notebook_panel_data_files/figure-latex/simulatted - EDA-4.pdf>]
-<notebook_panel_data_files/figure-latex/simulatted - EDA-6.pdf, id=516, 459.7175pt x 302.12875pt>
-File: notebook_panel_data_files/figure-latex/simulatted - EDA-6.pdf Graphic file (type pdf)
-<use notebook_panel_data_files/figure-latex/simulatted - EDA-6.pdf>
-Package pdftex.def Info: notebook_panel_data_files/figure-latex/simulatted - EDA-6.pdf  used on input line 2202.
-(pdftex.def)             Requested size: 459.71637pt x 302.128pt.
-[42 <./notebook_panel_data_files/figure-latex/simulatted - EDA-5.pdf> <./notebook_panel_data_files/figure-latex/simulatted - EDA-6.pdf>]
-<notebook_panel_data_files/figure-latex/simulatted - EDA-7.pdf, id=531, 459.7175pt x 302.12875pt>
-File: notebook_panel_data_files/figure-latex/simulatted - EDA-7.pdf Graphic file (type pdf)
-<use notebook_panel_data_files/figure-latex/simulatted - EDA-7.pdf>
-Package pdftex.def Info: notebook_panel_data_files/figure-latex/simulatted - EDA-7.pdf  used on input line 2209.
-(pdftex.def)             Requested size: 459.71637pt x 302.128pt.
-<notebook_panel_data_files/figure-latex/simulatted - EDA-8.pdf, id=532, 459.7175pt x 302.12875pt>
-File: notebook_panel_data_files/figure-latex/simulatted - EDA-8.pdf Graphic file (type pdf)
-<use notebook_panel_data_files/figure-latex/simulatted - EDA-8.pdf>
-Package pdftex.def Info: notebook_panel_data_files/figure-latex/simulatted - EDA-8.pdf  used on input line 2216.
-(pdftex.def)             Requested size: 459.71637pt x 302.128pt.
-[43 <./notebook_panel_data_files/figure-latex/simulatted - EDA-7.pdf>]
-<notebook_panel_data_files/figure-latex/simulatted - EDA-9.pdf, id=543, 459.7175pt x 302.12875pt>
-File: notebook_panel_data_files/figure-latex/simulatted - EDA-9.pdf Graphic file (type pdf)
-<use notebook_panel_data_files/figure-latex/simulatted - EDA-9.pdf>
-Package pdftex.def Info: notebook_panel_data_files/figure-latex/simulatted - EDA-9.pdf  used on input line 2223.
-(pdftex.def)             Requested size: 459.71637pt x 302.128pt.
-[44 <./notebook_panel_data_files/figure-latex/simulatted - EDA-8.pdf> <./notebook_panel_data_files/figure-latex/simulatted - EDA-9.pdf>]
-<notebook_panel_data_files/figure-latex/simulatted - EDA-10.pdf, id=558, 459.7175pt x 302.12875pt>
-File: notebook_panel_data_files/figure-latex/simulatted - EDA-10.pdf Graphic file (type pdf)
-<use notebook_panel_data_files/figure-latex/simulatted - EDA-10.pdf>
-Package pdftex.def Info: notebook_panel_data_files/figure-latex/simulatted - EDA-10.pdf  used on input line 2230.
-(pdftex.def)             Requested size: 459.71637pt x 302.128pt.
-<notebook_panel_data_files/figure-latex/simulatted - EDA-11.pdf, id=559, 459.7175pt x 302.12875pt>
-File: notebook_panel_data_files/figure-latex/simulatted - EDA-11.pdf Graphic file (type pdf)
-<use notebook_panel_data_files/figure-latex/simulatted - EDA-11.pdf>
-Package pdftex.def Info: notebook_panel_data_files/figure-latex/simulatted - EDA-11.pdf  used on input line 2237.
-(pdftex.def)             Requested size: 459.71637pt x 302.128pt.
-[45 <./notebook_panel_data_files/figure-latex/simulatted - EDA-10.pdf>]
-<notebook_panel_data_files/figure-latex/simulatted - EDA-12.pdf, id=569, 459.7175pt x 302.12875pt>
-File: notebook_panel_data_files/figure-latex/simulatted - EDA-12.pdf Graphic file (type pdf)
-<use notebook_panel_data_files/figure-latex/simulatted - EDA-12.pdf>
-Package pdftex.def Info: notebook_panel_data_files/figure-latex/simulatted - EDA-12.pdf  used on input line 2244.
-(pdftex.def)             Requested size: 459.71637pt x 302.128pt.
-[46 <./notebook_panel_data_files/figure-latex/simulatted - EDA-11.pdf> <./notebook_panel_data_files/figure-latex/simulatted - EDA-12.pdf>]
-<notebook_panel_data_files/figure-latex/simulatted - EDA-13.pdf, id=584, 459.7175pt x 302.12875pt>
-File: notebook_panel_data_files/figure-latex/simulatted - EDA-13.pdf Graphic file (type pdf)
-<use notebook_panel_data_files/figure-latex/simulatted - EDA-13.pdf>
-Package pdftex.def Info: notebook_panel_data_files/figure-latex/simulatted - EDA-13.pdf  used on input line 2251.
-(pdftex.def)             Requested size: 459.71637pt x 302.128pt.
-<notebook_panel_data_files/figure-latex/simulatted - EDA-14.pdf, id=585, 459.7175pt x 302.12875pt>
-File: notebook_panel_data_files/figure-latex/simulatted - EDA-14.pdf Graphic file (type pdf)
-<use notebook_panel_data_files/figure-latex/simulatted - EDA-14.pdf>
-Package pdftex.def Info: notebook_panel_data_files/figure-latex/simulatted - EDA-14.pdf  used on input line 2258.
-(pdftex.def)             Requested size: 459.71637pt x 302.128pt.
-[47 <./notebook_panel_data_files/figure-latex/simulatted - EDA-13.pdf>] [48 <./notebook_panel_data_files/figure-latex/simulatted - EDA-14.pdf>]
-<notebook_panel_data_files/figure-latex/unnamed-chunk-2-1.pdf, id=606, 459.7175pt x 316.18124pt>
-File: notebook_panel_data_files/figure-latex/unnamed-chunk-2-1.pdf Graphic file (type pdf)
-<use notebook_panel_data_files/figure-latex/unnamed-chunk-2-1.pdf>
-Package pdftex.def Info: notebook_panel_data_files/figure-latex/unnamed-chunk-2-1.pdf  used on input line 2313.
-(pdftex.def)             Requested size: 459.74442pt x 316.19975pt.
-[49 <./notebook_panel_data_files/figure-latex/unnamed-chunk-2-1.pdf>] [50]
-<notebook_panel_data_files/figure-latex/unnamed-chunk-2-2.pdf, id=621, 453.695pt x 299.1175pt>
-File: notebook_panel_data_files/figure-latex/unnamed-chunk-2-2.pdf Graphic file (type pdf)
-<use notebook_panel_data_files/figure-latex/unnamed-chunk-2-2.pdf>
-Package pdftex.def Info: notebook_panel_data_files/figure-latex/unnamed-chunk-2-2.pdf  used on input line 2391.
-(pdftex.def)             Requested size: 453.6939pt x 299.11676pt.
-[51 <./notebook_panel_data_files/figure-latex/unnamed-chunk-2-2.pdf>] [52] [53] [54] (./notebook_panel_data.aux)
-Package rerunfilecheck Info: File `notebook_panel_data.out' has not changed.
-(rerunfilecheck)             Checksum: D7A69955B2F406CBD02E84A1BB463413;8576.
- ) 
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.509 \end{verbatim}
+                     
 Here is how much of TeX's memory you used:
- 13687 strings out of 477042
- 228095 string characters out of 5827023
- 583335 words of memory out of 5000000
- 34400 multiletter control sequences out of 15000+600000
- 530033 words of font info for 78 fonts, out of 8000000 for 9000
+ 13244 strings out of 478033
+ 214698 string characters out of 5839047
+ 1880346 words of memory out of 5000000
+ 33129 multiletter control sequences out of 15000+600000
+ 547553 words of font info for 58 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 72i,7n,77p,642b,582s stack positions out of 10000i,1000n,20000p,200000b,200000s
-{/Users/miguelportela/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/Users/miguelportela/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}</Users/miguelportela/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></Users/miguelportela/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></Users/miguelportela/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbxi10.pfb></Users/miguelportela/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb></Users/miguelportela/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr17.pfb></Users/miguelportela/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri10.pfb></Users/miguelportela/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtk10.pfb
+ 75i,7n,76p,382b,586s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-pdfTeX warning: pdflatex (file /Users/miguelportela/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtk10.pfb): glyph `f' undefined
-
-
-pdfTeX warning: pdflatex (file /Users/miguelportela/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtk10.pfb): glyph `i' undefined
-
-
-pdfTeX warning: pdflatex (file /Users/miguelportela/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtk10.pfb): glyph `n' undefined
-
-
-pdfTeX warning: pdflatex (file /Users/miguelportela/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtk10.pfb): glyph `o' undefined
-
-
-pdfTeX warning: pdflatex (file /Users/miguelportela/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtk10.pfb): glyph `t' undefined
-
-
-pdfTeX warning: pdflatex (file /Users/miguelportela/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtk10.pfb): glyph `u' undefined
-
-!pdfTeX error: pdflatex (file /Users/miguelportela/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtk10.pfb): invalid marker
- ==> Fatal error occurred, no output PDF file produced!
+!  ==> Fatal error occurred, no output PDF file produced!

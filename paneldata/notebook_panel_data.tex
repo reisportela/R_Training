@@ -123,12 +123,13 @@
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
   pdftitle={R Notebook: Panel Data Models with R - October 2021},
+  pdfauthor={Miguel Portela},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 
 \title{R Notebook: Panel Data Models with R - October 2021}
-\author{}
-\date{\vspace{-2.5em}}
+\author{Miguel Portela}
+\date{03 February 2023}
 
 \begin{document}
 \maketitle
@@ -206,7 +207,80 @@ Here I am reading a Stata data file (code omitted).
 
 \begin{Shaded}
 \begin{Highlighting}[]
-  \CommentTok{\# str(nlswork)}
+  \FunctionTok{str}\NormalTok{(nlswork)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## tibble [28,534 x 21] (S3: tbl_df/tbl/data.frame)
+##  $ idcode  : num [1:28534] 1 1 1 1 1 1 1 1 1 1 ...
+##   ..- attr(*, "label")= chr "NLS id"
+##   ..- attr(*, "format.stata")= chr "%8.0g"
+##  $ year    : num [1:28534] 70 71 72 73 75 77 78 80 83 85 ...
+##   ..- attr(*, "label")= chr "interview year"
+##   ..- attr(*, "format.stata")= chr "%8.0g"
+##  $ birth_yr: num [1:28534] 51 51 51 51 51 51 51 51 51 51 ...
+##   ..- attr(*, "label")= chr "birth year"
+##   ..- attr(*, "format.stata")= chr "%8.0g"
+##  $ age     : num [1:28534] 18 19 20 21 23 25 26 28 31 33 ...
+##   ..- attr(*, "label")= chr "age in current year"
+##   ..- attr(*, "format.stata")= chr "%8.0g"
+##  $ race    : num [1:28534] 2 2 2 2 2 2 2 2 2 2 ...
+##   ..- attr(*, "label")= chr "1=white, 2=black, 3=other"
+##   ..- attr(*, "format.stata")= chr "%8.0g"
+##  $ msp     : num [1:28534] 0 1 1 1 1 0 0 0 0 0 ...
+##   ..- attr(*, "label")= chr "1 if married, spouse present"
+##   ..- attr(*, "format.stata")= chr "%8.0g"
+##  $ nev_mar : num [1:28534] 1 0 0 0 0 0 0 0 0 0 ...
+##   ..- attr(*, "label")= chr "1 if never yet married"
+##   ..- attr(*, "format.stata")= chr "%8.0g"
+##  $ grade   : num [1:28534] 12 12 12 12 12 12 12 12 12 12 ...
+##   ..- attr(*, "label")= chr "current grade completed"
+##   ..- attr(*, "format.stata")= chr "%8.0g"
+##  $ collgrad: num [1:28534] 0 0 0 0 0 0 0 0 0 0 ...
+##   ..- attr(*, "label")= chr "1 if college graduate"
+##   ..- attr(*, "format.stata")= chr "%8.0g"
+##  $ not_smsa: num [1:28534] 0 0 0 0 0 0 0 0 0 0 ...
+##   ..- attr(*, "label")= chr "1 if not SMSA"
+##   ..- attr(*, "format.stata")= chr "%8.0g"
+##  $ c_city  : num [1:28534] 1 1 1 1 1 1 1 1 1 1 ...
+##   ..- attr(*, "label")= chr "1 if central city"
+##   ..- attr(*, "format.stata")= chr "%8.0g"
+##  $ south   : num [1:28534] 0 0 0 0 0 0 0 0 0 0 ...
+##   ..- attr(*, "label")= chr "1 if south"
+##   ..- attr(*, "format.stata")= chr "%8.0g"
+##  $ ind_code: num [1:28534] 6 4 4 4 5 12 5 5 5 5 ...
+##   ..- attr(*, "label")= chr "industry of employment"
+##   ..- attr(*, "format.stata")= chr "%8.0g"
+##  $ occ_code: num [1:28534] 3 6 6 6 6 8 6 6 6 6 ...
+##   ..- attr(*, "label")= chr "occupation"
+##   ..- attr(*, "format.stata")= chr "%8.0g"
+##  $ union   : num [1:28534] NA NA 1 NA NA 0 NA 1 1 1 ...
+##   ..- attr(*, "label")= chr "1 if union"
+##   ..- attr(*, "format.stata")= chr "%8.0g"
+##  $ wks_ue  : num [1:28534] 2 22 0 0 0 0 7 0 NA 0 ...
+##   ..- attr(*, "label")= chr "weeks unemployed last year"
+##   ..- attr(*, "format.stata")= chr "%8.0g"
+##  $ ttl_exp : num [1:28534] 1.08 1.28 2.26 2.31 2.78 ...
+##   ..- attr(*, "label")= chr "total work experience"
+##   ..- attr(*, "format.stata")= chr "%9.0g"
+##  $ tenure  : num [1:28534] 0.0833 0.0833 0.9167 0.0833 0.1667 ...
+##   ..- attr(*, "label")= chr "job tenure, in years"
+##   ..- attr(*, "format.stata")= chr "%9.0g"
+##  $ hours   : num [1:28534] 20 44 40 40 10 32 52 45 49 42 ...
+##   ..- attr(*, "label")= chr "usual hours worked"
+##   ..- attr(*, "format.stata")= chr "%8.0g"
+##  $ wks_work: num [1:28534] 27 10 51 3 24 52 4 75 101 97 ...
+##   ..- attr(*, "label")= chr "weeks worked last year"
+##   ..- attr(*, "format.stata")= chr "%8.0g"
+##  $ ln_wage : num [1:28534] 1.45 1.03 1.59 1.78 1.78 ...
+##   ..- attr(*, "label")= chr "ln(wage/GNP deflator)"
+##   ..- attr(*, "format.stata")= chr "%9.0g"
+##  - attr(*, "label")= chr "National Longitudinal Survey.  Young Women 14-26 years of age in 1968"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
   \CommentTok{\# dplyr::glimpse(nlswork)}
   
 \NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{glimpse}\NormalTok{(nlswork}\SpecialCharTok{$}\NormalTok{ln\_wage)}
@@ -429,9 +503,9 @@ Start discussing the statistics and graphs.
 
 \begin{verbatim}
 ## Warning: `gather_()` was deprecated in tidyr 1.2.0.
-## Please use `gather()` instead.
-## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
+## i Please use `gather()` instead.
+## i The deprecated feature was likely used in the visdat package.
+##   Please report the issue at <]8;;https://github.com/ropensci/visdat/issueshttps://github.com/ropensci/visdat/issues]8;;>.
 \end{verbatim}
 
 \includegraphics{notebook_panel_data_files/figure-latex/Missing values-1.pdf}
@@ -909,7 +983,7 @@ effects}\label{lm-test-for-the-presence-of-unobserved-effects}}
 
 \begin{verbatim}
 ## 
-##  Lagrange Multiplier Test - (Breusch-Pagan) for unbalanced panels
+##  Lagrange Multiplier Test - (Breusch-Pagan)
 ## 
 ## data:  ln_wage ~ union + collgrad + age + agesq + tenure + tensq + not_smsa +  ...
 ## chisq = 14041, df = 1, p-value < 2.2e-16
@@ -933,8 +1007,8 @@ statistic & p.value & parameter & method & alternative \\
 statistic & p.value & parameter & method & alternative \\
 \midrule()
 \endhead
-14041.19 & 0 & 1 & Lagrange Multiplier Test - (Breusch-Pagan) for
-unbalanced panels & significant effects \\
+14041.19 & 0 & 1 & Lagrange Multiplier Test - (Breusch-Pagan) &
+significant effects \\
 \bottomrule()
 \end{longtable}
 
@@ -1649,7 +1723,7 @@ effects}\label{locally-robust-tests-for-serial-correlation-or-random-effects}}
 
 \begin{verbatim}
 ## 
-##  Baltagi and Li AR-RE joint test - balanced panel
+##  Baltagi and Li AR-RE joint test
 ## 
 ## data:  formula
 ## chisq = 50.736, df = 2, p-value = 9.612e-12
@@ -2463,7 +2537,7 @@ AND EXPERIENCE IN THE FIXED-EFFECTS MODEL}
 
 \begin{verbatim}
 ## 
-##  Lagrange Multiplier Test - (Breusch-Pagan) for balanced panels
+##  Lagrange Multiplier Test - (Breusch-Pagan)
 ## 
 ## data:  lnwage ~ educ + exper + exper2 + factor(year)
 ## chisq = 19885, df = 1, p-value < 2.2e-16
@@ -2565,6 +2639,13 @@ AND EXPERIENCE IN THE FIXED-EFFECTS MODEL}
 ## Notes:         Standard errors in parentheses.
 \end{verbatim}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# OBSERVE THE MISTAKE FOLLOWING THE INTRODUCTION OF TIME DUMMIES AND EXPERIENCE IN}
+\DocumentationTok{\#\# THE FIXED{-}EFFECTS MODEL}
+\end{Highlighting}
+\end{Shaded}
+
 \hypertarget{close-the-log-file}{%
 \subsection{Close the log file}\label{close-the-log-file}}
 
@@ -2577,7 +2658,7 @@ AND EXPERIENCE IN THE FIXED-EFFECTS MODEL}
 \end{Shaded}
 
 \begin{verbatim}
-## Time difference of 1.023473 mins
+## Time difference of 24.07217 secs
 \end{verbatim}
 
 \begin{Shaded}
