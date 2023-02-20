@@ -89,6 +89,8 @@ File > New Project > Version Control > Git
 
 - [Data.gov.pt](Data.gov.pt)
 
+- [Portal Autárquico](https://www.portalautarquico.pt/)
+
 
 ### Other
 
