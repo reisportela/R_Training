@@ -81,6 +81,8 @@ File > New Project > Version Control > Git
 
 - [INE](https://www.ine.pt/)
 
+- [INE: CENSOS](https://censos.ine.pt/xportal/xmain?xpgid=censos21_main&xpid=CENSOS21&xlang=pt)
+
 - [INE: Anuários Estatísticos Regionais](https://www.ine.pt/xportal/xmain?xpid=INE&xpgid=ine_doc_municipios)
 
 ![INE: Produtos](images/INE_Produtos.PNG)
