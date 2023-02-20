@@ -95,7 +95,6 @@ File > New Project > Version Control > Git
 
 - [Fundação José Neves: Bighter Future](https://brighterfuture.joseneves.org/)
 
-https://brighterfuture.joseneves.org/
 
 ### Other
 
