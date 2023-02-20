@@ -74,6 +74,8 @@ File > New Project > Version Control > Git
 
 - [Binder Examples](https://github.com/binder-examples)
 
+- Marktest: Sales Index (sala de computadores da EEG)
+
 
 ## 10. Data
 
