@@ -82,6 +82,7 @@ nlswork <- read_dta("data/nlswork.dta")
   write_dta(nls_nomiss,"data/nls_nomiss.dta")
 ```
 
+
 # Statistics
 
 ```{r Statistics}
@@ -97,6 +98,8 @@ nlswork <- read_dta("data/nlswork.dta")
   
   ExpData(nlswork,type=2)
 ```
+
+We do not have information on the union status for about one third of the observations.
 
 ## Exploratory data analysis
 
