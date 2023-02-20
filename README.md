@@ -72,15 +72,27 @@ File > New Project > Version Control > Git
 
 > [Galileo](https://hypernetlabs.io/galileo/)
 
+- [Binder Examples](https://github.com/binder-examples)
+
+
 ## 10. Data
 
-- [Binder Examples](https://github.com/binder-examples)
+### Portugal
+
+- [INE](https://www.ine.pt/)
+
+- [PORDATA](https://www.pordata.pt/)
+
+- [INE: Anuários Estatísticos Regionais](https://www.ine.pt/xportal/xmain?xpid=INE&xpgid=ine_doc_municipios)
+
+![INE: Produtos](images/INE_Produtos.PNG)
+
+
+### Other
 
 - [Causality with `R`](https://bookdown.org/paul/applied-causal-analysis/)
 
 - [PSID](https://psidonline.isr.umich.edu/)
-
-- [PORDATA](https://www.pordata.pt/)
 
 - [Harvard Dataverse](https://dataverse.harvard.edu/)
 
@@ -93,8 +105,6 @@ File > New Project > Version Control > Git
 - [AMECO](https://ec.europa.eu/info/business-economy-euro/indicators-statistics/economic-databases/macro-economic-database-ameco/ameco-database_en)
 
 - [Comtrade](https://comtrade.un.org/)
-
-- [INE](https://www.ine.pt/)
 
 - [Eurostat](https://ec.europa.eu/eurostat)
 
