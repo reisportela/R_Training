@@ -93,6 +93,9 @@ File > New Project > Version Control > Git
 
 - [Portal Autárquico](https://www.portalautarquico.pt/): verificar, por exemplo, a execução orçamental (contas de gerência), disponível desde
 
+- [Fundação José Neves: Bighter Future](https://brighterfuture.joseneves.org/)
+
+https://brighterfuture.joseneves.org/
 
 ### Other
 
