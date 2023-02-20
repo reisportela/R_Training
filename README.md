@@ -89,7 +89,7 @@ File > New Project > Version Control > Git
 
 - [Data.gov.pt](Data.gov.pt)
 
-- [Portal Autárquico](https://www.portalautarquico.pt/)
+- [Portal Autárquico](https://www.portalautarquico.pt/): verificar, por exemplo, a execução orçamental (contas de gerência), disponível desde
 
 
 ### Other
