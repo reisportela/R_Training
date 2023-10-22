@@ -1,5 +1,5 @@
 ---
-title: 'R Notebook: Panel Data Models with R - October 2021'
+title: 'R Notebook: Panel Data Models with R'
 author: 'Miguel Portela'
 date: "`r format(Sys.time(), '%d %B %Y')`"
 output:
