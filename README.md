@@ -2,7 +2,7 @@
 
 Use one of the following alternatives to run the code:
 
-## 1. [RStudioCloud](https://rstudio.cloud)
+## 1. [Posit Cloud](https://login.posit.cloud/)
 
 > Direct link to the project, [https://rstudio.cloud/spaces/100541/project/2953903](https://rstudio.cloud/spaces/100541/project/2953903)
 
@@ -255,11 +255,11 @@ Xie, Y., Allaire, J.J. and Grolemund, G., 2018. *R markdown: The definitive guid
 
 A.1. Go to Nelson's `Introduction to R' and explore its contents: [https://intro2r.nelsonareal.net/en](https://intro2r.nelsonareal.net/en)
 
-A.2. Create a profile and login to RStudio Cloud: [https://rstudio.cloud/](https://rstudio.cloud/)
+A.2. Create a profile and login to Posit Cloud: [https://login.posit.cloud/](https://login.posit.cloud/)
 
 	- You can use your Gmail or GitHub account
 
-A.3. Run the following two session in RStudio Cloud
+A.3. Run the following two session in Posit Cloud
 
 A.3.1. Session 1: [https://nareal.net/g-intro2r-s1](https://nareal.net/g-intro2r-s1)
 
@@ -268,7 +268,7 @@ A.3.2. Session 2: [http://nareal.net/g-intro2r-s2](http://nareal.net/g-intro2r-s
 
 ## SECTION B. Data visualisation with R
 
-### Run the following two sessions in RStudio Cloud:
+### Run the following two sessions in Posit Cloud:
 
 B.1. Session 1: [http://nareal.net/g-dv-s1](http://nareal.net/g-dv-s1)
 
