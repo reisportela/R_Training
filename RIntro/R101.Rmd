@@ -1,9 +1,11 @@
 ---
 title: "Introduction to R"
-subtitle: "Adaptation based on Nelson Areal' session"
 author: "Nelson Areal / Miguel Portela"
-date: 'October, 2023'
-output: html_notebook
+date: "October, 2023"
+output:
+  pdf_document: default
+  html_notebook: default
+subtitle: Adaptation based on Nelson Areal' session
 ---
 
 
@@ -111,9 +113,9 @@ B. Install R and RStudio: [RStudio Desktop](https://posit.co/download/rstudio-de
 - **Data frame**: A table-like structure where columns can be of different types but rows must be of the same length
   - Example: `data.frame(name=c("Alice", "Bob"), age=c(25, 30))`
 - **Factors**: Categorical data, can be ordered or unordered
-  - Example: `factor(c("small", "medium", "small", "large"))`
+  - Example: `factor(c("small", "medcium", "small", "large"))`
 
-
+> **START::HERE:25OCT2023**
 
 ## Comparisons
 
