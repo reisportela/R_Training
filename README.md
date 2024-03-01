@@ -102,6 +102,7 @@ File > New Project > Version Control > Git
 ![Sales index App](images/SalesIndex.png)
 
 
+
 ### Other
 
 - [Causality with `R`](https://bookdown.org/paul/applied-causal-analysis/)
