@@ -99,6 +99,7 @@ File > New Project > Version Control > Git
 
 - Marktest: [Sales Index](https://www.marktest.com/wap/a/grp/p~18.aspx#apresenta%C3%A7%C3%A3o) (sala de computadores da EEG)
 
+![Sales index App](images/SalesIndex.PNG)
 
 
 ### Other
