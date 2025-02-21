@@ -140,7 +140,7 @@ File > New Project > Version Control > Git
 
 - [American Economic Association::Journal Data and Program Archives / Replication Studies](https://www.aeaweb.org/rfe/showCat.php?cat_id=9)
 
-- check [Datasets list in EEG's website](https://www.eeg.uminho.pt/en/investigar/recursos/Pages/default.aspx)
+- check [Datasets list on EEG's website](https://www.eeg.uminho.pt/en/investigar/recursos/Pages/default.aspx)
 
 
 
