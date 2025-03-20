@@ -74,8 +74,7 @@ pacman::p_load(here,
 
 Here I am reading a Stata data file (code omitted).
 
-test 23
-
+### Put here an example.
 
 ```{r Prepare data, include = FALSE}
 # here()
