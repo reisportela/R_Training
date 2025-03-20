@@ -74,6 +74,9 @@ pacman::p_load(here,
 
 Here I am reading a Stata data file (code omitted).
 
+test 23
+
+
 ```{r Prepare data, include = FALSE}
 # here()
 getwd()
@@ -81,6 +84,7 @@ nlswork <- read_dta("data/nlswork.dta")
   nls_nomiss <- na.omit(nlswork)
   write_dta(nls_nomiss,"data/nls_nomiss.dta")
 ```
+
 
 
 # Statistics
