@@ -27,7 +27,7 @@ Here I am uploading my packages (code omitted).
 
 ```{r setup, include=FALSE}
 
-knitr::opts_knit$set(root.dir = '/Users/miguelportela/Documents/GitHub/R_Training/paneldata')
+knitr::opts_knit$set(root.dir = 'C:/Users/mangelo/Dropbox/3.aulas/2025/Doutoramento/Econometria_Avancada_Financas/4.Statistical_Software/4.2.R/R_panel')
 
 rm(list = ls())
 gc()
@@ -756,7 +756,7 @@ simulated <- read_dta("data/data_simulation.dta")
 
 ## DASHBOARD
 
-  ####### ExPanD()
+  ####### explor 'ExPanD()' in the Console
 ```
 
 ## Regressions
@@ -765,17 +765,17 @@ simulated <- read_dta("data/data_simulation.dta")
 
 ```{r}
   pols <- plm(data = simulated, lnwage ~ educ + exper + 
-              exper2 + factor(year), 
+              exper2, 
             model="pooling", index=c("workerid", "year"))
-
+  
   re <- plm(data = simulated, lnwage ~ educ + exper + 
-            exper2 + factor(year), 
+            exper2, 
           model="random", index=c("workerid", "year"))
 
   plmtest(pols, type=c("bp"))
 
   fe <- plm(data = simulated, lnwage ~ educ + exper + 
-              exper2 + factor(year), 
+              exper2, 
             model="within", index=c("workerid", "year"))
   
   pFtest(fe, pols)
