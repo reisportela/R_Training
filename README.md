@@ -1,314 +1,202 @@
-# R training
+# R Training
 
-Use one of the following alternatives to run the code:
+Materials for learning and teaching R (data analysis, econometrics, and reproducible workflows).
 
-## 1. [Posit Cloud](https://login.posit.cloud/)
+## Contents
 
-> Direct link to the project, [https://rstudio.cloud/spaces/100541/project/2953903](https://rstudio.cloud/spaces/100541/project/2953903)
+- [Quick start](#quick-start)
+- [Repository structure](#repository-structure)
+- [Data sources](#data-sources)
+- [Containers (BPLIM and Singularity)](#containers-bplim-and-singularity)
+- [Reproducibility resources](#reproducibility-resources)
+- [Course links](#course-links)
+- [References](#references)
+- [Power BI example](#power-bi-example)
 
-## 2. myBinder project:
+## Quick start
 
-> [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/reisportela/R_Training/HEAD?urlpath=rstudio)
+### Run online (no installation)
 
-> Link: `https://mybinder.org/v2/gh/reisportela/R_Training/HEAD?urlpath=rstudio`
+- **Posit Cloud**: open the workspace at <https://rstudio.cloud/spaces/100541/project/2953903>.
+- **Binder (RStudio, this repo)**: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/reisportela/R_Training/HEAD?urlpath=rstudio)  
+  Direct link: <https://mybinder.org/v2/gh/reisportela/R_Training/HEAD?urlpath=rstudio>
+- **GitHub Codespaces**: use the GitHub “Code” button → “Codespaces” (recommended when you need a more stable session).
+- **Other hosted options**:
+  - GESIS Notebooks: <https://notebooks.gesis.org/>
+  - Code Ocean: create a new capsule from <https://github.com/reisportela/R_Training>
+  - Whole Tale: <https://wholetale.org/>
 
-## 3. myBinder repository:
+<details>
+<summary>More environments (mostly Jupyter-focused)</summary>
 
-> [https://github.com/reisportela/R_plus_RStudio](https://github.com/reisportela/R_plus_RStudio)
+- Google Cloud Platform: <https://console.cloud.google.com/>
+- IBM Cloud Shell: <https://cloud.ibm.com/shell>
+- CognitiveLabs (IBM): <https://labs.cognitiveclass.ai/>
+- Google Colab: <https://colab.research.google.com/>
+- Kaggle: <https://www.kaggle.com/>
+- CoCalc: <https://cocalc.com/>
+- Datalore: <https://datalore.io/>
+- StarCluster: <http://star.mit.edu/cluster/>
+- Galileo: <https://hypernetlabs.io/galileo/>
+- Binder examples: <https://github.com/binder-examples>
 
-> and clone the contents of the exercise:
+</details>
 
-### The direct link to RStudio is
+<details>
+<summary>Alternative Binder setup (using <code>reisportela/R_plus_RStudio</code>)</summary>
 
-RStudio: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/reisportela/R_plus_RStudio/HEAD?urlpath=rstudio)
+1. Open Binder with RStudio: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/reisportela/R_plus_RStudio/HEAD?urlpath=rstudio)
+2. In RStudio, go to: <kbd>File</kbd> → <kbd>New Project</kbd> → <kbd>Version Control</kbd> → <kbd>Git</kbd>
+3. Paste `https://github.com/reisportela/R_Training.git` into **Repository URL**.
 
-or to the notebook
+</details>
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/reisportela/R_plus_RStudio/HEAD)
+### Run locally
 
-### Go to:
+1. Install **R**: <https://cran.r-project.org/>
+2. Install **RStudio Desktop** (recommended): <https://posit.co/download/rstudio-desktop/>
+   - Alternative: install Anaconda/Miniconda (if you already use conda): <https://www.anaconda.com/>
+3. Get the materials:
+   - Download ZIP: <https://github.com/reisportela/R_Training/archive/refs/heads/master.zip>
+   - Or clone: `git clone https://github.com/reisportela/R_Training.git`
+4. Install packages used across the notebooks/scripts:
+   - From a terminal: `Rscript install.R`
+   - Or inside R: `source("install.R")`
 
-File > New Project > Version Control > Git
+## Repository structure
 
-> and paste the following link `https://github.com/reisportela/R_Training.git` in **Repository URL**
+- `RIntro/` — introductory material.
+- `EDA/` — exploratory data analysis.
+- `regression/` — regression + causality material.
+- `Econometrics/` — econometrics examples.
+- `paneldata/` — panel data.
+- `timeseries/` — time series.
+- `fuzzy/` — fuzzy logic examples.
+- `data/` — datasets and supporting files.
+- `jupyter_notebooks/` — Jupyter-based notebooks and notes.
+- `latex/`, `literate_programming/` — writing/reporting material.
 
-## 4. GESIS Notebooks:
+## Data sources
 
-> [https://notebooks.gesis.org/](https://notebooks.gesis.org/)
+<details>
+<summary>Portugal</summary>
 
-## 5. CodeOcean
-
-> Go to [https://codeocean.com](https://codeocean.com) and create a new capsule from [https://github.com/reisportela/R_Training](https://github.com/reisportela/R_Training)
-
-## 6. WHOLETALE
-
-> Try it at [https://wholetale.org/](https://wholetale.org/)
-
-## 7. GitHub Codespaces
-
-## 8. Install R & RStudio in your machine and download the [project](https://github.com/reisportela/R_Training/archive/refs/heads/master.zip)
-
-## 9. Other
-
-<!--- SEE: https://www.dataschool.io/cloud-services-for-jupyter-notebook -->
-
-> [Google Cloud Platform](https://console.cloud.google.com/)
-
-<!--- [Azure](https://azure.microsoft.com/) -->
-
-> [IBM Cloud Shell](https://cloud.ibm.com/shell)
-
-> [CognitiveLabs (IBM)](https://labs.cognitiveclass.ai/)
-
-> [Colab (Google)](https://colab.research.google.com/)
-
-> [Kaggle Kernels](https://www.kaggle.com/)
-
-> [CoCalc](https://cocalc.com/)
-
-> [Datalore](https://datalore.io/)
-
-> [StarCluster](http://star.mit.edu/cluster/)
-
-> [Galileo](https://hypernetlabs.io/galileo/)
-
-- [Binder Examples](https://github.com/binder-examples)
-
-
-## 10. Data
-
-### Portugal
-
-- [BPLIM](https://bplim.bportugal.pt/)
-
+- [Banco de Portugal Microdata Research Laboratory (BPLIM)](https://bplim.bportugal.pt/)
 - [INE](https://www.ine.pt/)
+  - [Microdados (protocolo INE/FCT)](https://www.dgeec.medu.pt/art/6499db7d9eff36f307f07bdb/65293837121f641a986cc618/65495a4a79026a41502e3e82/64ef206c6358acfd7e9fa9fb)
+  - [Censos](https://censos.ine.pt/)
+  - [Anuários Estatísticos Regionais](https://www.ine.pt/xportal/xmain?xpid=INE&xpgid=ine_doc_municipios)
 
-- [INE: Microdados - protocolo INE/FCT](https://www.dgeec.medu.pt/art/6499db7d9eff36f307f07bdb/65293837121f641a986cc618/65495a4a79026a41502e3e82/64ef206c6358acfd7e9fa9fb)
-
-- [INE: CENSOS](https://censos.ine.pt/xportal/xmain?xpgid=censos21_main&xpid=CENSOS21&xlang=pt)
-
-- [INE: Anuários Estatísticos Regionais](https://www.ine.pt/xportal/xmain?xpid=INE&xpgid=ine_doc_municipios)
-
-![INE: Produtos](images/INE_Produtos.PNG)
+![INE products](images/INE_Produtos.PNG)
 
 - [PORDATA](https://www.pordata.pt/)
-
-- [Data.gov.pt](Data.gov.pt)
-
-- [Portal Autárquico](https://www.portalautarquico.pt/): verificar, por exemplo, a execução orçamental (contas de gerência), disponível desde
-
-- [Fundação José Neves: Bighter Future](https://brighterfuture.joseneves.org/)
-
+- [Dados abertos (Data.gov.pt)](https://data.gov.pt/)
+- [Portal Autárquico](https://www.portalautarquico.pt/) (e.g., “contas de gerência”)
+- [Fundação José Neves — Brighter Future](https://brighterfuture.joseneves.org/)
 - [Orbis](https://orbiseurope.bvdinfo.com/ip)
+- [Marktest — Sales Index](https://www.marktest.com/wap/a/grp/p~18.aspx) (EEG computer lab)
 
-- Marktest: [Sales Index](https://www.marktest.com/wap/a/grp/p~18.aspx#apresenta%C3%A7%C3%A3o) (sala de computadores da EEG)
+![Sales Index app](images/SalesIndex.png)
 
-![Sales index App](images/SalesIndex.png)
+</details>
 
+<details>
+<summary>Other</summary>
 
-### Other
-
-- [Causality with `R`](https://bookdown.org/paul/applied-causal-analysis/)
-
+- [Causality with R](https://bookdown.org/paul/applied-causal-analysis/)
 - [PSID](https://psidonline.isr.umich.edu/)
-
 - [Harvard Dataverse](https://dataverse.harvard.edu/)
-
 - [European Social Survey](http://www.europeansocialsurvey.org/)
-
-- [Angrist Data Archive](https://economics.mit.edu/people/faculty/josh-angrist/angrist-data-archive) -- (see, *e.g.*, [Card](http://economics.mit.edu/faculty/angrist/data1/mhe/card))
-
+- [Angrist Data Archive](https://economics.mit.edu/people/faculty/josh-angrist/angrist-data-archive)
 - [AMECO](https://ec.europa.eu/info/business-economy-euro/indicators-statistics/economic-databases/macro-economic-database-ameco/ameco-database_en)
-
-- [Comtrade](https://comtrade.un.org/)
-
+- [UN Comtrade](https://comtrade.un.org/)
 - [Eurostat](https://ec.europa.eu/eurostat)
-
 - [OECD](https://stats.oecd.org/)
-
 - [World Bank](https://data.worldbank.org/)
-
 - [FRED](https://fred.stlouisfed.org/)
-
-- [Journal of Applied Econometrics Data Archive](http://qed.econ.queensu.ca/jae/)
-
-- [Banco de Portugal Microdata Research Laboratory (BPLIM) ](https://bplim.bportugal.pt/)
-
+- [Journal of Applied Econometrics — Data Archive](http://qed.econ.queensu.ca/jae/)
 - [Google Public Data](https://www.google.com/publicdata/directory)
+- [NBER Data](https://www.nber.org/research/data)
+- [AEA — Journal Data/Programs & replication](https://www.aeaweb.org/rfe/showCat.php?cat_id=9)
+- [EEG datasets list](https://www.eeg.uminho.pt/en/investigar/recursos/Pages/default.aspx)
 
-- [NBER](https://www.nber.org/research/data)
+</details>
 
-- [American Economic Association::Journal Data and Program Archives / Replication Studies](https://www.aeaweb.org/rfe/showCat.php?cat_id=9)
+## Containers (BPLIM and Singularity)
 
-- check [Datasets list on EEG's website](https://www.eeg.uminho.pt/en/investigar/recursos/Pages/default.aspx)
+<details>
+<summary>Build and run an RStudio container for BPLIM</summary>
 
-
-
-# Build your container
-
-- You can write a script to build your container using our definition file template [container_BPLIM_RStudio_researchers.def](https://github.com/BPLIM/Manuals/tree/master/ExternalServer/container_BPLIM_RStudio_researchers.def) available at our [GitHub repository](https://github.com/BPLIM/Manuals/tree/master/ExternalServer)
-
-- In this template we setup a machine running Ubuntu 20.04, R 4.1 and RStudio 1.3.1093
-
-- You can add your packages in line 90 within `c()`; e.g.,
-
-> `c("tidyverse","haven")`
-
-- Test your script and build the container using [SylabsCloud](https://cloud.sylabs.io/) (you can use your GitHub account to login)
-
-- Click in 'CREATE'
+- Start from the template [`container_BPLIM_RStudio_researchers.def`](https://github.com/BPLIM/Manuals/tree/master/ExternalServer/container_BPLIM_RStudio_researchers.def)
+  - Repository: <https://github.com/BPLIM/Manuals/tree/master/ExternalServer>
+- The template targets Ubuntu 20.04 with R 4.1 and RStudio 1.3.1093.
+- Add your R packages in the `c(...)` list (around line ~90). Example: `c("tidyverse", "haven")`.
+- Build using [Sylabs Cloud](https://cloud.sylabs.io/) → **CREATE** (you can log in with GitHub):
+  - Upload your `.def` file or paste its contents.
+  - Check the build log for errors; if the build succeeds, share the updated `.def` file with your changes.
 
 ![](media/SylabsCreate.png)
 
-- In the following step upload your '.def' file or copy/paste its contents in the Text box:
-
 ![](media/SylabsBuildContainer.png)
 
-- Sylabs runs a first test on the validity of your script and releases the button 'Build' (click on it)
+### Use the container on the BPLIM server
 
-- Follow the outcome at the bottom of the screen and check for possible error messages
-
-- Once you succeed in building the container, you can send us the definition file with your changes
-
-### Use the container in BPLIM's server
-
-- Open a `Terminal`
-
-- Move to your project's folder
-
-> `cd /bplimext/projects/YOURPROJECTID/tools/containers`
-
-- Start the container by typing
-
-> `singularity shell YOURPROJECTID.sif`
-
-- The prompt of the `Terminal` will show: `Singularity`
-
-- Start RStudio by typping `rstudio` (small caps)
+```bash
+cd /bplimext/projects/YOURPROJECTID/tools/containers
+singularity shell YOURPROJECTID.sif
+rstudio
+```
 
 ![](media/Singularity_Terminal_Prompt.png)
 
+</details>
 
+## Reproducibility resources
 
-- Once inside RStudio you have access to the original folder structure of your project
+- [AEA Data Editor — Docker for reproducibility in economics](https://aeadataeditor.github.io/posts/2021-11-16-docker)
+- [AEA Data Editor — Stata project with automated Docker builds](https://github.com/AEADataEditor/stata-project-with-docker)
 
+## Course links
 
-# Reproducibility
+### Applied Economics project (Projeto em Economia Aplicada)
 
-- [AER: Use of Docker for Reproducibility in Economics](https://aeadataeditor.github.io/posts/2021-11-16-docker)
+This repository is used as supporting material. See [Quick start](#quick-start) for setup options.
 
-- [AER: Creating a Stata project with automated Docker builds](https://github.com/AEADataEditor/stata-project-with-docker)
+### R Training (Nelson Areal, Universidade do Minho)
 
-<!-- https://lamadon.com/computing.html -->
+- Course site: <https://intro2r.nelsonareal.net/en>
+- Posit Cloud signup: <https://login.posit.cloud/>
+- Sessions:
+  - Introduction to R — Session 1: <https://nareal.net/g-intro2r-s1>
+  - Introduction to R — Session 2: <http://nareal.net/g-intro2r-s2>
+  - Data visualisation — Session 1: <http://nareal.net/g-dv-s1>
+  - Data visualisation — Session 2: <http://nareal.net/g-dv-s2>
 
-<!--
-# Training
+### Building a dashboard with R
 
-## LITERATE PROGRAMMING EM R MARKDOWN | 12 e 14/10/2021 | By: Miguel Portela
+- Flexdashboard:
+  - Examples: <https://rstudio.github.io/flexdashboard/articles/examples.html>
+  - Using flexdashboard: <https://rstudio.github.io/flexdashboard/articles/using.html>
+  - Package docs: <https://pkgs.rstudio.com/flexdashboard/>
 
-Data: 12 e 14 de Outubro | 18h00-21h00
+<details>
+<summary>Literate programming</summary>
 
-Lecionado por: Miguel Portela, Universidade do Minho
+- Reference: *R Markdown: The Definitive Guide* — <https://bookdown.org/yihui/rmarkdown/>
 
-Literate Programming trata-se de fusão de uma narrativa descritiva com um código de computador num único documento, a partir do qual tanto a documentação legível por humanos, quanto os arquivos legíveis por computador, podem ser criados.
+</details>
 
-O trabalho deve ser transparente, fácil de atualizar, manter e replicar.
-
-Literate Programming permite economizar tempo e esforço, permitindo dedicar mais tempo à pesquisa. Literate Programming também é útil para o ensino.
-
-Programa: 
-
-1. Markdown e Pandoc
-2. Crie um documento de Markdown e execute o código
-3. Desenvolva um relatório
-4. Publique o relatório
-
-Referências:
-
-Xie, Y., Allaire, J.J. and Grolemund, G., 2018. *R markdown: The definitive guide*. CRC Press.
-
-[https://bookdown.org/yihui/rmarkdown/](https://bookdown.org/yihui/rmarkdown/)
-
--->
-
-
-# Projeto em Economia Aplicada
-
-## Install R in your computer
-
-### Alternative A:
-
-1. Instal [R](https://cran.r-project.org/bin/windows/base/)
-2. Install [RStudio IDE](https://www.rstudio.com/products/rstudio/download/)
-
-### Alternative B:
-
-- Install [Anaconda](https://www.anaconda.com/)
-
-**or** Run R using online services: see the discussion [here](https://github.com/reisportela/R_Training)
-
-
-## R Training
-
-> **Author**: Nelson Areal/U Minho - [https://nelsonareal.net/](https://nelsonareal.net/)
-
-> February 2022
-
-
-## SECTION A. Introduction to R
-
-### STEPS:
-
-A.1. Go to Nelson's `Introduction to R' and explore its contents: [https://intro2r.nelsonareal.net/en](https://intro2r.nelsonareal.net/en)
-
-A.2. Create a profile and login to Posit Cloud: [https://login.posit.cloud/](https://login.posit.cloud/)
-
-	- You can use your Gmail or GitHub account
-
-A.3. Run the following two session in Posit Cloud
-
-A.3.1. Session 1: [https://nareal.net/g-intro2r-s1](https://nareal.net/g-intro2r-s1)
-
-A.3.2. Session 2: [http://nareal.net/g-intro2r-s2](http://nareal.net/g-intro2r-s2)
-
-
-## SECTION B. Data visualisation with R
-
-### Run the following two sessions in Posit Cloud:
-
-B.1. Session 1: [http://nareal.net/g-dv-s1](http://nareal.net/g-dv-s1)
-
-B.2. Session 2: [http://nareal.net/g-dv-s2](http://nareal.net/g-dv-s2)
-
-
-
-# Building a Dashboard with R
-
-- See the outcome [here](http://www1.eeg.uminho.pt/economia/mangelo/R_Dashboard.html)
-
- #### Explore the following links:
- 
-- [https://rstudio.github.io/flexdashboard/articles/examples.html](https://rstudio.github.io/flexdashboard/articles/examples.html)
-
-- [https://rstudio.github.io/flexdashboard/articles/using.html](https://rstudio.github.io/flexdashboard/articles/using.html)
-
-- [https://pkgs.rstudio.com/flexdashboard/](https://pkgs.rstudio.com/flexdashboard/)
-
-
-# REFERENCES
+## References
 
 1. [R for Data Science](https://r4ds.had.co.nz/)
-5. [R Graphics Cookbook](https://r-graphics.org/)
-6. [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/)
-2. [How to Choose the Right Data Visualization](https://chartio.com/learn/charts/how-to-choose-data-visualization/)
-4. [Practical Statistics for Data Scientists](https://www.oreilly.com/library/view/practical-statistics-for/9781491952955/)
-9. [A Visual Guide to Stata Graphics](https://www.stata.com/bookstore/visual-guide-to-stata-graphics/)
-3. [Causal Inference: The Mixtape](https://mixtape.scunning.com/introduction.html)
+2. [R Graphics Cookbook](https://r-graphics.org/)
+3. [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/)
+4. [How to Choose the Right Data Visualization](https://chartio.com/learn/charts/how-to-choose-data-visualization/)
+5. [Practical Statistics for Data Scientists](https://www.oreilly.com/library/view/practical-statistics-for/9781491952955/)
+6. [A Visual Guide to Stata Graphics](https://www.stata.com/bookstore/visual-guide-to-stata-graphics/)
+7. [Causal Inference: The Mixtape](https://mixtape.scunning.com/introduction.html)
+8. [Purdue OWL (APA style basics)](https://owl.purdue.edu/owl/research_and_citation/apa_style/apa_formatting_and_style_guide/in_text_citations_the_basics.html)
 
+## Power BI example
 
-# PowerBI web examples
-
-[Brighter Future - FJN](https://joseneves.org/pt/brighter-future)
-
-
-[APA, Purdue](https://owl.purdue.edu/owl/research_and_citation/apa_style/apa_formatting_and_style_guide/in_text_citations_the_basics.html#:~:text=When%20using%20APA%20format%2C%20follow,the%20end%20of%20the%20paper.)
+- Brighter Future (FBA): <https://www.brighterfuture.pt/>
