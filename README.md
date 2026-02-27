@@ -98,6 +98,8 @@ Materials for learning and teaching R (data analysis, econometrics, and reproduc
 
 ![Sales Index app](images/SalesIndex.png)
 
+- [Listagem de Dados EEG](https://www.eeg.uminho.pt/pt/investigar/recursos/Paginas/bases-de-dados-estatisticas.aspx)
+
 </details>
 
 <details>
