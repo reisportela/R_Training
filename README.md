@@ -114,7 +114,7 @@ Materials for learning and teaching R (data analysis, econometrics, and reproduc
 - [OECD](https://stats.oecd.org/)
 - [World Bank](https://data.worldbank.org/)
 - [FRED](https://fred.stlouisfed.org/)
-- [Journal of Applied Econometrics — Data Archive](http://qed.econ.queensu.ca/jae/)
+- [Journal of Applied Econometrics — Data Archive](https://journaldata.zbw.eu/journals/jae)
 - [Google Public Data](https://www.google.com/publicdata/directory)
 - [NBER Data](https://www.nber.org/research/data)
 - [AEA — Journal Data/Programs & replication](https://www.aeaweb.org/rfe/showCat.php?cat_id=9)
