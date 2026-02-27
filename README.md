@@ -90,7 +90,7 @@ Materials for learning and teaching R (data analysis, econometrics, and reproduc
 ![INE products](images/INE_Produtos.PNG)
 
 - [PORDATA](https://www.pordata.pt/)
-- [Dados abertos (Data.gov.pt)](https://data.gov.pt/)
+- [Dados abertos (Dados.gov.pt)](https://dados.gov.pt/)
 - [Portal Autárquico](https://www.portalautarquico.pt/) (e.g., “contas de gerência”)
 - [Fundação José Neves — Brighter Future](https://brighterfuture.joseneves.org/)
 - [Orbis](https://orbiseurope.bvdinfo.com/ip)
